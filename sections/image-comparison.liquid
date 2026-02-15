@@ -1,0 +1,282 @@
+{%- liquid
+  assign aspect_ratio = 100.0 | divided_by: section.settings.image-aspect-ratio
+  assign bg_color = section.settings.background-color
+  assign cursor_direction = section.settings.cursor-direction
+  assign cursor_position = section.settings.cursor-position
+  assign container_width = section.settings.container-width
+  assign heading = section.settings.heading | escape
+  assign light_text = section.settings.light-text
+  assign link_text = section.settings.link-text
+  assign link_url = section.settings.link-url
+  assign mobile_aspect_ratio = 100.0 | divided_by: section.settings.mobile-image-aspect-ratio
+  assign overline = section.settings.overline
+  assign spacing_above = section.settings.spacing-above
+  assign spacing_below = section.settings.spacing-below
+
+  assign button_type = 'button'
+  if light_text
+    assign button_type = 'inverted-secondary-button'
+  endif
+
+  render 'section-assets', name: 'image-comparison'
+
+  for block in section.blocks
+    if block.type == 'before'
+      assign before_image = block.settings.image
+      assign before_mobile_image = block.settings.mobile-image
+    elsif block.type == 'after'
+      assign after_image = block.settings.image
+      assign after_mobile_image = block.settings.mobile-image
+    endif
+  endfor
+-%}
+
+<image-comparison
+  class="image-comparison--root"
+  data-section-id="{{ section.id }}"
+  data-background-color="{{ bg_color }}"
+  data-container-width="{{ container_width }}"
+  data-cursor-direction="{{ cursor_direction }}"
+  data-initial-pos="{{ cursor_position }}"
+  data-light-text="{{ light_text }}"
+  data-spacing-above="{{ spacing_above }}"
+  data-spacing-below="{{ spacing_below }}"
+>
+  <div class="image-comparison--wrapper" data-container="section">
+    {%- if overline != blank or heading != blank -%}
+      <div class="image-comparison--header" data-container="block">
+        {%- if overline != blank -%}
+          <p class="image-comparison--overline" data-item="overline">
+            {{- overline | escape -}}
+          </p>
+        {%- endif -%}
+
+        {%- if heading != blank -%}
+          <h3 class="image-comparison--heading" data-item="section-heading">
+            {{- heading | escape -}}
+          </h3>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="image-comparison--images">
+      <div class="image-comparison--before">
+        {%- liquid
+          if before_image
+            render 'image', image: before_image, mobile_image: before_mobile_image, aspect_ratio: aspect_ratio, mobile_aspect_ratio: mobile_aspect_ratio
+          else
+            render 'placeholder', type: 'collection', placeholder_index: 1, aspect_ratio: aspect_ratio, mobile_aspect_ratio: mobile_aspect_ratio
+          endif
+        -%}
+      </div>
+
+      <div class="image-comparison--after">
+        {%- liquid
+          if after_image
+            render 'image', image: after_image, mobile_image: after_mobile_image, aspect_ratio: aspect_ratio, mobile_aspect_ratio: mobile_aspect_ratio
+          else
+            render 'placeholder', type: 'collection', placeholder_index: 2, aspect_ratio: aspect_ratio, mobile_aspect_ratio: mobile_aspect_ratio
+          endif
+        -%}
+      </div>
+
+      <div class="image-comparison--cursor-wrapper">
+        <div class="image-comparison--cursor">
+          {%- render 'icons', icon: 'drag-indicator' -%}
+        </div>
+      </div>
+    </div>
+
+    {%- if link_text != blank -%}
+      <div class="image-comparison--link" data-container="block">
+        <a
+          class="image-comparison--link--container"
+          href="{{ link_url }}"
+          data-item="{{ button_type }}"
+        >
+          <span>{{- link_text -}}</span>
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</image-comparison>
+
+{% schema %}
+{
+  "name": "Image comparison",
+  "class": "section--image-comparison",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Style and layout"
+    },
+    {
+      "id": "image-aspect-ratio",
+      "label": "Image aspect ratio",
+      "type": "range",
+      "min": 24,
+      "max": 200,
+      "step": 2,
+      "default": 56
+    },
+    {
+      "id": "background-color",
+      "label": "Background color",
+      "type": "select",
+      "options": [
+        { "label": "None", "value": "none" },
+        { "label": "Light", "value": "light" },
+        { "label": "Dark", "value": "dark" },
+        { "label": "Accent 1", "value": "accent-1" },
+        { "label": "Accent 2", "value": "accent-2" }
+      ],
+      "default": "none"
+    },
+    {
+      "id": "light-text",
+      "label": "Use light text color",
+      "type": "checkbox",
+      "default": false
+    },
+    {
+      "id": "container-width",
+      "label": "Maximum width of container",
+      "type": "range",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "id": "spacing-above",
+      "label": "Spacing above",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "id": "spacing-below",
+      "label": "Spacing below",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "id": "overline",
+      "label": "Overline",
+      "type": "text",
+      "default": "Overline text"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Image comparison"
+    },
+    {
+      "type": "url",
+      "id": "link-url",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "link-text",
+      "label": "Link text",
+      "default": "Optional link"
+    },
+    {
+      "type": "header",
+      "content": "Features"
+    },
+    {
+      "label": "Cursor direction",
+      "id": "cursor-direction",
+      "type": "select",
+      "options": [
+        { "label": "Horizontal", "value": "horizontal" },
+        { "label": "Vertical", "value": "vertical" }
+      ],
+      "default": "horizontal"
+    },
+    {
+      "label": "Initial cursor position",
+      "id": "cursor-position",
+      "type": "range",
+      "min": 5,
+      "max": 95,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "id": "mobile-image-aspect-ratio",
+      "label": "Mobile image aspect ratio",
+      "type": "range",
+      "min": 32,
+      "max": 200,
+      "step": 2,
+      "default": 134
+    }
+  ],
+  "max_blocks": 2,
+  "blocks": [
+    {
+      "type": "before",
+      "name": "Before",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "mobile-image",
+          "type": "image_picker",
+          "label": "Mobile image"
+        }
+      ]
+    },
+    {
+      "type": "after",
+      "name": "After",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "mobile-image",
+          "type": "image_picker",
+          "label": "Mobile image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image comparison",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "before"
+        },
+        {
+          "type": "after"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["aside"]
+  }
+}
+{% endschema %}

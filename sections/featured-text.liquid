@@ -1,0 +1,209 @@
+{%- liquid
+  assign bg_color = section.settings.background-color
+  assign container_width = section.settings.container-width
+  assign heading = section.settings.heading | escape
+  assign light_text = section.settings.light-text
+  assign link_text = section.settings.link-text
+  assign link_url = section.settings.link-url
+  assign overline = section.settings.overline | escape
+  assign spacing_above = section.settings.spacing-above
+  assign spacing_below = section.settings.spacing-below
+  assign description = section.settings.description
+
+  assign cover_link = false
+  if link_url != blank and description == blank
+    assign cover_link = true
+  endif
+
+  assign button_type = 'button'
+  if light_text
+    assign button_type = 'inverted-button'
+  endif
+
+  render 'section-assets', name: 'featured-text', type: 'style'
+-%}
+
+{%- if cover_link -%}
+  <a href="{{ link_url }}" aria-label="{{ heading }}">
+{%- endif -%}
+
+<div
+  class="featured-text--root"
+  data-section-id="{{ section.id }}"
+  data-background-color="{{ bg_color }}"
+  data-container-width="{{ container_width }}"
+  data-light-text="{{ light_text }}"
+  data-spacing-above="{{ spacing_above }}"
+  data-spacing-below="{{ spacing_below }}"
+>
+  <div
+    class="featured-text--wrapper"
+    {% unless settings.transitions--disabled %}
+      data-transition-container="{{ section.id }}"
+      data-transition-type="mask"
+      data-transition-cascade="vertical"
+      data-transition-cascade-interval="500"
+    {% endunless %}
+  >
+    {%- unless heading == blank -%}
+      <div
+        class="featured-text--heading"
+        {% unless settings.transitions--disabled %}
+          data-transition-cropper
+          data-transition-item="{{ section.id }}"
+        {% endunless %}
+      >
+        <h2 data-item="section-heading">
+          {{- heading -}}
+        </h2>
+      </div>
+    {%- endunless -%}
+
+    {%- unless overline == blank -%}
+      <div
+        class="featured-text--overline"
+        {% unless settings.transitions--disabled %}
+          data-transition-cropper
+          data-transition-item="{{ section.id }}"
+        {% endunless %}
+      >
+        <h3 data-item="overline">
+          {{- overline | escape -}}
+        </h3>
+      </div>
+    {%- endunless -%}
+
+    {%- unless description == blank -%}
+      <div
+        class="featured-text--body"
+        {% unless settings.transitions--disabled %}
+          data-transition-type="slide-in"
+          data-transition-item="{{ section.id }}"
+        {% endunless %}
+        data-item="rte-content"
+      >
+        {{- description -}}
+      </div>
+    {%- endunless -%}
+
+    {%- unless link_text == blank -%}
+      <div
+        class="featured-text--link"
+        data-item="{{ button_type }}"
+        {% unless settings.transitions--disabled %}
+          data-transition-item="{{ section.id }}"
+          data-transition-type="fade-in"
+        {% endunless %}
+      >
+        {%- if cover_link -%}
+          <div class="featured-text--link--container">
+            {{- link_text -}}
+          </div>
+        {%- else -%}
+          <a class="featured-text--link--container" href="{{ link_url }}">
+            {{- link_text -}}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endunless -%}
+  </div>
+</div>
+
+{%- if cover_link -%}
+  </a>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Rich text",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Style and layout"
+      },
+      {
+        "id": "background-color",
+        "label": "Background color",
+        "type": "select",
+        "options": [
+          { "label": "None", "value": "none" },
+          { "label": "Light", "value": "light" },
+          { "label": "Dark", "value": "dark" },
+          { "label": "Accent 1", "value": "accent-1" },
+          { "label": "Accent 2", "value": "accent-2" }
+        ],
+        "default": "none"
+      },
+      {
+        "id": "light-text",
+        "label": "Use light text color",
+        "type": "checkbox",
+        "default": false
+      },
+      {
+        "id": "container-width",
+        "label": "Maximum width of container",
+        "type": "range",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "default": 4
+      },
+      {
+        "id": "spacing-above",
+        "label": "Spacing above",
+        "type": "checkbox",
+        "default": true
+      },
+      {
+        "id": "spacing-below",
+        "label": "Spacing below",
+        "type": "checkbox",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "id": "overline",
+        "label": "Overline",
+        "type": "text",
+        "default": "Overline text"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Introduce your brand"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description",
+        "default": "<p>Introduce your brand, products and vision statement and welcome customers to your store.</p>"
+      },
+      {
+        "id": "link-url",
+        "label": "Link",
+        "type": "url",
+        "default": "/",
+        "info": "Entire section will become a link when no link text or description."
+      },
+      {
+        "id": "link-text",
+        "label": "Link text",
+        "type": "text",
+        "default": "Link text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Rich text"
+      }
+    ],
+    "disabled_on": {
+      "groups": ["aside"]
+    }
+  }
+{% endschema %}

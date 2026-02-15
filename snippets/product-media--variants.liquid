@@ -1,0 +1,219 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign featured_media = current_variant.featured_media | default: product.featured_media
+  assign load_model = false
+  assign load_image_modal = false
+  assign load_video = false
+  assign load_zoom = false
+  assign load_thumbs = false
+  if layout == 'thumbnails' and thumbs_enabled and product.media.size != 1
+    assign load_thumbs = true
+    render 'section-assets', name: 'product-thumbs', type: 'script'
+  endif
+
+  assign columns = 1
+  if layout == 'mixed' or layout == 'two'
+    assign columns = 2
+  endif
+
+  unless settings.quick-add--enabled
+    render 'section-assets', name: 'product-media--variants', type: 'script'
+  endunless
+-%}
+
+{%- if product.media.size > 0 -%}
+  {%- for media in product.media -%}
+    {%- liquid
+      if media.media_type == "model"
+        assign load_model = true
+      elsif media.media_type == "video" or media.media_type == "external_video"
+        assign load_video = true
+      elsif media.media_type == "image" and zoom_enabled
+        assign load_zoom = true
+      endif
+
+      assign media_active = false
+      if media.id == featured_media.id
+        assign media_active = true
+      endif
+    -%}
+
+    {%- capture media_html -%}
+      {%-
+        render "product-media",
+        product: product,
+        product_media: media,
+        media_active: media_active,
+        media_size: media_size,
+        modal_enabled: modal_enabled,
+        loading: loading,
+        zoom_enabled: zoom_enabled,
+        video_looping_enabled: video_looping_enabled
+      -%}
+    {%- endcapture -%}
+
+    {%- capture modal_html -%}
+      {%- if modal_enabled and media.media_type == 'image' -%}
+        {%- assign load_image_modal = true -%}
+
+        <div class="modal--content" data-id="{{ media.id }}">
+          {%- render "image", image: media.preview_image, max_width: true, loading: 'lazy' -%}
+        </div>
+      {%- endif -%}
+    {%- endcapture -%}
+
+    {%- liquid
+      if media_active
+        capture active_media_html
+          echo media_html
+        endcapture
+
+        capture active_modal_html
+          echo modal_html
+        endcapture
+
+      else
+        capture inactive_media_html
+          echo inactive_media_html
+          echo media_html
+        endcapture
+
+        capture inactive_modal_html
+          echo inactive_modal_html
+          echo modal_html
+        endcapture
+      endif
+    -%}
+
+    {%- if load_thumbs -%}
+      {%- capture thumbs_html -%}
+        {{- thumbs_html -}}
+
+        <div
+          class="product-media--thumb"
+          data-active="{{ media_active }}"
+          data-id="{{ media.id }}"
+          tabindex="0"
+        >
+          {%- liquid
+            assign size = thumbnail_width | append: 'px'
+            render 'image', image: media.preview_image, loading: 'lazy', size: size, mobile_size: size
+
+            if media.media_type == "model"
+              render 'icons', icon: '3d-badge'
+            elsif media.media_type == "video" or media.media_type == "external_video"
+              render 'icons', icon: 'play-badge'
+            endif
+          -%}
+        </div>
+      {%- endcapture -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+{%- else -%}
+  {%- capture active_media_html -%}
+    <div class="product-media--root" data-active="true" data-id="1">
+      {%- render "placeholder", type: "product", aspect_ratio: 1, placeholder_index: 1 -%}
+    </div>
+  {%- endcapture -%}
+
+  {%- for i in (1..4) -%}
+    {%- capture inactive_media_html -%}
+      {% assign inactive_i = i | plus: 1 %}
+      {{- inactive_media_html -}}
+
+      <div class="product-media--root" data-active="false" data-id="{{ i | plus: 1 }}">
+        {%- render "placeholder", type: "product", aspect_ratio: 1, placeholder_index: inactive_i -%}
+      </div>
+    {%- endcapture -%}
+
+    {%- if load_thumbs -%}
+      {%- capture thumbs_html -%}
+        {{- thumbs_html -}}
+
+        <div class="product-media--thumb" data-id="{{ i }}">
+          {%- render "placeholder", type: "product", aspect_ratio: 1, placeholder_index: i -%}
+        </div>
+      {%- endcapture -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- if load_model -%}
+  <script type="application/json" id="product-model--json">
+    {%- assign product_models = product.media | where: 'media_type', 'model' -%}
+    {{- product_models | json -}}
+  </script>
+  <script type="module">
+    import "{{ 'product-model.js' | asset_url }}";
+  </script>
+  <link
+    href="/cdn/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css"
+    rel="stylesheet"
+    media="all"
+  />
+{%- endif -%}
+
+{%- if load_video -%}
+  <script type="module">
+    import "{{ 'product-video.js' | asset_url }}";
+  </script>
+{%- endif -%}
+
+{%- if load_zoom -%}
+  <script type="module">
+    import "{{ 'product-zoom.js' | asset_url }}";
+  </script>
+{%- endif -%}
+
+<product-media-variants
+  class="product-media--variants--root"
+  data-id="{{ product_id }}"
+  data-layout="{{ layout }}"
+  data-variant-scroll="{{ variant_scroll_enabled }}"
+>
+  {%- if load_image_modal -%}
+    <modal-root class="product-media--variants" data-modal-view="product-media">
+  {%- else -%}
+    <div class="product-media--variants">
+  {%- endif -%}
+
+  {%- if layout == 'mixed' -%}
+    <div class="product-media--active">
+      {{- active_media_html -}}
+    </div>
+  {%- endif -%}
+
+  <div
+    class="product-media--container"
+    {%- if columns == 2 and column_spacing == 'close' -%}
+      data-masonry-layout
+      data-gap="{{ media_gap }}"
+    {%- else -%}
+      data-container="panel"
+      data-columns="{{ columns }}"
+    {%- endif -%}
+  >
+    {%- if layout != 'mixed' -%}
+      {{- active_media_html -}}
+    {%- endif -%}
+
+    {{- inactive_media_html -}}
+  </div>
+
+  {%- if load_image_modal -%}
+      {{- active_modal_html -}}
+      {{- inactive_modal_html -}}
+    </modal-root>
+  {%- else -%}
+    </div>
+  {%- endif -%}
+
+  {%- if load_thumbs -%}
+    <product-thumbs-root class="product-media--thumbs" data-id="{{ product_id }}">
+      <div class="product-media--thumbs-wrapper">
+        {{- thumbs_html -}}
+      </div>
+    </product-thumbs-root>
+  {%- endif -%}
+</product-media-variants>

@@ -1,0 +1,203 @@
+{% liquid
+  assign dark_background = false
+  if bg_color == 'dark'
+    assign dark_background = true
+  endif
+
+  assign cover_link = false
+  if link_url != blank and description == blank
+    assign cover_link = true
+  endif
+
+  assign cover_image = true
+  if image_aspect_ratio
+    assign cover_image = false
+  endif
+
+  assign cover_image_mobile = true
+  if mobile_image_aspect_ratio
+    assign cover_image_mobile = false
+  endif
+
+  assign mobile_heading_type = 'section-heading--mobile'
+  if mobile_overlay and box_around_text == false
+    assign mobile_heading_type = 'featured-heading'
+  endif
+
+  unless promo_width
+    assign promo_width = false
+  endunless
+
+  assign darken_image_mobile = false
+  if darken_image
+    assign darken_image = true
+    if mobile_overlay
+      assign darken_image_mobile = true
+    endif
+  endif
+
+  assign show_placeholder_image = false
+  unless image
+    assign show_placeholder_image = true
+  endunless
+
+  if disable_placeholder
+    assign show_placeholder_image = false
+  endif
+
+  assign heading_type = 'section-heading'
+  if box_around_text == false and text_position == 'center' or text_position == 'bottom-left'
+    assign heading_type = 'featured-heading'
+  endif
+
+  assign text_exists = false
+  if overline != blank or title != blank or description != blank or link_text != blank
+    assign text_exists = true
+  endif
+
+  capture css_vars
+    echo '--featured-content--aspect-ratio:' | append: image_aspect_ratio | append: ';'
+    echo '--featured-content--mobile-aspect-ratio:' | append: mobile_image_aspect_ratio | append: ';'
+  endcapture
+%}
+
+<div
+  class="featured-content--root"
+  data-banner-promo="{{ banner_promo }}"
+  data-box-around-text="{{ box_around_text }}"
+  data-container-width="{{ container_width }}"
+  data-cover-image="{{ cover_image }}"
+  data-cover-image-mobile="{{ cover_image_mobile }}"
+  data-dark-background="{{ dark_background }}"
+  data-darken-image="{{ darken_image }}"
+  data-mobile-overlay="{{ mobile_overlay }}"
+  data-overlap="{{ overlap }}"
+  data-promo-width="{{ promo_width }}"
+  data-spacing-above="{{ spacing_above }}"
+  data-spacing-below="{{ spacing_below }}"
+  data-text-color="{{ text_color }}"
+  data-text-exists="{{ text_exists }}"
+  data-text-position="{{ text_position }}"
+  data-text-width="{{ text_width }}"
+  data-placeholder-image="{{ show_placeholder_image }}"
+  {%- unless image and promo_width -%}
+    data-background-color="{{ bg_color }}"
+  {%- endunless -%}
+  {%- if attributes -%}
+    {{- attributes -}}
+  {%- endif -%}
+>
+  {%- if cover_link -%}
+    <a
+      class="featured-content--cover-link"
+      href="{{ link_url }}"
+      {%- if title != blank -%}
+        aria-label="{{ title }}"
+      {%- else -%}
+        aria-label="{{ image.alt }}"
+      {%- endif -%}
+    >
+  {%- endif -%}
+
+  {% comment %} Add bg color here as well so that you can set the outer div to transparent for
+  container width 5 and left and right positions {% endcomment %}
+  <div
+    class="featured-content--container"
+    {%- unless image and promo_width -%}
+      data-background-color="{{ bg_color }}"
+    {%- endunless -%}
+    style="{{ css_vars }}"
+  >
+    <div class="featured-content--image">
+      {%- liquid
+        if image
+          render "image", image: image, mobile_image: mobile_image, parallax: parallax_enabled, aspect_ratio: image_aspect_ratio, mobile_aspect_ratio: mobile_image_aspect_ratio, darken: darken_image, darken_mobile: darken_image_mobile, loading: loading, per_row: per_row, mobile_per_row: mobile_per_row
+        elsif show_placeholder_image
+          render "placeholder", type: "lifestyle", aspect_ratio: image_aspect_ratio, mobile_aspect_ratio: mobile_image_aspect_ratio, placeholder_index: 2, darken: darken_image, darken_mobile: darken_image_mobile
+        endif
+      -%}
+    </div>
+
+    {%- if text_exists -%}
+      <div class="featured-content--text">
+        <div
+          class="featured-content--text-wrapper"
+          {% unless settings.transitions--disabled %}
+            data-transition-container="{{ transition_name }}"
+            data-transition-type="mask"
+            data-transition-cascade="vertical"
+            data-transition-cascade-interval="500"
+          {% endunless %}
+        >
+          {%- if title != blank -%}
+            <div
+              {% unless settings.transitions--disabled %}
+                data-transition-cropper
+                data-transition-item="{{ transition_name }}"
+              {% endunless %}
+            >
+              <h2
+                class="featured-content--title"
+                data-item="{{ heading_type }} {{ mobile_heading_type }}"
+              >
+                {{- title | escape -}}
+              </h2>
+            </div>
+          {%- endif -%}
+
+          {%- if overline != blank -%}
+            <div
+              class="featured-content--overline"
+              {% unless settings.transitions--disabled %}
+                data-transition-cropper
+                data-transition-item="{{ transition_name }}"
+              {% endunless %}
+            >
+              <h3 data-item="overline">
+                {{- overline | escape -}}
+              </h3>
+            </div>
+          {%- endif -%}
+
+          {%- if description != blank -%}
+            <div
+              class="featured-content--description"
+              data-item="rte-content"
+              {% unless settings.transitions--disabled %}
+                data-transition-item="{{ transition_name }}"
+                data-transition-type="slide-in"
+              {% endunless %}
+            >
+              {{- description -}}
+            </div>
+          {%- endif -%}
+
+          {%- if link_text != blank -%}
+            <div
+              class="featured-content--link"
+              data-item="block-link"
+              {% unless settings.transitions--disabled %}
+                data-transition-item="{{ transition_name }}"
+                data-transition-type="fade-in"
+              {% endunless %}
+            >
+              {%- if cover_link -%}
+                <div class="featured-content--link--container">
+                  {{- link_text -}}
+                </div>
+              {%- else -%}
+                <a class="featured-content--link--container" href="{{ link_url }}">
+                  {{- link_text -}}
+                </a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if cover_link -%}
+    </a>
+  {%- endif -%}
+</div>

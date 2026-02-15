@@ -1,0 +1,37 @@
+<style>
+  :root {
+    --color--accent-1: {{ settings.color--accent-1 }};
+    --color--accent-1-translucent: {{ settings.color--accent-1 | color_to_rgb | color_modify: 'alpha', 0.85 }};
+    --color--accent-2: {{ settings.color--accent-2 }};
+    --color--accent-2-translucent: {{ settings.color--accent-2 | color_to_rgb | color_modify: 'alpha', 0.85 }};
+    --bg-color--light: {{ settings.bg-color--light }};
+    --bg-color--light-translucent: {{ settings.bg-color--light | color_to_rgb | color_modify: 'alpha', 0.85 }};
+    --bg-color--dark: {{ settings.bg-color--dark }};
+    --bg-color--dark-translucent: {{ settings.bg-color--dark | color_to_rgb | color_modify: 'alpha', 0.85 }};
+    --bg-color--body: {{ settings.bg-color--body }};
+    --bg-color--body-translucent: {{ settings.bg-color--body | color_to_rgb | color_modify: 'alpha', 0.85 }};
+    --color--body: {{ settings.color--body }};
+    --color--body--light: {{ settings.color--body | color_lighten: 19 }};
+    --color--alternative: {{ settings.color--alternative }};
+    --color--button: {{ settings.color--button }};
+    --bg-color--button: {{ settings.bg-color--button }};
+    --bg-color--button--hover: {{ settings.bg-color--button }};
+    --bg-color--textbox: #fff;
+    --bg-color--panel: #f7f7f7;
+    --bdr-color--button: {{ settings.color--button }};
+    --bdr-color--general: #eaeaea;
+    --bdr-color--badge: {{ settings.color--body | color_modify: 'alpha', 0.07 }};
+
+    --color--border-disabled: #d2d2d2;
+    --color--button-disabled: #b9b9b9;
+    --color--success: #4caf50;
+    --color--fail: #d32f2f;
+    --color--stars: black;
+
+    /* shop pay */
+    --payment-terms-background-color: {{ settings.bg-color--body }};
+
+    /* js helpers */
+    --sticky-offset: 0px;
+  }
+</style>

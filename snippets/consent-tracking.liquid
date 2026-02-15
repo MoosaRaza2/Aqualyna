@@ -1,0 +1,62 @@
+{%- liquid
+  assign accept_t = 'general.consent_tracking.accept' | t
+  assign decline_t = 'general.consent_tracking.decline' | t
+
+  assign bg_color = block.settings.background-color
+  assign description = block.settings.description
+  assign heading = block.settings.heading
+  assign light_text = block.settings.light-text
+  assign position = block.settings.position
+  assign text_alignment = block.settings.text-alignment
+  assign translucent = block.settings.translucent
+
+  assign button_type = 'button'
+  assign secondary_button_type = 'secondary-button'
+  if light_text
+    assign button_type = 'inverted-button'
+    assign secondary_button_type = 'inverted-secondary-button'
+  endif
+-%}
+
+<consent-tracking
+  class="popup--block--root"
+  data-block-id="{{ block.id | camelize }}"
+  data-background-color="{{ bg_color }}"
+  data-text-alignment="{{ text_alignment }}"
+  data-translucent="{{ translucent }}"
+  data-light-text="{{ light_text }}"
+  data-position="{{ position }}"
+  data-transition-item="viewport"
+  data-transition-type="scale-in"
+  data-transition-trigger="custom"
+  aria-hidden="true"
+  {{ block.shopify_attributes }}
+>
+  <div class="popup--block--container">
+    {%- if heading != blank -%}
+      <div class="popup--block--heading" data-item="block-heading">
+        {{ heading }}
+      </div>
+    {%- endif -%}
+
+    {%- if description != blank -%}
+      <div class="popup--block--description" data-item="rte-content">
+        {{- description -}}
+      </div>
+    {%- endif -%}
+
+    <div class="popup--block--button-container">
+      <div class="popup--block--accept" data-item="{{ button_type }}">
+        <button>
+          {{- accept_t -}}
+        </button>
+      </div>
+
+      <div class="popup--block--decline" data-item="{{ secondary_button_type }}">
+        <button>
+          {{- decline_t -}}
+        </button>
+      </div>
+    </div>
+  </div>
+</consent-tracking>

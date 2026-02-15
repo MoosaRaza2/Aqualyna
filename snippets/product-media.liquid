@@ -1,0 +1,127 @@
+{%- liquid
+  assign products_view_ar_t = 'products.view_ar' | t
+  assign image_modal_t = 'products.image_modal' | t
+
+  unless media_size
+    assign media_size = ''
+  endunless
+
+  unless zoom_enabled
+    assign zoom_enabled = false
+  endunless
+
+  assign aspect_ratio = product_media.aspect_ratio | round: 3
+  if product_media.media_type == 'model'
+    assign aspect_ratio = product_media.preview_image.aspect_ratio | round: 3
+  endif
+-%}
+
+<div
+  class="product-media--root"
+  data-id="{{ product_media.id }}"
+  data-active="{{ media_active }}"
+  data-media-type="{{ product_media.media_type }}"
+  style="--product-media--aspect-ratio:{{ aspect_ratio }};"
+>
+  {%- case product_media.media_type -%}
+    {%- when "image" -%}
+      {%- if zoom_enabled -%}
+        <product-zoom-root
+          class="product-zoom--root{% if modal_enabled %} modal--link{% endif %}"
+          data-id="{{ product_media.id }}"
+          data-magnify="1.7"
+          {%- if modal_enabled -%}
+            tabindex="0"
+            aria-label="{{ image_modal_t }}"
+          {%- endif -%}
+        >
+          <div class="product-zoom--wrapper">
+            {%- render 'image', image: product_media -%}
+          </div>
+
+          <div class="product-zoom--enlarged">
+            {%- render "image", image: product_media -%}
+          </div>
+        </product-zoom-root>
+
+      {%- elsif modal_enabled -%}
+        <div class="modal--link" tabindex="0" aria-label="{{ product_media.alt }}">
+          {%- render 'image', image: product_media, loading: 'lazy' -%}
+        </div>
+
+      {%- else -%}
+        {%- render 'image', image: product_media, loading: loading -%}
+
+      {%- endif -%}
+
+    {%- when "video" -%}
+      <product-video-root
+        class="product-video--root"
+        tabindex="0"
+        data-loop-enabled="{{ video_looping_enabled }}"
+        data-type="plyr"
+        {% unless media_size == blank %}
+          data-view="{{ media_size }}"
+        {% endunless %}
+      >
+        <div class="product-video--container">
+          {{- product_media | video_tag: image_size: "1024x" -}}
+        </div>
+      </product-video-root>
+
+    {%- when "external_video" -%}
+      <product-video-root
+        class="product-video--root"
+        tabindex="0"
+        data-loop-enabled="{{ video_looping_enabled }}"
+        data-type="youtube"
+        data-video-id="{{ product_media.external_id }}"
+        {% unless media_size == blank %}
+          data-view="{{ media_size }}"
+        {% endunless %}
+      >
+        <div class="product-video--container">
+          <div
+            class="product-video"
+            id="{{- media_size -}}{%- if media_size != blank -%}-{%- endif -%}{{- product_media.id -}}"
+          ></div>
+        </div>
+      </product-video-root>
+
+    {%- when "model" -%}
+      <product-model-root
+        class="product-model--root"
+        tabindex="0"
+        {% if media_size != blank %}
+          data-view="{{ media_size }}"
+        {% endif %}
+      >
+        {{-
+          product_media | model_viewer_tag: reveal: 'interaction',
+          toggleable: true,
+          image_size: "1024x"
+        -}}
+      </product-model-root>
+
+      <a
+        class="product-model--button"
+        role="button"
+        data-item="button"
+        aria-label="{{ products_view_ar_t }}"
+        tabindex="0"
+      >
+        <div
+          data-shopify-xr
+          data-shopify-model3d-id="{{ product_media.id }}"
+          data-shopify-title="{{ product.title }}"
+        >
+          {%- render 'icons', icon: '3d-badge' -%}
+          {{- products_view_ar_t -}}
+        </div>
+      </a>
+
+    {%- else -%}
+      {{- product_media | media_tag -}}
+
+  {%- endcase -%}
+</div>

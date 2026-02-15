@@ -1,0 +1,222 @@
+{%- liquid
+  assign aspect_ratio = 100.0 | divided_by: section.settings.image-aspect-ratio
+  assign mobile_aspect_ratio = 100.0 | divided_by: section.settings.mobile-image-aspect-ratio
+  assign settings_link = settings.color--alternative
+
+  render 'section-assets', name: 'image-with-text', type: 'style'
+-%}
+
+<div
+  class="image-with-text--root"
+  data-section-id="{{ section.id }}"
+>
+  {%-
+    render 'featured-content',
+    bg_color: section.settings.background-color,
+    box_around_text: section.settings.box-around-text,
+    container_width: section.settings.container-width,
+    darken_image: section.settings.darken-image,
+    description: section.settings.description,
+    image: section.settings.image,
+    image_aspect_ratio: aspect_ratio,
+    mobile_image: section.settings.mobile-image,
+    mobile_image_aspect_ratio: mobile_aspect_ratio,
+    mobile_overlay: section.settings.mobile-overlay,
+    link_text: section.settings.link-text,
+    link_url: section.settings.link-url,
+    overlap: section.settings.overlap,
+    overline: section.settings.overline,
+    parallax_enabled: section.settings.parallax-enabled,
+    spacing_above: section.settings.spacing-above,
+    spacing_below: section.settings.spacing-below,
+    text_color: section.settings.text-color,
+    text_position: section.settings.text-position,
+    text_width: section.settings.text-width,
+    title: section.settings.title,
+    transition_name: section.id
+  -%}
+</div>
+
+{% schema %}
+{
+  "name": "Image with text",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout and Color"
+    },
+    {
+      "id": "text-color",
+      "label": "Text color",
+      "type": "select",
+      "options": [
+        { "label": "Auto", "value": "auto" },
+        { "label": "Dark", "value": "dark" },
+        { "label": "Light", "value": "light" }
+      ],
+      "default": "auto"
+    },
+    {
+      "id": "background-color",
+      "label": "Background color",
+      "type": "select",
+      "options": [
+        { "label": "None", "value": "none" },
+        { "label": "Light", "value": "light" },
+        { "label": "Dark", "value": "dark" },
+        { "label": "Accent 1", "value": "accent-1" },
+        { "label": "Accent 2", "value": "accent-2" }
+      ],
+      "default": "none"
+    },
+    {
+      "id": "container-width",
+      "label": "Maximum width of container",
+      "type": "range",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "id": "spacing-above",
+      "label": "Spacing above",
+      "type": "checkbox",
+      "default": false
+    },
+    {
+      "id": "spacing-below",
+      "label": "Spacing below",
+      "type": "checkbox",
+      "default": false
+    },
+    {
+      "id": "image-aspect-ratio",
+      "label": "Image aspect ratio",
+      "type": "range",
+      "min": 24,
+      "max": 200,
+      "step": 2,
+      "default": 56
+    },
+    {
+      "id": "mobile-image-aspect-ratio",
+      "label": "Mobile image aspect ratio",
+      "type": "range",
+      "min": 32,
+      "max": 200,
+      "step": 2,
+      "default": 134
+    },
+    {
+      "id": "darken-image",
+      "label": "Darken image",
+      "type": "checkbox",
+      "default": true,
+      "info": "Can enhance text visibility"
+    },
+    {
+      "id": "parallax-enabled",
+      "label": "Enable parallax",
+      "type": "checkbox",
+      "default": false,
+      "info": "Fixes image position when you scroll, use images with a height of at least 2000px to preserve resolution"
+    },
+    {
+      "id": "text-position",
+      "label": "Text Position",
+      "type": "select",
+      "options": [
+        { "label": "Top", "value": "top" },
+        { "label": "Bottom", "value": "bottom" },
+        { "label": "Left", "value": "left" },
+        { "label": "Center", "value": "center" },
+        { "label": "Right", "value": "right" },
+        { "label": "Bottom left", "value": "bottom-left" }
+      ],
+      "default": "center"
+    },
+    {
+      "id": "text-width",
+      "label": "Text width",
+      "type": "select",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "id": "overlap",
+      "label": "Overlap text",
+      "type": "checkbox",
+      "default": false,
+      "info": "Not applicable for centered or bottom left text"
+    },
+    {
+      "id": "box-around-text",
+      "label": "Show box around text",
+      "type": "checkbox",
+      "default": false
+    },
+    {
+      "id": "mobile-overlay",
+      "label": "Overlay text on small devices",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "id": "image",
+      "label": "Image",
+      "type": "image_picker"
+    },
+    {
+      "id": "mobile-image",
+      "label": "Mobile image (optional)",
+      "type": "image_picker"
+    },
+    {
+      "id": "overline",
+      "label": "Overline",
+      "type": "text",
+      "default": "Overline text"
+    },
+    {
+      "id": "title",
+      "label": "Heading",
+      "type": "text",
+      "default": "Image with text"
+    },
+    {
+      "id": "description",
+      "label": "Description",
+      "type": "richtext",
+      "default": "<p>Combine imagery with text to create stand-out campaign sections, eye-catching promotions, information blocks and more.</p>"
+    },
+    {
+      "id": "link-url",
+      "label": "Link",
+      "type": "url",
+      "info": "Entire block will become a link when no link text or description."
+    },
+    {
+      "id": "link-text",
+      "label": "Link text",
+      "type": "text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with text"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["aside"]
+  }
+}
+{% endschema %}

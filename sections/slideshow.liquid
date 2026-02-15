@@ -1,0 +1,359 @@
+{%- liquid
+  assign aspect_ratio = 100.0 | divided_by: section.settings.image-aspect-ratio | round: 4
+  assign mobile_aspect_ratio = 100.0 | divided_by: section.settings.mobile-image-aspect-ratio | round: 4
+  assign settings_link = settings.color--alternative
+
+  render 'section-assets', name: 'slideshow', type: 'style'
+-%}
+
+<div class="slideshow--root" data-section-id="{{ section.id }}">
+  {%-
+    render 'carousel',
+    section_id: section.id,
+    view: 'slideshow',
+    text_color: section.settings.text-color,
+    blocks_per_slide: section.settings.blocks_per_slide,
+    blocks_per_slide_mobile: section.settings.blocks_per_slide_mobile,
+    blocks: section.blocks,
+    dot_nav_enabled: true,
+    total_blocks: section.blocks.size,
+    bg_color: section.settings.background-color,
+    spacing_above: section.settings.spacing-above,
+    spacing_below: section.settings.spacing-below,
+    image_aspect_ratio: aspect_ratio,
+    mobile_image_aspect_ratio: mobile_aspect_ratio,
+    darken_image: section.settings.darken-image,
+    box_around_text: section.settings.box-around-text,
+    mobile_overlay: section.settings.mobile-overlay,
+    auto_rotate: section.settings.auto-rotate,
+    rotate_frequency: section.settings.rotate-frequency,
+    transition_type: section.settings.transition_type,
+    spacing_around_blocks: section.settings.spacing-around-blocks
+  -%}
+</div>
+
+{% schema %}
+{
+  "name": "Slideshow",
+  "class": "section--slideshow",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Style and layout"
+    },
+    {
+      "id": "text-color",
+      "label": "Text color",
+      "type": "select",
+      "options": [
+        { "label": "Auto", "value": "auto" },
+        { "label": "Dark", "value": "dark" },
+        { "label": "Light", "value": "light" }
+      ],
+      "default": "auto"
+    },
+    {
+      "id": "background-color",
+      "label": "Background color",
+      "type": "select",
+      "options": [
+        { "label": "None", "value": "none" },
+        { "label": "Light", "value": "light" },
+        { "label": "Dark", "value": "dark" },
+        { "label": "Accent 1", "value": "accent-1" },
+        { "label": "Accent 2", "value": "accent-2" }
+      ],
+      "default": "none"
+    },
+    {
+      "id": "spacing-above",
+      "label": "Spacing above",
+      "type": "checkbox",
+      "default": false
+    },
+    {
+      "id": "spacing-below",
+      "label": "Spacing below",
+      "type": "checkbox",
+      "default": false
+    },
+    {
+      "id": "spacing-around-blocks",
+      "label": "Spacing around blocks",
+      "type": "checkbox",
+      "default": false
+    },
+    {
+      "id": "image-aspect-ratio",
+      "label": "Image aspect ratio",
+      "type": "range",
+      "min": 24,
+      "max": 200,
+      "step": 2,
+      "default": 56
+    },
+    {
+      "id": "darken-image",
+      "label": "Darken images",
+      "type": "checkbox",
+      "default": true,
+      "info": "Can enhance text visibility"
+    },
+    {
+      "id": "blocks_per_slide",
+      "label": "Blocks per slide for desktop",
+      "type": "range",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "id": "box-around-text",
+      "label": "Show box around text",
+      "type": "checkbox",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "auto-rotate",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "label": "Rotate frequency (seconds)",
+      "id": "rotate-frequency",
+      "type": "range",
+      "min": 3,
+      "max": 15,
+      "step": 1,
+      "default": 7
+    },
+    {
+      "type": "radio",
+      "id": "transition_type",
+      "label": "Transition style",
+      "options": [
+        {
+          "value": "slide",
+          "label": "Slide"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        }
+      ],
+      "default": "slide"
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "id": "mobile-image-aspect-ratio",
+      "label": "Mobile image aspect ratio",
+      "type": "range",
+      "min": 32,
+      "max": 200,
+      "step": 2,
+      "default": 134
+    },
+    {
+      "id": "blocks_per_slide_mobile",
+      "label": "Blocks per slide for mobile",
+      "type": "radio",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ]
+    },
+    {
+      "id": "mobile-overlay",
+      "label": "Overlay text on small devices",
+      "type": "checkbox",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image slide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Style and layout"
+        },
+        {
+          "id": "text-position",
+          "label": "Text Position",
+          "type": "select",
+          "options": [
+            { "label": "Center", "value": "center" },
+            { "label": "Bottom left", "value": "bottom-left" }
+          ],
+          "default": "bottom-left"
+        },
+        {
+          "id": "text-width",
+          "label": "Text width",
+          "type": "select",
+          "options": [
+            { "value": "small", "label": "Small" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "large", "label": "Large" }
+          ],
+          "default": "medium"
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "id": "image",
+          "label": "Image",
+          "type": "image_picker"
+        },
+        {
+          "id": "overline",
+          "label": "Overline",
+          "type": "text",
+          "default": "Overline text"
+        },
+        {
+          "id": "title",
+          "label": "Heading",
+          "type": "text",
+          "default": "Slide heading"
+        },
+        {
+          "id": "description",
+          "label": "Description",
+          "type": "richtext",
+          "default": "<p>Combine imagery with text to create stand-out campaign sections, eye-catching promotions, information blocks and more.</p>"
+        },
+        {
+          "id": "link-url",
+          "label": "Link",
+          "type": "url",
+          "default": "/",
+          "info": "Entire block will become a link when no link text or description."
+        },
+        {
+          "id": "link-text",
+          "label": "Link text",
+          "type": "text",
+          "default": "View more"
+        },
+        {
+          "type": "header",
+          "content": "Mobile"
+        },
+        {
+          "id": "mobile-image",
+          "label": "Mobile image (optional)",
+          "type": "image_picker"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Video slide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Style and layout"
+        },
+        {
+          "id": "light-text",
+          "label": "Use light text color",
+          "type": "checkbox",
+          "default": true
+        },
+        {
+          "id": "play-button-style",
+          "label": "Play button style",
+          "type": "select",
+          "options": [
+            { "label": "Solid", "value": "solid" },
+            { "label": "Outline", "value": "outline" }
+          ],
+          "default": "solid"
+        },
+        {
+          "type": "checkbox",
+          "id": "darken-video",
+          "label": "Darken Video",
+          "default": true,
+          "info": "Can enhance text visibility"
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "video",
+          "id": "video-upload",
+          "label": "Video upload"
+        },
+        {
+          "type": "video_url",
+          "id": "video-url",
+          "label": "Video URL",
+          "accept": ["youtube", "vimeo"]
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Thumbnail",
+          "info": "1500 x 800px recommended"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Video"
+        },
+        {
+          "type": "textarea",
+          "id": "sub-heading",
+          "label": "Subheading",
+          "default": "Add a subheading here"
+        },
+        {
+          "type": "text",
+          "id": "button-text",
+          "label": "Button text",
+          "default": "button"
+        },
+        {
+          "type": "url",
+          "id": "button-url",
+          "label": "Button URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slideshow",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["aside"]
+  }
+}
+{% endschema %}

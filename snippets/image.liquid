@@ -1,0 +1,144 @@
+{%- liquid
+  if max_width
+    assign max_width = image.width | append: 'px'
+  else
+    assign max_width = '100%'
+  endif
+
+  unless aspect_ratio
+    assign aspect_ratio = image.aspect_ratio | round: 4
+  endunless
+
+  unless mobile_aspect_ratio
+    assign mobile_aspect_ratio = aspect_ratio
+    if mobile_image
+      assign mobile_aspect_ratio = mobile_image.aspect_ratio | round: 4
+    endif
+  endunless
+
+  assign widths = '200,300,400,500,600,700,800,1000,1200,1500,1800,2100,2400,3000' | split: ','
+
+  capture widths
+    for width in widths
+      assign width_int = width | plus: 0
+      if image.width >= width_int
+        echo width_int | append: ','
+      else
+        break
+      endif
+    endfor
+
+    if image.width <= 3000
+      echo image.width | downcase
+    endif
+  endcapture
+  assign valid_widths = widths | split: ',' | uniq
+
+  for width in valid_widths
+    assign width_int = width | plus: 0
+    capture srcset
+      echo srcset
+      echo image | image_url: width: width_int | append: ' ' | append: width | append: 'w'
+      unless forloop.last
+        echo ', '
+      endunless
+    endcapture
+
+    if mobile_image and width_int < 800
+      capture mobile_srcset
+        echo mobile_srcset
+        echo mobile_image | image_url: width: width_int | append: ' ' | append: width | append: 'w'
+        unless forloop.last
+          echo ', '
+        endunless
+      endcapture
+    endif
+  endfor
+
+  unless loading
+    assign loading = "eager"
+    if section.location == "template" and section.index > 2
+      assign loading = "lazy"
+    elsif section.location == blank or section.location == "footer"
+      assign loading = "lazy"
+    endif
+  endunless
+
+  comment
+    can pass size directly, or how how many images need to be displayed in a row
+  endcomment
+  unless size
+    assign size = 100
+    if per_row == 2 or per_row == '2'
+      assign size = 50
+    elsif per_row == 3 or per_row == '3'
+      assign size = 33
+    elsif per_row == 4 or per_row == '4'
+      assign size = 25
+    elsif per_row == 5 or per_row == '5'
+      assign size = 20
+    elsif per_row == 6 or per_row == '6'
+      assign size = 17
+    endif
+
+    if scale
+      assign size = size | times: 2
+    endif
+    assign size = size | append: 'vw'
+  endunless
+
+  unless mobile_size
+    assign mobile_size = '100vw'
+    if mobile_per_row == 2 or mobile_per_row == '2'
+      assign mobile_size = '50vw'
+    endif
+  endunless
+
+  assign sizes = '(max-width: 767px) ' | append: mobile_size | append: ', ' | append: size
+
+  capture image_properties
+    echo '--aspect-ratio:' | append: aspect_ratio | append: ';'
+    echo '--mobile-aspect-ratio:' | append: mobile_aspect_ratio | append: ';'
+    echo '--max-width:' | append: max_width | append: ';'
+    echo '--object-position:' | append: image.presentation.focal_point | append: ';'
+
+    if mobile_image
+      echo '--mobile-object-position:' | append: mobile_image.presentation.focal_point | append: ';'
+    else
+      echo '--mobile-object-position:' | append: image.presentation.focal_point | append: ';'
+    endif
+  endcapture
+-%}
+
+<picture
+  class="image--root"
+  data-parallax="{{ parallax }}"
+  data-darken="{{ darken }}"
+  data-darken-mobile="{{ darken_mobile }}"
+  style="{{ image_properties }}"
+>
+  {%- if mobile_image -%}
+    <source
+      media="(max-width: 767px)"
+      src="{{ mobile_image | image_url: width: mobile_image.width }}"
+      srcset="{{ mobile_srcset }}"
+      alt="{{ mobile_image.alt }}"
+      height="{{ mobile_image.width | divided_by: mobile_aspect_ratio | round }}"
+      width="{{ mobile_image.width }}"
+    >
+  {%- endif -%}
+
+  <img
+    src="{{ image | image_url: width: image.width }}"
+    srcset="{{ srcset }}"
+    alt="{{ image.alt }}"
+    height="{{ image.width | divided_by: aspect_ratio | round }}"
+    width="{{ image.width }}"
+    onload="this.classList.add('loaded');"
+    sizes="{{ sizes }}"
+    loading="{{ loading }}"
+    {% if loading == 'eager' and section.location == 'template' and section.index == 1 %}
+      fetchpriority="high"
+    {% endif %}
+  >
+</picture>

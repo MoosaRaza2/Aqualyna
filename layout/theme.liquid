@@ -1,0 +1,182 @@
+<body>
+  {% if additional_checkout_buttons %}
+<div style="display: none !important">
+    {{ content_for_additional_checkout_buttons }}
+</div>
+{% endif %}
+
+  
+</body>
+<!doctype html>
+<html class="no-js flexbox-gap" lang="{{ request.locale.iso_code }}" dir="ltr">
+  <head>
+    
+<meta name="google-site-verification" content="4-JKeP45pqnZ9N2Gb1UYyaiMjPtUs-8rfv2x0qFHe3E" />
+
+    <!-- Begin Inspectlet Asynchronous Code -->
+{% comment %} <script type="text/javascript">
+(function() {
+window.__insp = window.__insp || [];
+__insp.push(['wid', 1853098147]);
+var ldinsp = function(){
+if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=1853098147&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+setTimeout(ldinsp, 0);
+})();
+</script> {% endcomment %}
+<!-- End Inspectlet Asynchronous Code -->
+
+      <meta name="facebook-domain-verification" content="10sn1p2bj6mc5bvfem3wefyljxh1sc" />
+    
+     <meta name="p:domain_verify" content="85a7510d2d7e7de5e0f325e1d4b2bf54"/>
+    <!-- Maker Theme - Version 8.3.1 by Troop Themes - https://troopthemes.com/ -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+     <link rel="icon" href="https://cdn.shopify.com/s/files/1/0695/0974/2872/files/White-Aqualyna_Favicon.ico?v=1770725134" type="image/x-icon">
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {%- liquid
+      echo 'theme--critical.css' | asset_url | preload_tag: as: 'style'
+      echo 'theme--async.css' | asset_url | preload_tag: as: 'style'
+    -%}
+
+    {%- if canonical_url != blank -%}
+      <link rel="canonical" href="{{ canonical_url }}">
+    {%- endif -%}
+
+    {%- if settings.favicon != blank -%}
+  
+      <link rel="apple-touch-icon" href="https://cdn.shopify.com/s/files/1/0695/0974/2872/files/White-Aqualyna_Favicon.ico?v=1770725134">
+    {%- endif -%}
+
+     {% include 'dataLayer-allPages' %} 
+
+
+
+    <title>
+      {%- liquid
+        echo page_title
+        unless request.page_type == 'index'
+          echo ' | ' | append: shop.name
+        endunless
+      -%}
+    </title>
+
+    {%- liquid
+      render 'meta-tags'
+      render 'css-typography'
+      render 'css-variables'
+      render 'custom-styles'
+      render 'js-variables'
+      render 'js-utilities'
+      render 'js-modules'
+    -%}
+
+    {%- if request.page_type contains 'customers' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+      <script src="{{ 'customer_area.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    <link href="{{ "theme--critical.css" | asset_url }}" rel="stylesheet" media="all">
+    <link
+      href="{{ "theme--async.css" | asset_url }}"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    >
+ <script src="{{ 'hide-popup-referral.js' | asset_url }}" defer="defer"></script>
+    <noscript>
+      <style>
+        .layout--template > *,
+        .layout--footer-group > *,
+        .modal--root,
+        .modal--window {
+          opacity: 1;
+        }
+      </style>
+      <link href="{{ "theme--async.css" | asset_url }}" rel="stylesheet">
+    </noscript>
+
+    {{ content_for_header }}
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "uxcccr17oq");
+</script>
+    
+  </head>
+
+  <body
+    class="template--{{ template | split: '.' | first | remove: '_' | replace: '/', '--' }} page--{{ page_title | handle }}{% if customer %} customer-logged-in{% endif %}"
+    data-theme-id="765"
+    data-theme-name="Maker"
+    data-theme-version="8.3.1"
+    data-theme-preset="{{ settings.preset }}"
+    data-transition-container="viewport"
+    {%- if settings.layout--show-page-border -%}
+      data-show-border
+    {%- endif -%}
+  >
+
+
+
+    
+    <!--[if IE]>
+      <div style="text-align:center;padding:72px 16px;">
+        {{ 'general.browser_unsupported' | t }}
+      </div>
+      <style>
+        .layout--viewport { display: none; }
+      </style>
+    <![endif]-->
+
+    <a data-item="a11y-button" href='#main-content'>
+      {{- 'general.a11y.skip_main' | t -}}
+    </a>
+
+    <div class="layout--viewport" data-drawer-status="closed">
+      <div class="layout--main-content">
+        <header class="layout--header-group">
+          {%- sections 'header-group' -%}
+        </header>
+
+        <div class="layout--overlay-group">
+          {%- sections 'overlay-group' -%}
+        </div>
+
+        <main class="layout--template" id="main-content">
+          {{ content_for_layout }}
+        </main>
+
+        <footer class="layout--footer-group">
+          {%- sections 'footer-group' -%}
+        </footer>
+      </div>
+
+      {%- render 'drawer' -%}
+    </div>
+
+    {%- liquid
+      render 'modal'
+      render 'feedback-bar'
+      render 'icons', icon: 'defs'
+    -%}
+
+   {% if template == 'page.color-match' %}
+  <style>
+    .custom-content--wrapper {
+      max-width: 500px !important;
+    }
+  </style>
+{% endif %}
+
+  </body>
+</html>

@@ -1,0 +1,186 @@
+{%- liquid
+  assign alt_color = section.settings.alt-color
+  assign apply_overlay = section.settings.apply-overlay
+  assign aspect_ratio = 100.0 | divided_by: section.settings.image-aspect-ratio
+  assign description_alignment = section.settings.description-alignment
+  assign heading_alignment = section.settings.heading-alignment
+  assign mobile_aspect_ratio = 100.0 | divided_by: section.settings.mobile-image-aspect-ratio
+  assign show_description = section.settings.show-description
+  assign show_image = section.settings.show-image
+  assign show_title = section.settings.show-title
+  assign parallax_enabled = section.settings.parallax-enabled
+  assign use_image_fallback = section.settings.use-image-fallback
+
+  if description_alignment == 'with-title' and show_description and collection.description != blank
+    assign show_inside_description = true
+    assign show_outside_description = false
+  elsif show_description and collection.description != blank
+    assign show_inside_description = false
+    assign show_outside_description = true
+  else
+    assign show_inside_description = false
+    assign show_outside_description = false
+  endif
+-%}
+
+{%- liquid
+  render 'section-assets', name: 'collection--header', type: 'style'
+
+  capture header_image
+    echo '<div class="collection--header--image">'
+      if collection.image
+        render "image", image: collection.image, aspect_ratio: aspect_ratio, mobile_aspect_ratio: mobile_aspect_ratio, darken: apply_overlay, darken_mobile: apply_overlay, parallax: parallax_enabled
+
+      elsif collection.products.length > 0 and use_image_fallback
+        assign no_product_images = true
+
+        for product in collection.products
+          if product.featured_media.preview_image
+            render "image", image: product.featured_media.preview_image, aspect_ratio: aspect_ratio, mobile_aspect_ratio: mobile_aspect_ratio, darken: apply_overlay, darken_mobile: apply_overlay, parallax: parallax_enabled
+            assign no_product_images = false
+            break
+          endif
+        endfor
+
+        if no_product_images
+          assign show_image = false
+        endif
+
+      else
+        assign show_image = false
+      endif
+    echo '</div>'
+  endcapture
+-%}
+
+<div
+  class="collection--header--root"
+  data-section-id="{{ section.id }}"
+  data-alt-color="{{ alt_color }}"
+  data-apply-overlay="{{ apply_overlay }}"
+  data-show-image="{{ show_image }}"
+  data-spacing="none"
+  data-heading-alignment="{{ heading_alignment }}"
+  data-description-alignment="{{ description_alignment }}"
+>
+  <div class="collection--header--wrapper">
+    {%- liquid
+      if show_image
+        echo header_image
+      endif
+    -%}
+
+    {%- if show_title or show_inside_description -%}
+      <div class="collection--header--heading">
+        {%- if show_title and collection.title != blank -%}
+          <div class="transition--mask-wrapper">
+            <h1 data-item="featured-heading">
+              {{ collection.title }}
+            </h1>
+          </div>
+        {%- endif -%}
+
+        {%- if show_inside_description -%}
+          <p data-item="paragraph">
+            {{ collection.description }}
+          </p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if show_outside_description -%}
+    <div class="collection--header--description">
+      <p data-item="paragraph">
+        {{ collection.description }}
+      </p>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Collection header",
+  "settings": [
+    {
+      "id": "show-title",
+      "label": "Show collection title",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "id": "heading-alignment",
+      "label": "Position heading",
+      "type": "text_alignment",
+      "default": "center"
+    },
+    {
+      "id": "show-description",
+      "label": "Show collection description",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "id": "description-alignment",
+      "label": "Position description",
+      "type": "select",
+      "options": [
+        { "value": "with-title", "label": "With title" },
+        { "value": "centered-outside", "label": "Centered outside header" },
+        { "value": "left-aligned-outside", "label": "Left-aligned outside header" }
+      ],
+      "default": "with-title"
+    },
+    {
+      "id": "show-image",
+      "label": "Show collection image",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "id": "use-image-fallback",
+      "label": "Use a product image if no collection image found",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "id": "image-aspect-ratio",
+      "label": "Image aspect ratio",
+      "type": "range",
+      "min": 24,
+      "max": 200,
+      "step": 2,
+      "default": 56
+    },
+    {
+      "id": "mobile-image-aspect-ratio",
+      "label": "Mobile image aspect ratio",
+      "type": "range",
+      "min": 32,
+      "max": 200,
+      "step": 2,
+      "default": 134
+    },
+    {
+      "id": "alt-color",
+      "label": "Use light text color",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "id": "apply-overlay",
+      "label": "Darken image",
+      "type": "checkbox",
+      "default": true,
+      "info": "Can enhance text visibility"
+    },
+    {
+      "id": "parallax-enabled",
+      "label": "Enable parallax",
+      "type": "checkbox",
+      "default": false,
+      "info": "Fixes image position when you scroll, use images with a height of at least 2000px to preserve resolution"
+    }
+  ]
+}
+{% endschema %}

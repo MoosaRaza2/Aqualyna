@@ -1,0 +1,121 @@
+{%- liquid
+  assign button_text = button_text | escape | truncate: 30
+  assign button_url = button_url | url_escape
+  assign heading = heading | escape
+  assign sub_heading = sub_heading | escape
+
+  assign cover_link = false
+  if button_text == blank and button_url != blank
+    assign cover_link = true
+  endif
+
+  if video_upload != blank
+    assign video_type = 'plyr'
+    assign video_id = false
+  elsif video_url
+    assign video_type = video_url.type
+    assign video_id = video_url.id
+  else
+    assign video_id = '_9VUPq3SxOc'
+    assign video_type = 'youtube'
+  endif
+
+  assign autoplay = true
+  unless video_type == 'plyr' and thumbnail == blank
+    render 'section-assets', name: 'featured-video', type: 'script'
+    assign autoplay = false
+  endunless
+-%}
+
+<featured-video
+  class="featured-video"
+  data-api="{{ video_type }}"
+  data-darken-video="{{ darken_video }}"
+  data-id="{{ unique_id }}"
+  data-light-text="{{ light_text }}"
+  data-thumbnail="{% if thumbnail %}{{ true }}{% else %}{{ false }}{% endif %}"
+  data-video-id="{{ video_id }}"
+  style="--video-aspect-ratio:{{ aspect_ratio }};--video-mobile-aspect-ratio:{{ mobile_aspect_ratio }};"
+>
+  {%- if cover_link -%}
+    <a href="{{ button_url }}">
+  {%- endif -%}
+
+  {%- if thumbnail -%}
+    <div class="featured-video--thumbnail">
+      {%- render 'image', image: thumbnail | image_url -%}
+    </div>
+  {%- endif -%}
+
+  <div class="featured-video--header">
+    {%- if heading != blank -%}
+      <div class="featured-video--heading">
+        <h2 data-item="featured-heading">
+          {{- heading -}}
+        </h2>
+      </div>
+    {%- endif -%}
+
+    {%- if sub_heading != blank -%}
+      <div class="featured-video--sub-heading" data-item="block-heading">
+        {{- sub_heading -}}
+      </div>
+    {%- endif -%}
+
+    {%- if thumbnail -%}
+      <div class="featured-video--play" tabindex="0">
+        {%- liquid
+          if play_button_style == 'solid'
+            render 'icons', icon: 'play-solid'
+          else
+            render 'icons', icon: 'play-outline'
+          endif
+        -%}
+      </div>
+    {%- endif -%}
+
+    {%- if button_text != blank -%}
+      <a
+        class="featured-video--button"
+        {%- if light_text -%}
+          data-item="inverted-secondary-button"
+        {%- else -%}
+          data-item="button"
+        {%- endif -%}
+        href="{{ button_url }}"
+      >
+        <div>{{ button_text }}</div>
+      </a>
+    {%- endif -%}
+  </div>
+
+  <div
+    class="featured-video--wrapper"
+    {%- unless autoplay -%}
+      data-transition-item="viewport"
+      data-transition-type="fade-in"
+      data-transition-trigger="custom"
+    {%- endunless -%}
+    {%- if video_upload -%}
+      style="--natural-aspect-ratio:{{ video_upload.aspect_ratio }};"
+    {%- endif -%}
+    {%- if thumbnail == blank -%}
+      tabindex="-1"
+    {%- endif -%}
+  >
+    {%- if video_upload -%}
+      {{-
+        video_upload | video_tag: image_size: "1024x",
+        autoplay: autoplay,
+        muted: autoplay,
+        loop: autoplay
+      -}}
+    {%- else -%}
+      <div id="player-{{ unique_id }}"></div>
+    {%- endif -%}
+  </div>
+
+  {%- if cover_link -%}
+    </a>
+  {%- endif -%}
+</featured-video>

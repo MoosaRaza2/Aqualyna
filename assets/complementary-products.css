@@ -1,0 +1,1 @@
+.complementary-products--heading{padding-bottom:var(--spacing--item)}.complementary-products--container{display:flex;flex-direction:column}.flexbox-gap .complementary-products--container{gap:var(--spacing--item)}.no-flexbox-gap .complementary-products--container>*{margin:calc(var(--spacing--item)/ 2)}

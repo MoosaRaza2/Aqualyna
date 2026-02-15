@@ -1,0 +1,30 @@
+{% comment %} BSS Label get data product has metafields seo hidden {% endcomment %}{% assign bss_card_product_metafields = card_product %}{% if bss_card_product_metafields.metafields.seo.hidden %}<script id="label-product-metafields-info" type="application/ld+json"> {"id":{{ bss_card_product_metafields.id | json }},"title": {{ bss_card_product_metafields.title | json }},"vendor": {{ bss_card_product_metafields.vendor | json }},"tags": {{ bss_card_product_metafields.tags | json }},"handle":{{ bss_card_product_metafields.handle | json }},"available":{{ bss_card_product_metafields.available | json }},"inventory":{{ bss_card_product_metafields.first_available_variant.inventory_quantity | json }},"compare_at_price_max":{{ bss_card_product_metafields.compare_at_price_max | json }},"compare_at_price_min":{{ bss_card_product_metafields.compare_at_price_min | json }},"price":{{ bss_card_product_metafields.price | json }},"price_max":{{ bss_card_product_metafields.price_max | json }},"price_min":{{ bss_card_product_metafields.price_min | json }},"publish_at":"{{ bss_card_product_metafields.published_at }}","inventory_management":{{ bss_card_product_metafields.first_available_variant.inventory_management | json }},"inventory_policy":{{ bss_card_product_metafields.first_available_variant.inventory_policy | json }},"inventory_quantity": [{% for varian in bss_card_product_metafields.variants %}{{ varian.inventory_quantity }}{% unless forloop.last %},{% endunless %}{% endfor %}],"variants": [{% for variant in bss_card_product_metafields.variants %}{  "id":{{ variant.id | json }},"feature_media_id":{{ variant.featured_media.id | json }},"feature_image_id":{{ variant.featured_image.id | json }},"available":{{ variant.available | json }},"image":{{ variant.image | json }},"price":{{ variant.price | json }},"inventory_management":{{ variant.inventory_management | json }},"inventory_policy":{{ variant.inventory_policy | json }},"compare_at_price":{{ variant.compare_at_price | json }},"quantity":{{ variant.inventory_quantity | json }}}{% unless forloop.last %},{% endunless %}{% endfor %}],"collections": [{% for collection in bss_card_product_metafields.collections %}{{ collection.id }}{% unless forloop.last %},{% endunless %}{% endfor %}],"format_money": {{shop.money_format | json}}} </script>{% endif %}{% comment %} BSS Label end {% endcomment %}
+
+<a
+  class="product--list-item"
+  href="{{ product_item.url }}"
+  aria-label="{{ product_item.title }}"
+  data-product-item
+>
+  <div class="product--list-item--wrapper">
+    <div class="product--list-item--image">
+      {%- liquid
+        if product_item.featured_media.preview_image
+          render "image", image: product_item.featured_media.preview_image, size: '60px', mobile_size: '60px'
+        else
+          render "placeholder", type: 'product', aspect_ratio: 1, placeholder_index: 1
+        endif
+      -%}
+    </div>
+
+    <div class="product--list-item--info">
+      <div data-item="paragraph">
+        {{- product_item.title -}}
+      </div>
+
+      {%- render 'product--item-price', product: product_item -%}
+    </div>
+
+    {%- render 'product--quick-add', product: product_item -%}
+  </div>
+</a>

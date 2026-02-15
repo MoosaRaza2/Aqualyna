@@ -1,0 +1,95 @@
+{%- liquid
+  assign continue_reading_t = 'blog.article.continue_reading' | t
+
+  assign aspect_ratio = section.settings.aspect-ratio
+  assign enable = section.settings.enable
+
+  comment
+    "gets a recent article that is not the next, previous, or current article"
+  endcomment
+
+  if enable
+    assign other_article = ''
+    for a in blog.articles
+      if a.id == blog.previous_article.id
+        continue
+      elsif a.id == blog.next_article.id
+        continue
+      elsif a.id == article.id
+        continue
+      else
+        assign other_article = a
+        break
+      endif
+    endfor
+  endif
+
+  assign columns = 3
+  unless blog.next_article and blog.previous_article
+    assign columns = 2
+  endunless
+
+  render 'section-assets', name: 'article-item', type: 'style'
+-%}
+
+{%- if enable -%}
+  <div
+    class="article--recents-root"
+    data-section-id="{{ section.id }}"
+    data-aspect-ratio="{{ aspect_ratio }}"
+    data-spacing-above="false"
+  >
+    <div class="article--recents-wrapper" data-container="section">
+      <div class="article--recents-header" data-container="block">
+        <h2 class="article--recents-title" data-item='section-heading'>
+          {{- continue_reading_t -}}
+        </h2>
+      </div>
+
+      <div
+        class="article--recents-grid"
+        data-container="panel"
+        data-columns="{{ columns }}"
+        data-mobile-columns="1"
+      >
+        {%- liquid
+          if blog.previous_article
+            render "article--item", featured_article: blog.previous_article, show_author: false, show_date: false, show_excerpt: false, type: 'full_article', per_row: columns, mobile_per_row: 1
+          endif
+
+          render "article--item", featured_article: other_article, show_author: false, show_date: false, show_excerpt: false, type: 'full_article', per_row: columns, mobile_per_row: 1
+
+          if blog.next_article
+            render "article--item", featured_article: blog.next_article, show_author: false, show_date: false, show_excerpt: false, type: 'full_article', per_row: columns, mobile_per_row: 1
+          endif
+        -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Recent articles",
+  "settings": [
+    {
+      "id": "enable",
+      "label": "Enable",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "id": "aspect-ratio",
+      "label": "Image size",
+      "type": "select",
+      "options": [
+        { "label": "Natural", "value": "natural" },
+        { "label": "Square (1:1)", "value": "square" },
+        { "label": "Landscape (4:3)", "value": "landscape" },
+        { "label": "Portrait (2:3)", "value": "portrait" }
+      ],
+      "default": "landscape"
+    }
+  ]
+}
+{% endschema %}

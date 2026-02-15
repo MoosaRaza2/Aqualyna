@@ -1,0 +1,387 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {}
+        },
+        "f04c3780-5468-4ab8-8908-a41072d82d5f": {
+          "type": "rating",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "afterpay_on_site_messaging_payments_messaging_9Jmp6D": {
+          "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
+          "settings": {
+            "text_align": "left",
+            "margin_top": 16,
+            "margin_bottom": 16,
+            "color": "",
+            "size": "md",
+            "intro_text": "or",
+            "show_interest_free": true,
+            "payment_amount_is_bold": true,
+            "show_with": true,
+            "logo_type": "badge",
+            "logo_theme": "black-on-mint",
+            "modal_link_style": "circled-info-icon",
+            "modal_theme": "mint",
+            "breakpoint": 749,
+            "text_align_mobile": "inherit",
+            "margin_top_mobile": 16,
+            "margin_bottom_mobile": 16,
+            "show_lower_limit": true,
+            "show_upper_limit": true,
+            "show_if_outside_limits": true,
+            "product": "{{product}}"
+          }
+        },
+        "options": {
+          "type": "options",
+          "settings": {
+            "variant-style": "buttons",
+            "swatches-enabled": true,
+            "size-chart-enabled": false,
+            "size-chart-option": "size",
+            "size-chart-content": ""
+          }
+        },
+        "liquid_jJLMhi": {
+          "type": "liquid",
+          "settings": {
+            "custom-liquid": "<p>Orders placed by 3:00 PM Eastern Time, Monday through Friday, will ship the same business day. Orders received after 3:00 PM ET or during office closures will ship the next business day.</p>"
+          }
+        },
+        "buy-buttons": {
+          "type": "buy-buttons",
+          "settings": {
+            "smart-payment-enabled": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "pickup": {
+          "type": "pickup",
+          "disabled": true,
+          "settings": {}
+        },
+        "social-sharing": {
+          "type": "social-sharing",
+          "disabled": true,
+          "settings": {
+            "facebook-enabled": true,
+            "x-enabled": true,
+            "pinterest-enabled": true,
+            "email-enabled": true,
+            "url-enabled": true
+          }
+        },
+        "cf544f82-48d8-4435-8cd8-d24633beaabb": {
+          "type": "collapsible-row",
+          "disabled": true,
+          "settings": {
+            "heading": "FAQs",
+            "description": "",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "e767d799-2d69-4404-b074-1f2d77fba38a": {
+          "type": "collapsible-row",
+          "disabled": true,
+          "settings": {
+            "heading": "Shipping & Returns",
+            "description": "",
+            "page-content": "",
+            "default-open": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "f04c3780-5468-4ab8-8908-a41072d82d5f",
+        "price",
+        "afterpay_on_site_messaging_payments_messaging_9Jmp6D",
+        "options",
+        "liquid_jJLMhi",
+        "buy-buttons",
+        "description",
+        "pickup",
+        "social-sharing",
+        "cf544f82-48d8-4435-8cd8-d24633beaabb",
+        "e767d799-2d69-4404-b074-1f2d77fba38a"
+      ],
+      "settings": {
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "media-layout": "thumbnails",
+        "text-column-width": 35,
+        "media-gap": 30,
+        "column-spacing": "close",
+        "text-alignment": "left",
+        "thumbnail-width": 135,
+        "heading-enabled": false,
+        "heading-sizes-enabled": true,
+        "heading-size": 40,
+        "breadcrumbs-enabled": false,
+        "modal-enabled": true,
+        "variant-scroll-enabled": true,
+        "image-zoom-enabled": true,
+        "loop-enabled": true,
+        "mobile-media-layout": "slideshow"
+      }
+    },
+    "1727817959c301f218": {
+      "type": "apps",
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true
+      }
+    },
+    "scrolling_content_VQTpge": {
+      "type": "scrolling-content",
+      "blocks": {
+        "image_hrxpHQ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/stars.png",
+            "image-height": 100,
+            "link": "",
+            "hide-on-desktop": false,
+            "mobile-image-height": 70,
+            "hide-on-mobile": false
+          }
+        },
+        "text_yb3Qwp": {
+          "type": "text",
+          "settings": {
+            "text": "\"I’ve been wearing extensions for 10+ years and these are the best clip ins I’ve tried in the past few! So thick and great quality from top to bottom. Extremely impressed!\" - Amanda Z.",
+            "link": "",
+            "hide-on-mobile": false,
+            "hide-on-desktop": false
+          }
+        },
+        "image_7CHxR7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/stars.png",
+            "image-height": 100,
+            "link": "",
+            "hide-on-desktop": false,
+            "mobile-image-height": 70,
+            "hide-on-mobile": false
+          }
+        },
+        "text_nWnEA6": {
+          "type": "text",
+          "settings": {
+            "text": "\"So obsessed with the length, the color, the curl - EVERYTHING!\" - Rhonda K.",
+            "link": "",
+            "hide-on-mobile": false,
+            "hide-on-desktop": false
+          }
+        },
+        "image_L9BtUd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/stars.png",
+            "image-height": 100,
+            "link": "",
+            "hide-on-desktop": false,
+            "mobile-image-height": 70,
+            "hide-on-mobile": false
+          }
+        },
+        "text_8Px8hx": {
+          "type": "text",
+          "settings": {
+            "text": "\"These are the best clip ins money can buy!!! I got the all black 26\". The overnight delivery was absolutely perfect - just in time for my event!\" - Jasmine M.",
+            "link": "",
+            "hide-on-mobile": false,
+            "hide-on-desktop": false
+          }
+        }
+      },
+      "block_order": [
+        "image_hrxpHQ",
+        "text_yb3Qwp",
+        "image_7CHxR7",
+        "text_nWnEA6",
+        "image_L9BtUd",
+        "text_8Px8hx"
+      ],
+      "settings": {
+        "top-border": false,
+        "background-color": "none",
+        "parallax-enabled": false,
+        "apply-overlay": false,
+        "light-text": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "text-size": "paragraph",
+        "animation-direction": "left",
+        "animation-speed": 3,
+        "pause-on-hover": true
+      }
+    },
+    "collapsible_rows_47YaNj": {
+      "type": "collapsible-rows",
+      "blocks": {
+        "collapsible_row_k4qEqL": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Hair",
+            "description": "<p><strong>Achieve instantly gorgeous celeb-worthy hair with AquaLyna's Ultra Narrow Clip Ins, Aura (Halo) Extensions, and Ponytails. </strong></p><p>Not only do our hair extensions add length, but they also provide volume & texture to fine, limp or thinning hair. You can easily change up the color, style & length of your hair without any commitment to damage to your natural hair.</p><ul><li>Made with the highest quality human hair that is 100% Remy.</li><li>Our Ultra Narrow Clip Ins come with seven (7) pieces, more than traditional hair extensions, which typically provide ~5 pieces. </li><li>Longer-lasting, comfortable & and less shedding than traditional hair extensions</li><li><a href=\"https://www.aqualyna.com/collections/aura-hair-extension\" title=\"https://www.aqualyna.com/collections/aura-hair-extension\"><strong>Auras </strong></a>are our halo option that have one piece of hair with detachable velcro clips included.</li><li><a href=\"https://www.aqualyna.com/collections/ponytails\" title=\"https://www.aqualyna.com/collections/ponytails\"><strong>Ponytails </strong></a>have 1 piece, the ponytail and a connected strip of hair to wrap around the base of the ponytail.</li><li><a href=\"https://www.aqualyna.com/collections/ultra-narrow-clip-in-hair-extensions\" title=\"https://www.aqualyna.com/collections/ultra-narrow-clip-in-hair-extensions\"><strong>Clip Ins </strong></a>have 7 pieces total to give complete customization on placement.</li></ul>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_WwN9xD": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Lengths & Specs",
+            "description": "<ul><li><strong>Lengths Available: 18in, 20in, 22in, 24in, 26in</strong></li><li>18 Inches - weight: 140 grams of hair</li><li>20 Inches - weight: 180 grams of hair</li><li>22 Inches - weight: 220 grams of hair</li><li>24 Inches - weight: 240 grams of hair</li><li>26 Inches - weight: 320 grams of hair </li></ul><p><strong>Clip In Specs:</strong></p><ul><li>2 Pieces that are 4.5 inches with 2 clips </li><li>3 Pieces that are 6.5 inches with 3 clips </li><li>1 Piece that is 7.5 inches with 4 clips </li><li>1 Piece that is 8.5 inches with 4  clips <br/>--------------------<br/>Total 7pcs, with 21 clips </li></ul>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_zewfrL": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Sample Our Hair",
+            "description": "<p>Scared of commitment? We understand! Try before you buy with our samples so you get your color just right. </p><p><a href=\"https://www.aqualyna.com/collections/aqualyna-samples\" title=\"https://www.aqualyna.com/collections/aqualyna-samples\"><strong>Click here</strong> </a>to get your samples. </p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_H3R3KJ": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Color Matching",
+            "description": "<p>Find your perfect shade by letting our team of experts assist you! <a href=\"https://www.aqualyna.com/pages/consultation\" title=\"https://www.aqualyna.com/pages/consultation\"><strong>Click here</strong></a> to get started. </p>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_3HXedd": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Hair Care",
+            "description": "<p><a href=\"https://www.aqualyna.com/blogs/news/video-how-to-wash-aqualyna-clip-in-hair-extensions\" title=\"https://www.aqualyna.com/blogs/news/video-how-to-wash-aqualyna-clip-in-hair-extensions\"><strong>Watch this video</strong></a> on how to wash hair extensions properly</p><p>Here are some clip-in hair extension tips and tricks to protect your hair -</p><ol><li><a href=\"https://www.amazon.com/Aqua-Hair-Extensions-Bristle-Brush/dp/B09TS4HQQS/ref=sr_1_5?crid=28XLJD61BTNJZ&dib=eyJ2IjoiMSJ9.qqVjUERAmam1fUw-w97at-M5rgURdKWwQykExrucPvEyym62RxXueZnOUzdGNL5YN6bH60RAOUn8d3wcdQBaD0Yw4UJu3Fmquihhncd17DgtlYhZMZdpYcCEOQ0uUYj07JTVpIRELkp71jD9HrLuxQcduPOIcKPB4UufyvPhs84UiBkKtZBgWfdRwP6KxtbIgrLxp6Fli-yYJuG7sVJy73HK4ANVlbdH-fEPzqypB5JvobSw4UI6kAZTeTjsnYBeJwFFWzRTKe6BbQGrsbKJJREx0ZFj2ktWROIPVlj4ypE.i1YcBVbuRPGzWPRxSP3ilDnKO2c0VQWQPGHScn2BuZQ&dib_tag=se&keywords=aqua+hair+extensions&qid=1724778270&sprefix=aqua+hair+extensions+brush%2Caps%2C193&sr=8-5\" target=\"_blank\"><strong>Gently brush</strong> </a>your hair extensions before and after use and always start at the bottom working your way up. It's also fine to brush them while wearing!</li><li>Brush your clip-in extensions before storing them.</li><li>Make sure you keep your hair extensions in a carrier bag when not in use or when you are traveling. The bag offers protection.</li><li>After removing your extensions, ensure that the clips are fully closed.</li><li>After washing your hair, use a <a href=\"https://aquahairextensions.com/collections/aqua-retail/products/retail-leave-in-conditioner-spray-8-5-fl-oz\" target=\"_blank\"><strong>leave-in conditioner</strong> </a>to preserve smoothness and vibrance.</li><li>Do not over wash your clip in hair extensions and always use a sulfate-free shampoo and conditioner. </li><li>Style, straighten and curl your extensions just like you would your own hair.</li><li>Before applying any thermal styling, make sure the extensions are dry and use a heat protectant.</li><li>We do not recommend chemically altering the extensions. If you do choose to color please consult a professional first. </li><li>If extensions are exposed to heat it can cause damage. We always recommend heat protection and UV protection from the sun or styling tools like a <a href=\"https://aquahairextensions.com/collections/aqua-retail/products/retail-leave-in-conditioner-spray-8-5-fl-oz\" target=\"_blank\"><strong>thermal heat protectant</strong></a> which has necessary UV and heat protection.</li><li>Hair extensions may shed. It is not uncommon that hair extensions shed like a natural hair.</li><li>Brushing hair extensions while they are wet is a big no-no!</li><li>We do not recommend sleeping in AquaLyna hair extensions as this can cause unnecessary tension on your natural hair. </li><li>We recommend if you're styling your extensions with a hot tool (curling or flat iron) to use a hanger with clips attached to secure your hair to. </li></ol>",
+            "page-content": "",
+            "default-open": false
+          }
+        },
+        "collapsible_row_W63AVw": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "Return & Exchanges",
+            "description": "",
+            "page-content": "return-policy",
+            "default-open": false
+          }
+        },
+        "collapsible_row_MMLAxD": {
+          "type": "collapsible-row",
+          "settings": {
+            "heading": "FAQs",
+            "description": "<p><em><strong>We have the tea on hair extensions...view all </strong></em><a href=\"https://www.aqualyna.com/pages/faqs\" title=\"https://www.aqualyna.com/pages/faqs\"><em><strong>FAQs here</strong></em></a></p><ul><li>Q: How do I install my extensions?<strong> </strong></li><li>A:<strong> </strong><a href=\"https://www.aqualyna.com/pages/tutorials\" title=\"https://www.aqualyna.com/pages/tutorials\"><strong>View Videos here. </strong></a></li></ul><p></p><ul><li>Q: Do you offer color matching?</li><li>A: Yes, follow the instructions <a href=\"https://www.aqualyna.com/pages/consultation\" title=\"https://www.aqualyna.com/pages/consultation\"><strong>on this page</strong> </a>to get your perfect shade!</li></ul><p></p><ul><li>Q: How many pieces of hair will I get?</li><li>A: <a href=\"https://www.aqualyna.com/collections/aura-hair-extension\" title=\"https://www.aqualyna.com/collections/aura-hair-extension\">Auras </a>are our halo option that have one piece of hair with detachable velcro clips included.</li><li><a href=\"https://www.aqualyna.com/collections/ponytails\" title=\"https://www.aqualyna.com/collections/ponytails\">Ponytails </a>have 1 piece, the ponytail and a connected strip of hair to wrap around the base of the ponytail.</li><li><a href=\"https://www.aqualyna.com/collections/ultra-narrow-clip-in-hair-extensions\" title=\"https://www.aqualyna.com/collections/ultra-narrow-clip-in-hair-extensions\">Clip Ins </a>have 7 pieces total to give complete customization on placement.</li></ul><p></p><ul><li>Q: What is your contact info</li><li>A:hi@aquahairextensions.com</li><li>Phone: 866-638-3312</li><li>4350 Oaks Road #503 Davie, FL 33314</li></ul><p></p><ul><li>Q: What are your shipping details?</li><li>A: Free Ground Shipping (3-5 Business Days)</li><li>2-Day Shipping (2nd Business Day by 8:00pm) is $12.00</li><li>Overnight (Next Business Day by 8:00pm) is $25.00.</li></ul>",
+            "page-content": "",
+            "default-open": false
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_k4qEqL",
+        "collapsible_row_WwN9xD",
+        "collapsible_row_zewfrL",
+        "collapsible_row_H3R3KJ",
+        "collapsible_row_3HXedd",
+        "collapsible_row_W63AVw",
+        "collapsible_row_MMLAxD"
+      ],
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "heading": "Details",
+        "heading-alignment": "center"
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "title": "You'll love these too",
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": false,
+        "spacing-below": false
+      }
+    },
+    "55c36f26-142a-44b5-a218-5a43b34274a5": {
+      "type": "recent-products",
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "heading": "Recently viewed",
+        "heading-alignment": "center",
+        "spacing-above": true,
+        "spacing-below": true
+      }
+    },
+    "17278147466b3928d1": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_F3UVht": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_F3UVht"
+      ],
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1727817959c301f218",
+    "scrolling_content_VQTpge",
+    "collapsible_rows_47YaNj",
+    "related-products",
+    "55c36f26-142a-44b5-a218-5a43b34274a5",
+    "17278147466b3928d1"
+  ]
+}
