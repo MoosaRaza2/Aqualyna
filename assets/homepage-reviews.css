@@ -322,7 +322,7 @@ fill: #457178;
   .homepage-reviews--dot {
     width: 8px;
     height: 8px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     border: none;
     background: var(--color--body);
     opacity: 0.2;
@@ -331,6 +331,8 @@ fill: #457178;
     transition: all 0.3s ease;
     -webkit-appearance: none;
     appearance: none;
+    width: 30px;
+        height: 3px;
   }
 
   .homepage-reviews--dot.is-active {
