@@ -1,0 +1,343 @@
+/* ===== Homepage Reviews Section ===== */
+
+.homepage-reviews--root {
+  text-align: center;
+  padding: 0;
+}
+
+.homepage-reviews--root[data-spacing-above="true"] {
+  padding-top: var(--spacing--section--y);
+}
+
+.homepage-reviews--root[data-spacing-below="true"] {
+  padding-bottom: var(--spacing--section--y);
+}
+
+@media only screen and (max-width: 767px) {
+  .homepage-reviews--root[data-spacing-above="true"] {
+    padding-top: var(--spacing--section--mobile--y);
+  }
+  .homepage-reviews--root[data-spacing-below="true"] {
+    padding-bottom: var(--spacing--section--mobile--y);
+  }
+}
+
+/* Header */
+.homepage-reviews--header {
+  margin-bottom: 40px;
+}
+
+.homepage-reviews--overline {
+    color: #000;
+    text-align: center;
+    font-family: 'Gotham-Regular', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 325;
+    line-height: normal;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 767px) {
+  .homepage-reviews--overline {
+    font-size: 17px !important;
+  }
+}
+
+.homepage-reviews--heading {
+    color: #80D1DE;
+    text-align: center;
+    font-family: 'Gotham-Regular', sans-serif;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+
+@media only screen and (max-width: 767px) {
+  .homepage-reviews--heading {
+    color: #80D1DE;
+    text-align: center;
+    font-family: 'Gotham-Regular', sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+}
+
+/* Cards Grid - Desktop */
+.homepage-reviews--track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: var(--max-width--large);
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .homepage-reviews--track {
+    gap: 20px;
+  }
+}
+
+/* Cards Slider - Mobile */
+@media only screen and (max-width: 767px) {
+  .homepage-reviews--track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    gap: 16px;
+    /* padding: 0 20px; */
+  }
+
+  .homepage-reviews--track::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Card */
+.homepage-reviews--card {
+  background: #ffffff;
+  border-radius: 41px;
+  overflow: hidden;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 767px) {
+  .homepage-reviews--card {
+    min-width: 75%;
+    max-width: 80%;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+}
+
+/* Card Image */
+.homepage-reviews--card-image {
+  position: relative;
+  width: 100%;
+  padding-top: 90%;
+  overflow: visible;
+}
+
+@media only screen and (max-width: 767px) {
+  .homepage-reviews--card-image {
+    padding-top: 75%;
+  }
+}
+
+.homepage-reviews--card-image > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.homepage-reviews--card-image .homepage-reviews--placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #c9a7d8 0%, #8fb5d4 50%, #7dd4c8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homepage-reviews--card-image .homepage-reviews--placeholder svg {
+  width: 60px;
+  height: 60px;
+  opacity: 0.4;
+}
+
+/* Quote Icon */
+.homepage-reviews--quote-icon {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  z-index: 2;
+  transform: translateY(30%);
+}
+
+.homepage-reviews--quote-img {
+  display: block;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* @media only screen and (max-width: 767px) {
+  .homepage-reviews--quote-img {
+    width: 69px;
+    height: 53px;
+  }
+} */
+
+/* Card Content */
+.homepage-reviews--card-content {
+  padding: 24px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border-radius: 0 0 41px 41px;
+border: 0 solid #FFF;
+background: #ECFBFE;
+box-shadow: 0 15px 24.5px -7px rgba(0, 0, 0, 0.10);
+}
+
+@media only screen and (max-width: 767px) {
+  .homepage-reviews--card-content {
+    padding: 20px 20px 24px;
+  }
+}
+
+.homepage-reviews--card-title {
+    color: #000;
+    font-family: "Gotham-Bold", sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 109%; /* 23.98px */
+    letter-spacing: 3.74px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  .homepage-reviews--card-title {
+    color: #000;
+    font-size: 16.5px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 109%; /* 17.985px */
+    letter-spacing: 2.805px;
+    text-transform: uppercase;
+  }
+}
+
+.homepage-reviews--card-text {
+    color: #000;
+    font-family: Cabin;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 22.1px */
+    letter-spacing: -0.51px;
+    min-height: 150px;
+}
+
+.homepage-reviews--card-text p {
+  margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .homepage-reviews--card-text {
+    color: #000;
+    font-family: Cabin;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 19.5px */
+    letter-spacing: -0.45px;
+    min-height: unset;
+  }
+}
+
+/* Card Footer */
+.homepage-reviews--card-footer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.homepage-reviews--stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.homepage-reviews--star svg {
+    width: 21px;
+    height: 21px;
+fill: #457178;
+}
+
+.homepage-reviews--card-name {
+    color: #000;
+    font-family: Gotham-Light, sans-serif;
+    font-size: 16.5px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 109%; /* 17.985px */
+    letter-spacing: 0.165px;
+    text-transform: uppercase;
+}
+@media only screen and (max-width: 767px) {
+  .homepage-reviews--star svg {
+    width: 15px;
+    height: 15px;
+  }
+  .homepage-reviews--card-name {
+    color: #000;
+    font-family: Gotham-Light, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 109%; /* 14.17px */
+    letter-spacing: 0.13px;
+    text-transform: uppercase;
+  }
+}
+/* Dots Navigation - Mobile Only */
+.homepage-reviews--dots {
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .homepage-reviews--dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    padding: 0 20px;
+  }
+
+  .homepage-reviews--dot {
+    width: 8px;
+    height: 8px;
+    /* border-radius: 50%; */
+    border: none;
+    background: var(--color--body);
+    opacity: 0.2;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+        height: 3px;
+  }
+
+  .homepage-reviews--dot.is-active {
+    opacity: 0.8;
+    transform: scale(1.25);
+  }
+}
+

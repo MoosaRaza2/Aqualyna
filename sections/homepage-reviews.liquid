@@ -1,0 +1,321 @@
+{%- liquid
+  assign overline = section.settings.overline
+  assign heading = section.settings.heading
+  assign bg_color = section.settings.background_color
+  assign accent_color = section.settings.accent_color
+  assign spacing_above = section.settings.spacing_above
+  assign spacing_below = section.settings.spacing_below
+
+  render 'section-assets', name: 'homepage-reviews', type: 'style'
+-%}
+
+<div
+  class="homepage-reviews--root"
+  data-section-id="{{ section.id }}"
+  data-spacing-above="{{ spacing_above }}"
+  data-spacing-below="{{ spacing_below }}"
+>
+  {%- if overline != blank or heading != blank -%}
+    <div class="homepage-reviews--header">
+      {%- if overline != blank -%}
+        <p class="homepage-reviews--overline">
+          {{- overline | escape -}}
+        </p>
+      {%- endif -%}
+
+      {%- if heading != blank -%}
+        <h2 class="homepage-reviews--heading">
+          {{- heading | escape -}}
+        </h2>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="homepage-reviews--track" id="reviews-track-{{ section.id }}">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign image = block.settings.image
+        assign title = block.settings.title
+        assign review_text = block.settings.review_text
+        assign reviewer_name = block.settings.reviewer_name
+        assign rating = block.settings.rating
+      -%}
+
+      <div
+        class="homepage-reviews--card"
+        data-index="{{ forloop.index0 }}"
+        {{ block.shopify_attributes }}
+      >
+        <div class="homepage-reviews--card-image">
+          {%- if image != blank -%}
+            <img
+              src="{{ image | image_url: width: 800 }}"
+              alt="{{ reviewer_name | escape }}"
+              loading="lazy"
+              width="800"
+              height="720"
+            >
+          {%- else -%}
+            <div class="homepage-reviews--placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+              </svg>
+            </div>
+          {%- endif -%}
+
+          <div class="homepage-reviews--quote-icon">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0695/0974/2872/files/1.png?v=1771185548"
+              alt="Quote"
+              loading="lazy"
+              class="homepage-reviews--quote-img"
+              width="103"
+              height="74"
+            >
+          </div>
+        </div>
+
+        <div class="homepage-reviews--card-content">
+          {%- if title != blank -%}
+            <h3 class="homepage-reviews--card-title">
+              {{- title | escape -}}
+            </h3>
+          {%- endif -%}
+
+          {%- if review_text != blank -%}
+            <div class="homepage-reviews--card-text">
+              {{- review_text -}}
+            </div>
+          {%- endif -%}
+
+          <div class="homepage-reviews--card-footer">
+            {%- if rating > 0 -%}
+              <div class="homepage-reviews--stars">
+                {%- for i in (1..rating) -%}
+                  <span class="homepage-reviews--star">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                      <path d="M9.98608 0L12.3435 7.25532H19.9722L13.8004 11.7394L16.1578 18.9947L9.98608 14.5106L3.81434 18.9947L6.17174 11.7394L-9.53674e-06 7.25532H7.62869L9.98608 0Z" fill="#457178"/>
+                    </svg>
+                  </span>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+
+            {%- if reviewer_name != blank -%}
+              <p class="homepage-reviews--card-name">
+                {{- reviewer_name | escape -}}
+              </p>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if section.blocks.size > 1 -%}
+    <div class="homepage-reviews--dots" id="reviews-dots-{{ section.id }}">
+      {%- for block in section.blocks -%}
+        <button
+          class="homepage-reviews--dot{% if forloop.first %} is-active{% endif %}"
+          data-index="{{ forloop.index0 }}"
+          aria-label="Go to review {{ forloop.index }}"
+          type="button"
+        ></button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+  (function() {
+    var sectionId = '{{ section.id }}';
+    var track = document.getElementById('reviews-track-' + sectionId);
+    var dotsContainer = document.getElementById('reviews-dots-' + sectionId);
+
+    if (!track || !dotsContainer) return;
+
+    var dots = dotsContainer.querySelectorAll('.homepage-reviews--dot');
+    var cards = track.querySelectorAll('.homepage-reviews--card');
+
+    if (!dots.length || !cards.length) return;
+
+    // Update active dot on scroll
+    var scrollTimeout;
+    track.addEventListener('scroll', function() {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(function() {
+        var trackRect = track.getBoundingClientRect();
+        var trackCenter = trackRect.left + trackRect.width / 2;
+        var closestIndex = 0;
+        var closestDistance = Infinity;
+
+        cards.forEach(function(card, index) {
+          var cardRect = card.getBoundingClientRect();
+          var cardCenter = cardRect.left + cardRect.width / 2;
+          var distance = Math.abs(cardCenter - trackCenter);
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        });
+
+        dots.forEach(function(dot, index) {
+          dot.classList.toggle('is-active', index === closestIndex);
+        });
+      }, 50);
+    }, { passive: true });
+
+    // Click dot to scroll to card
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        var index = parseInt(this.getAttribute('data-index'), 10);
+        var targetCard = cards[index];
+        if (!targetCard) return;
+
+        var trackLeft = track.getBoundingClientRect().left + track.scrollLeft;
+        var cardLeft = targetCard.getBoundingClientRect().left + track.scrollLeft;
+        var scrollPos = cardLeft - trackLeft - (track.offsetWidth - targetCard.offsetWidth) / 2;
+
+        track.scrollTo({
+          left: scrollPos,
+          behavior: 'smooth'
+        });
+
+        dots.forEach(function(d, i) {
+          d.classList.toggle('is-active', i === index);
+        });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Homepage Reviews",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#F9F0E6"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color (overline & quote icon)",
+      "default": "#7DD4C8"
+    },
+    {
+      "type": "checkbox",
+      "id": "spacing_above",
+      "label": "Spacing above",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "spacing_below",
+      "label": "Spacing below",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "overline",
+      "label": "Overline",
+      "default": "Testimonials"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Real People Love AquaLyna"
+    }
+  ],
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Reviewer image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review title",
+          "default": "Blends Perfectly"
+        },
+        {
+          "type": "richtext",
+          "id": "review_text",
+          "label": "Review text",
+          "default": "<p>I've tried Aqualyna extensions and honestly, they exceeded my expectations. The hair feels soft, natural, and has a beautiful shine.</p>"
+        },
+        {
+          "type": "text",
+          "id": "reviewer_name",
+          "label": "Reviewer name",
+          "default": "Mariola Lopez"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star rating",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Homepage Reviews",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "title": "Blends Perfectly",
+            "review_text": "<p>I've tried Aqualyna extensions and honestly, they exceeded my expectations. The hair feels soft, natural, and has a beautiful shine. They're easy to apply and blends perfectly with you own hair without looking artificial.</p>",
+            "reviewer_name": "Mariola Lopez",
+            "rating": 5
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "title": "Almost Invisible",
+            "review_text": "<p>These are by far my favorite clip in extensions! I love them because they blend so seamlessly into my natural hair that they're almost invisible, even up close. They're incredibly comfortable to wear all day and I don't feel a pull at my hair like other clip ins I've tried.</p>",
+            "reviewer_name": "Vicky Lauren",
+            "rating": 5
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "title": "Life Changing",
+            "review_text": "<p>Wow! Aqualyna hair extensions are life changing. The hair quality is so full and healthy leaving my hair blended seamlessly, the coloring is perfect, and application is made super easy. I wouldn't change anything about the product.</p>",
+            "reviewer_name": "Tay",
+            "rating": 5
+          }
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["aside"]
+  }
+}
+{% endschema %}
+
