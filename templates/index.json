@@ -306,10 +306,10 @@
         "review_naGyLA": {
           "type": "review",
           "settings": {
-            "image": "shopify://shop_images/AQL_Review_Featured_Influencer_without_DS2.png",
-            "title": "Life Changing",
-            "review_text": "<p>Wow! Aqualyna hair extensions are life changing. The hair quality is so full and healthy leaving my hair blended seamlessly, the coloring is perfect, and application is made super easy. I wouldn't change anything about the product.</p>",
-            "reviewer_name": "Tay",
+            "image": "shopify://shop_images/AQL_Review_Featured_influencer_4.png",
+            "title": "So good!",
+            "review_text": "<p><br/>This color is a perfect match for me. I always get so many compliments. Love the Aqualyna Extensions!!!<br/><br/></p>",
+            "reviewer_name": "Mallory",
             "rating": 5
           }
         }
@@ -321,8 +321,8 @@
       ],
       "name": "Homepage Reviews",
       "settings": {
-        "background_color": "#F9F0E6",
-        "accent_color": "#7DD4C8",
+        "background_color": "#f9f0e6",
+        "accent_color": "#7dd4c8",
         "spacing_above": true,
         "spacing_below": true,
         "overline": "Testimonials",
