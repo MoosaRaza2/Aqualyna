@@ -73,11 +73,9 @@
       <div class="page-width">
     
         <div class="shade-header">
-          {% assign _heading = section.settings.heading | strip %}
-          {% assign _parts = _heading | split: 'PERFECT SHADE' %}
-          <h2 class="shade-title">
-              {{ section.settings.heading | escape }}
-          </h2>
+          <div class="shade-title rte" role="heading" aria-level="2">
+            {{ section.settings.heading }}
+          </div>
           <p class="shade-subtitle">{{ section.settings.subheading }}</p>
         </div>
     
@@ -157,6 +155,10 @@
       margin: 0 0 12px;
       color: #111;
       text-transform: uppercase;
+    }
+
+    .shade-title p {
+      margin: 0;
     }
 
     .shade-title-line {
