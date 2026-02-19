@@ -37,6 +37,11 @@
               "label": "Shade Image"
             },
             {
+              "type": "image_picker",
+              "id": "shade_image_mobile",
+              "label": "Shade Image (Mobile)"
+            },
+            {
               "type": "text",
               "id": "shade_label",
               "label": "Shade Label"
@@ -64,39 +69,69 @@
     }
     {% endschema %}
     
-    <section class="shade-selector">
+    <section id="ShadeSelector-{{ section.id }}" class="shade-selector" data-shade-selector>
       <div class="page-width">
     
         <div class="shade-header">
-          <h2>{{ section.settings.heading }}</h2>
-          <p>{{ section.settings.subheading }}</p>
+          {% assign _heading = section.settings.heading | strip %}
+          {% assign _parts = _heading | split: 'PERFECT SHADE' %}
+          <h2 class="shade-title">
+            {% if _parts.size == 2 %}
+              <span class="shade-title-line">{{ _parts[0] | strip }}</span>
+              <span class="shade-title-line shade-accent">PERFECT SHADE</span>
+              <span class="shade-title-line">{{ _parts[1] | strip }}</span>
+            {% else %}
+              {{ _heading | escape }}
+            {% endif %}
+          </h2>
+          <p class="shade-subtitle">{{ section.settings.subheading }}</p>
         </div>
     
         <div class="shade-grid">
           {% for block in section.blocks %}
-            <div class="shade-item" {{ block.shopify_attributes }}>
-              {% if block.settings.shade_link != blank %}
-                <a href="{{ block.settings.shade_link }}">
-              {% endif %}
-    
+            {% if block.settings.shade_link != blank %}
+              <a
+                class="shade-item"
+                href="{{ block.settings.shade_link }}"
+                data-shade-item
+                data-shade-label="{{ block.settings.shade_label | escape }}"
+                {{ block.shopify_attributes }}
+              >
+            {% else %}
+              <button
+                class="shade-item"
+                type="button"
+                data-shade-item
+                data-shade-label="{{ block.settings.shade_label | escape }}"
+                {{ block.shopify_attributes }}
+              >
+            {% endif %}
+
               {% if block.settings.shade_image != blank %}
-                <img
-                  src="{{ block.settings.shade_image | image_url: width: 600 }}"
-                  alt="{{ block.settings.shade_label | escape }}"
-                  loading="lazy"
-                >
+                <picture class="shade-picture">
+                  {% if block.settings.shade_image_mobile != blank %}
+                    <source
+                      media="(max-width: 768px)"
+                      srcset="{{ block.settings.shade_image_mobile | image_url: width: 600 }}"
+                    >
+                  {% endif %}
+                  <img
+                    src="{{ block.settings.shade_image | image_url: width: 900 }}"
+                    alt="{{ block.settings.shade_label | escape }}"
+                    loading="lazy"
+                  >
+                </picture>
               {% endif %}
-    
+
               {% if block.settings.shade_label != blank %}
-                <span class="shade-label">
-                  {{ block.settings.shade_label }}
-                </span>
+                <span class="shade-label">{{ block.settings.shade_label }}</span>
               {% endif %}
-    
-              {% if block.settings.shade_link != blank %}
-                </a>
-              {% endif %}
-            </div>
+
+            {% if block.settings.shade_link != blank %}
+              </a>
+            {% else %}
+              </button>
+            {% endif %}
           {% endfor %}
         </div>
     
@@ -113,77 +148,150 @@
     
     <style>
     .shade-selector {
-      padding: 60px 20px;
-      background: #f6f6f6;
+      padding: 56px 0 60px;
+      background: #fff;
       text-align: center;
     }
     
-    .shade-header h2 {
-      font-size: 28px;
-      font-weight: 600;
-      margin-bottom: 10px;
+    .shade-header {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
     
-    .shade-header p {
-      font-size: 14px;
-      max-width: 700px;
-      margin: 0 auto 40px;
-      color: #666;
+    .shade-title {
+      margin: 0 0 12px;
+      color: #111;
+      text-transform: uppercase;
+    }
+
+    .shade-title-line {
+      display: block;
+      font-size: 34px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      line-height: 1.05;
+    }
+
+    .shade-title-line.shade-accent {
+      color: #63c3c7;
+      font-size: 46px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      margin: 6px 0;
+    }
+
+    .shade-subtitle {
+      font-size: 11px;
+      line-height: 1.45;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      max-width: 820px;
+      margin: 0 auto 28px;
+      color: rgba(17, 17, 17, 0.65);
     }
     
     /* Grid Layout */
     .shade-grid {
-      display: flex;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 120px;
       justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
+      gap: 14px;
+      align-items: start;
+      padding: 0 20px;
     }
     
     /* Item */
     .shade-item {
       position: relative;
-      width: 150px;
-      border-radius: 18px;
+      width: 100%;
+      border-radius: 14px;
       overflow: hidden;
-      transition: transform 0.3s ease;
-      flex-shrink: 0;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, outline 0.2s ease;
+      display: block;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      text-decoration: none;
+      cursor: pointer;
+      outline: 0;
+      -webkit-tap-highlight-color: transparent;
     }
-    
+
+    .shade-item:focus-visible {
+      outline: 3px solid rgba(99, 195, 199, 0.9);
+      outline-offset: 4px;
+      border-radius: 16px;
+    }
+
+    .shade-picture,
     .shade-item img {
       width: 100%;
       display: block;
-      border-radius: 18px;
+      border-radius: 14px;
+    }
+
+    .shade-picture {
+      aspect-ratio: 1 / 1;
+      background: #f2f2f2;
+    }
+
+    .shade-item img {
+      height: 100%;
+      object-fit: cover;
     }
     
     .shade-item:hover {
-      transform: translateY(-6px);
+      transform: translateY(-4px);
+    }
+
+    .shade-item.is-selected {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 22px rgba(17, 17, 17, 0.14);
+      outline: 3px solid #63c3c7;
+      outline-offset: 2px;
     }
     
     /* Label */
     .shade-label {
       position: absolute;
-      bottom: 12px;
-      left: 0;
-      right: 0;
-      font-size: 14px;
-      font-weight: 500;
+      bottom: 10px;
+      left: 10px;
+      font-size: 12px;
+      font-weight: 600;
       color: #fff;
-      text-align: center;
+      text-transform: none;
+      letter-spacing: 0.01em;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+    }
+
+    .shade-item:hover .shade-label,
+    .shade-item.is-selected .shade-label {
+      opacity: 1;
+      transform: translateY(0);
     }
     
     /* Button */
     .shade-button {
-      margin-top: 40px;
+      margin-top: 22px;
     }
     
     .shade-btn {
       display: inline-block;
       padding: 12px 26px;
-      background: #63c3c7;
-      color: #fff;
+      background: #7ad5de;
+      color: #0b0b0b;
       text-decoration: none;
       border-radius: 30px;
-      font-size: 14px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       transition: opacity 0.3s ease;
     }
     
@@ -193,8 +301,8 @@
     
     /* Tablet */
     @media (max-width: 990px) {
-      .shade-item {
-        width: 130px;
+      .shade-grid {
+        grid-auto-columns: 112px;
       }
     }
     
@@ -202,36 +310,117 @@
     @media (max-width: 768px) {
     
       .shade-selector {
-        padding: 40px 0;
+        padding: 42px 0 48px;
       }
     
-      .shade-header h2 {
-        font-size: 22px;
-        padding: 0 20px;
+      .shade-title-line {
+        font-size: 30px;
+        letter-spacing: 0.05em;
+      }
+
+      .shade-title-line.shade-accent {
+        font-size: 44px;
+        letter-spacing: 0.03em;
       }
     
-      .shade-header p {
-        font-size: 13px;
-        padding: 0 20px;
+      .shade-subtitle {
+        font-size: 10px;
+        margin-bottom: 22px;
       }
     
       .shade-grid {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding: 0 20px 10px;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
+        grid-auto-flow: row;
+        grid-auto-columns: unset;
+        grid-template-columns: min(520px, 100%);
+        overflow: visible;
+        justify-content: center;
+        padding: 0 20px;
+        scroll-snap-type: none;
       }
     
       .shade-grid::-webkit-scrollbar {
         display: none;
       }
-    
+
       .shade-item {
-        width: 120px;
-        scroll-snap-align: start;
+        scroll-snap-align: unset;
+      }
+
+      .shade-picture {
+        aspect-ratio: 5 / 1;
+        border-radius: 14px;
+      }
+
+      .shade-label {
+        left: 50%;
+        top: 50%;
+        bottom: auto;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+      }
+
+      .shade-item:hover .shade-label {
+        opacity: 0;
+      }
+
+      .shade-item.is-selected .shade-label {
+        opacity: 1;
+      }
+
+      .shade-button {
+        margin-top: 20px;
+        padding: 0 20px;
+      }
+
+      .shade-btn {
+        width: 100%;
+        max-width: 520px;
+        padding: 18px 26px;
+        border-radius: 999px;
       }
     }
     </style>
+
+    <script>
+      (function () {
+        function bindShadeSelector(sectionEl) {
+          if (!sectionEl) return;
+          if (sectionEl.__shadeSelectorBound) return;
+          sectionEl.__shadeSelectorBound = true;
+
+          var items = sectionEl.querySelectorAll('[data-shade-item]');
+          if (!items || !items.length) return;
+
+          function setSelected(el) {
+            items.forEach(function (node) { node.classList.remove('is-selected'); });
+            el.classList.add('is-selected');
+          }
+
+          items.forEach(function (item) {
+            item.addEventListener('click', function () {
+              setSelected(item);
+            });
+            item.addEventListener('keydown', function (e) {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setSelected(item);
+              }
+            });
+          });
+        }
+
+        function init() {
+          bindShadeSelector(document.getElementById('ShadeSelector-{{ section.id }}'));
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('shopify:section:load', function (event) {
+          if (event && event.target) bindShadeSelector(event.target.querySelector('[data-shade-selector]'));
+        });
+      })();
+    </script>
     
