@@ -235,7 +235,7 @@
       ],
       "name": "Shade Selector",
       "settings": {
-        "heading": "FINDING YOUR PERFECT SHADE IS FREE",
+        "heading": "<p>FINDING YOUR <strong>PERFECT SHADE</strong> IS FREE</p>",
         "subheading": "Discover your perfect match with two samples for $12, and we'll credit $12 towards your next extension order.",
         "button_text": "ORDER COLOR SAMPLES",
         "button_link": ""
