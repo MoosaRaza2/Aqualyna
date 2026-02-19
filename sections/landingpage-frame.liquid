@@ -3,10 +3,10 @@
       "name": "Shade Selector",
       "settings": [
         {
-          "type": "text",
+          "type": "richtext",
           "id": "heading",
           "label": "Heading",
-          "default": "FINDING YOUR PERFECT SHADE IS FREE"
+          "default": "<p>FINDING YOUR <strong>PERFECT SHADE</strong> IS FREE</p>"
         },
         {
           "type": "textarea",
@@ -76,13 +76,7 @@
           {% assign _heading = section.settings.heading | strip %}
           {% assign _parts = _heading | split: 'PERFECT SHADE' %}
           <h2 class="shade-title">
-            {% if _parts.size == 2 %}
-              <span class="shade-title-line">{{ _parts[0] | strip }}</span>
-              <span class="shade-title-line shade-accent">PERFECT SHADE</span>
-              <span class="shade-title-line">{{ _parts[1] | strip }}</span>
-            {% else %}
-              {{ _heading | escape }}
-            {% endif %}
+              {{ section.settings.heading | escape }}
           </h2>
           <p class="shade-subtitle">{{ section.settings.subheading }}</p>
         </div>
