@@ -41,6 +41,7 @@
       "block_order": [
         "video_JdENQ9"
       ],
+      "disabled": true,
       "settings": {
         "text-color": "auto",
         "background-color": "none",
@@ -61,6 +62,7 @@
     },
     "image_with_text_RGzNYE": {
       "type": "image-with-text",
+      "disabled": true,
       "settings": {
         "text-color": "auto",
         "background-color": "none",
@@ -103,6 +105,7 @@
     },
     "image_with_text_wYqQFQ": {
       "type": "image-with-text",
+      "disabled": true,
       "settings": {
         "text-color": "auto",
         "background-color": "light",
@@ -128,6 +131,7 @@
     },
     "featured_blog_x49bGL": {
       "type": "featured-blog",
+      "disabled": true,
       "settings": {
         "aspect-ratio": "landscape",
         "background-color": "none",
@@ -152,8 +156,16 @@
           "settings": {
             "title": "",
             "title_color": "",
+            "title_size_v2": 0,
             "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
             "background_color": "",
+            "feed_id": "",
             "html_area": ""
           }
         }
@@ -161,6 +173,7 @@
       "block_order": [
         "instafeed_app_block_gJnfbP"
       ],
+      "disabled": true,
       "settings": {
         "background-color": "none",
         "light-text": false,
