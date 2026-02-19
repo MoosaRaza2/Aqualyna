@@ -456,55 +456,6 @@
         "spacing-above": true,
         "spacing-below": true
       }
-    },
-    "landingpage_frame_HeMqXt": {
-      "type": "landingpage-frame",
-      "blocks": {
-        "shade_3Mg7MT": {
-          "type": "shade",
-          "settings": {
-            "shade_image": "shopify://shop_images/Product_Image_1.png",
-            "shade_label": "",
-            "shade_link": ""
-          }
-        },
-        "shade_fVLpP3": {
-          "type": "shade",
-          "settings": {
-            "shade_image": "shopify://shop_images/Product_Image_5.png",
-            "shade_label": "",
-            "shade_link": ""
-          }
-        },
-        "shade_HWgEj8": {
-          "type": "shade",
-          "settings": {
-            "shade_image": "shopify://shop_images/Product_Image_3.png",
-            "shade_label": "",
-            "shade_link": ""
-          }
-        },
-        "shade_FUgn6i": {
-          "type": "shade",
-          "settings": {
-            "shade_label": "",
-            "shade_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "shade_3Mg7MT",
-        "shade_fVLpP3",
-        "shade_HWgEj8",
-        "shade_FUgn6i"
-      ],
-      "name": "Shade Selector",
-      "settings": {
-        "heading": "FINDING YOUR PERFECT SHADE IS FREE",
-        "subheading": "Discover your perfect match with two samples for $12, and we'll credit $12 towards your next extension order.",
-        "button_text": "ORDER COLOR SAMPLES",
-        "button_link": ""
-      }
     }
   },
   "order": [
@@ -526,7 +477,6 @@
     "featured_collection_4wUFdx",
     "featured_text_gVHLGU",
     "main",
-    "17243567813572756e",
-    "landingpage_frame_HeMqXt"
+    "17243567813572756e"
   ]
 }
