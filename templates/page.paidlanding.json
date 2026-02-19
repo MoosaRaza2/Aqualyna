@@ -181,6 +181,65 @@
         "spacing-above": true,
         "spacing-below": true
       }
+    },
+    "landingpage_frame_zdnbPL": {
+      "type": "landingpage-frame",
+      "blocks": {
+        "shade_z4yypV": {
+          "type": "shade",
+          "settings": {
+            "shade_image": "shopify://shop_images/Product_Image_1.png",
+            "shade_label": "",
+            "shade_link": ""
+          }
+        },
+        "shade_cQJbWR": {
+          "type": "shade",
+          "settings": {
+            "shade_image": "shopify://shop_images/Product_Image_2.png",
+            "shade_label": "",
+            "shade_link": ""
+          }
+        },
+        "shade_Bkmata": {
+          "type": "shade",
+          "settings": {
+            "shade_image": "shopify://shop_images/Product_Image_3.png",
+            "shade_label": "",
+            "shade_link": ""
+          }
+        },
+        "shade_rhPFj3": {
+          "type": "shade",
+          "settings": {
+            "shade_image": "shopify://shop_images/Product_Image_4.png",
+            "shade_label": "",
+            "shade_link": ""
+          }
+        },
+        "shade_c6AWck": {
+          "type": "shade",
+          "settings": {
+            "shade_image": "shopify://shop_images/Product_Image_5.png",
+            "shade_label": "",
+            "shade_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "shade_z4yypV",
+        "shade_cQJbWR",
+        "shade_Bkmata",
+        "shade_rhPFj3",
+        "shade_c6AWck"
+      ],
+      "name": "Shade Selector",
+      "settings": {
+        "heading": "FINDING YOUR PERFECT SHADE IS FREE",
+        "subheading": "Discover your perfect match with two samples for $12, and we'll credit $12 towards your next extension order.",
+        "button_text": "ORDER COLOR SAMPLES",
+        "button_link": ""
+      }
     }
   },
   "order": [
@@ -190,6 +249,7 @@
     "featured_text_A6QN8m",
     "image_with_text_wYqQFQ",
     "featured_blog_x49bGL",
-    "17243569257a74f693"
+    "17243569257a74f693",
+    "landingpage_frame_zdnbPL"
   ]
 }
