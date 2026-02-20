@@ -1,475 +1,473 @@
 {% schema %}
-{
-  "name": "Landingpage - Loved",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Content"
-    },
-    {
-      "type": "text",
-      "id": "heading_accent",
-      "label": "Heading accent text",
-      "default": "LOVED"
-    },
-    {
-      "type": "text",
-      "id": "heading_rest",
-      "label": "Heading rest text",
-      "default": "BY STYLISTS & CLIENTS"
-    },
-    {
-      "type": "header",
-      "content": "Images"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_1",
-      "label": "Image 1 (desktop)"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_1_mobile",
-      "label": "Image 1 (mobile)"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_2",
-      "label": "Image 2 (desktop)"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_2_mobile",
-      "label": "Image 2 (mobile)"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_3",
-      "label": "Image 3 (desktop)"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_3_mobile",
-      "label": "Image 3 (mobile)"
-    },
-    {
-      "type": "header",
-      "content": "Layout (desktop)"
-    },
-    {
-      "type": "range",
-      "id": "max_width_desktop",
-      "label": "Section content max width (desktop, px)",
-      "min": 900,
-      "max": 1800,
-      "step": 10,
-      "default": 1280
-    },
-    {
-      "type": "range",
-      "id": "min_height_desktop",
-      "label": "Section height (desktop, px) — set 0 for auto",
-      "min": 0,
-      "max": 1400,
-      "step": 10,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "gap_desktop",
-      "label": "Cards gap (desktop, px)",
-      "min": 10,
-      "max": 80,
-      "step": 2,
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "card_radius_desktop",
-      "label": "Card corner radius (desktop, px)",
-      "min": 8,
-      "max": 60,
-      "step": 1,
-      "default": 28
-    },
-    {
-      "type": "range",
-      "id": "card_padding_desktop",
-      "label": "Card padding (desktop, px)",
-      "min": 0,
-      "max": 60,
-      "step": 2,
-      "default": 20
-    },
-    {
-      "type": "range",
-      "id": "image_height_desktop",
-      "label": "Image height (desktop, px)",
-      "min": 140,
-      "max": 520,
-      "step": 10,
-      "default": 260
-    },
-    {
-      "type": "header",
-      "content": "Layout (mobile)"
-    },
-    {
-      "type": "range",
-      "id": "max_width_mobile",
-      "label": "Section content max width (mobile, px)",
-      "min": 260,
-      "max": 700,
-      "step": 10,
-      "default": 520
-    },
-    {
-      "type": "range",
-      "id": "min_height_mobile",
-      "label": "Section height (mobile, px) — set 0 for auto",
-      "min": 0,
-      "max": 1600,
-      "step": 10,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "gap_mobile",
-      "label": "Cards gap (mobile, px)",
-      "min": 10,
-      "max": 60,
-      "step": 2,
-      "default": 18
-    },
-    {
-      "type": "range",
-      "id": "card_radius_mobile",
-      "label": "Card corner radius (mobile, px)",
-      "min": 8,
-      "max": 60,
-      "step": 1,
-      "default": 18
-    },
-    {
-      "type": "range",
-      "id": "card_padding_mobile",
-      "label": "Card padding (mobile, px)",
-      "min": 0,
-      "max": 50,
-      "step": 2,
-      "default": 14
-    },
-    {
-      "type": "range",
-      "id": "image_height_mobile",
-      "label": "Image height (mobile, px)",
-      "min": 140,
-      "max": 720,
-      "step": 10,
-      "default": 220
-    },
-    {
-      "type": "header",
-      "content": "Spacing"
-    },
-    {
-      "type": "range",
-      "id": "padding_top_desktop",
-      "label": "Section padding top (desktop, px)",
-      "min": 0,
-      "max": 160,
-      "step": 4,
-      "default": 30
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom_desktop",
-      "label": "Section padding bottom (desktop, px)",
-      "min": 0,
-      "max": 160,
-      "step": 4,
-      "default": 30
-    },
-    {
-      "type": "range",
-      "id": "padding_top_mobile",
-      "label": "Section padding top (mobile, px)",
-      "min": 0,
-      "max": 160,
-      "step": 4,
-      "default": 20
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom_mobile",
-      "label": "Section padding bottom (mobile, px)",
-      "min": 0,
-      "max": 160,
-      "step": 4,
-      "default": 20
-    },
-    {
-      "type": "header",
-      "content": "Style"
-    },
-    {
-      "type": "color",
-      "id": "accent_color",
-      "label": "Accent color",
-      "default": "#74D0E6"
-    },
-    {
-      "type": "color",
-      "id": "heading_color",
-      "label": "Heading color",
-      "default": "#111111"
-    },
-    {
-      "type": "color",
-      "id": "heading_border_color",
-      "label": "Heading border color",
-      "default": "#BFEAF3"
-    },
-    {
-      "type": "range",
-      "id": "heading_border_width",
-      "label": "Heading border width (px)",
-      "min": 0,
-      "max": 6,
-      "step": 1,
-      "default": 1
-    },
-    {
-      "type": "color",
-      "id": "card_bg",
-      "label": "Card background",
-      "default": "#EEF9FC"
-    },
-    {
-      "type": "color",
-      "id": "section_bg",
-      "label": "Section background",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "select",
-      "id": "image_fit",
-      "label": "Image fit",
-      "default": "contain",
-      "options": [
-        { "value": "contain", "label": "Contain (show full image)" },
-        { "value": "cover", "label": "Cover (crop to fill)" }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Loved by stylists and clients"
-    }
-  ]
-}
-{% endschema %}
-
-<section
-  id="LandingpageLoved-{{ section.id }}"
-  class="landingpage-loved"
-  style="
-    --lpl-accent: {{ section.settings.accent_color }};
-    --lpl-heading: {{ section.settings.heading_color }};
-    --lpl-heading-border: {{ section.settings.heading_border_color }};
-    --lpl-heading-bw: {{ section.settings.heading_border_width }}px;
-    --lpl-card-bg: {{ section.settings.card_bg }};
-    --lpl-section-bg: {{ section.settings.section_bg }};
-    --lpl-maxw-d: {{ section.settings.max_width_desktop }}px;
-    --lpl-minh-d: {{ section.settings.min_height_desktop }}px;
-    --lpl-gap-d: {{ section.settings.gap_desktop }}px;
-    --lpl-card-r-d: {{ section.settings.card_radius_desktop }}px;
-    --lpl-card-p-d: {{ section.settings.card_padding_desktop }}px;
-    --lpl-img-h-d: {{ section.settings.image_height_desktop }}px;
-    --lpl-maxw-m: {{ section.settings.max_width_mobile }}px;
-    --lpl-minh-m: {{ section.settings.min_height_mobile }}px;
-    --lpl-gap-m: {{ section.settings.gap_mobile }}px;
-    --lpl-card-r-m: {{ section.settings.card_radius_mobile }}px;
-    --lpl-card-p-m: {{ section.settings.card_padding_mobile }}px;
-    --lpl-img-h-m: {{ section.settings.image_height_mobile }}px;
-  "
->
-  <div class="page-width">
-    <div class="lpl-container">
-      <div class="lpl-headingWrap">
-        <h2 class="lpl-heading" aria-label="{{ section.settings.heading_accent | escape }} {{ section.settings.heading_rest | escape }}">
-          <span class="lpl-heading__accent">{{ section.settings.heading_accent }}</span>
-          <span class="lpl-heading__rest">{{ section.settings.heading_rest }}</span>
-        </h2>
-      </div>
-
-      <div class="lpl-grid" role="list" aria-label="Loved by stylists and clients images">
-        {% for i in (1..3) %}
-          {% liquid
-            assign desktop_key = 'image_' | append: i
-            assign mobile_key = 'image_' | append: i | append: '_mobile'
-            assign img_d = section.settings[desktop_key]
-            assign img_m = section.settings[mobile_key]
-          %}
-          <div class="lpl-card" role="listitem">
-            {% if img_d != blank %}
-              <picture class="lpl-media">
-                {% if img_m != blank %}
-                  <source media="(max-width: 768px)" srcset="{{ img_m | image_url: width: 1200 }}">
-                {% endif %}
-                <img
-                  src="{{ img_d | image_url: width: 1600 }}"
-                  alt=""
-                  loading="lazy"
-                  width="1600"
-                  height="{{ section.settings.image_height_desktop }}"
-                >
-              </picture>
-            {% else %}
-              <div class="lpl-placeholder" aria-hidden="true">
-                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-              </div>
-            {% endif %}
-          </div>
-        {% endfor %}
+  {
+    "name": "Landingpage - Loved",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "text",
+        "id": "heading_accent",
+        "label": "Heading accent text",
+        "default": "LOVED"
+      },
+      {
+        "type": "text",
+        "id": "heading_rest",
+        "label": "Heading rest text",
+        "default": "BY STYLISTS & CLIENTS"
+      },
+      {
+        "type": "header",
+        "content": "Images"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Image 1 (desktop)"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_1_mobile",
+        "label": "Image 1 (mobile)"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Image 2 (desktop)"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_2_mobile",
+        "label": "Image 2 (mobile)"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_3",
+        "label": "Image 3 (desktop)"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_3_mobile",
+        "label": "Image 3 (mobile)"
+      },
+      {
+        "type": "header",
+        "content": "Layout (desktop)"
+      },
+      {
+        "type": "range",
+        "id": "max_width_desktop",
+        "label": "Section content max width (desktop, px)",
+        "min": 900,
+        "max": 1800,
+        "step": 10,
+        "default": 1280
+      },
+      {
+        "type": "range",
+        "id": "min_height_desktop",
+        "label": "Section height (desktop, px) — set 0 for auto",
+        "min": 0,
+        "max": 1400,
+        "step": 20,
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "gap_desktop",
+        "label": "Cards gap (desktop, px)",
+        "min": 10,
+        "max": 80,
+        "step": 2,
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "card_radius_desktop",
+        "label": "Card corner radius (desktop, px)",
+        "min": 8,
+        "max": 60,
+        "step": 1,
+        "default": 28
+      },
+      {
+        "type": "range",
+        "id": "card_padding_desktop",
+        "label": "Card padding (desktop, px)",
+        "min": 0,
+        "max": 60,
+        "step": 2,
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "image_height_desktop",
+        "label": "Image height (desktop, px)",
+        "min": 140,
+        "max": 520,
+        "step": 10,
+        "default": 260
+      },
+      {
+        "type": "header",
+        "content": "Layout (mobile)"
+      },
+      {
+        "type": "range",
+        "id": "max_width_mobile",
+        "label": "Section content max width (mobile, px)",
+        "min": 260,
+        "max": 700,
+        "step": 10,
+        "default": 520
+      },
+      {
+        "type": "range",
+        "id": "min_height_mobile",
+        "label": "Section height (mobile, px) — set 0 for auto",
+        "min": 0,
+        "max": 1600,
+        "step": 20,
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "gap_mobile",
+        "label": "Cards gap (mobile, px)",
+        "min": 10,
+        "max": 60,
+        "step": 2,
+        "default": 18
+      },
+      {
+        "type": "range",
+        "id": "card_radius_mobile",
+        "label": "Card corner radius (mobile, px)",
+        "min": 8,
+        "max": 60,
+        "step": 1,
+        "default": 18
+      },
+      {
+        "type": "range",
+        "id": "card_padding_mobile",
+        "label": "Card padding (mobile, px)",
+        "min": 0,
+        "max": 50,
+        "step": 2,
+        "default": 14
+      },
+      {
+        "type": "range",
+        "id": "image_height_mobile",
+        "label": "Image height (mobile, px)",
+        "min": 140,
+        "max": 720,
+        "step": 10,
+        "default": 220
+      },
+      {
+        "type": "header",
+        "content": "Spacing"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Section padding top (desktop, px)",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "default": 30
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Section padding bottom (desktop, px)",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "default": 30
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Section padding top (mobile, px)",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Section padding bottom (mobile, px)",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "default": 20
+      },
+      {
+        "type": "header",
+        "content": "Style"
+      },
+      {
+        "type": "color",
+        "id": "accent_color",
+        "label": "Accent color",
+        "default": "#74D0E6"
+      },
+      {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading color",
+        "default": "#111111"
+      },
+      {
+        "type": "color",
+        "id": "heading_border_color",
+        "label": "Heading border color",
+        "default": "#BFEAF3"
+      },
+      {
+        "type": "range",
+        "id": "heading_border_width",
+        "label": "Heading border width (px)",
+        "min": 0,
+        "max": 6,
+        "step": 1,
+        "default": 1
+      },
+      {
+        "type": "color",
+        "id": "card_bg",
+        "label": "Card background",
+        "default": "#EEF9FC"
+      },
+      {
+        "type": "color",
+        "id": "section_bg",
+        "label": "Section background",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "select",
+        "id": "image_fit",
+        "label": "Image fit",
+        "default": "contain",
+        "options": [
+          { "value": "contain", "label": "Contain (show full image)" },
+          { "value": "cover", "label": "Cover (crop to fill)" }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Loved by stylists and clients"
+      }
+    ]
+  }
+  {% endschema %}
+  
+  <section
+    id="LandingpageLoved-{{ section.id }}"
+    class="landingpage-loved"
+    style="
+      --lpl-accent: {{ section.settings.accent_color }};
+      --lpl-heading: {{ section.settings.heading_color }};
+      --lpl-heading-border: {{ section.settings.heading_border_color }};
+      --lpl-heading-bw: {{ section.settings.heading_border_width }}px;
+      --lpl-card-bg: {{ section.settings.card_bg }};
+      --lpl-section-bg: {{ section.settings.section_bg }};
+      --lpl-maxw-d: {{ section.settings.max_width_desktop }}px;
+      --lpl-minh-d: {{ section.settings.min_height_desktop }}px;
+      --lpl-gap-d: {{ section.settings.gap_desktop }}px;
+      --lpl-card-r-d: {{ section.settings.card_radius_desktop }}px;
+      --lpl-card-p-d: {{ section.settings.card_padding_desktop }}px;
+      --lpl-img-h-d: {{ section.settings.image_height_desktop }}px;
+      --lpl-maxw-m: {{ section.settings.max_width_mobile }}px;
+      --lpl-minh-m: {{ section.settings.min_height_mobile }}px;
+      --lpl-gap-m: {{ section.settings.gap_mobile }}px;
+      --lpl-card-r-m: {{ section.settings.card_radius_mobile }}px;
+      --lpl-card-p-m: {{ section.settings.card_padding_mobile }}px;
+      --lpl-img-h-m: {{ section.settings.image_height_mobile }}px;
+    "
+  >
+    <div class="page-width">
+      <div class="lpl-container">
+        <div class="lpl-headingWrap">
+          <h2 class="lpl-heading" aria-label="{{ section.settings.heading_accent | escape }} {{ section.settings.heading_rest | escape }}">
+            <span class="lpl-heading__accent">{{ section.settings.heading_accent }}</span>
+            <span class="lpl-heading__rest">{{ section.settings.heading_rest }}</span>
+          </h2>
+        </div>
+  
+        <div class="lpl-grid" role="list" aria-label="Loved by stylists and clients images">
+          {% for i in (1..3) %}
+            {% liquid
+              assign desktop_key = 'image_' | append: i
+              assign mobile_key = 'image_' | append: i | append: '_mobile'
+              assign img_d = section.settings[desktop_key]
+              assign img_m = section.settings[mobile_key]
+            %}
+            <div class="lpl-card" role="listitem">
+              {% if img_d != blank %}
+                <picture class="lpl-media">
+                  {% if img_m != blank %}
+                    <source media="(max-width: 768px)" srcset="{{ img_m | image_url: width: 1200 }}">
+                  {% endif %}
+                  <img
+                    src="{{ img_d | image_url: width: 1600 }}"
+                    alt=""
+                    loading="lazy"
+                    width="1600"
+                    height="{{ section.settings.image_height_desktop }}"
+                  >
+                </picture>
+              {% else %}
+                <div class="lpl-placeholder" aria-hidden="true">
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
-<style>
-  #LandingpageLoved-{{ section.id }} {
-    background: var(--lpl-section-bg);
-    padding-top: {{ section.settings.padding_top_desktop }}px;
-    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
-  }
-
-  #LandingpageLoved-{{ section.id }} .lpl-container {
-    max-width: var(--lpl-maxw-d);
-    min-height: var(--lpl-minh-d);
-    {% if section.settings.min_height_desktop > 0 %}
-      height: {{ section.settings.min_height_desktop }}px;
-    {% endif %}
-    margin: 0 auto;
-  }
-
-  #LandingpageLoved-{{ section.id }} .lpl-headingWrap {
-    display: flex;
-    justify-content: center;
-    margin: 0 0 26px;
-  }
-
-  #LandingpageLoved-{{ section.id }} .lpl-heading {
-    margin: 0;
-    display: inline-flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    justify-content: center;
-    row-gap: 2px;
-    gap: 10px;
-    padding: 10px 22px;
-    border: var(--lpl-heading-bw) solid var(--lpl-heading-border);
-    color: var(--lpl-heading);
-    background: transparent;
-    text-align: center;
-    font-family: 'Gotham-Light', sans-serif;
-    font-size: 34px;
-    font-weight: 300;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    line-height: 1.1;
-  }
-
-  #LandingpageLoved-{{ section.id }} .lpl-heading__accent {
-    color: var(--lpl-accent);
-    font-weight: 700;
-  }
-
-  #LandingpageLoved-{{ section.id }} .lpl-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--lpl-gap-d);
-    align-items: stretch;
-  }
-
-  #LandingpageLoved-{{ section.id }} .lpl-card {
-    background: var(--lpl-card-bg);
-    border-radius: var(--lpl-card-r-d);
-    padding: var(--lpl-card-p-d);
-    overflow: hidden;
-  }
-
-  #LandingpageLoved-{{ section.id }} .lpl-media {
-    display: block;
-    width: 100%;
-  }
-
-  #LandingpageLoved-{{ section.id }} .lpl-media img {
-    display: block;
-    width: 100%;
-    height: var(--lpl-img-h-d);
-    object-fit: {{ section.settings.image_fit }};
-  }
-
-  #LandingpageLoved-{{ section.id }} .lpl-placeholder {
-    border-radius: calc(var(--lpl-card-r-d) - 4px);
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.6);
-  }
-
-  #LandingpageLoved-{{ section.id }} .lpl-placeholder svg {
-    display: block;
-    width: 100%;
-    height: var(--lpl-img-h-d);
-  }
-
-  @media (max-width: 768px) {
+  </section>
+  
+  <style>
     #LandingpageLoved-{{ section.id }} {
-      padding-top: {{ section.settings.padding_top_mobile }}px;
-      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      background: var(--lpl-section-bg);
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
     }
-
+  
     #LandingpageLoved-{{ section.id }} .lpl-container {
-      max-width: var(--lpl-maxw-m);
-      min-height: var(--lpl-minh-m);
-      {% if section.settings.min_height_mobile > 0 %}
-        height: {{ section.settings.min_height_mobile }}px;
+      max-width: var(--lpl-maxw-d);
+      min-height: var(--lpl-minh-d);
+      {% if section.settings.min_height_desktop > 0 %}
+        height: {{ section.settings.min_height_desktop }}px;
       {% endif %}
+      margin: 0 auto;
     }
-
+  
     #LandingpageLoved-{{ section.id }} .lpl-headingWrap {
-      margin-bottom: 18px;
+      display: flex;
+      justify-content: center;
+      margin: 0 0 26px;
     }
-
+  
     #LandingpageLoved-{{ section.id }} .lpl-heading {
-      font-size: 20px;
-      letter-spacing: 0.14em;
-      padding: 10px 16px;
-      gap: 8px;
+      margin: 0;
+      display: inline-flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 2px;
+      gap: 10px;
+      padding: 10px 22px;
+      border: var(--lpl-heading-bw) solid var(--lpl-heading-border);
+      color: var(--lpl-heading);
+      background: transparent;
+      text-align: center;
+      font-family: 'Gotham-Light', sans-serif;
+      font-size: 34px;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: 1.1;
     }
-
+  
+    #LandingpageLoved-{{ section.id }} .lpl-heading__accent {
+      color: var(--lpl-accent);
+      font-weight: 700;
+    }
+  
     #LandingpageLoved-{{ section.id }} .lpl-grid {
-      grid-template-columns: 1fr;
-      gap: var(--lpl-gap-m);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--lpl-gap-d);
+      align-items: stretch;
     }
-
+  
     #LandingpageLoved-{{ section.id }} .lpl-card {
-      border-radius: var(--lpl-card-r-m);
-      padding: var(--lpl-card-p-m);
+      background: var(--lpl-card-bg);
+      border-radius: var(--lpl-card-r-d);
+      padding: var(--lpl-card-p-d);
+      overflow: hidden;
     }
-
+  
+    #LandingpageLoved-{{ section.id }} .lpl-media {
+      display: block;
+      width: 100%;
+    }
+  
     #LandingpageLoved-{{ section.id }} .lpl-media img {
-      height: var(--lpl-img-h-m);
+      display: block;
+      width: 100%;
+      height: var(--lpl-img-h-d);
+      object-fit: {{ section.settings.image_fit }};
     }
-
+  
     #LandingpageLoved-{{ section.id }} .lpl-placeholder {
-      border-radius: calc(var(--lpl-card-r-m) - 2px);
+      border-radius: calc(var(--lpl-card-r-d) - 4px);
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.6);
     }
-
+  
     #LandingpageLoved-{{ section.id }} .lpl-placeholder svg {
-      height: var(--lpl-img-h-m);
+      display: block;
+      width: 100%;
+      height: var(--lpl-img-h-d);
     }
-  }
-</style>
-
-
+  
+    @media (max-width: 768px) {
+      #LandingpageLoved-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top_mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      }
+  
+      #LandingpageLoved-{{ section.id }} .lpl-container {
+        max-width: var(--lpl-maxw-m);
+        min-height: var(--lpl-minh-m);
+        {% if section.settings.min_height_mobile > 0 %}
+          height: {{ section.settings.min_height_mobile }}px;
+        {% endif %}
+      }
+  
+      #LandingpageLoved-{{ section.id }} .lpl-headingWrap {
+        margin-bottom: 18px;
+      }
+  
+      #LandingpageLoved-{{ section.id }} .lpl-heading {
+        font-size: 20px;
+        letter-spacing: 0.14em;
+        padding: 10px 16px;
+        gap: 8px;
+      }
+  
+      #LandingpageLoved-{{ section.id }} .lpl-grid {
+        grid-template-columns: 1fr;
+        gap: var(--lpl-gap-m);
+      }
+  
+      #LandingpageLoved-{{ section.id }} .lpl-card {
+        border-radius: var(--lpl-card-r-m);
+        padding: var(--lpl-card-p-m);
+      }
+  
+      #LandingpageLoved-{{ section.id }} .lpl-media img {
+        height: var(--lpl-img-h-m);
+      }
+  
+      #LandingpageLoved-{{ section.id }} .lpl-placeholder {
+        border-radius: calc(var(--lpl-card-r-m) - 2px);
+      }
+  
+      #LandingpageLoved-{{ section.id }} .lpl-placeholder svg {
+        height: var(--lpl-img-h-m);
+      }
+    }
+  </style>
