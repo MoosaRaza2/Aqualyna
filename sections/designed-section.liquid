@@ -76,6 +76,24 @@
     },
     {
       "type": "range",
+      "id": "icon_box_height_desktop",
+      "label": "Icon box height (desktop, px)",
+      "min": 40,
+      "max": 220,
+      "step": 2,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "icon_box_height_mobile",
+      "label": "Icon box height (mobile, px)",
+      "min": 40,
+      "max": 260,
+      "step": 2,
+      "default": 118
+    },
+    {
+      "type": "range",
       "id": "padding_top_desktop",
       "label": "Section padding top (desktop)",
       "min": 0,
@@ -177,6 +195,8 @@
     --ds-card: {{ section.settings.card_bg }};
     --ds-radius: {{ section.settings.card_radius }}px;
     --ds-maxw: {{ section.settings.max_width }}px;
+    --ds-icon-h-d: {{ section.settings.icon_box_height_desktop }}px;
+    --ds-icon-h-m: {{ section.settings.icon_box_height_mobile }}px;
   "
 >
   <div class="page-width">
@@ -275,6 +295,7 @@
 
   #DesignedSection-{{ section.id }} .ds-card {
     max-width: var(--ds-maxw);
+    max-height: 410px;
     margin: 0 auto;
     background: var(--ds-card);
     border-radius: var(--ds-radius);
@@ -298,13 +319,12 @@
 
   #DesignedSection-{{ section.id }} .ds-heading__accent {
     color: var(--ds-accent);
-    margin-left: 10px;
-    font-weight: 600;
+
+    font-weight: 700;
   }
 
   #DesignedSection-{{ section.id }} .ds-items {
     display: flex;
-    justify-content: space-between;
     justify-content: center;
     gap: 60px;
   }
@@ -318,19 +338,29 @@
     color: var(--ds-accent);
     margin: 0 auto 18px;
     width: var(--ds-icon-w-d);
+    height: var(--ds-icon-h-d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  #DesignedSection-{{ section.id }} .ds-picture,
+  #DesignedSection-{{ section.id }} .ds-picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
   #DesignedSection-{{ section.id }} .ds-picture img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
   }
 
   #DesignedSection-{{ section.id }} .ds-fallback {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
   }
 
   #DesignedSection-{{ section.id }} .ds-label {
@@ -351,6 +381,7 @@
 
     #DesignedSection-{{ section.id }} .ds-card {
       padding: 36px 24px 42px;
+      max-height: 572px;
     }
 
     #DesignedSection-{{ section.id }} .ds-heading {
@@ -372,6 +403,7 @@ text-transform: uppercase;
 
     #DesignedSection-{{ section.id }} .ds-icon {
       width: var(--ds-icon-w-m);
+      height: var(--ds-icon-h-m);
       margin-bottom: 18px;
     }
 
