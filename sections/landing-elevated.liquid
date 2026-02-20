@@ -1,32 +1,75 @@
 {% schema %}
 {
   "name": "Landing - Elevated",
-  "settings": [],
+  "settings": [
+    { "type": "header", "content": "Images" },
+    { "type": "image_picker", "id": "offer_image", "label": "Offer box image" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image (desktop)" },
+    { "type": "image_picker", "id": "hero_image_mobile", "label": "Hero image (mobile, optional)" },
+    {
+      "type": "url",
+      "id": "hero_video_mp4",
+      "label": "Hero video URL (MP4, optional)",
+      "info": "If set, video is used instead of the hero image."
+    },
+
+    { "type": "header", "content": "Links" },
+    { "type": "url", "id": "welcome_button_link", "label": "Welcome offer button link" },
+    { "type": "url", "id": "pill_1_link", "label": "Pill 1 link (Shop extensions)" },
+    { "type": "url", "id": "pill_2_link", "label": "Pill 2 link (Find your match)" },
+
+    { "type": "header", "content": "Sizes" },
+    {
+      "type": "range",
+      "id": "offer_image_max_desktop",
+      "label": "Offer image max width (desktop, px)",
+      "min": 220,
+      "max": 520,
+      "step": 10,
+      "default": 380
+    },
+    {
+      "type": "range",
+      "id": "offer_image_max_mobile",
+      "label": "Offer image width (mobile, px)",
+      "min": 140,
+      "max": 320,
+      "step": 10,
+      "default": 220
+    },
+    {
+      "type": "range",
+      "id": "hero_height_desktop",
+      "label": "Hero height (desktop, px)",
+      "min": 420,
+      "max": 1100,
+      "step": 10,
+      "default": 720
+    },
+    {
+      "type": "range",
+      "id": "hero_height_mobile",
+      "label": "Hero height (mobile, px)",
+      "min": 520,
+      "max": 1400,
+      "step": 10,
+      "default": 820
+    },
+    {
+      "type": "range",
+      "id": "pill_scale",
+      "label": "Pill button size (%)",
+      "min": 70,
+      "max": 120,
+      "step": 2,
+      "default": 90
+    }
+  ],
   "presets": [
     { "name": "Landing - Elevated" }
   ]
 }
 {% endschema %}
-
-{%- liquid
-  comment
-    Single, precise section (no Theme Editor settings).
-    To change media/links, edit the variables below.
-
-    Upload these to Shopify > Content > Files (recommended) OR rename here:
-    - elevated-offer-box.png
-    - elevated-hero.mp4 (optional)
-    - elevated-hero.jpg (fallback)
-  endcomment
-
-  assign offer_box_image = 'elevated-offer-box.png'
-  assign hero_video = 'elevated-hero.mp4'
-  assign hero_image = 'elevated-hero.jpg'
-
-  assign welcome_button_link = '#'
-  assign pill_1_link = '#'
-  assign pill_2_link = '#'
--%}
 
 <section id="LandingElevated-{{ section.id }}" class="landing-elevated">
   <!-- Offer -->
@@ -34,13 +77,19 @@
     <div class="page-width">
       <div class="le-offer__inner">
         <div class="le-offer__media" aria-hidden="true">
-          <img
-            src="{{ offer_box_image | file_url }}"
-            alt=""
-            loading="lazy"
-            width="800"
-            height="800"
-          >
+          {% if section.settings.offer_image != blank %}
+            <img
+              src="{{ section.settings.offer_image | image_url: width: 1200 }}"
+              alt=""
+              loading="lazy"
+              width="800"
+              height="800"
+            >
+          {% else %}
+            <div class="le-placeholder">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
         </div>
 
         <div class="le-offer__content">
@@ -50,7 +99,7 @@
           </h2>
           <div class="le-offer__subtext">Enjoy $20 off your first Aqualyna purchase</div>
 
-          <a class="le-btn" href="{{ welcome_button_link }}">UNLOCK YOUR WELCOME OFFER</a>
+          <a class="le-btn" href="{{ section.settings.welcome_button_link }}">UNLOCK YOUR WELCOME OFFER</a>
         </div>
       </div>
     </div>
@@ -59,26 +108,37 @@
   <!-- Hero -->
   <div class="le-hero" role="region" aria-label="Ready to experience Aqualyna">
     <div class="le-hero__media" aria-hidden="true">
-      {%- if hero_video != blank -%}
+      {%- if section.settings.hero_video_mp4 != blank -%}
         <video class="le-hero__video" autoplay muted loop playsinline preload="metadata">
-          <source src="{{ hero_video | file_url }}" type="video/mp4">
+          <source src="{{ section.settings.hero_video_mp4 }}" type="video/mp4">
         </video>
+      {%- else -%}
+        {% if section.settings.hero_image != blank %}
+          <picture>
+            {% if section.settings.hero_image_mobile != blank %}
+              <source media="(max-width: 768px)" srcset="{{ section.settings.hero_image_mobile | image_url: width: 1600 }}">
+            {% endif %}
+            <img
+              class="le-hero__img"
+              src="{{ section.settings.hero_image | image_url: width: 2400 }}"
+              alt=""
+              loading="lazy"
+              width="2400"
+              height="1400"
+            >
+          </picture>
+        {% else %}
+          <div class="le-placeholder le-placeholder--hero">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {% endif %}
       {%- endif -%}
-
-      <img
-        class="le-hero__img"
-        src="{{ hero_image | file_url }}"
-        alt=""
-        loading="lazy"
-        width="2400"
-        height="1400"
-      >
     </div>
 
     <div class="le-hero__overlay">
       <div class="le-hero__pills" aria-label="Hero links">
-        <a class="le-pill le-pill--primary" href="{{ pill_1_link }}">SHOP EXTENSIONS</a>
-        <a class="le-pill le-pill--secondary" href="{{ pill_2_link }}">FIND YOUR MATCH</a>
+        <a class="le-pill le-pill--primary" href="{{ section.settings.pill_1_link }}">SHOP EXTENSIONS</a>
+        <a class="le-pill le-pill--secondary" href="{{ section.settings.pill_2_link }}">FIND YOUR MATCH</a>
       </div>
 
       <div class="le-hero__headingWrap">
@@ -101,6 +161,11 @@
     --le-pill-text: #0B0B0B;
     --le-pill2-bg: rgba(255, 255, 255, 0.65);
     --le-hero-heading: #FFFFFF;
+    --le-offer-img-max: {{ section.settings.offer_image_max_desktop }}px;
+    --le-offer-img-max-m: {{ section.settings.offer_image_max_mobile }}px;
+    --le-hero-h: {{ section.settings.hero_height_desktop }}px;
+    --le-hero-h-m: {{ section.settings.hero_height_mobile }}px;
+    --le-pill-scale: {{ section.settings.pill_scale | divided_by: 100.0 }};
   }
 
   /* -------- Offer -------- */
@@ -129,7 +194,7 @@
     display: block;
     width: 100%;
     height: auto;
-    max-width: 380px;
+    max-width: var(--le-offer-img-max);
     object-fit: contain;
   }
 
@@ -188,7 +253,7 @@
   #LandingElevated-{{ section.id }} .le-hero {
     position: relative;
     width: 100%;
-    height: 720px;
+    height: var(--le-hero-h);
     overflow: hidden;
     background: #000;
   }
@@ -231,11 +296,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 18px;
+    padding: calc(8px * var(--le-pill-scale)) calc(14px * var(--le-pill-scale));
     border-radius: 999px;
     text-decoration: none;
     font-family: 'Gotham-Light', sans-serif;
-    font-size: 10px;
+    font-size: calc(9px * var(--le-pill-scale));
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -304,7 +369,7 @@
     }
 
     #LandingElevated-{{ section.id }} .le-offer__media img {
-      width: min(220px, 70vw);
+      width: min(var(--le-offer-img-max-m), 70vw);
       max-width: none;
     }
 
@@ -324,7 +389,7 @@
     }
 
     #LandingElevated-{{ section.id }} .le-hero {
-      height: 820px;
+      height: var(--le-hero-h-m);
     }
 
     #LandingElevated-{{ section.id }} .le-hero__pills {
@@ -335,8 +400,8 @@
     }
 
     #LandingElevated-{{ section.id }} .le-pill {
-      font-size: 9px;
-      padding: 9px 14px;
+      font-size: calc(8px * var(--le-pill-scale));
+      padding: calc(8px * var(--le-pill-scale)) calc(12px * var(--le-pill-scale));
       font-weight: 800;
     }
 
