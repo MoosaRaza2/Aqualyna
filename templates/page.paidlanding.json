@@ -248,6 +248,8 @@
           "type": "feature",
           "settings": {
             "label": "WEAR",
+            "icon_desktop": "shopify://shop_images/3_8_1.png",
+            "icon_mobile": "shopify://shop_images/3_8_1.png",
             "icon_width_desktop": 86,
             "icon_width_mobile": 92
           }
@@ -256,6 +258,8 @@
           "type": "feature",
           "settings": {
             "label": "CARE",
+            "icon_desktop": "shopify://shop_images/2_24_1.png",
+            "icon_mobile": "shopify://shop_images/2_24_1.png",
             "icon_width_desktop": 86,
             "icon_width_mobile": 92
           }
@@ -264,6 +268,8 @@
           "type": "feature",
           "settings": {
             "label": "LONGEVITY",
+            "icon_desktop": "shopify://shop_images/1_1_1.png",
+            "icon_mobile": "shopify://shop_images/1_1_1.png",
             "icon_width_desktop": 86,
             "icon_width_mobile": 92
           }
@@ -279,9 +285,9 @@
         "heading_base": "DESIGNED TO",
         "heading_accent": "LAST",
         "heading_color": "#111111",
-        "accent_color": "#74D0E6",
+        "accent_color": "#74d0e6",
         "label_color": "#111111",
-        "card_bg": "#EEF3F4",
+        "card_bg": "#eef3f4",
         "card_radius": 34,
         "enable_shadow": true,
         "max_width": 1200,
