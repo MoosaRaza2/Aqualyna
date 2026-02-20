@@ -1,0 +1,379 @@
+{% schema %}
+{
+  "name": "Designed section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading_base",
+      "label": "Heading (base)",
+      "default": "DESIGNED TO"
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Heading (accent)",
+      "default": "LAST"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#74D0E6"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#EEF3F4"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card corner radius",
+      "min": 8,
+      "max": 48,
+      "step": 1,
+      "default": 34
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_shadow",
+      "label": "Enable card shadow",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Card max width (px)",
+      "min": 680,
+      "max": 1400,
+      "step": 10,
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Section padding top (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Section padding bottom (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Section padding top (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Section padding bottom (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "WEAR"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_desktop",
+          "label": "Icon (desktop)"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_mobile",
+          "label": "Icon (mobile)"
+        },
+        {
+          "type": "range",
+          "id": "icon_width_desktop",
+          "label": "Icon width (desktop, px)",
+          "min": 40,
+          "max": 160,
+          "step": 2,
+          "default": 86
+        },
+        {
+          "type": "range",
+          "id": "icon_width_mobile",
+          "label": "Icon width (mobile, px)",
+          "min": 40,
+          "max": 180,
+          "step": 2,
+          "default": 92
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Designed section",
+      "blocks": [
+        { "type": "feature", "settings": { "label": "WEAR" } },
+        { "type": "feature", "settings": { "label": "CARE" } },
+        { "type": "feature", "settings": { "label": "LONGEVITY" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<section
+  id="DesignedSection-{{ section.id }}"
+  class="designed-section"
+  style="
+    --ds-heading: {{ section.settings.heading_color }};
+    --ds-accent: {{ section.settings.accent_color }};
+    --ds-label: {{ section.settings.label_color }};
+    --ds-card: {{ section.settings.card_bg }};
+    --ds-radius: {{ section.settings.card_radius }}px;
+    --ds-maxw: {{ section.settings.max_width }}px;
+  "
+>
+  <div class="page-width">
+    <div class="ds-card">
+      <h2 class="ds-heading" aria-label="{{ section.settings.heading_base | escape }} {{ section.settings.heading_accent | escape }}">
+        <span class="ds-heading__base">{{ section.settings.heading_base }}</span>
+        <span class="ds-heading__accent">{{ section.settings.heading_accent }}</span>
+      </h2>
+
+      <div class="ds-items" role="list">
+        {% for block in section.blocks %}
+          <div
+            class="ds-item"
+            role="listitem"
+            style="--ds-icon-w-d: {{ block.settings.icon_width_desktop }}px; --ds-icon-w-m: {{ block.settings.icon_width_mobile }}px;"
+            {{ block.shopify_attributes }}
+          >
+            <div class="ds-icon" aria-hidden="true">
+              {% if block.settings.icon_desktop != blank %}
+                <picture class="ds-picture">
+                  {% if block.settings.icon_mobile != blank %}
+                    <source
+                      media="(max-width: 768px)"
+                      srcset="{{ block.settings.icon_mobile | image_url: width: 600 }}"
+                    >
+                  {% endif %}
+                  <img
+                    src="{{ block.settings.icon_desktop | image_url: width: 800 }}"
+                    alt=""
+                    loading="lazy"
+                    width="{{ block.settings.icon_width_desktop }}"
+                  >
+                </picture>
+              {% else %}
+                {% case forloop.index %}
+                  {% when 1 %}
+                    <svg class="ds-fallback" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M66 20V100" />
+                        <path d="M78 20V100" />
+                        <path d="M90 20V100" />
+                        <path d="M102 20V100" />
+                        <path d="M54 36L54 84" />
+                        <path d="M114 36L114 84" />
+                        <path d="M30 60H38" />
+                        <path d="M34 56V64" />
+                        <path d="M126 60H134" />
+                        <path d="M130 56V64" />
+                        <path d="M24 44H28" />
+                        <path d="M26 42V46" />
+                        <path d="M136 44H140" />
+                        <path d="M138 42V46" />
+                        <path d="M24 76H28" />
+                        <path d="M26 74V78" />
+                        <path d="M136 76H140" />
+                        <path d="M138 74V78" />
+                      </g>
+                    </svg>
+                  {% when 2 %}
+                    <svg class="ds-fallback" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M80 104C58 90 36 74 36 52C36 40 46 30 58 30C67 30 75 35 80 43C85 35 93 30 102 30C114 30 124 40 124 52C124 74 102 90 80 104Z"/>
+                        <path d="M66 62L76 72L98 50" />
+                      </g>
+                    </svg>
+                  {% else %}
+                    <svg class="ds-fallback" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M60 52C52 44 40 44 32 52C24 60 24 72 32 80C40 88 52 88 60 80" />
+                        <path d="M100 80C108 88 120 88 128 80C136 72 136 60 128 52C120 44 108 44 100 52" />
+                        <path d="M60 80C66 74 72 70 80 70C88 70 94 74 100 80" />
+                        <path d="M100 52C94 58 88 62 80 62C72 62 66 58 60 52" />
+                        <path d="M94 64C106 60 120 62 130 70" />
+                        <path d="M66 64C54 60 40 62 30 70" />
+                      </g>
+                    </svg>
+                {% endcase %}
+              {% endif %}
+            </div>
+
+            {% if block.settings.label != blank %}
+              <div class="ds-label">{{ block.settings.label }}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #DesignedSection-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  }
+
+  #DesignedSection-{{ section.id }} .ds-card {
+    max-width: var(--ds-maxw);
+    margin: 0 auto;
+    background: var(--ds-card);
+    border-radius: var(--ds-radius);
+    padding: 44px 56px 50px;
+    text-align: center;
+    {% if section.settings.enable_shadow %}
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    {% endif %}
+  }
+
+  #DesignedSection-{{ section.id }} .ds-heading {
+    margin: 0 0 34px;
+    font-family: 'Gotham-Light', sans-serif;
+    font-size: 38px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.1;
+    color: var(--ds-heading);
+  }
+
+  #DesignedSection-{{ section.id }} .ds-heading__accent {
+    color: var(--ds-accent);
+    margin-left: 10px;
+    font-weight: 600;
+  }
+
+  #DesignedSection-{{ section.id }} .ds-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+  }
+
+  #DesignedSection-{{ section.id }} .ds-item {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  #DesignedSection-{{ section.id }} .ds-icon {
+    color: var(--ds-accent);
+    margin: 0 auto 18px;
+    width: var(--ds-icon-w-d);
+  }
+
+  #DesignedSection-{{ section.id }} .ds-picture,
+  #DesignedSection-{{ section.id }} .ds-picture img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  #DesignedSection-{{ section.id }} .ds-fallback {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  #DesignedSection-{{ section.id }} .ds-label {
+    font-family: 'Gotham-Light', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: var(--ds-label);
+  }
+
+  @media (max-width: 768px) {
+    #DesignedSection-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    #DesignedSection-{{ section.id }} .ds-card {
+      padding: 36px 24px 42px;
+    }
+
+    #DesignedSection-{{ section.id }} .ds-heading {
+      font-size: 32px;
+      margin-bottom: 30px;
+      letter-spacing: 0.10em;
+    }
+
+    #DesignedSection-{{ section.id }} .ds-items {
+      flex-direction: column;
+      gap: 54px;
+      justify-content: flex-start;
+    }
+
+    #DesignedSection-{{ section.id }} .ds-icon {
+      width: var(--ds-icon-w-m);
+      margin-bottom: 18px;
+    }
+
+    #DesignedSection-{{ section.id }} .ds-label {
+      font-size: 18px;
+    }
+  }
+</style>
+
+
