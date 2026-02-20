@@ -347,8 +347,8 @@
         "pill_2_link": "",
         "offer_image_max_desktop": 380,
         "offer_image_max_mobile": 220,
-        "hero_height_desktop": 720,
-        "hero_height_mobile": 820,
+        "hero_height_desktop": 1050,
+        "hero_height_mobile": 840,
         "pill_scale": 90
       }
     }
