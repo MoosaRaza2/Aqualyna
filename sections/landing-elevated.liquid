@@ -161,6 +161,8 @@
     --le-pill-text: #0B0B0B;
     --le-pill2-bg: rgba(255, 255, 255, 0.65);
     --le-hero-heading: #FFFFFF;
+    --le-overlap: 120px; /* how much the offer image overlaps into the hero (desktop) */
+    --le-overlap-m: 70px; /* overlap amount (mobile) */
     --le-offer-img-max: {{ section.settings.offer_image_max_desktop }}px;
     --le-offer-img-max-m: {{ section.settings.offer_image_max_mobile }}px;
     --le-hero-h: {{ section.settings.hero_height_desktop }}px;
@@ -172,6 +174,9 @@
   #LandingElevated-{{ section.id }} .le-offer {
     background: var(--le-offer-bg);
     padding: 56px 0;
+    position: relative;
+    z-index: 1; /* hero should be able to sit above offer background in the overlap zone */
+    overflow: visible;
   }
 
   #LandingElevated-{{ section.id }} .le-offer__inner {
@@ -181,6 +186,7 @@
     gap: 64px;
     max-width: 1280px;
     margin: 0 auto;
+    overflow: visible;
   }
 
   #LandingElevated-{{ section.id }} .le-offer__media {
@@ -188,6 +194,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 3; /* keep image above hero */
   }
 
   #LandingElevated-{{ section.id }} .le-offer__media img {
@@ -196,6 +204,7 @@
     height: auto;
     max-width: var(--le-offer-img-max);
     object-fit: contain;
+    transform: translateY(var(--le-overlap)); /* overlap into hero (desktop) */
   }
 
   #LandingElevated-{{ section.id }} .le-offer__content {
@@ -256,6 +265,8 @@
     height: var(--le-hero-h);
     overflow: hidden;
     background: #000;
+    z-index: 2;
+    margin-top: calc(var(--le-overlap) * -1); /* pull hero up under offer image */
   }
 
   #LandingElevated-{{ section.id }} .le-hero__media,
@@ -277,19 +288,23 @@
   }
 
   #LandingElevated-{{ section.id }} .le-hero__overlay {
-    position: relative;
+    position: absolute;
+    inset: 0;
     z-index: 2;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-rows: 1fr auto;
+    pointer-events: none; /* allow media interactions if any; re-enable on buttons */
   }
 
   #LandingElevated-{{ section.id }} .le-hero__pills {
+    position: absolute;
+    top: 170px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 14px;
-    padding-top: 170px;
+    padding: 0 16px;
+    pointer-events: auto;
   }
 
   #LandingElevated-{{ section.id }} .le-pill {
@@ -326,10 +341,13 @@
   }
 
   #LandingElevated-{{ section.id }} .le-hero__headingWrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 44px;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    padding-bottom: 44px;
+    pointer-events: none;
   }
 
   #LandingElevated-{{ section.id }} .le-hero__heading {
@@ -371,6 +389,7 @@
     #LandingElevated-{{ section.id }} .le-offer__media img {
       width: min(var(--le-offer-img-max-m), 70vw);
       max-width: none;
+      transform: translateY(var(--le-overlap-m)); /* overlap into hero (mobile) */
     }
 
     #LandingElevated-{{ section.id }} .le-offer__heading {
@@ -390,13 +409,12 @@
 
     #LandingElevated-{{ section.id }} .le-hero {
       height: var(--le-hero-h-m);
+      margin-top: calc(var(--le-overlap-m) * -1);
     }
 
     #LandingElevated-{{ section.id }} .le-hero__pills {
+      top: 160px;
       gap: 10px;
-      padding-top: 160px;
-      padding-left: 16px;
-      padding-right: 16px;
     }
 
     #LandingElevated-{{ section.id }} .le-pill {
@@ -406,7 +424,7 @@
     }
 
     #LandingElevated-{{ section.id }} .le-hero__headingWrap {
-      padding-bottom: 38px;
+      bottom: 38px;
     }
 
     #LandingElevated-{{ section.id }} .le-hero__heading {
