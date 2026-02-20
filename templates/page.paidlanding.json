@@ -288,7 +288,7 @@
         "accent_color": "#74d0e6",
         "label_color": "#111111",
         "card_bg": "#eef3f4",
-        "card_radius": 34,
+        "card_radius": 25,
         "enable_shadow": true,
         "max_width": 1200,
         "padding_top_desktop": 40,
