@@ -296,6 +296,43 @@
         "padding_top_mobile": 24,
         "padding_bottom_mobile": 24
       }
+    },
+    "landingpage_loved_zADVUW": {
+      "type": "landingpage-loved",
+      "name": "Loved by stylists and clients",
+      "settings": {
+        "heading_accent": "LOVED",
+        "heading_rest": "BY STYLISTS & CLIENTS",
+        "image_1": "shopify://shop_images/Rectangle_35_2.png",
+        "image_1_mobile": "shopify://shop_images/Rectangle_35_2.png",
+        "image_2": "shopify://shop_images/Rectangle_36_3.png",
+        "image_2_mobile": "shopify://shop_images/Rectangle_36_3.png",
+        "image_3": "shopify://shop_images/Rectangle_35_2.png",
+        "image_3_mobile": "shopify://shop_images/Rectangle_35_2.png",
+        "max_width_desktop": 1280,
+        "min_height_desktop": 0,
+        "gap_desktop": 36,
+        "card_radius_desktop": 10,
+        "card_padding_desktop": 20,
+        "image_height_desktop": 260,
+        "max_width_mobile": 520,
+        "min_height_mobile": 0,
+        "gap_mobile": 18,
+        "card_radius_mobile": 18,
+        "card_padding_mobile": 14,
+        "image_height_mobile": 220,
+        "padding_top_desktop": 32,
+        "padding_bottom_desktop": 32,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "accent_color": "#74D0E6",
+        "heading_color": "#111111",
+        "heading_border_color": "#BFEAF3",
+        "heading_border_width": 0,
+        "card_bg": "#FFFFFF",
+        "section_bg": "#FFFFFF",
+        "image_fit": "contain"
+      }
     }
   },
   "order": [
@@ -307,6 +344,7 @@
     "featured_blog_x49bGL",
     "17243569257a74f693",
     "landingpage_frame_zdnbPL",
-    "designed_section_Kaw9jj"
+    "designed_section_Kaw9jj",
+    "landingpage_loved_zADVUW"
   ]
 }
