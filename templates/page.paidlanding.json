@@ -337,7 +337,20 @@
     "landing_elevated_Ad8Y7t": {
       "type": "landing-elevated",
       "name": "Landing - Elevated",
-      "settings": {}
+      "settings": {
+        "offer_image": "shopify://shop_images/MAT8862_1.png",
+        "hero_image": "shopify://shop_images/AQUA_Noc_42120-Edit-Edit_1_2.png",
+        "hero_image_mobile": "shopify://shop_images/AQUA_Noc_42120-Edit-Edit_1_2.png",
+        "hero_video_mp4": "",
+        "welcome_button_link": "",
+        "pill_1_link": "",
+        "pill_2_link": "",
+        "offer_image_max_desktop": 380,
+        "offer_image_max_mobile": 220,
+        "hero_height_desktop": 720,
+        "hero_height_mobile": 820,
+        "pill_scale": 90
+      }
     }
   },
   "order": [
