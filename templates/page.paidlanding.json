@@ -333,6 +333,11 @@
         "section_bg": "#ffffff",
         "image_fit": "contain"
       }
+    },
+    "landing_elevated_Ad8Y7t": {
+      "type": "landing-elevated",
+      "name": "Landing - Elevated",
+      "settings": {}
     }
   },
   "order": [
@@ -345,6 +350,7 @@
     "17243569257a74f693",
     "landingpage_frame_zdnbPL",
     "designed_section_Kaw9jj",
-    "landingpage_loved_zADVUW"
+    "landingpage_loved_zADVUW",
+    "landing_elevated_Ad8Y7t"
   ]
 }
