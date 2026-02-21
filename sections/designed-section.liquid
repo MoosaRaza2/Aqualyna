@@ -288,16 +288,16 @@
 
   @media (max-width: 768px) {
     #DesignedSection-{{ section.id }} .ds-card {
-      eight: 620px;
+      height: 620px;
     }
   }
 
   #DesignedSection-{{ section.id }} .ds-heading {
     margin: 0 0 34px;
-    font-family: 'Gotham-Light', sans-serif;
+    font-family: 'Gotham-Regular';
     font-size: 38px;
     font-weight: 500;
-    letter-spacing: 0.12em;
+    letter-spacing: 0px;
     text-transform: uppercase;
     line-height: 1.1;
     color: var(--ds-heading);
@@ -312,55 +312,49 @@
   #DesignedSection-{{ section.id }} .ds-items {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     gap: 60px;
   }
 
   #DesignedSection-{{ section.id }} .ds-item {
     flex: 1 1 0;
     min-width: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   #DesignedSection-{{ section.id }} .ds-icon {
     color: var(--ds-accent);
     margin: 0 auto 18px;
-    width: var(--ds-icon-w-d, 200px);
-    height: 160px;
+    width: 200px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    overflow: hidden;
-    width: 160px;
   }
 
-  #DesignedSection-{{ section.id }} .ds-picture,
-  #DesignedSection-{{ section.id }} .ds-picture img {
+  #DesignedSection-{{ section.id }} .ds-picture {
     display: block;
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
   }
 
+  #DesignedSection-{{ section.id }} .ds-picture img,
   #DesignedSection-{{ section.id }} .ds-fallback {
     display: block;
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
+    width: 160px;
     height: auto;
   }
+  @media (max-width: 768px) {
+    #DesignedSection-{{ section.id }} .ds-picture img,
+    #DesignedSection-{{ section.id }} .ds-fallback{
+      width: 120px;
+    }
+  }
+
 
   #DesignedSection-{{ section.id }} .ds-label {
-    font-family: 'Gotham-Light', sans-serif;
+    font-family: 'Gotham-Regular';
     font-size: 18px;
     font-weight: 500;
-    letter-spacing: 0.14em;
+    letter-spacing: 0;
     text-transform: uppercase;
     line-height: 1.2;
-    color: var(--ds-label);
+    color: black;
   }
 
   @media (max-width: 768px) {
@@ -374,15 +368,16 @@
     }
 
     #DesignedSection-{{ section.id }} .ds-heading {
-      font-size: 32px;
+      font-size: 24px;
       margin-bottom: 30px;
-      letter-spacing: 0.10em;
+      letter-spacing: 0px;
     }
 
     #DesignedSection-{{ section.id }} .ds-items {
       flex-direction: column;
       gap: 54px;
-      justify-content: flex-start;
+      justify-content: center;
+      align-items: center;
     }
 
     #DesignedSection-{{ section.id }} .ds-icon {
