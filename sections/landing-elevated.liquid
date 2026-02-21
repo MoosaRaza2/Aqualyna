@@ -76,14 +76,12 @@
   <div class="le-offer">
     <div class="page-width">
       <div class="le-offer__inner">
-        <div class="le-offer__media" aria-hidden="true">
+        <div class="le-offer__media" aria-hidden="true">  
           {% if section.settings.offer_image != blank %}
             <img
-              src="{{ section.settings.offer_image | image_url: width: 1200 }}"
+              src="{{ section.settings.offer_image | image_url: width: 2500 }}"
               alt=""
               loading="lazy"
-              width="800"
-              height="800"
             >
           {% else %}
             <div class="le-placeholder">
@@ -136,17 +134,17 @@
     </div>
 
     <div class="le-hero__overlay">
-      <div class="le-hero__pills" aria-label="Hero links">
-        <a class="le-pill le-pill--primary" href="{{ section.settings.pill_1_link }}">SHOP EXTENSIONS</a>
-        <a class="le-pill le-pill--secondary" href="{{ section.settings.pill_2_link }}">FIND YOUR MATCH</a>
-      </div>
-
-      <div class="le-hero__headingWrap">
+      <div class="le-hero__content">
         <h2 class="le-hero__heading">
           <span class="le-hero__headingBefore">READY TO</span>
           <span class="le-hero__headingAccent">EXPERIENCE</span>
           <span class="le-hero__headingAfter">AQUALYNA?</span>
         </h2>
+
+        <div class="le-hero__pills" aria-label="Hero links">
+          <a class="le-pill le-pill--primary" href="{{ section.settings.pill_1_link }}">SHOP EXTENSIONS</a>
+          <a class="le-pill le-pill--secondary" href="{{ section.settings.pill_2_link }}">FIND YOUR MATCH</a>
+        </div>
       </div>
     </div>
   </div>
@@ -162,22 +160,42 @@
     --le-pill-text: #0B0B0B;
     --le-pill2-bg: rgba(255, 255, 255, 0.65);
     --le-hero-heading: #FFFFFF;
-    --le-overlap: 120px; /* how much the offer image overlaps into the hero (desktop) */
-    --le-overlap-m: 70px; /* overlap amount (mobile) */
+    --le-overlap: 95px; /* how much the offer image overlaps into the hero (desktop) */
+    --le-overlap-m: 34px; /* overlap amount (mobile) */
+    --le-overlap-top: 190px; /* how much the offer image overlaps upward (desktop) */
+    --le-overlap-top-m: 22px; /* upward overlap (mobile) */
     --le-offer-img-max: {{ section.settings.offer_image_max_desktop }}px;
     --le-offer-img-max-m: {{ section.settings.offer_image_max_mobile }}px;
     --le-hero-h: {{ section.settings.hero_height_desktop }}px;
     --le-hero-h-m: {{ section.settings.hero_height_mobile }}px;
     --le-pill-scale: {{ section.settings.pill_scale | divided_by: 100.0 }};
+    overflow: visible;
   }
 
   /* -------- Offer -------- */
   #LandingElevated-{{ section.id }} .le-offer {
-    background: var(--le-offer-bg);
-    /* padding: 56px 0; */
+    background: transparent;
+    padding: 48px 0 calc(40px + var(--le-overlap));
     position: relative;
-    z-index: 1; /* hero should be able to sit above offer background in the overlap zone */
+    z-index: 2;
     overflow: visible;
+  }
+
+  /* background layer that stops before the overlap area */
+  #LandingElevated-{{ section.id }} .le-offer::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: var(--le-overlap);
+    background: var(--le-offer-bg);
+    z-index: 0;
+  }
+
+  #LandingElevated-{{ section.id }} .le-offer .page-width {
+    position: relative;
+    z-index: 1;
   }
 
   #LandingElevated-{{ section.id }} .le-offer__inner {
@@ -191,35 +209,45 @@
   }
 
   #LandingElevated-{{ section.id }} .le-offer__media {
-    flex: 0 0 380px;
+    /* flex: 0 0 380px; */
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     z-index: 3; /* keep image above hero */
+    margin-top: calc(var(--le-overlap-top) * -1);
   }
 
   #LandingElevated-{{ section.id }} .le-offer__media img {
     display: block;
     width: 100%;
-    height: auto;
-    max-width: var(--le-offer-img-max);
-    object-fit: contain;
-    /* transform: translateY(var(--le-overlap)); overlap into hero (desktop) */
+    height: 460px;
+    max-width: 100%;
+    object-fit: cover;
+    transform: translateY(var(--le-overlap));
   }
 
   #LandingElevated-{{ section.id }} .le-offer__content {
-    flex: 0 1 560px;
-    text-align: center;
+    flex: 0 1 700px;
+    text-align: right;
     padding: 0 10px;
+
+  }
+
+  @media (max-width: 768px) {
+    #LandingElevated-{{ section.id }} .le-offer__content {
+      flex: 0 1 100%;
+      text-align: center;
+      margin-top: 50px;
+    }
   }
 
   #LandingElevated-{{ section.id }} .le-offer__heading {
     margin: 0 0 10px;
-    font-family: 'Gotham-Light', sans-serif;
-    font-size: 26px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
+    font-family: 'Gotham-Regular';
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: 0px;
     text-transform: uppercase;
     line-height: 1.1;
     color: var(--le-text);
@@ -233,10 +261,10 @@
 
   #LandingElevated-{{ section.id }} .le-offer__subtext {
     margin: 0 0 16px;
-    font-family: 'Gotham-Light', sans-serif;
-    font-size: 12px;
+    font-family: 'Gotham-Regular';
+    font-size: 22px;
     font-weight: 400;
-    letter-spacing: 0.06em;
+    letter-spacing: 0px;
     color: var(--le-text);
     opacity: 0.9;
   }
@@ -248,10 +276,10 @@
     background: var(--le-accent);
     color: var(--le-pill-text);
     text-decoration: none;
-    font-family: 'Gotham-Light', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.10em;
+    font-family: 'Gotham-Regular';
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
     text-transform: uppercase;
     transition: opacity 0.2s ease;
     white-space: nowrap;
@@ -266,7 +294,7 @@
     height: var(--le-hero-h);
     overflow: hidden;
     background: #000;
-    z-index: 2;
+    z-index: 1;
     margin-top: calc(var(--le-overlap) * -1); /* pull hero up under offer image */
   }
 
@@ -295,39 +323,44 @@
     pointer-events: none; /* allow media interactions if any; re-enable on buttons */
   }
 
-  #LandingElevated-{{ section.id }} .le-hero__pills {
+  #LandingElevated-{{ section.id }} .le-hero__content {
     position: absolute;
-    top: 170px;
     left: 50%;
-    transform: translateX(-50%);
+    top: 56%;
+    transform: translate(-50%, -50%);
+    width: min(980px, calc(100% - 32px));
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  #LandingElevated-{{ section.id }} .le-hero__pills {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 14px;
-    padding: 0 16px;
     pointer-events: auto;
   }
 
   #LandingElevated-{{ section.id }} .le-pill {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: calc(8px * var(--le-pill-scale)) calc(14px * var(--le-pill-scale));
-    border-radius: 999px;
-    text-decoration: none;
-    font-family: 'Gotham-Light', sans-serif;
-    font-size: calc(9px * var(--le-pill-scale));
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    color: #000;
+    font-family: 'Gotham-Regular';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 325;
+    line-height: normal;
     text-transform: uppercase;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    white-space: nowrap;
+    display: inline-flex;
+    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    border-radius: 50px;
+    background: #75D1E0;
   }
 
-  #LandingElevated-{{ section.id }} .le-pill:hover {
-    opacity: 0.92;
-    transform: translateY(-1px);
-  }
 
   #LandingElevated-{{ section.id }} .le-pill--primary {
     background: var(--le-accent);
@@ -335,34 +368,22 @@
   }
 
   #LandingElevated-{{ section.id }} .le-pill--secondary {
-    background: var(--le-pill2-bg);
-    color: #0b0b0b;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(6px);
-  }
-
-  #LandingElevated-{{ section.id }} .le-hero__headingWrap {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 44px;
-    display: flex;
-    justify-content: center;
-    pointer-events: none;
+    background: transparent;
+    color: #75D1E0;
+    border: 1px solid #75D1E0;
+    /* backdrop-filter: blur(6px); */
   }
 
   #LandingElevated-{{ section.id }} .le-hero__heading {
-    margin: 0;
-    font-family: 'Gotham-Light', sans-serif;
-    font-size: 28px;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    line-height: 1.1;
-    color: var(--le-hero-heading);
-    text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+    color: #FFF;
     text-align: center;
-    padding: 0 16px;
+    font-family: 'Gotham-Regular';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 58px; /* 145% */
+    text-transform: uppercase;
+    margin-bottom: 20px;
   }
 
   #LandingElevated-{{ section.id }} .le-hero__headingAccent {
@@ -375,7 +396,12 @@
   @media (max-width: 768px) {
     #LandingElevated-{{ section.id }} .le-offer {
       background: #FFFFFF;
-      padding: 22px 0 14px;
+      padding: 22px 0 calc(14px + var(--le-overlap-m));
+    }
+
+    #LandingElevated-{{ section.id }} .le-offer::before {
+      bottom: var(--le-overlap-m);
+      background: #FFFFFF;
     }
 
     #LandingElevated-{{ section.id }} .le-offer__inner {
@@ -385,27 +411,39 @@
 
     #LandingElevated-{{ section.id }} .le-offer__media {
       flex: 0 0 auto;
+      margin-top: calc(var(--le-overlap-top-m) * -1);
     }
 
     #LandingElevated-{{ section.id }} .le-offer__media img {
-      width: min(var(--le-offer-img-max-m), 70vw);
+      width: 100%;
+      padding:20px;
       max-width: none;
       transform: translateY(var(--le-overlap-m)); /* overlap into hero (mobile) */
     }
 
     #LandingElevated-{{ section.id }} .le-offer__heading {
-      font-size: 18px;
-      margin-bottom: 8px;
+      font-size: 24px;
+      margin-bottom: 20px;
+      width: 90%;
+      margin: 0 auto;
+      padding-bottom: 25px;
     }
 
     #LandingElevated-{{ section.id }} .le-offer__subtext {
-      font-size: 11px;
+      font-size: 15px;
       margin-bottom: 14px;
+      width: 60%;
+      margin: 0 auto;
+      padding-bottom: 25px;
+  
     }
 
     #LandingElevated-{{ section.id }} .le-btn {
-      font-size: 10px;
+      font-size: 14px;
       padding: 12px 18px;
+      width: 100%;
+      font-family: 'Gotham-Regular';
+
     }
 
     #LandingElevated-{{ section.id }} .le-hero {
@@ -413,8 +451,12 @@
       margin-top: calc(var(--le-overlap-m) * -1);
     }
 
+    #LandingElevated-{{ section.id }} .le-hero__content {
+      top: 70%;
+      gap: 12px;
+    }
+
     #LandingElevated-{{ section.id }} .le-hero__pills {
-      top: 160px;
       gap: 10px;
     }
 
@@ -422,10 +464,6 @@
       font-size: calc(8px * var(--le-pill-scale));
       padding: calc(8px * var(--le-pill-scale)) calc(12px * var(--le-pill-scale));
       font-weight: 800;
-    }
-
-    #LandingElevated-{{ section.id }} .le-hero__headingWrap {
-      bottom: 38px;
     }
 
     #LandingElevated-{{ section.id }} .le-hero__heading {
