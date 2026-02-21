@@ -1,0 +1,928 @@
+{% comment %}
+  Section: Perfect Extensions Explainer
+  Horizontal accordion on desktop, vertical stack on mobile
+  Panels: Systems | Length & Weight
+{% endcomment %}
+
+<section class="pe-section" id="perfect-extensions-{{ section.id }}">
+  <div class="pe-wrapper">
+
+    {%- comment -%} Left static heading {%- endcomment -%}
+    <div class="pe-heading">
+      <h2 class="pe-heading__title">
+        {{ section.settings.heading_line1 | default: 'YOUR PERFECT' }}<br>
+        {{ section.settings.heading_line2 | default: 'EXTENSIONS,' }}<br>
+        <span class="pe-heading__accent">{{ section.settings.heading_accent | default: 'EXPLAINED' }}</span>
+      </h2>
+    </div>
+
+    {%- comment -%} Accordion panels {%- endcomment -%}
+    <div class="pe-accordion" role="tablist">
+
+      {%- comment -%} Panel 1: Systems {%- endcomment -%}
+      <div class="pe-panel pe-panel--systems is-active" data-panel="systems" role="tab" aria-selected="true" aria-expanded="true">
+        <button class="pe-panel__trigger" aria-label="Open Systems panel">
+          <span class="pe-panel__arrow pe-panel__arrow--right">&#9658;</span>
+        </button>
+
+        <div class="pe-panel__content">
+          {%- if section.settings.systems_image != blank -%}
+            <img
+              src="{{ section.settings.systems_image | image_url: width: 900 }}"
+              alt="{{ section.settings.systems_image.alt | escape }}"
+              class="pe-panel__bg-image"
+              loading="lazy"
+              width="900"
+              height="600"
+            >
+          {%- else -%}
+            <div class="pe-panel__bg-placeholder pe-panel__bg-placeholder--dark"></div>
+          {%- endif -%}
+
+          <div class="pe-panel__overlay"></div>
+
+          <div class="pe-panel__body">
+            <h3 class="pe-panel__title">{{ section.settings.systems_title | default: 'SYSTEMS' }}</h3>
+            <ul class="pe-systems-list">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'system_item' -%}
+                  <li class="pe-systems-list__item" {{ block.shopify_attributes }}>
+                    {{ block.settings.name }}
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+              {%- if section.blocks.size == 0 -%}
+                <li class="pe-systems-list__item">Ultra Narrow Clip In</li>
+                <li class="pe-systems-list__item">Aura</li>
+                <li class="pe-systems-list__item">Ponytail</li>
+              {%- endif -%}
+            </ul>
+          </div>
+        </div>
+
+        <div class="pe-panel__tab-label">
+          <span>{{ section.settings.systems_title | default: 'SYSTEMS' }}</span>
+        </div>
+      </div>
+
+      {%- comment -%} Panel 2: Length & Weight {%- endcomment -%}
+      <div class="pe-panel pe-panel--lw" data-panel="lw" role="tab" aria-selected="false" aria-expanded="false">
+        <button class="pe-panel__trigger" aria-label="Open Length & Weight panel">
+          <span class="pe-panel__arrow pe-panel__arrow--left">&#9668;</span>
+        </button>
+
+        <div class="pe-panel__content">
+          {%- if section.settings.lw_image != blank -%}
+            <img
+              src="{{ section.settings.lw_image | image_url: width: 900 }}"
+              alt="{{ section.settings.lw_image.alt | escape }}"
+              class="pe-panel__bg-image"
+              loading="lazy"
+              width="900"
+              height="600"
+            >
+          {%- else -%}
+            <div class="pe-panel__bg-placeholder pe-panel__bg-placeholder--hair"></div>
+          {%- endif -%}
+
+          <div class="pe-panel__overlay pe-panel__overlay--dark"></div>
+
+          <div class="pe-panel__body pe-panel__body--lw">
+            <h3 class="pe-panel__title pe-panel__title--lw">{{ section.settings.lw_title | default: 'LENGTH & WEIGHT' }}</h3>
+
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'lw_group' -%}
+                <div class="pe-lw-group" {{ block.shopify_attributes }}>
+                  <h4 class="pe-lw-group__name">{{ block.settings.group_name }}</h4>
+                  <div class="pe-lw-rows">
+                    {%- if block.settings.row1_size != blank -%}
+                      <div class="pe-lw-row">
+                        <div class="pe-lw-badge">{{ block.settings.row1_size }}</div>
+                        <span class="pe-lw-weight">{{ block.settings.row1_weight }}</span>
+                        {%- if block.settings.row1b_size != blank -%}
+                          <div class="pe-lw-badge">{{ block.settings.row1b_size }}</div>
+                          <span class="pe-lw-weight">{{ block.settings.row1b_weight }}</span>
+                        {%- endif -%}
+                      </div>
+                    {%- endif -%}
+                    {%- if block.settings.row2_size != blank -%}
+                      <div class="pe-lw-row">
+                        <div class="pe-lw-badge">{{ block.settings.row2_size }}</div>
+                        <span class="pe-lw-weight">{{ block.settings.row2_weight }}</span>
+                        {%- if block.settings.row2b_size != blank -%}
+                          <div class="pe-lw-badge">{{ block.settings.row2b_size }}</div>
+                          <span class="pe-lw-weight">{{ block.settings.row2b_weight }}</span>
+                        {%- endif -%}
+                      </div>
+                    {%- endif -%}
+                    {%- if block.settings.row3_size != blank -%}
+                      <div class="pe-lw-row">
+                        <div class="pe-lw-badge">{{ block.settings.row3_size }}</div>
+                        <span class="pe-lw-weight">{{ block.settings.row3_weight }}</span>
+                        {%- if block.settings.row3b_size != blank -%}
+                          <div class="pe-lw-badge">{{ block.settings.row3b_size }}</div>
+                          <span class="pe-lw-weight">{{ block.settings.row3b_weight }}</span>
+                        {%- endif -%}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+
+            {%- comment -%} Fallback static data if no blocks {%- endcomment -%}
+            {%- assign has_lw_blocks = false -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'lw_group' -%}{%- assign has_lw_blocks = true -%}{%- endif -%}
+            {%- endfor -%}
+            {%- unless has_lw_blocks -%}
+              <div class="pe-lw-group">
+                <h4 class="pe-lw-group__name">Ultra Narrow Clip In (7 pieces)</h4>
+                <div class="pe-lw-rows">
+                  <div class="pe-lw-row">
+                    <div class="pe-lw-badge">18"</div><span class="pe-lw-weight">140 grams</span>
+                    <div class="pe-lw-badge">24"</div><span class="pe-lw-weight">240 grams</span>
+                  </div>
+                  <div class="pe-lw-row">
+                    <div class="pe-lw-badge">20"</div><span class="pe-lw-weight">180 grams</span>
+                    <div class="pe-lw-badge">26"</div><span class="pe-lw-weight">320 grams</span>
+                  </div>
+                  <div class="pe-lw-row">
+                    <div class="pe-lw-badge">22"</div><span class="pe-lw-weight">220 grams</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pe-lw-group">
+                <h4 class="pe-lw-group__name">Aura (1 piece)</h4>
+                <div class="pe-lw-rows">
+                  <div class="pe-lw-row">
+                    <div class="pe-lw-badge">16"</div><span class="pe-lw-weight">140 grams</span>
+                    <div class="pe-lw-badge">24"</div><span class="pe-lw-weight">180 grams</span>
+                  </div>
+                  <div class="pe-lw-row">
+                    <div class="pe-lw-badge">20"</div><span class="pe-lw-weight">160 grams</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pe-lw-group">
+                <h4 class="pe-lw-group__name">Ponytail (1 piece)</h4>
+                <div class="pe-lw-rows">
+                  <div class="pe-lw-row">
+                    <div class="pe-lw-badge">16"</div><span class="pe-lw-weight">100 grams</span>
+                    <div class="pe-lw-badge">24"</div><span class="pe-lw-weight">140 grams</span>
+                  </div>
+                  <div class="pe-lw-row">
+                    <div class="pe-lw-badge">20"</div><span class="pe-lw-weight">120 grams</span>
+                  </div>
+                </div>
+              </div>
+            {%- endunless -%}
+          </div>
+        </div>
+
+        <div class="pe-panel__tab-label">
+          <span>{{ section.settings.lw_title | default: 'LENGTH & WEIGHT' }}</span>
+        </div>
+      </div>
+
+    </div><!-- /.pe-accordion -->
+  </div><!-- /.pe-wrapper -->
+</section>
+
+<style>
+  /* ============================================================
+     PERFECT EXTENSIONS — Section Styles
+  ============================================================ */
+  #perfect-extensions-{{ section.id }} {
+    --teal: #6ecfcf;
+    --teal-light: #d6f0f0;
+    --teal-dark: #4ab8b8;
+    --dark: #1a1a1a;
+    --text-dark: #1c2b35;
+    --font-heading: 'Helvetica Neue', Arial, sans-serif;
+    --panel-collapsed: 120px;
+    --panel-expanded: 580px;
+    --section-height: 480px;
+    font-family: var(--font-heading);
+  }
+
+  .pe-section {
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    padding: 60px 40px;
+    box-sizing: border-box;
+  }
+
+  .pe-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* ---- Heading ---- */
+  .pe-heading {
+    flex: 0 0 auto;
+    width: 350px;
+  }
+
+  .pe-heading__title {
+    color: #000;
+    font-family: 'Gotham-Regular';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 58px; /* 145% */
+    text-transform: uppercase;
+  }
+
+  .pe-heading__accent {
+    color: var(--teal);
+    font-weight: 700;
+  }
+
+  /* ---- Accordion ---- */
+  .pe-accordion {
+    display: flex;
+    flex: 1;
+    height: var(--section-height);
+    gap: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0;
+  }
+
+  /*
+    Center the ACTIVE panel in the available accordion area.
+    We offset the flex group by exactly one collapsed tab width,
+    depending on which side the collapsed tab is sitting on.
+
+    This offset is only applied on wider layouts to avoid clipping
+    on smaller desktops where the accordion width can get tight.
+  */
+  @media (min-width: 1024px) {
+    .pe-accordion.pe-accordion--systems-active {
+      padding-left: var(--panel-collapsed);
+      padding-right: 0;
+    }
+
+    .pe-accordion.pe-accordion--lw-active {
+      padding-right: var(--panel-collapsed);
+      padding-left: 0;
+    }
+  }
+
+  /* ---- Panel ---- */
+  .pe-panel {
+    position: relative;
+    flex: 0 0 var(--panel-collapsed);
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    transition: flex 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+    border-radius: 16px;
+  }
+
+  .pe-panel.is-active {
+    flex: 0 0 var(--panel-expanded);
+    cursor: default;
+  }
+
+  /* --- collapsed tab label (rotated) --- */
+  .pe-panel__tab-label {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: var(--panel-collapsed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+  }
+
+  .pe-panel.is-active .pe-panel__tab-label {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .pe-panel__tab-label span {
+    display: block;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  /* --- trigger button (arrow) --- */
+  .pe-panel__trigger {
+    position: absolute;
+    top: 16px;
+    z-index: 10;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    line-height: 1;
+    display: none;
+  }
+
+  .pe-panel.is-active .pe-panel__trigger {
+    display: block;
+  }
+
+  .pe-panel--systems.is-active .pe-panel__trigger {
+    right: 16px;
+  }
+
+  .pe-panel--lw.is-active .pe-panel__trigger {
+    right: 16px;
+  }
+
+  .pe-panel__arrow {
+    color: var(--teal);
+    font-size: 1.2rem;
+    display: block;
+  }
+
+  /* --- Background image/placeholder --- */
+  .pe-panel__bg-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .pe-panel__bg-placeholder {
+    position: absolute;
+    inset: 0;
+  }
+
+  .pe-panel__bg-placeholder--dark {
+    background: linear-gradient(135deg, #2c3e35 0%, #1a2a22 100%);
+  }
+
+  .pe-panel__bg-placeholder--hair {
+    background: linear-gradient(135deg, #3d3028 0%, #1a1410 60%, #2a2018 100%);
+  }
+
+  /* --- Overlay --- */
+  .pe-panel__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.15) 100%);
+    z-index: 1;
+  }
+
+  .pe-panel__overlay--dark {
+    background: linear-gradient(to bottom right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%);
+  }
+
+  /* --- Panel Content (full expanded area) --- */
+  .pe-panel__content {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  /* --- Panel Body (text layer) --- */
+  .pe-panel__body {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    padding: 32px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    opacity: 0;
+    transition: opacity 0.35s ease 0.15s;
+  }
+
+  .pe-panel.is-active .pe-panel__body {
+    opacity: 1;
+  }
+
+  /* ---- Systems Panel ---- */
+  .pe-panel--systems {
+    background: var(--teal-light);
+  }
+
+  /* Systems: collapsed shows teal bg + label */
+  .pe-panel__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 16px 0;
+  }
+
+  .pe-systems-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pe-systems-list__item {
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.9;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---- Length & Weight Panel ---- */
+  .pe-panel--lw {
+    background: #2a1f1a;
+    margin-left: 6px;
+  }
+
+  .pe-panel__title--lw {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 14px 0;
+  }
+
+  .pe-panel__body--lw {
+    justify-content: flex-start;
+    padding-top: 28px;
+    overflow-y: auto;
+    gap: 0;
+  }
+
+  .pe-lw-group {
+    margin-bottom: 18px;
+  }
+
+  .pe-lw-group__name {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    margin: 0 0 8px 0;
+    letter-spacing: 0.03em;
+  }
+
+  .pe-lw-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .pe-lw-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  .pe-lw-badge {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+  }
+
+  .pe-lw-weight {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+    margin-right: 16px;
+    white-space: nowrap;
+  }
+
+  /* ============================================================
+     MOBILE — vertical stack
+  ============================================================ */
+  @media (max-width: 768px) {
+    .pe-section {
+      padding: 40px 20px;
+    }
+
+    .pe-wrapper {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .pe-heading {
+      width: 100%;
+      padding-right: 0;
+      text-align: left;
+    }
+
+    .pe-accordion {
+      flex-direction: column;
+      height: auto;
+      width: 100%;
+      gap: 12px;
+      border-radius: 12px;
+      padding: 0;
+      justify-content: flex-start;
+    }
+
+    .pe-panel {
+      flex: none !important;
+      width: 100%;
+      height: 72px;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: height 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .pe-panel.is-active {
+      height: 520px;
+    }
+
+    .pe-panel__tab-label {
+      bottom: auto;
+      top: 0;
+      width: 100%;
+      height: 72px;
+      justify-content: flex-start;
+      padding-left: 20px;
+    }
+
+    .pe-panel.is-active .pe-panel__tab-label {
+      opacity: 0;
+    }
+
+    .pe-panel__tab-label span {
+      writing-mode: horizontal-tb;
+      transform: none;
+      font-size: 0.8rem;
+    }
+
+    .pe-panel__trigger {
+      top: 16px;
+      right: 16px;
+    }
+
+    .pe-panel--lw {
+      margin-left: 0;
+    }
+
+    .pe-panel__body {
+      padding: 20px;
+    }
+
+    .pe-panel__body--lw {
+      padding-top: 72px;
+    }
+
+    .pe-lw-badge {
+      width: 32px;
+      height: 32px;
+      font-size: 0.58rem;
+    }
+  }
+
+  /* Collapsed Systems panel shows teal bg */
+  .pe-panel--systems:not(.is-active) {
+    background: var(--teal-light);
+  }
+
+  .pe-panel--systems:not(.is-active) .pe-panel__tab-label span {
+    color: var(--teal-dark);
+  }
+
+  /* Hover hint on collapsed panels */
+  .pe-panel:not(.is-active):hover {
+    flex: 0 0 140px;
+  }
+
+  @media (max-width: 768px) {
+    .pe-panel:not(.is-active):hover {
+      height: 72px;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    var sectionId = 'perfect-extensions-{{ section.id }}';
+    var section = document.getElementById(sectionId);
+    if (!section) return;
+
+    var accordion = section.querySelector('.pe-accordion');
+    var panels = section.querySelectorAll('.pe-panel');
+
+    function syncAccordionOffset(activePanel) {
+      if (!accordion || !activePanel) return;
+      accordion.classList.remove('pe-accordion--systems-active', 'pe-accordion--lw-active');
+      if (activePanel.classList.contains('pe-panel--systems')) {
+        accordion.classList.add('pe-accordion--systems-active');
+      } else if (activePanel.classList.contains('pe-panel--lw')) {
+        accordion.classList.add('pe-accordion--lw-active');
+      }
+    }
+
+    function openPanel(targetPanel) {
+      panels.forEach(function(p) {
+        p.classList.remove('is-active');
+        p.setAttribute('aria-selected', 'false');
+        p.setAttribute('aria-expanded', 'false');
+      });
+      targetPanel.classList.add('is-active');
+      targetPanel.setAttribute('aria-selected', 'true');
+      targetPanel.setAttribute('aria-expanded', 'true');
+      syncAccordionOffset(targetPanel);
+    }
+
+    // Ensure initial centering matches the initial active panel
+    var initialActive = section.querySelector('.pe-panel.is-active');
+    if (initialActive) syncAccordionOffset(initialActive);
+
+    panels.forEach(function(panel) {
+      // Click on collapsed panel to open
+      panel.addEventListener('click', function(e) {
+        if (!panel.classList.contains('is-active')) {
+          openPanel(panel);
+        }
+      });
+
+      // Trigger button: close current, open the other
+      var trigger = panel.querySelector('.pe-panel__trigger');
+      if (trigger) {
+        trigger.addEventListener('click', function(e) {
+          e.stopPropagation();
+          // Find the non-active panel
+          panels.forEach(function(p) {
+            if (p !== panel) {
+              openPanel(p);
+            }
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Perfect Extensions",
+  "tag": "section",
+  "class": "section-perfect-extensions",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_line1",
+      "label": "Heading Line 1",
+      "default": "YOUR PERFECT"
+    },
+    {
+      "type": "text",
+      "id": "heading_line2",
+      "label": "Heading Line 2",
+      "default": "EXTENSIONS,"
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Heading Accent Word",
+      "default": "EXPLAINED"
+    },
+    {
+      "type": "header",
+      "content": "Systems Panel"
+    },
+    {
+      "type": "text",
+      "id": "systems_title",
+      "label": "Systems Panel Title",
+      "default": "SYSTEMS"
+    },
+    {
+      "type": "image_picker",
+      "id": "systems_image",
+      "label": "Systems Background Image"
+    },
+    {
+      "type": "header",
+      "content": "Length & Weight Panel"
+    },
+    {
+      "type": "text",
+      "id": "lw_title",
+      "label": "Length & Weight Panel Title",
+      "default": "LENGTH & WEIGHT"
+    },
+    {
+      "type": "image_picker",
+      "id": "lw_image",
+      "label": "Length & Weight Background Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "system_item",
+      "name": "System Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "System Name",
+          "default": "Ultra Narrow Clip In"
+        }
+      ]
+    },
+    {
+      "type": "lw_group",
+      "name": "Length & Weight Group",
+      "settings": [
+        {
+          "type": "text",
+          "id": "group_name",
+          "label": "Group Name",
+          "default": "Ultra Narrow Clip In (7 pieces)"
+        },
+        {
+          "type": "header",
+          "content": "Row 1"
+        },
+        {
+          "type": "text",
+          "id": "row1_size",
+          "label": "Size (left)",
+          "default": "18\""
+        },
+        {
+          "type": "text",
+          "id": "row1_weight",
+          "label": "Weight (left)",
+          "default": "140 grams"
+        },
+        {
+          "type": "text",
+          "id": "row1b_size",
+          "label": "Size (right)",
+          "default": "24\""
+        },
+        {
+          "type": "text",
+          "id": "row1b_weight",
+          "label": "Weight (right)",
+          "default": "240 grams"
+        },
+        {
+          "type": "header",
+          "content": "Row 2"
+        },
+        {
+          "type": "text",
+          "id": "row2_size",
+          "label": "Size (left)",
+          "default": "20\""
+        },
+        {
+          "type": "text",
+          "id": "row2_weight",
+          "label": "Weight (left)",
+          "default": "180 grams"
+        },
+        {
+          "type": "text",
+          "id": "row2b_size",
+          "label": "Size (right)",
+          "default": "26\""
+        },
+        {
+          "type": "text",
+          "id": "row2b_weight",
+          "label": "Weight (right)",
+          "default": "320 grams"
+        },
+        {
+          "type": "header",
+          "content": "Row 3"
+        },
+        {
+          "type": "text",
+          "id": "row3_size",
+          "label": "Size (left)",
+          "default": "22\""
+        },
+        {
+          "type": "text",
+          "id": "row3_weight",
+          "label": "Weight (left)",
+          "default": "220 grams"
+        },
+        {
+          "type": "text",
+          "id": "row3b_size",
+          "label": "Size (right)"
+        },
+        {
+          "type": "text",
+          "id": "row3b_weight",
+          "label": "Weight (right)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Perfect Extensions",
+      "blocks": [
+        {
+          "type": "system_item",
+          "settings": {
+            "name": "Ultra Narrow Clip In"
+          }
+        },
+        {
+          "type": "system_item",
+          "settings": {
+            "name": "Aura"
+          }
+        },
+        {
+          "type": "system_item",
+          "settings": {
+            "name": "Ponytail"
+          }
+        },
+        {
+          "type": "lw_group",
+          "settings": {
+            "group_name": "Ultra Narrow Clip In (7 pieces)",
+            "row1_size": "18\"",
+            "row1_weight": "140 grams",
+            "row1b_size": "24\"",
+            "row1b_weight": "240 grams",
+            "row2_size": "20\"",
+            "row2_weight": "180 grams",
+            "row2b_size": "26\"",
+            "row2b_weight": "320 grams",
+            "row3_size": "22\"",
+            "row3_weight": "220 grams",
+            "row3b_size": "",
+            "row3b_weight": ""
+          }
+        },
+        {
+          "type": "lw_group",
+          "settings": {
+            "group_name": "Aura (1 piece)",
+            "row1_size": "16\"",
+            "row1_weight": "140 grams",
+            "row1b_size": "24\"",
+            "row1b_weight": "180 grams",
+            "row2_size": "20\"",
+            "row2_weight": "160 grams",
+            "row2b_size": "",
+            "row2b_weight": "",
+            "row3_size": "",
+            "row3_weight": "",
+            "row3b_size": "",
+            "row3b_weight": ""
+          }
+        },
+        {
+          "type": "lw_group",
+          "settings": {
+            "group_name": "Ponytail (1 piece)",
+            "row1_size": "16\"",
+            "row1_weight": "100 grams",
+            "row1b_size": "24\"",
+            "row1b_weight": "140 grams",
+            "row2_size": "20\"",
+            "row2_weight": "120 grams",
+            "row2b_size": "",
+            "row2b_weight": "",
+            "row3_size": "",
+            "row3_weight": "",
+            "row3b_size": "",
+            "row3b_weight": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
