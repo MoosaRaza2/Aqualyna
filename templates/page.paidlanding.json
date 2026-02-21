@@ -23,6 +23,7 @@
     },
     "main": {
       "type": "page",
+      "disabled": true,
       "settings": {
         "show-title": true,
         "background-color": "none",
