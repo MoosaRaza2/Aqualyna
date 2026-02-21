@@ -70,7 +70,7 @@
     {% endschema %}
     
     <section id="ShadeSelector-{{ section.id }}" class="shade-selector" data-shade-selector>
-      <div class="page-width">
+      <div class="page-width" >
     
         <div class="shade-header">
           <div class="shade-title rte" role="heading" aria-level="2">
@@ -139,6 +139,10 @@
     </section>
     
     <style>
+      .page-width{
+        max-width: 1400px;
+        margin: 0 auto;
+      }
         .shade-title p strong {
             color: #63c3c7;
         }
