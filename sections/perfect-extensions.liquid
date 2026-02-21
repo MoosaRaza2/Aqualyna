@@ -22,7 +22,16 @@
       {%- comment -%} Panel 1: Systems {%- endcomment -%}
       <div class="pe-panel pe-panel--systems is-active" data-panel="systems" role="tab" aria-selected="true" aria-expanded="true">
         <button class="pe-panel__trigger" aria-label="Open Systems panel">
-          <span class="pe-panel__arrow pe-panel__arrow--right">&#9658;</span>
+          <span class="pe-trigger-icon pe-trigger-icon--closed" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="22" viewBox="0 0 19 22" fill="none">
+              <path d="M18.75 10.8253L8.87767e-07 21.6506L1.83415e-06 -8.19588e-07L18.75 10.8253Z" fill="#75D1E0"/>
+            </svg>
+          </span>
+          <span class="pe-trigger-icon pe-trigger-icon--open" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="22" viewBox="0 0 19 22" fill="none">
+              <path d="M1.44118e-07 10.8253L18.1282 -1.68376e-06L18.1282 21.6506L1.44118e-07 10.8253Z" fill="#75D1E0"/>
+            </svg>
+          </span>
         </button>
 
         <div class="pe-panel__content">
@@ -68,7 +77,16 @@
       {%- comment -%} Panel 2: Length & Weight {%- endcomment -%}
       <div class="pe-panel pe-panel--lw" data-panel="lw" role="tab" aria-selected="false" aria-expanded="false">
         <button class="pe-panel__trigger" aria-label="Open Length & Weight panel">
-          <span class="pe-panel__arrow pe-panel__arrow--left">&#9668;</span>
+          <span class="pe-trigger-icon pe-trigger-icon--closed" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="22" viewBox="0 0 19 22" fill="none">
+              <path d="M18.75 10.8253L8.87767e-07 21.6506L1.83415e-06 -8.19588e-07L18.75 10.8253Z" fill="#75D1E0"/>
+            </svg>
+          </span>
+          <span class="pe-trigger-icon pe-trigger-icon--open" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="22" viewBox="0 0 19 22" fill="none">
+              <path d="M1.44118e-07 10.8253L18.1282 -1.68376e-06L18.1282 21.6506L1.44118e-07 10.8253Z" fill="#75D1E0"/>
+            </svg>
+          </span>
         </button>
 
         <div class="pe-panel__content">
@@ -195,14 +213,15 @@
   ============================================================ */
   #perfect-extensions-{{ section.id }} {
     --teal: #6ecfcf;
-    --teal-light: #d6f0f0;
+    --teal-light: #DCF8F9;
     --teal-dark: #4ab8b8;
     --dark: #1a1a1a;
     --text-dark: #1c2b35;
     --font-heading: 'Helvetica Neue', Arial, sans-serif;
-    --panel-collapsed: 120px;
+    --panel-collapsed: 164px;
     --panel-expanded: 580px;
     --section-height: 480px;
+    --pe-radius: 25px;
     font-family: var(--font-heading);
   }
 
@@ -238,6 +257,14 @@
     text-transform: uppercase;
   }
 
+  @media (max-width: 768px) {
+    .pe-heading__title {
+     text-align: center;
+     font-size: 24px;
+     line-height: 28px;
+    }
+  }
+
   .pe-heading__accent {
     color: var(--teal);
     font-weight: 700;
@@ -247,10 +274,10 @@
   .pe-accordion {
     display: flex;
     flex: 1;
-    height: var(--section-height);
+    height: 510px;
     gap: 0;
     overflow: hidden;
-    border-radius: 16px;
+    border-radius: var(--pe-radius);
     justify-content: center;
     box-sizing: border-box;
     padding: 0;
@@ -266,12 +293,12 @@
   */
   @media (min-width: 1024px) {
     .pe-accordion.pe-accordion--systems-active {
-      padding-left: var(--panel-collapsed);
+      /* padding-left: var(--panel-collapsed); */
       padding-right: 0;
     }
 
     .pe-accordion.pe-accordion--lw-active {
-      padding-right: var(--panel-collapsed);
+      /* padding-right: var(--panel-collapsed); */
       padding-left: 0;
     }
   }
@@ -284,7 +311,8 @@
     overflow: hidden;
     cursor: pointer;
     transition: flex 0.55s cubic-bezier(0.77, 0, 0.175, 1);
-    border-radius: 16px;
+    border-radius: var(--pe-radius);
+    background: var(--teal-light);
   }
 
   .pe-panel.is-active {
@@ -292,18 +320,41 @@
     cursor: default;
   }
 
+  /* Collapsed panels: solid background (no image) */
+  .pe-panel__content {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  .pe-panel:not(.is-active) .pe-panel__content {
+    opacity: 0;
+  }
+
+  .pe-panel:not(.is-active) .pe-panel__tab-label span {
+    color: #40696F;
+  }
+
   /* --- collapsed tab label (rotated) --- */
   .pe-panel__tab-label {
     position: absolute;
-    bottom: 30px;
-    left: 0;
-    width: var(--panel-collapsed);
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(var(--panel-collapsed) - 16px);
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none;
     transition: opacity 0.3s ease;
     z-index: 5;
+    text-align: center;
+    color: #40696F;
+    font-family: 'Gotham-Medium';
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 34px; /* 136% */
+    text-transform: uppercase;
   }
 
   .pe-panel.is-active .pe-panel__tab-label {
@@ -313,44 +364,49 @@
 
   .pe-panel__tab-label span {
     display: block;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 25px;
+    font-weight: 400;
+    /* letter-spacing: 0.15em; */
     text-transform: uppercase;
     color: var(--teal);
+    line-height: 1.15;
+    white-space: normal;
   }
 
   /* --- trigger button (arrow) --- */
   .pe-panel__trigger {
     position: absolute;
     top: 16px;
+    right: 16px;
+    left: auto;
     z-index: 10;
     background: none;
     border: none;
     cursor: pointer;
     padding: 6px;
     line-height: 1;
+    display: block;
+  }
+
+  .pe-panel__trigger svg {
+    display: block;
+    width: 19px;
+    height: 22px;
+  }
+
+  /* Closed vs open icon toggle */
+  .pe-trigger-icon--open {
     display: none;
   }
 
-  .pe-panel.is-active .pe-panel__trigger {
-    display: block;
+  .pe-panel.is-active .pe-trigger-icon--closed {
+    display: none;
   }
 
-  .pe-panel--systems.is-active .pe-panel__trigger {
-    right: 16px;
-  }
-
-  .pe-panel--lw.is-active .pe-panel__trigger {
-    right: 16px;
-  }
-
-  .pe-panel__arrow {
-    color: var(--teal);
-    font-size: 1.2rem;
-    display: block;
+  .pe-panel.is-active .pe-trigger-icon--open {
+    display: inline-flex;
   }
 
   /* --- Background image/placeholder --- */
@@ -379,10 +435,10 @@
 
   /* --- Overlay --- */
   .pe-panel__overlay {
-    position: absolute;
+    /* position: absolute;
     inset: 0;
     background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.15) 100%);
-    z-index: 1;
+    z-index: 1; */
   }
 
   .pe-panel__overlay--dark {
@@ -404,9 +460,9 @@
     padding: 32px 30px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     opacity: 0;
-    transition: opacity 0.35s ease 0.15s;
+    /* transition: opacity 0.35s ease 0.15s; */
   }
 
   .pe-panel.is-active .pe-panel__body {
@@ -420,11 +476,13 @@
 
   /* Systems: collapsed shows teal bg + label */
   .pe-panel__title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    color: #FFF;
+    font-family: 'Gotham-Medium';
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 34px; /* 136% */
     text-transform: uppercase;
-    color: #fff;
     margin: 0 0 16px 0;
   }
 
@@ -435,16 +493,17 @@
   }
 
   .pe-systems-list__item {
-    font-size: 1rem;
-    font-weight: 400;
-    color: rgba(255,255,255,0.9);
-    line-height: 1.9;
-    letter-spacing: 0.02em;
+    color: #FFF;
+    font-family: 'Gotham-Regular';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 325;
+    line-height: 24px; /* 150% */
   }
 
   /* ---- Length & Weight Panel ---- */
   .pe-panel--lw {
-    background: #2a1f1a;
+    background: var(--teal-light);
     margin-left: 6px;
   }
 
@@ -454,14 +513,15 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #fff;
-    margin: 0 0 14px 0;
+    margin: 0 0 25px 0;
   }
 
   .pe-panel__body--lw {
     justify-content: flex-start;
-    padding-top: 28px;
+    padding-top: 30px;
     overflow-y: auto;
     gap: 0;
+    padding-left: 70px;
   }
 
   .pe-lw-group {
@@ -469,11 +529,13 @@
   }
 
   .pe-lw-group__name {
-    font-size: 0.78rem;
+    color: #FFF;
+    font-family: 'Gotham-Regular';
+    font-size: 13px;
+    font-style: normal;
     font-weight: 700;
-    color: rgba(255,255,255,0.9);
-    margin: 0 0 8px 0;
-    letter-spacing: 0.03em;
+    line-height: 22px; /* 169.231% */
+    margin-bottom: 8px;
   }
 
   .pe-lw-rows {
@@ -493,29 +555,35 @@
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: var(--teal);
+    background: #40696F;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.62rem;
+    font-size:11px;
     font-weight: 700;
     color: #fff;
     flex-shrink: 0;
-    letter-spacing: 0.02em;
+    letter-spacing: 0px;
+    font-family: 'Gotham-Regular';
   }
 
   .pe-lw-weight {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.85);
-    font-weight: 400;
-    margin-right: 16px;
-    white-space: nowrap;
+    color: #FFF;
+    font-family: 'Gotham-Regular';
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 325;
+    line-height: 22px; /* 200% */
   }
 
   /* ============================================================
      MOBILE — vertical stack
   ============================================================ */
   @media (max-width: 768px) {
+    #perfect-extensions-{{ section.id }} {
+      --pe-radius: 12px;
+    }
+
     .pe-section {
       padding: 40px 20px;
     }
@@ -570,12 +638,19 @@
     .pe-panel__tab-label span {
       writing-mode: horizontal-tb;
       transform: none;
-      font-size: 0.8rem;
+      font-size: 1.3rem;
     }
 
     .pe-panel__trigger {
       top: 16px;
       right: 16px;
+      left: auto;
+    }
+
+    /* Mobile: rotate icons so they behave like down/up arrows */
+    .pe-panel__trigger svg {
+      transform: rotate(90deg);
+      transform-origin: 50% 50%;
     }
 
     .pe-panel--lw {
@@ -583,11 +658,11 @@
     }
 
     .pe-panel__body {
-      padding: 20px;
+      padding: 30px;
     }
 
     .pe-panel__body--lw {
-      padding-top: 72px;
+      padding-top: 40px;
     }
 
     .pe-lw-badge {
@@ -597,25 +672,17 @@
     }
   }
 
-  /* Collapsed Systems panel shows teal bg */
-  .pe-panel--systems:not(.is-active) {
-    background: var(--teal-light);
-  }
-
-  .pe-panel--systems:not(.is-active) .pe-panel__tab-label span {
-    color: var(--teal-dark);
-  }
-
-  /* Hover hint on collapsed panels */
-  .pe-panel:not(.is-active):hover {
-    flex: 0 0 140px;
-  }
-
   @media (max-width: 768px) {
-    .pe-panel:not(.is-active):hover {
-      height: 72px;
-    }
+    .pe-panel__trigger svg {
+    display: block;
+    width: 14px;
+    height: 20px;
+}
   }
+
+  /* Collapsed panels use the same light background */
+
+
 </style>
 
 <script>
@@ -666,11 +733,13 @@
       if (trigger) {
         trigger.addEventListener('click', function(e) {
           e.stopPropagation();
-          // Find the non-active panel
+          // If the panel is closed, open it. If it's open, switch to the other.
+          if (!panel.classList.contains('is-active')) {
+            openPanel(panel);
+            return;
+          }
           panels.forEach(function(p) {
-            if (p !== panel) {
-              openPanel(p);
-            }
+            if (p !== panel) openPanel(p);
           });
         });
       }
