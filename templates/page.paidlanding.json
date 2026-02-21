@@ -262,7 +262,7 @@
           "settings": {
             "label": "WEAR",
             "icon_desktop": "shopify://shop_images/3_8_2.png",
-            "icon_mobile": "shopify://shop_images/3_8_1.png",
+            "icon_mobile": "shopify://shop_images/3_8_3.png",
             "icon_width_desktop": 86,
             "icon_width_mobile": 92
           }
@@ -272,7 +272,7 @@
           "settings": {
             "label": "CARE",
             "icon_desktop": "shopify://shop_images/2_24_2.png",
-            "icon_mobile": "shopify://shop_images/2_24_1.png",
+            "icon_mobile": "shopify://shop_images/2_24_4.png",
             "icon_width_desktop": 86,
             "icon_width_mobile": 92
           }
