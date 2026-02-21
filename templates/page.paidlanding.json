@@ -12,18 +12,12 @@
     "perfect_extensions": {
       "type": "perfect-extensions",
       "settings": {
-        "heading": "<p>THE <strong>PERFECT EXTENSIONS</strong></p>",
-        "subheading": "Salon-developed systems, designed for easy at-home application.",
-        "button_text": "SHOP EXTENSIONS",
-        "button_link": "",
-        "background_color": "#ffffff",
-        "text_color": "#111111",
-        "accent_color": "#74d0e6",
-        "max_width": 1200,
-        "padding_top_desktop": 40,
-        "padding_bottom_desktop": 40,
-        "padding_top_mobile": 28,
-        "padding_bottom_mobile": 28
+        "heading_line1": "YOUR PERFECT",
+        "heading_line2": "EXTENSIONS,",
+        "heading_accent": "EXPLAINED",
+        "systems_title": "SYSTEMS",
+        "systems_image": "shopify://shop_images/Group_36_1.png",
+        "lw_title": "LENGTH & WEIGHT"
       }
     },
     "main": {
