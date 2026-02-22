@@ -33,21 +33,22 @@
             "text_color": "#ffffff"
           }
         },
-        "tile_QVVVw3": {
+        "tile_iLPp86": {
           "type": "tile",
           "settings": {
             "tile_kind": "image",
-            "image": "shopify://shop_images/Group_21_1.png",
+            "image": "shopify://shop_images/Rectangle_4_3.png",
             "title": "CONSISTENT THICKNESS,",
             "subtitle": "ROOT TO TIP",
             "text_bg": "#74d0e6",
             "text_color": "#ffffff"
           }
         },
-        "tile_iLPp86": {
+        "tile_QVVVw3": {
           "type": "tile",
           "settings": {
             "tile_kind": "image",
+            "image": "shopify://shop_images/Group_21_1.png",
             "title": "CONSISTENT THICKNESS,",
             "subtitle": "ROOT TO TIP",
             "text_bg": "#74d0e6",
@@ -122,8 +123,8 @@
       "block_order": [
         "tile_WwJ4nc",
         "tile_EtR9JQ",
-        "tile_QVVVw3",
         "tile_iLPp86",
+        "tile_QVVVw3",
         "tile_NCQ9kX",
         "tile_wMyqPL",
         "tile_68Q7ey",
