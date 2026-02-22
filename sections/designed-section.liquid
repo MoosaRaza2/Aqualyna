@@ -271,17 +271,18 @@
   #DesignedSection-{{ section.id }} {
     padding-top: {{ section.settings.padding_top_desktop }}px;
     padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    
   }
-
+  
   #DesignedSection-{{ section.id }} .ds-card {
-    max-width: var(--ds-maxw);
+    max-width: 1300px;
     margin: 0 auto;
     background: var(--ds-card);
     border-radius: var(--ds-radius);
     padding: 44px 56px 50px;
     text-align: center;
     {% if section.settings.enable_shadow %}
-      box-shadow: 0 4px 39.5px 0 rgba(0, 0, 0, 0.25);
+      box-shadow: 0 4px 24.5px 0 rgba(0, 0, 0, 0.25);
     {% endif %}
     height:410px;
   }
@@ -361,6 +362,8 @@
     #DesignedSection-{{ section.id }} {
       padding-top: {{ section.settings.padding_top_mobile }}px;
       padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
     #DesignedSection-{{ section.id }} .ds-card {
