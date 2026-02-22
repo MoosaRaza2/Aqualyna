@@ -291,60 +291,74 @@
                 Add “Marquee tile” blocks to show content here.
               </div>
             {% else %}
-              {% assign has_col2 = false %}
-              {% for block in section.blocks %}
-                {% assign __aql_mod = forloop.index0 | modulo: 2 %}
-                {% if __aql_mod == 1 %}
-                  {% assign has_col2 = true %}
-                  {% break %}
-                {% endif %}
-              {% endfor %}
-
-              <div class="aql-marquee__cols {% unless has_col2 %}aql-marquee__cols--one{% endunless %}">
+              <div class="aql-marquee__cols">
                 <div class="aql-marquee__col aql-marquee__col--1">
                   <div class="aql-marquee__track">
-                    {% if has_col2 %}
-                      {% for block in section.blocks %}
-                        {% assign __aql_mod = forloop.index0 | modulo: 2 %}
-                        {% if __aql_mod == 0 %}
-                          {% render 'landingpage-hero-marquee-tile', block: block %}
-                        {% endif %}
-                      {% endfor %}
-                      {% for block in section.blocks %}
-                        {% assign __aql_mod = forloop.index0 | modulo: 2 %}
-                        {% if __aql_mod == 0 %}
-                          {% render 'landingpage-hero-marquee-tile', block: block, is_clone: true %}
-                        {% endif %}
-                      {% endfor %}
-                    {% else %}
-                      {% for block in section.blocks %}
+                    {% for block in section.blocks %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 4 %}
+                      {% if __aql_mod == 0 %}
                         {% render 'landingpage-hero-marquee-tile', block: block %}
-                      {% endfor %}
-                      {% for block in section.blocks %}
+                      {% endif %}
+                    {% endfor %}
+                    {% for block in section.blocks %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 4 %}
+                      {% if __aql_mod == 0 %}
                         {% render 'landingpage-hero-marquee-tile', block: block, is_clone: true %}
-                      {% endfor %}
-                    {% endif %}
+                      {% endif %}
+                    {% endfor %}
                   </div>
                 </div>
 
-                {% if has_col2 %}
-                  <div class="aql-marquee__col aql-marquee__col--2" aria-hidden="true">
-                    <div class="aql-marquee__track aql-marquee__track--reverse">
-                      {% for block in section.blocks %}
-                        {% assign __aql_mod = forloop.index0 | modulo: 2 %}
-                        {% if __aql_mod == 1 %}
-                          {% render 'landingpage-hero-marquee-tile', block: block %}
-                        {% endif %}
-                      {% endfor %}
-                      {% for block in section.blocks %}
-                        {% assign __aql_mod = forloop.index0 | modulo: 2 %}
-                        {% if __aql_mod == 1 %}
-                          {% render 'landingpage-hero-marquee-tile', block: block, is_clone: true %}
-                        {% endif %}
-                      {% endfor %}
-                    </div>
+                <div class="aql-marquee__col aql-marquee__col--2" aria-hidden="true">
+                  <div class="aql-marquee__track aql-marquee__track--reverse">
+                    {% for block in section.blocks %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 4 %}
+                      {% if __aql_mod == 1 %}
+                        {% render 'landingpage-hero-marquee-tile', block: block %}
+                      {% endif %}
+                    {% endfor %}
+                    {% for block in section.blocks %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 4 %}
+                      {% if __aql_mod == 1 %}
+                        {% render 'landingpage-hero-marquee-tile', block: block, is_clone: true %}
+                      {% endif %}
+                    {% endfor %}
                   </div>
-                {% endif %}
+                </div>
+
+                <div class="aql-marquee__col aql-marquee__col--3" aria-hidden="true">
+                  <div class="aql-marquee__track">
+                    {% for block in section.blocks %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 4 %}
+                      {% if __aql_mod == 2 %}
+                        {% render 'landingpage-hero-marquee-tile', block: block %}
+                      {% endif %}
+                    {% endfor %}
+                    {% for block in section.blocks %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 4 %}
+                      {% if __aql_mod == 2 %}
+                        {% render 'landingpage-hero-marquee-tile', block: block, is_clone: true %}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+
+                <div class="aql-marquee__col aql-marquee__col--4" aria-hidden="true">
+                  <div class="aql-marquee__track aql-marquee__track--reverse">
+                    {% for block in section.blocks %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 4 %}
+                      {% if __aql_mod == 3 %}
+                        {% render 'landingpage-hero-marquee-tile', block: block %}
+                      {% endif %}
+                    {% endfor %}
+                    {% for block in section.blocks %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 4 %}
+                      {% if __aql_mod == 3 %}
+                        {% render 'landingpage-hero-marquee-tile', block: block, is_clone: true %}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
               </div>
             {% endif %}
           </div>
@@ -381,6 +395,7 @@
     --aql-marquee-h: {{ section.settings.marquee_height_desktop }}px;
     --aql-marquee-h-m: {{ section.settings.marquee_height_mobile }}px;
     --aql-marquee-speed: {{ section.settings.marquee_speed_seconds }}s;
+    --aql-marquee-edge-cut: 7.5%; /* ~30% of first/last column (4 cols -> 0.30 * 25% = 7.5%) */
   }
 
   #LandingHero-{{ section.id }} {
@@ -621,7 +636,7 @@
     width: min(980px, 100%);
     background: var(--aql-marquee-surface);
     border-radius: 24px;
-    padding: 18px;
+    padding: 18px 0;
     overflow: hidden;
   }
 
@@ -635,13 +650,11 @@
 
   #LandingHero-{{ section.id }} .aql-marquee__cols {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 14px;
     height: var(--aql-marquee-h);
-  }
-
-  #LandingHero-{{ section.id }} .aql-marquee__cols--one {
-    grid-template-columns: 1fr;
+    width: calc(100% + (var(--aql-marquee-edge-cut) * 2));
+    transform: translateX(calc(var(--aql-marquee-edge-cut) * -1));
   }
 
   #LandingHero-{{ section.id }} .aql-marquee__col {
@@ -662,8 +675,10 @@
   }
 
   {% if section.settings.marquee_direction == 'down' %}
-    #LandingHero-{{ section.id }} .aql-marquee__col--1 .aql-marquee__track { animation-name: aql-marquee-down; }
-    #LandingHero-{{ section.id }} .aql-marquee__col--2 .aql-marquee__track { animation-name: aql-marquee-up; }
+    #LandingHero-{{ section.id }} .aql-marquee__col--1 .aql-marquee__track,
+    #LandingHero-{{ section.id }} .aql-marquee__col--3 .aql-marquee__track { animation-name: aql-marquee-down; }
+    #LandingHero-{{ section.id }} .aql-marquee__col--2 .aql-marquee__track,
+    #LandingHero-{{ section.id }} .aql-marquee__col--4 .aql-marquee__track { animation-name: aql-marquee-up; }
   {% endif %}
 
   {% if section.settings.marquee_pause_on_hover %}
@@ -780,6 +795,7 @@
       text-align: left;
       justify-items: stretch;
       height: 104px;
+      width: 88%;
     }
 
     #LandingHero-{{ section.id }} .aql-hero__promo.has-media .aql-hero__promoMedia {
@@ -800,15 +816,22 @@
     }
 
     #LandingHero-{{ section.id }} .aql-marquee {
-      padding: 14px;
+      padding: 14px 0;
     }
 
     #LandingHero-{{ section.id }} .aql-marquee__cols {
       grid-template-columns: 1fr;
       height: var(--aql-marquee-h-m);
+      width: 100%;
+      transform: none;
     }
 
     #LandingHero-{{ section.id }} .aql-marquee__col--2 {
+      display: none;
+    }
+
+    #LandingHero-{{ section.id }} .aql-marquee__col--3,
+    #LandingHero-{{ section.id }} .aql-marquee__col--4 {
       display: none;
     }
   }
