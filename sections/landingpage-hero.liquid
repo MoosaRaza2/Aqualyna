@@ -258,15 +258,13 @@
           </div>
 
           {% if section.settings.promo_enable %}
-            <div class="aql-hero__promo" role="note" aria-label="Welcome offer">
+            <div class="aql-hero__promo {% if section.settings.promo_image != blank %}has-media{% endif %}" role="note" aria-label="Welcome offer">
               {% if section.settings.promo_image != blank %}
                 <div class="aql-hero__promoMedia" aria-hidden="true">
                   <img
                     src="{{ section.settings.promo_image | image_url: width: 520 }}"
                     alt=""
                     loading="lazy"
-                    width="260"
-                    height="260"
                   >
                 </div>
               {% endif %}
@@ -527,55 +525,95 @@
   #LandingHero-{{ section.id }} .aql-hero__promo {
     margin: 6px 0 22px;
     width: min(720px, 100%);
-    border-radius: 18px;
-    background: var(--aql-promo-bg);
     color: var(--aql-promo-text);
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
     gap: 16px;
     padding: 14px 18px;
-    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.75);
+    box-shadow: 0 4px 5px 2px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(6px);
     margin-top: 50px;
-    margin-bottom: 100px;
+    margin-bottom: 70px;
+    overflow: visible;
+    height: 185px;
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__promo.has-media {
+    position: relative;
+    padding-left: 160px; /* reserve space for the floating image */
+    grid-template-columns: 1fr; /* image is absolutely positioned */
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__promoMedia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   #LandingHero-{{ section.id }} .aql-hero__promoMedia img {
-    width: 110px;
-    height: 110px;
-    object-fit: contain;
+    width: auto;
+    height: auto;
+    max-width: 255px;
     display: block;
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__promo.has-media .aql-hero__promoMedia {
+    position: absolute;
+    left: -35px;
+    top: -70px;
+    bottom: -37px;
+    width: 250px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__promo.has-media .aql-hero__promoMedia img {
+    height: 100%;
+    width: auto;
+    max-width: 201px;
+    object-fit: contain;
   }
 
   #LandingHero-{{ section.id }} .aql-hero__promoHeading {
     font-family: 'Gotham-Regular';
     font-weight: 800;
-    font-size: 22px;
+    font-size: 50px;
     line-height: 1.05;
     letter-spacing: 0px;
     text-transform: uppercase;
   }
-
+  @media (max-width: 768px) {
+    #LandingHero-{{ section.id }} .aql-hero__promoHeading {
+      font-size: 20px;
+    }
+  }
   #LandingHero-{{ section.id }} .aql-hero__promoSubheading {
     margin-top: 4px;
     font-family: 'Gotham-Regular';
     font-weight: 325;
-    font-size: 12px;
+    font-size: 25px;
     text-transform: uppercase;
     letter-spacing: 1px;
     opacity: 0.9;
   }
-
+  @media (max-width: 768px) {
+    #LandingHero-{{ section.id }} .aql-hero__promoSubheading {
+      font-size: 12px;
+    }
+  }
   /* -------- Why heading -------- */
   #LandingHero-{{ section.id }} .aql-hero__whyHeading {
     margin: 0 0 12px;
     font-family: 'Gotham-Regular';
-    font-weight: 700;
-    font-size: 18px;
+    font-weight: 400;
+    font-size: 40px;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 0px;
     color: var(--aql-why-color);
+    margin-bottom: 80px;
   }
 
   /* -------- Vertical marquee -------- */
@@ -737,9 +775,28 @@
       gap: 10px;
     }
 
-    #LandingHero-{{ section.id }} .aql-hero__promoMedia img {
-      width: 92px;
-      height: 92px;
+    #LandingHero-{{ section.id }} .aql-hero__promo.has-media {
+      padding-left: 150px; /* keep room for the floating image (mobile) */
+      text-align: left;
+      justify-items: stretch;
+      height: 104px;
+    }
+
+    #LandingHero-{{ section.id }} .aql-hero__promo.has-media .aql-hero__promoMedia {
+      position: absolute;
+      left: -7px;
+        top: -40px;
+        bottom: -20px;
+        width: 112px;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    #LandingHero-{{ section.id }} .aql-hero__promo.has-media .aql-hero__promoMedia img {
+      height: 100%;
+      width: auto;
+      max-width: 110px;
+      object-fit: contain;
     }
 
     #LandingHero-{{ section.id }} .aql-marquee {
