@@ -156,9 +156,9 @@
         "tile_GWV48G": {
           "type": "tile",
           "settings": {
-            "tile_kind": "image",
-            "title": "CONSISTENT THICKNESS,",
-            "subtitle": "ROOT TO TIP",
+            "tile_kind": "text",
+            "title": "LUXURY QUALITY",
+            "subtitle": "YOU CAN FEEL",
             "text_bg": "#74d0e6",
             "text_color": "#ffffff"
           }
