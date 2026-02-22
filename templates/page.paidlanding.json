@@ -9,6 +9,18 @@
  */
 {
   "sections": {
+    "perfect_extensions": {
+      "type": "perfect-extensions",
+      "settings": {
+        "heading_line1": "YOUR PERFECT",
+        "heading_line2": "EXTENSIONS,",
+        "heading_accent": "EXPLAINED",
+        "systems_title": "SYSTEMS",
+        "systems_image": "shopify://shop_images/Group_36_1.png",
+        "lw_title": "LENGTH & WEIGHT",
+        "lw_image": "shopify://shop_images/Group_37.png"
+      }
+    },
     "landingpage_hairdifference_ppAnnP": {
       "type": "landingpage-hairdifference",
       "name": "Landing - Hair Difference",
@@ -20,18 +32,6 @@
         "icon_2": "shopify://shop_images/1_3_1.png",
         "icon_3": "shopify://shop_images/3_10.png",
         "active_icon": "1"
-      }
-    },
-    "perfect_extensions": {
-      "type": "perfect-extensions",
-      "settings": {
-        "heading_line1": "YOUR PERFECT",
-        "heading_line2": "EXTENSIONS,",
-        "heading_accent": "EXPLAINED",
-        "systems_title": "SYSTEMS",
-        "systems_image": "shopify://shop_images/Group_36_1.png",
-        "lw_title": "LENGTH & WEIGHT",
-        "lw_image": "shopify://shop_images/Group_37.png"
       }
     },
     "main": {
@@ -380,8 +380,8 @@
     }
   },
   "order": [
-    "landingpage_hairdifference_ppAnnP",
     "perfect_extensions",
+    "landingpage_hairdifference_ppAnnP",
     "main",
     "slideshow_JGyBRx",
     "image_with_text_RGzNYE",
