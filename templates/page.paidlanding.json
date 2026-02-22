@@ -90,7 +90,8 @@
         "tile_DfHCgi": {
           "type": "tile",
           "settings": {
-            "tile_kind": "text",
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Group_26_2.png",
             "title": "LUXURY QUALITY",
             "subtitle": "YOU CAN FEEL",
             "text_bg": "#74d0e6",
@@ -134,6 +135,7 @@
           "type": "tile",
           "settings": {
             "tile_kind": "image",
+            "image": "shopify://shop_images/Group_33.png",
             "title": "CONSISTENT THICKNESS,",
             "subtitle": "ROOT TO TIP",
             "text_bg": "#74d0e6",
