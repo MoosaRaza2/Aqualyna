@@ -57,7 +57,8 @@
         "tile_NCQ9kX": {
           "type": "tile",
           "settings": {
-            "tile_kind": "text",
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Rectangle_4_1.png",
             "title": "DESIGNED",
             "subtitle": "FOR NATURAL MOVEMENT",
             "text_bg": "#74d0e6",
