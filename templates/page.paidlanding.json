@@ -16,6 +16,7 @@
           "type": "tile",
           "settings": {
             "tile_kind": "image",
+            "image": "shopify://shop_images/Rectangle_4.png",
             "title": "CONSISTENT THICKNESS,",
             "subtitle": "ROOT TO TIP",
             "text_bg": "#74d0e6",
@@ -26,6 +27,7 @@
           "type": "tile",
           "settings": {
             "tile_kind": "image",
+            "image": "shopify://shop_images/Rectangle_4_1.png",
             "title": "CONSISTENT THICKNESS,",
             "subtitle": "ROOT TO TIP",
             "text_bg": "#74d0e6",
