@@ -95,7 +95,7 @@
             <span class="le-offer__headingBefore">YOUR FIRST ORDER,</span>
             <span class="le-offer__headingAccent">ELEVATED</span>
           </h2>
-          <div class="le-offer__subtext">Enjoy $20 off your first Aqualyna purchase</div>
+          <div class="le-offer__subtext">Enjoy <strong style="font-family: 'Gotham-Bold';">$20</strong> off your first Aqualyna purchase</div>
 
           <a class="le-btn" href="{{ section.settings.welcome_button_link }}">UNLOCK YOUR WELCOME OFFER</a>
         </div>
@@ -175,10 +175,15 @@
   /* -------- Offer -------- */
   #LandingElevated-{{ section.id }} .le-offer {
     background: transparent;
-    padding: 48px 0 calc(40px + var(--le-overlap));
     position: relative;
     z-index: 2;
     overflow: visible;
+  }
+
+  @media (min-width: 1024px) {
+    #LandingElevated-{{ section.id }} .le-offer {
+      padding: 48px 0 calc(40px + var(--le-overlap)); 
+    }
   }
 
   /* background layer that stops before the overlap area */
@@ -225,6 +230,11 @@
     max-width: 100%;
     object-fit: cover;
     transform: translateY(var(--le-overlap));
+  }
+  @media (max-width: 768px) {
+    #LandingElevated-{{ section.id }} .le-offer__media img {
+      height: 100%;
+    }
   }
 
   #LandingElevated-{{ section.id }} .le-offer__content {
@@ -396,7 +406,7 @@
   @media (max-width: 768px) {
     #LandingElevated-{{ section.id }} .le-offer {
       background: #FFFFFF;
-      padding: 22px 0 calc(14px + var(--le-overlap-m));
+      /* padding: 22px 0 calc(14px + var(--le-overlap-m)); */
     }
 
     #LandingElevated-{{ section.id }} .le-offer::before {
@@ -407,6 +417,8 @@
     #LandingElevated-{{ section.id }} .le-offer__inner {
       flex-direction: column;
       gap: 10px;
+      background: rgba(64, 105, 111, 0.10);
+      /* box-shadow: 0 4px 39.5px 0 rgba(0, 0, 0, 0.25); */
     }
 
     #LandingElevated-{{ section.id }} .le-offer__media {
@@ -416,9 +428,9 @@
 
     #LandingElevated-{{ section.id }} .le-offer__media img {
       width: 100%;
-      padding:20px;
       max-width: none;
       transform: translateY(var(--le-overlap-m)); /* overlap into hero (mobile) */
+      margin-top: -64px;
     }
 
     #LandingElevated-{{ section.id }} .le-offer__heading {
@@ -426,7 +438,7 @@
       margin-bottom: 20px;
       width: 90%;
       margin: 0 auto;
-      padding-bottom: 25px;
+      padding-bottom: 20px;
     }
 
     #LandingElevated-{{ section.id }} .le-offer__subtext {
@@ -434,7 +446,8 @@
       margin-bottom: 14px;
       width: 60%;
       margin: 0 auto;
-      padding-bottom: 25px;
+      padding-bottom: 20px;
+      line-height: 1.3;
   
     }
 
@@ -443,6 +456,7 @@
       padding: 12px 18px;
       width: 100%;
       font-family: 'Gotham-Regular';
+      margin-bottom: 35px;
 
     }
 
@@ -458,12 +472,16 @@
 
     #LandingElevated-{{ section.id }} .le-hero__pills {
       gap: 10px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
     }
 
     #LandingElevated-{{ section.id }} .le-pill {
       font-size: 15px;
         padding: 20px;
         font-weight: 600;
+        width: 100%;
     }
 
     #LandingElevated-{{ section.id }} .le-hero__heading {
