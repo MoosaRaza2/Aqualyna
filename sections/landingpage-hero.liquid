@@ -1,0 +1,703 @@
+{% schema %}
+{
+  "name": "Landing - Hero (Aqualyna)",
+  "settings": [
+    { "type": "header", "content": "Hero background" },
+    { "type": "image_picker", "id": "bg_image", "label": "Background image (desktop)" },
+    { "type": "image_picker", "id": "bg_image_mobile", "label": "Background image (mobile, optional)" },
+    {
+      "type": "range",
+      "id": "hero_height_desktop",
+      "label": "Hero height (desktop, px)",
+      "min": 600,
+      "max": 2200,
+      "step": 20,
+      "default": 1600
+    },
+    {
+      "type": "range",
+      "id": "hero_height_mobile",
+      "label": "Hero height (mobile, px)",
+      "min": 600,
+      "max": 1800,
+      "step": 20,
+      "default": 1000
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content max width (px)",
+      "min": 520,
+      "max": 1200,
+      "step": 20,
+      "default": 980
+    },
+    {
+      "type": "select",
+      "id": "content_vertical_position",
+      "label": "Content vertical position",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "middle", "label": "Middle" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "middle"
+    },
+    { "type": "checkbox", "id": "enable_overlay", "label": "Enable image dark overlay", "default": true },
+    { "type": "color", "id": "overlay_color", "label": "Overlay color", "default": "#000000" },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity (%)",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 25
+    },
+    { "type": "header", "content": "Hero content" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "LUXURY HAIR EXTENSIONS." },
+    { "type": "color", "id": "heading_color", "label": "Heading color", "default": "#74D0E6" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "DESIGNED TO BLEND, BUILT TO LAST" },
+    { "type": "color", "id": "subheading_color", "label": "Subheading color", "default": "#FFFFFF" },
+    { "type": "text", "id": "body", "label": "Body text", "default": "Ethically sourced, cruelty-free extensions made from premium human hair." },
+    { "type": "color", "id": "body_color", "label": "Body text color", "default": "rgba(255,255,255,0.80)" },
+    { "type": "text", "id": "primary_button_label", "label": "Primary button label", "default": "SHOP AQUALYNA" },
+    { "type": "url", "id": "primary_button_link", "label": "Primary button link" },
+    { "type": "text", "id": "secondary_button_label", "label": "Secondary button label", "default": "FIND YOUR MATCH" },
+    { "type": "url", "id": "secondary_button_link", "label": "Secondary button link" },
+    { "type": "color", "id": "primary_button_bg", "label": "Primary button background", "default": "#74D0E6" },
+    { "type": "color", "id": "primary_button_text", "label": "Primary button text", "default": "#0B0B0B" },
+    { "type": "color", "id": "secondary_button_bg", "label": "Secondary button background", "default": "rgba(0,0,0,0)" },
+    { "type": "color", "id": "secondary_button_text", "label": "Secondary button text", "default": "#74D0E6" },
+    { "type": "color", "id": "secondary_button_border", "label": "Secondary button border", "default": "#74D0E6" },
+    { "type": "header", "content": "Promo card (optional)" },
+    { "type": "checkbox", "id": "promo_enable", "label": "Show promo card", "default": true },
+    { "type": "image_picker", "id": "promo_image", "label": "Promo image (optional)" },
+    { "type": "text", "id": "promo_heading", "label": "Promo heading", "default": "ENJOY 20% OFF" },
+    { "type": "text", "id": "promo_subheading", "label": "Promo subheading", "default": "YOUR FIRST ORDER" },
+    { "type": "color", "id": "promo_text_color", "label": "Promo text color", "default": "#FFFFFF" },
+    { "type": "color", "id": "promo_bg", "label": "Promo background", "default": "rgba(0,0,0,0.75)" },
+    { "type": "header", "content": "Why Aqualyna + vertical marquee" },
+    { "type": "text", "id": "why_heading", "label": "Section heading", "default": "WHY AQUALYNA" },
+    { "type": "color", "id": "why_heading_color", "label": "Heading color", "default": "#FFFFFF" },
+    { "type": "color", "id": "marquee_surface_bg", "label": "Marquee surface background", "default": "#F3F5F6" },
+    {
+      "type": "range",
+      "id": "marquee_height_desktop",
+      "label": "Marquee height (desktop, px)",
+      "min": 280,
+      "max": 900,
+      "step": 20,
+      "default": 520
+    },
+    {
+      "type": "range",
+      "id": "marquee_height_mobile",
+      "label": "Marquee height (mobile, px)",
+      "min": 260,
+      "max": 900,
+      "step": 20,
+      "default": 520
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed_seconds",
+      "label": "Marquee speed (seconds per loop)",
+      "min": 6,
+      "max": 40,
+      "step": 1,
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "marquee_direction",
+      "label": "Marquee direction",
+      "options": [
+        { "value": "up", "label": "Up" },
+        { "value": "down", "label": "Down" }
+      ],
+      "default": "up"
+    },
+    { "type": "checkbox", "id": "marquee_pause_on_hover", "label": "Pause marquee on hover (desktop)", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Marquee tile",
+      "settings": [
+        {
+          "type": "select",
+          "id": "tile_kind",
+          "label": "Tile type",
+          "options": [
+            { "value": "image", "label": "Image tile" },
+            { "value": "text", "label": "Text tile" }
+          ],
+          "default": "image"
+        },
+        { "type": "image_picker", "id": "image", "label": "Image (for image tile)" },
+        { "type": "text", "id": "title", "label": "Title (for text tile)", "default": "CONSISTENT THICKNESS," },
+        { "type": "text", "id": "subtitle", "label": "Subtitle (for text tile)", "default": "ROOT TO TIP" },
+        { "type": "color", "id": "text_bg", "label": "Text tile background", "default": "#74D0E6" },
+        { "type": "color", "id": "text_color", "label": "Text tile text color", "default": "#FFFFFF" }
+      ]
+    }
+  ],
+  "max_blocks": 24,
+  "presets": [
+    {
+      "name": "Landing - Hero (Aqualyna)",
+      "blocks": [
+        { "type": "tile", "settings": { "tile_kind": "image" } },
+        { "type": "tile", "settings": { "tile_kind": "image" } },
+        { "type": "tile", "settings": { "tile_kind": "text", "title": "CONSISTENT THICKNESS,", "subtitle": "ROOT TO TIP" } },
+        { "type": "tile", "settings": { "tile_kind": "image" } },
+        { "type": "tile", "settings": { "tile_kind": "text", "title": "DESIGNED", "subtitle": "FOR NATURAL MOVEMENT" } },
+        { "type": "tile", "settings": { "tile_kind": "image" } },
+        { "type": "tile", "settings": { "tile_kind": "image" } },
+        { "type": "tile", "settings": { "tile_kind": "text", "title": "LUXURY QUALITY", "subtitle": "YOU CAN FEEL" } },
+        { "type": "tile", "settings": { "tile_kind": "image" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<section id="LandingHero-{{ section.id }}" class="landingpage-hero">
+  <div class="aql-hero">
+    <div class="aql-hero__media" aria-hidden="true">
+      {% if section.settings.bg_image != blank %}
+        <picture>
+          {% if section.settings.bg_image_mobile != blank %}
+            <source media="(max-width: 768px)" srcset="{{ section.settings.bg_image_mobile | image_url: width: 1600 }}">
+          {% endif %}
+          <img
+            class="aql-hero__img"
+            src="{{ section.settings.bg_image | image_url: width: 2800 }}"
+            alt=""
+            loading="eager"
+            fetchpriority="high"
+            width="2800"
+            height="1600"
+          >
+        </picture>
+      {% else %}
+        <div class="aql-hero__placeholder">
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if section.settings.enable_overlay %}
+      <div class="aql-hero__shade" aria-hidden="true"></div>
+    {% endif %}
+
+    <div class="aql-hero__overlay">
+      <div class="page-width">
+        <div class="aql-hero__content" role="region" aria-label="Hero content">
+          {% if section.settings.heading != blank %}
+            <h2 class="aql-hero__heading">{{ section.settings.heading }}</h2>
+          {% endif %}
+
+          {% if section.settings.subheading != blank %}
+            <div class="aql-hero__subheading">{{ section.settings.subheading }}</div>
+          {% endif %}
+
+          {% if section.settings.body != blank %}
+            <div class="aql-hero__body">{{ section.settings.body }}</div>
+          {% endif %}
+
+          <div class="aql-hero__buttons" aria-label="Hero links">
+            {% if section.settings.primary_button_label != blank %}
+              <a class="aql-btn aql-btn--primary" href="{{ section.settings.primary_button_link }}">
+                {{ section.settings.primary_button_label }}
+              </a>
+            {% endif %}
+            {% if section.settings.secondary_button_label != blank %}
+              <a class="aql-btn aql-btn--secondary" href="{{ section.settings.secondary_button_link }}">
+                {{ section.settings.secondary_button_label }}
+              </a>
+            {% endif %}
+          </div>
+
+          {% if section.settings.promo_enable %}
+            <div class="aql-hero__promo" role="note" aria-label="Welcome offer">
+              {% if section.settings.promo_image != blank %}
+                <div class="aql-hero__promoMedia" aria-hidden="true">
+                  <img
+                    src="{{ section.settings.promo_image | image_url: width: 520 }}"
+                    alt=""
+                    loading="lazy"
+                    width="260"
+                    height="260"
+                  >
+                </div>
+              {% endif %}
+
+              <div class="aql-hero__promoText">
+                {% if section.settings.promo_heading != blank %}
+                  <div class="aql-hero__promoHeading">{{ section.settings.promo_heading }}</div>
+                {% endif %}
+                {% if section.settings.promo_subheading != blank %}
+                  <div class="aql-hero__promoSubheading">{{ section.settings.promo_subheading }}</div>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if section.settings.why_heading != blank %}
+            <div class="aql-hero__whyHeading">{{ section.settings.why_heading }}</div>
+          {% endif %}
+
+          <div class="aql-marquee" role="region" aria-label="Why Aqualyna tiles">
+            {% assign blocks_count = section.blocks.size %}
+            {% if blocks_count == 0 %}
+              <div class="aql-marquee__empty">
+                Add “Marquee tile” blocks to show content here.
+              </div>
+            {% else %}
+              {% assign has_col2 = false %}
+              {% for block in section.blocks %}
+                {% assign __aql_mod = forloop.index0 | modulo: 2 %}
+                {% if __aql_mod == 1 %}
+                  {% assign has_col2 = true %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+
+              <div class="aql-marquee__cols {% unless has_col2 %}aql-marquee__cols--one{% endunless %}">
+                <div class="aql-marquee__col aql-marquee__col--1">
+                  <div class="aql-marquee__track">
+                    {% if has_col2 %}
+                      {% for block in section.blocks %}
+                        {% assign __aql_mod = forloop.index0 | modulo: 2 %}
+                        {% if __aql_mod == 0 %}
+                          {% render 'landingpage-hero-marquee-tile', block: block %}
+                        {% endif %}
+                      {% endfor %}
+                      {% for block in section.blocks %}
+                        {% assign __aql_mod = forloop.index0 | modulo: 2 %}
+                        {% if __aql_mod == 0 %}
+                          {% render 'landingpage-hero-marquee-tile', block: block, is_clone: true %}
+                        {% endif %}
+                      {% endfor %}
+                    {% else %}
+                      {% for block in section.blocks %}
+                        {% render 'landingpage-hero-marquee-tile', block: block %}
+                      {% endfor %}
+                      {% for block in section.blocks %}
+                        {% render 'landingpage-hero-marquee-tile', block: block, is_clone: true %}
+                      {% endfor %}
+                    {% endif %}
+                  </div>
+                </div>
+
+                {% if has_col2 %}
+                  <div class="aql-marquee__col aql-marquee__col--2" aria-hidden="true">
+                    <div class="aql-marquee__track aql-marquee__track--reverse">
+                      {% for block in section.blocks %}
+                        {% assign __aql_mod = forloop.index0 | modulo: 2 %}
+                        {% if __aql_mod == 1 %}
+                          {% render 'landingpage-hero-marquee-tile', block: block %}
+                        {% endif %}
+                      {% endfor %}
+                      {% for block in section.blocks %}
+                        {% assign __aql_mod = forloop.index0 | modulo: 2 %}
+                        {% if __aql_mod == 1 %}
+                          {% render 'landingpage-hero-marquee-tile', block: block, is_clone: true %}
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #LandingHero-{{ section.id }} {
+    --aql-accent: #74D0E6;
+    --aql-hero-h: {{ section.settings.hero_height_desktop }}px;
+    --aql-hero-h-m: {{ section.settings.hero_height_mobile }}px;
+    --aql-content-max: {{ section.settings.content_max_width }}px;
+    --aql-overlay: {{ section.settings.overlay_color }};
+    --aql-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    --aql-heading-color: {{ section.settings.heading_color }};
+    --aql-subheading-color: {{ section.settings.subheading_color }};
+    --aql-body-color: {{ section.settings.body_color }};
+    --aql-primary-bg: {{ section.settings.primary_button_bg }};
+    --aql-primary-text: {{ section.settings.primary_button_text }};
+    --aql-secondary-bg: {{ section.settings.secondary_button_bg }};
+    --aql-secondary-text: {{ section.settings.secondary_button_text }};
+    --aql-secondary-border: {{ section.settings.secondary_button_border }};
+    --aql-promo-bg: {{ section.settings.promo_bg }};
+    --aql-promo-text: {{ section.settings.promo_text_color }};
+    --aql-why-color: {{ section.settings.why_heading_color }};
+    --aql-marquee-surface: {{ section.settings.marquee_surface_bg }};
+    --aql-marquee-h: {{ section.settings.marquee_height_desktop }}px;
+    --aql-marquee-h-m: {{ section.settings.marquee_height_mobile }}px;
+    --aql-marquee-speed: {{ section.settings.marquee_speed_seconds }}s;
+  }
+
+  /* -------- Hero layout -------- */
+  #LandingHero-{{ section.id }} .aql-hero {
+    position: relative;
+    width: 100%;
+    height: var(--aql-hero-h);
+    overflow: hidden;
+    background: #000;
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__media,
+  #LandingHero-{{ section.id }} .aql-hero__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__placeholder {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__shade {
+    position: absolute;
+    inset: 0;
+    background: var(--aql-overlay);
+    opacity: var(--aql-overlay-opacity);
+    z-index: 1;
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__content {
+    position: absolute;
+    left: 50%;
+    width: min(var(--aql-content-max), calc(100% - 32px));
+    transform: translateX(-50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__buttons,
+  #LandingHero-{{ section.id }} .aql-hero__promo,
+  #LandingHero-{{ section.id }} .aql-marquee {
+    pointer-events: auto;
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__heading {
+    margin: 0 0 10px;
+    font-family: 'Gotham-Regular';
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1.08;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    color: var(--aql-heading-color);
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__subheading {
+    margin: 0 0 8px;
+    font-family: 'Gotham-Regular';
+    font-weight: 325;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--aql-subheading-color);
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__body {
+    margin: 0 0 18px;
+    font-family: 'Gotham-Regular';
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--aql-body-color);
+    max-width: 680px;
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  #LandingHero-{{ section.id }} .aql-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 26px;
+    border-radius: 999px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Gotham-Regular';
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+  }
+
+  #LandingHero-{{ section.id }} .aql-btn:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+  }
+
+  #LandingHero-{{ section.id }} .aql-btn--primary {
+    background: var(--aql-primary-bg);
+    color: var(--aql-primary-text);
+    border: 1px solid transparent;
+  }
+
+  #LandingHero-{{ section.id }} .aql-btn--secondary {
+    background: var(--aql-secondary-bg);
+    color: var(--aql-secondary-text);
+    border: 1px solid var(--aql-secondary-border);
+  }
+
+  /* -------- Promo card -------- */
+  #LandingHero-{{ section.id }} .aql-hero__promo {
+    margin: 6px 0 22px;
+    width: min(720px, 100%);
+    border-radius: 18px;
+    background: var(--aql-promo-bg);
+    color: var(--aql-promo-text);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 18px;
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(6px);
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__promoMedia img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    display: block;
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__promoHeading {
+    font-family: 'Gotham-Regular';
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1.05;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__promoSubheading {
+    margin-top: 4px;
+    font-family: 'Gotham-Regular';
+    font-weight: 325;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+  }
+
+  /* -------- Why heading -------- */
+  #LandingHero-{{ section.id }} .aql-hero__whyHeading {
+    margin: 0 0 12px;
+    font-family: 'Gotham-Regular';
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--aql-why-color);
+  }
+
+  /* -------- Vertical marquee -------- */
+  #LandingHero-{{ section.id }} .aql-marquee {
+    width: min(980px, 100%);
+    background: var(--aql-marquee-surface);
+    border-radius: 24px;
+    padding: 18px;
+    overflow: hidden;
+  }
+
+  #LandingHero-{{ section.id }} .aql-marquee__empty {
+    font-family: 'Gotham-Regular';
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.65);
+    padding: 24px 10px;
+    text-align: center;
+  }
+
+  #LandingHero-{{ section.id }} .aql-marquee__cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    height: var(--aql-marquee-h);
+  }
+
+  #LandingHero-{{ section.id }} .aql-marquee__cols--one {
+    grid-template-columns: 1fr;
+  }
+
+  #LandingHero-{{ section.id }} .aql-marquee__col {
+    overflow: hidden;
+    border-radius: 18px;
+  }
+
+  #LandingHero-{{ section.id }} .aql-marquee__track {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    will-change: transform;
+    animation: aql-marquee-up var(--aql-marquee-speed) linear infinite;
+  }
+
+  #LandingHero-{{ section.id }} .aql-marquee__track--reverse {
+    animation-name: aql-marquee-down;
+  }
+
+  {% if section.settings.marquee_direction == 'down' %}
+    #LandingHero-{{ section.id }} .aql-marquee__col--1 .aql-marquee__track { animation-name: aql-marquee-down; }
+    #LandingHero-{{ section.id }} .aql-marquee__col--2 .aql-marquee__track { animation-name: aql-marquee-up; }
+  {% endif %}
+
+  {% if section.settings.marquee_pause_on_hover %}
+    @media (hover: hover) and (pointer: fine) {
+      #LandingHero-{{ section.id }} .aql-marquee:hover .aql-marquee__track {
+        animation-play-state: paused;
+      }
+    }
+  {% endif %}
+
+  #LandingHero-{{ section.id }} .aql-tile {
+    border-radius: 18px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  #LandingHero-{{ section.id }} .aql-tile__image img,
+  #LandingHero-{{ section.id }} .aql-tile__image svg {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  #LandingHero-{{ section.id }} .aql-tile__text {
+    height: 220px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    background: var(--aql-tile-bg, var(--aql-accent));
+    color: var(--aql-tile-color, #FFFFFF);
+    text-align: left;
+  }
+
+  #LandingHero-{{ section.id }} .aql-tile__title {
+    font-family: 'Gotham-Regular';
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  #LandingHero-{{ section.id }} .aql-tile__subtitle {
+    font-family: 'Gotham-Regular';
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    opacity: 0.95;
+  }
+
+  @keyframes aql-marquee-up {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50%); }
+  }
+  @keyframes aql-marquee-down {
+    from { transform: translateY(-50%); }
+    to { transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #LandingHero-{{ section.id }} .aql-marquee__track { animation: none !important; transform: none !important; }
+  }
+
+  /* -------- Vertical positioning -------- */
+  {% case section.settings.content_vertical_position %}
+    {% when 'top' %}
+      #LandingHero-{{ section.id }} .aql-hero__content { top: 130px; }
+    {% when 'bottom' %}
+      #LandingHero-{{ section.id }} .aql-hero__content { bottom: 80px; }
+    {% else %}
+      #LandingHero-{{ section.id }} .aql-hero__content { top: 56%; transform: translate(-50%, -50%); }
+  {% endcase %}
+
+  /* -------- Mobile -------- */
+  @media (max-width: 768px) {
+    #LandingHero-{{ section.id }} .aql-hero {
+      height: var(--aql-hero-h-m);
+    }
+
+    #LandingHero-{{ section.id }} .aql-hero__heading {
+      font-size: 30px;
+    }
+
+    #LandingHero-{{ section.id }} .aql-hero__subheading {
+      font-size: 16px;
+    }
+
+    #LandingHero-{{ section.id }} .aql-hero__buttons {
+      gap: 10px;
+    }
+
+    #LandingHero-{{ section.id }} .aql-btn {
+      padding: 14px 18px;
+      font-size: 13px;
+    }
+
+    #LandingHero-{{ section.id }} .aql-hero__promo {
+      grid-template-columns: 1fr;
+      text-align: center;
+      justify-items: center;
+      gap: 10px;
+    }
+
+    #LandingHero-{{ section.id }} .aql-hero__promoMedia img {
+      width: 92px;
+      height: 92px;
+    }
+
+    #LandingHero-{{ section.id }} .aql-marquee {
+      padding: 14px;
+    }
+
+    #LandingHero-{{ section.id }} .aql-marquee__cols {
+      grid-template-columns: 1fr;
+      height: var(--aql-marquee-h-m);
+    }
+
+    #LandingHero-{{ section.id }} .aql-marquee__col--2 {
+      display: none;
+    }
+  }
+</style>
