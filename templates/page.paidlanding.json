@@ -27,6 +27,17 @@
           "type": "tile",
           "settings": {
             "tile_kind": "text",
+            "title": "DESIGNED FOR",
+            "subtitle": "NATURAL MOVEMENT",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_iLPp86": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Rectangle_4_3.png",
             "title": "CONSISTENT THICKNESS,",
             "subtitle": "ROOT TO TIP",
             "text_bg": "#74d0e6",
@@ -38,16 +49,6 @@
           "settings": {
             "tile_kind": "image",
             "image": "shopify://shop_images/Group_21_1.png",
-            "title": "CONSISTENT THICKNESS,",
-            "subtitle": "ROOT TO TIP",
-            "text_bg": "#74d0e6",
-            "text_color": "#ffffff"
-          }
-        },
-        "tile_iLPp86": {
-          "type": "tile",
-          "settings": {
-            "tile_kind": "image",
             "title": "CONSISTENT THICKNESS,",
             "subtitle": "ROOT TO TIP",
             "text_bg": "#74d0e6",
@@ -79,7 +80,7 @@
         "tile_68Q7ey": {
           "type": "tile",
           "settings": {
-            "tile_kind": "image",
+            "tile_kind": "text",
             "title": "CONSISTENT THICKNESS,",
             "subtitle": "ROOT TO TIP",
             "text_bg": "#74d0e6",
@@ -89,7 +90,8 @@
         "tile_DfHCgi": {
           "type": "tile",
           "settings": {
-            "tile_kind": "text",
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Group_26_2.png",
             "title": "LUXURY QUALITY",
             "subtitle": "YOU CAN FEEL",
             "text_bg": "#74d0e6",
@@ -106,18 +108,54 @@
             "text_bg": "#74d0e6",
             "text_color": "#ffffff"
           }
+        },
+        "tile_7GJjGx": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Group_21_1.png",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_LJWBEd": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Group_28_1.png",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_8PKm6J": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Group_33.png",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
         }
       },
       "block_order": [
         "tile_WwJ4nc",
         "tile_EtR9JQ",
-        "tile_QVVVw3",
         "tile_iLPp86",
+        "tile_QVVVw3",
         "tile_NCQ9kX",
         "tile_wMyqPL",
         "tile_68Q7ey",
         "tile_DfHCgi",
-        "tile_jeFrgQ"
+        "tile_jeFrgQ",
+        "tile_7GJjGx",
+        "tile_LJWBEd",
+        "tile_8PKm6J"
       ],
       "name": "Landing - Hero (Aqualyna)",
       "settings": {
