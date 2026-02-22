@@ -106,6 +106,17 @@
             "text_bg": "#74d0e6",
             "text_color": "#ffffff"
           }
+        },
+        "tile_7GJjGx": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Group_21_1.png",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
         }
       },
       "block_order": [
@@ -117,7 +128,8 @@
         "tile_wMyqPL",
         "tile_68Q7ey",
         "tile_DfHCgi",
-        "tile_jeFrgQ"
+        "tile_jeFrgQ",
+        "tile_7GJjGx"
       ],
       "name": "Landing - Hero (Aqualyna)",
       "settings": {
