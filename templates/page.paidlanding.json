@@ -141,6 +141,36 @@
             "text_bg": "#74d0e6",
             "text_color": "#ffffff"
           }
+        },
+        "tile_xA4FfW": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_GWV48G": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_TtiUhG": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
         }
       },
       "block_order": [
@@ -155,7 +185,10 @@
         "tile_jeFrgQ",
         "tile_7GJjGx",
         "tile_LJWBEd",
-        "tile_8PKm6J"
+        "tile_8PKm6J",
+        "tile_xA4FfW",
+        "tile_GWV48G",
+        "tile_TtiUhG"
       ],
       "name": "Landing - Hero (Aqualyna)",
       "settings": {
