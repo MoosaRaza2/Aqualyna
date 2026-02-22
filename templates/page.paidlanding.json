@@ -15,6 +15,7 @@
       "settings": {
         "image_desktop": "shopify://shop_images/AQL_1B_Clip_in_curled0330-Edit_3_2.png",
         "image_mobile": "shopify://shop_images/AQL_1B_Clip_in_curled0330-Edit_3_1.png",
+        "bubble_icon": "shopify://shop_images/3_9.png",
         "active_icon": "1"
       }
     },
