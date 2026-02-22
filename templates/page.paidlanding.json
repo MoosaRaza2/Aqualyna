@@ -578,7 +578,7 @@
         "image_height_mobile": 220,
         "padding_top_desktop": 40,
         "padding_bottom_desktop": 100,
-        "padding_top_mobile": 40,
+        "padding_top_mobile": 80,
         "padding_bottom_mobile": 128,
         "accent_color": "#74d0e6",
         "heading_color": "#111111",
