@@ -2,6 +2,43 @@
 {
   "name": "Landing - Hero (Aqualyna)",
   "settings": [
+    { "type": "header", "content": "Section spacing" },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top (desktop, px)",
+      "min": 0,
+      "max": 240,
+      "step": 4,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom (desktop, px)",
+      "min": 0,
+      "max": 240,
+      "step": 4,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile, px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile, px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0
+    },
     { "type": "header", "content": "Hero background" },
     { "type": "image_picker", "id": "bg_image", "label": "Background image (desktop)" },
     { "type": "image_picker", "id": "bg_image_mobile", "label": "Background image (mobile, optional)" },
@@ -322,6 +359,10 @@
 <style>
   #LandingHero-{{ section.id }} {
     --aql-accent: #74D0E6;
+    --aql-pad-top: {{ section.settings.padding_top_desktop }}px;
+    --aql-pad-bot: {{ section.settings.padding_bottom_desktop }}px;
+    --aql-pad-top-m: {{ section.settings.padding_top_mobile }}px;
+    --aql-pad-bot-m: {{ section.settings.padding_bottom_mobile }}px;
     --aql-hero-h: {{ section.settings.hero_height_desktop }}px;
     --aql-hero-h-m: {{ section.settings.hero_height_mobile }}px;
     --aql-content-max: {{ section.settings.content_max_width }}px;
@@ -342,6 +383,11 @@
     --aql-marquee-h: {{ section.settings.marquee_height_desktop }}px;
     --aql-marquee-h-m: {{ section.settings.marquee_height_mobile }}px;
     --aql-marquee-speed: {{ section.settings.marquee_speed_seconds }}s;
+  }
+
+  #LandingHero-{{ section.id }} {
+    padding-top: var(--aql-pad-top);
+    padding-bottom: var(--aql-pad-bot);
   }
 
   /* -------- Hero layout -------- */
@@ -654,6 +700,11 @@
 
   /* -------- Mobile -------- */
   @media (max-width: 768px) {
+    #LandingHero-{{ section.id }} {
+      padding-top: var(--aql-pad-top-m);
+      padding-bottom: var(--aql-pad-bot-m);
+    }
+
     #LandingHero-{{ section.id }} .aql-hero {
       height: var(--aql-hero-h-m);
     }
