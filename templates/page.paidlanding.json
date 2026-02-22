@@ -9,6 +9,15 @@
  */
 {
   "sections": {
+    "landingpage_hairdifference_ppAnnP": {
+      "type": "landingpage-hairdifference",
+      "name": "Landing - Hair Difference",
+      "settings": {
+        "image_desktop": "shopify://shop_images/AQL_1B_Clip_in_curled0330-Edit_3_2.png",
+        "image_mobile": "shopify://shop_images/AQL_1B_Clip_in_curled0330-Edit_3_1.png",
+        "active_icon": "1"
+      }
+    },
     "perfect_extensions": {
       "type": "perfect-extensions",
       "settings": {
@@ -363,13 +372,6 @@
         "hero_height_desktop": 1050,
         "hero_height_mobile": 840,
         "pill_scale": 90
-      }
-    },
-    "landingpage_hairdifference_ppAnnP": {
-      "type": "landingpage-hairdifference",
-      "name": "Landing - Hair Difference",
-      "settings": {
-        "active_icon": "1"
       }
     }
   },
