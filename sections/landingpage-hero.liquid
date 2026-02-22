@@ -281,10 +281,10 @@
           {% endif %}
 
           {% if section.settings.why_heading != blank %}
-            <div class="aql-hero__whyHeading">{{ section.settings.why_heading }}</div>
+            <div class="aql-hero__whyHeading">WHY <strong style="font-weight: 700;">AQUALYNA?</strong></div>
           {% endif %}
 
-          <div class="aql-marquee" role="region" aria-label="Why Aqualyna tiles">
+          {% capture __aql_marquee_inner %}
             {% assign blocks_count = section.blocks.size %}
             {% if blocks_count == 0 %}
               <div class="aql-marquee__empty">
@@ -378,8 +378,18 @@
                 </div>
               </div>
             {% endif %}
+          {% endcapture %}
+
+          <div class="aql-marquee aql-marquee--desktop" role="region" aria-label="Why Aqualyna tiles">
+            {{ __aql_marquee_inner }}
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="aql-hero__marqueeMobileWrap">
+      <div class="aql-marquee aql-marquee--mobile" role="region" aria-label="Why Aqualyna tiles">
+        {{ __aql_marquee_inner }}
       </div>
     </div>
   </div>
@@ -508,8 +518,13 @@
     line-height: 1.35;
     color: var(--aql-body-color);
     max-width: 680px;
-    margin-top: 40px;
-    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-bottom: 35px;
+  }
+  @media (max-width: 768px) {
+    #LandingHero-{{ section.id }} .aql-hero__body {
+      font-size: 12px;
+    }
   }
 
   #LandingHero-{{ section.id }} .aql-hero__buttons {
@@ -568,7 +583,7 @@
     box-shadow: 0 4px 5px 2px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(6px);
     margin-top: 50px;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
     overflow: visible;
     height: 185px;
   }
@@ -648,6 +663,13 @@
     margin-bottom: 80px;
   }
 
+  @media (max-width: 768px) {
+    #LandingHero-{{ section.id }} .aql-hero__whyHeading {
+      font-size: 24px;
+      margin-bottom: 50px;
+    }
+  }
+
   /* -------- Vertical marquee -------- */
   #LandingHero-{{ section.id }} .aql-marquee {
     width: 1300px;
@@ -662,6 +684,16 @@
 
     padding: 18px 0;
     overflow: hidden;
+  }
+
+   @media (max-width: 768px) {
+    #LandingHero-{{ section.id }} .aql-marquee {
+      background:none;
+      box-shadow: none;
+    }
+   }
+  #LandingHero-{{ section.id }} .aql-hero__marqueeMobileWrap {
+    display: none;
   }
 
   #LandingHero-{{ section.id }} .aql-marquee__empty {
@@ -789,13 +821,39 @@
 
   /* -------- Mobile -------- */
   @media (max-width: 768px) {
+
+  #LandingHero-{{ section.id }} .aql-hero__content { top: 50%; transform: translate(-50%, -70%); }
     #LandingHero-{{ section.id }} {
       padding-top: var(--aql-pad-top-m);
-      padding-bottom: var(--aql-pad-bot-m);
+      --aql-marquee-cols-h-m: 700px;
+      --aql-marquee-overhang: calc((var(--aql-marquee-cols-h-m) + 28px) / 2);
+      padding-bottom: calc(var(--aql-pad-bot-m) + var(--aql-marquee-overhang));
     }
 
     #LandingHero-{{ section.id }} .aql-hero {
       height: var(--aql-hero-h-m);
+      overflow: visible;
+    }
+
+    /* Mobile: marquee overlaps hero bottom edge (50/50) */
+    #LandingHero-{{ section.id }} .aql-marquee--desktop {
+      display: none;
+    }
+
+    #LandingHero-{{ section.id }} .aql-hero__marqueeMobileWrap {
+      display: block;
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    #LandingHero-{{ section.id }} .aql-marquee--mobile {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translate(-50%, 45%);
+      pointer-events: auto;
     }
 
     #LandingHero-{{ section.id }} .aql-hero__heading {
@@ -804,15 +862,21 @@
 
     #LandingHero-{{ section.id }} .aql-hero__subheading {
       font-size: 16px;
+      margin-top: 10px;
+        width: 60%;
     }
 
     #LandingHero-{{ section.id }} .aql-hero__buttons {
       gap: 10px;
+      flex-direction: column;
+      width: 100%;
     }
 
     #LandingHero-{{ section.id }} .aql-btn {
-      padding: 14px 18px;
-      font-size: 13px;
+      padding: 16px 32px;
+      font-size: 14px;
+      width: 100%;
+    
     }
 
     #LandingHero-{{ section.id }} .aql-hero__promo {
@@ -823,7 +887,7 @@
     }
 
     #LandingHero-{{ section.id }} .aql-hero__promo.has-media {
-      padding-left: 150px; /* keep room for the floating image (mobile) */
+      padding-left: 125px; /* keep room for the floating image (mobile) */
       text-align: left;
       justify-items: stretch;
       height: 104px;
@@ -850,10 +914,15 @@
     #LandingHero-{{ section.id }} .aql-marquee {
       padding: 14px 0;
     }
+    @media (max-width: 480px) {
+      #LandingHero-{{ section.id }} .aql-marquee {
+      width: 90%;
+      }
+    }
 
     #LandingHero-{{ section.id }} .aql-marquee__cols {
       grid-template-columns: repeat(2, 185.235px);
-      height: 700px;
+      height: var(--aql-marquee-cols-h-m);
       width: 100%;
       transform: none;
       justify-content: center;
