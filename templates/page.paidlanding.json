@@ -579,7 +579,7 @@
         "padding_top_desktop": 40,
         "padding_bottom_desktop": 100,
         "padding_top_mobile": 40,
-        "padding_bottom_mobile": 72,
+        "padding_bottom_mobile": 128,
         "accent_color": "#74d0e6",
         "heading_color": "#111111",
         "heading_border_color": "#bfeaf3",
