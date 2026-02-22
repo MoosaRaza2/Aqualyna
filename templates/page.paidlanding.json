@@ -364,9 +364,17 @@
         "hero_height_mobile": 840,
         "pill_scale": 90
       }
+    },
+    "landingpage_hairdifference_ppAnnP": {
+      "type": "landingpage-hairdifference",
+      "name": "Landing - Hair Difference",
+      "settings": {
+        "active_icon": "1"
+      }
     }
   },
   "order": [
+    "landingpage_hairdifference_ppAnnP",
     "perfect_extensions",
     "main",
     "slideshow_JGyBRx",
