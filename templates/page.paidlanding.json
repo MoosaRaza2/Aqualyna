@@ -9,6 +9,152 @@
  */
 {
   "sections": {
+    "landingpage_hero_FGqDKJ": {
+      "type": "landingpage-hero",
+      "blocks": {
+        "tile_WwJ4nc": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74D0E6",
+            "text_color": "#FFFFFF"
+          }
+        },
+        "tile_QVVVw3": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74D0E6",
+            "text_color": "#FFFFFF"
+          }
+        },
+        "tile_EtR9JQ": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "text",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74D0E6",
+            "text_color": "#FFFFFF"
+          }
+        },
+        "tile_iLPp86": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74D0E6",
+            "text_color": "#FFFFFF"
+          }
+        },
+        "tile_NCQ9kX": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "text",
+            "title": "DESIGNED",
+            "subtitle": "FOR NATURAL MOVEMENT",
+            "text_bg": "#74D0E6",
+            "text_color": "#FFFFFF"
+          }
+        },
+        "tile_wMyqPL": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74D0E6",
+            "text_color": "#FFFFFF"
+          }
+        },
+        "tile_68Q7ey": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74D0E6",
+            "text_color": "#FFFFFF"
+          }
+        },
+        "tile_DfHCgi": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "text",
+            "title": "LUXURY QUALITY",
+            "subtitle": "YOU CAN FEEL",
+            "text_bg": "#74D0E6",
+            "text_color": "#FFFFFF"
+          }
+        },
+        "tile_jeFrgQ": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74D0E6",
+            "text_color": "#FFFFFF"
+          }
+        }
+      },
+      "block_order": [
+        "tile_WwJ4nc",
+        "tile_QVVVw3",
+        "tile_EtR9JQ",
+        "tile_iLPp86",
+        "tile_NCQ9kX",
+        "tile_wMyqPL",
+        "tile_68Q7ey",
+        "tile_DfHCgi",
+        "tile_jeFrgQ"
+      ],
+      "name": "Landing - Hero (Aqualyna)",
+      "settings": {
+        "bg_image": "shopify://shop_images/Main_Banner_Image_1.png",
+        "bg_image_mobile": "shopify://shop_images/Mobile_Banner.png",
+        "hero_height_desktop": 1600,
+        "hero_height_mobile": 1000,
+        "content_max_width": 980,
+        "content_vertical_position": "middle",
+        "enable_overlay": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 25,
+        "heading": "LUXURY HAIR EXTENSIONS.",
+        "heading_color": "#74D0E6",
+        "subheading": "DESIGNED TO BLEND, BUILT TO LAST",
+        "subheading_color": "#FFFFFF",
+        "body": "Ethically sourced, cruelty-free extensions made from premium human hair.",
+        "body_color": "rgba(255,255,255,0.80)",
+        "primary_button_label": "SHOP AQUALYNA",
+        "primary_button_link": "",
+        "secondary_button_label": "FIND YOUR MATCH",
+        "secondary_button_link": "",
+        "primary_button_bg": "#74D0E6",
+        "primary_button_text": "#0B0B0B",
+        "secondary_button_bg": "rgba(0,0,0,0)",
+        "secondary_button_text": "#74D0E6",
+        "secondary_button_border": "#74D0E6",
+        "promo_enable": true,
+        "promo_heading": "ENJOY 20% OFF",
+        "promo_subheading": "YOUR FIRST ORDER",
+        "promo_text_color": "#FFFFFF",
+        "promo_bg": "rgba(0,0,0,0.75)",
+        "why_heading": "WHY AQUALYNA",
+        "why_heading_color": "#FFFFFF",
+        "marquee_surface_bg": "#F3F5F6",
+        "marquee_height_desktop": 520,
+        "marquee_height_mobile": 520,
+        "marquee_speed_seconds": 18,
+        "marquee_direction": "up",
+        "marquee_pause_on_hover": true
+      }
+    },
     "perfect_extensions": {
       "type": "perfect-extensions",
       "settings": {
@@ -376,150 +522,6 @@
         "hero_height_desktop": 1050,
         "hero_height_mobile": 840,
         "pill_scale": 90
-      }
-    },
-    "landingpage_hero_FGqDKJ": {
-      "type": "landingpage-hero",
-      "blocks": {
-        "tile_WwJ4nc": {
-          "type": "tile",
-          "settings": {
-            "tile_kind": "image",
-            "title": "CONSISTENT THICKNESS,",
-            "subtitle": "ROOT TO TIP",
-            "text_bg": "#74D0E6",
-            "text_color": "#FFFFFF"
-          }
-        },
-        "tile_QVVVw3": {
-          "type": "tile",
-          "settings": {
-            "tile_kind": "image",
-            "title": "CONSISTENT THICKNESS,",
-            "subtitle": "ROOT TO TIP",
-            "text_bg": "#74D0E6",
-            "text_color": "#FFFFFF"
-          }
-        },
-        "tile_EtR9JQ": {
-          "type": "tile",
-          "settings": {
-            "tile_kind": "text",
-            "title": "CONSISTENT THICKNESS,",
-            "subtitle": "ROOT TO TIP",
-            "text_bg": "#74D0E6",
-            "text_color": "#FFFFFF"
-          }
-        },
-        "tile_iLPp86": {
-          "type": "tile",
-          "settings": {
-            "tile_kind": "image",
-            "title": "CONSISTENT THICKNESS,",
-            "subtitle": "ROOT TO TIP",
-            "text_bg": "#74D0E6",
-            "text_color": "#FFFFFF"
-          }
-        },
-        "tile_NCQ9kX": {
-          "type": "tile",
-          "settings": {
-            "tile_kind": "text",
-            "title": "DESIGNED",
-            "subtitle": "FOR NATURAL MOVEMENT",
-            "text_bg": "#74D0E6",
-            "text_color": "#FFFFFF"
-          }
-        },
-        "tile_wMyqPL": {
-          "type": "tile",
-          "settings": {
-            "tile_kind": "image",
-            "title": "CONSISTENT THICKNESS,",
-            "subtitle": "ROOT TO TIP",
-            "text_bg": "#74D0E6",
-            "text_color": "#FFFFFF"
-          }
-        },
-        "tile_68Q7ey": {
-          "type": "tile",
-          "settings": {
-            "tile_kind": "image",
-            "title": "CONSISTENT THICKNESS,",
-            "subtitle": "ROOT TO TIP",
-            "text_bg": "#74D0E6",
-            "text_color": "#FFFFFF"
-          }
-        },
-        "tile_DfHCgi": {
-          "type": "tile",
-          "settings": {
-            "tile_kind": "text",
-            "title": "LUXURY QUALITY",
-            "subtitle": "YOU CAN FEEL",
-            "text_bg": "#74D0E6",
-            "text_color": "#FFFFFF"
-          }
-        },
-        "tile_jeFrgQ": {
-          "type": "tile",
-          "settings": {
-            "tile_kind": "image",
-            "title": "CONSISTENT THICKNESS,",
-            "subtitle": "ROOT TO TIP",
-            "text_bg": "#74D0E6",
-            "text_color": "#FFFFFF"
-          }
-        }
-      },
-      "block_order": [
-        "tile_WwJ4nc",
-        "tile_QVVVw3",
-        "tile_EtR9JQ",
-        "tile_iLPp86",
-        "tile_NCQ9kX",
-        "tile_wMyqPL",
-        "tile_68Q7ey",
-        "tile_DfHCgi",
-        "tile_jeFrgQ"
-      ],
-      "name": "Landing - Hero (Aqualyna)",
-      "settings": {
-        "hero_height_desktop": 1600,
-        "hero_height_mobile": 1000,
-        "content_max_width": 980,
-        "content_vertical_position": "middle",
-        "enable_overlay": true,
-        "overlay_color": "#000000",
-        "overlay_opacity": 25,
-        "heading": "LUXURY HAIR EXTENSIONS.",
-        "heading_color": "#74D0E6",
-        "subheading": "DESIGNED TO BLEND, BUILT TO LAST",
-        "subheading_color": "#FFFFFF",
-        "body": "Ethically sourced, cruelty-free extensions made from premium human hair.",
-        "body_color": "rgba(255,255,255,0.80)",
-        "primary_button_label": "SHOP AQUALYNA",
-        "primary_button_link": "",
-        "secondary_button_label": "FIND YOUR MATCH",
-        "secondary_button_link": "",
-        "primary_button_bg": "#74D0E6",
-        "primary_button_text": "#0B0B0B",
-        "secondary_button_bg": "rgba(0,0,0,0)",
-        "secondary_button_text": "#74D0E6",
-        "secondary_button_border": "#74D0E6",
-        "promo_enable": true,
-        "promo_heading": "ENJOY 20% OFF",
-        "promo_subheading": "YOUR FIRST ORDER",
-        "promo_text_color": "#FFFFFF",
-        "promo_bg": "rgba(0,0,0,0.75)",
-        "why_heading": "WHY AQUALYNA",
-        "why_heading_color": "#FFFFFF",
-        "marquee_surface_bg": "#F3F5F6",
-        "marquee_height_desktop": 520,
-        "marquee_height_mobile": 520,
-        "marquee_speed_seconds": 18,
-        "marquee_direction": "up",
-        "marquee_pause_on_hover": true
       }
     }
   },
