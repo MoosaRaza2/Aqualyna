@@ -576,7 +576,7 @@
         "card_radius_mobile": 18,
         "card_padding_mobile": 14,
         "image_height_mobile": 220,
-        "padding_top_desktop": 40,
+        "padding_top_desktop": 72,
         "padding_bottom_desktop": 100,
         "padding_top_mobile": 80,
         "padding_bottom_mobile": 128,
