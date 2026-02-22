@@ -80,7 +80,8 @@
         "tile_68Q7ey": {
           "type": "tile",
           "settings": {
-            "tile_kind": "text",
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Group_30.png",
             "title": "CONSISTENT THICKNESS,",
             "subtitle": "ROOT TO TIP",
             "text_bg": "#74d0e6",
