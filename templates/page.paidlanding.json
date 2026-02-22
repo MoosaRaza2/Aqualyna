@@ -216,7 +216,7 @@
         "primary_button_label": "SHOP AQUALYNA",
         "primary_button_link": "https://www.aqualyna.com/",
         "secondary_button_label": "FIND YOUR MATCH",
-        "secondary_button_link": "",
+        "secondary_button_link": "https://www.aqualyna.com/",
         "primary_button_bg": "#74d0e6",
         "primary_button_text": "#0b0b0b",
         "secondary_button_bg": "rgba(0,0,0,0)",
