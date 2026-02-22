@@ -295,13 +295,13 @@
                 <div class="aql-marquee__col aql-marquee__col--1">
                   <div class="aql-marquee__track">
                     {% for block in section.blocks %}
-                      {% assign __aql_mod = forloop.index0 | modulo: 4 %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 5 %}
                       {% if __aql_mod == 0 %}
                         {% render 'landingpage-hero-marquee-tile', block: block %}
                       {% endif %}
                     {% endfor %}
                     {% for block in section.blocks %}
-                      {% assign __aql_mod = forloop.index0 | modulo: 4 %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 5 %}
                       {% if __aql_mod == 0 %}
                         {% render 'landingpage-hero-marquee-tile', block: block, is_clone: true %}
                       {% endif %}
@@ -312,13 +312,13 @@
                 <div class="aql-marquee__col aql-marquee__col--2" aria-hidden="true">
                   <div class="aql-marquee__track aql-marquee__track--reverse">
                     {% for block in section.blocks %}
-                      {% assign __aql_mod = forloop.index0 | modulo: 4 %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 5 %}
                       {% if __aql_mod == 1 %}
                         {% render 'landingpage-hero-marquee-tile', block: block %}
                       {% endif %}
                     {% endfor %}
                     {% for block in section.blocks %}
-                      {% assign __aql_mod = forloop.index0 | modulo: 4 %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 5 %}
                       {% if __aql_mod == 1 %}
                         {% render 'landingpage-hero-marquee-tile', block: block, is_clone: true %}
                       {% endif %}
@@ -329,13 +329,13 @@
                 <div class="aql-marquee__col aql-marquee__col--3" aria-hidden="true">
                   <div class="aql-marquee__track">
                     {% for block in section.blocks %}
-                      {% assign __aql_mod = forloop.index0 | modulo: 4 %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 5 %}
                       {% if __aql_mod == 2 %}
                         {% render 'landingpage-hero-marquee-tile', block: block %}
                       {% endif %}
                     {% endfor %}
                     {% for block in section.blocks %}
-                      {% assign __aql_mod = forloop.index0 | modulo: 4 %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 5 %}
                       {% if __aql_mod == 2 %}
                         {% render 'landingpage-hero-marquee-tile', block: block, is_clone: true %}
                       {% endif %}
@@ -346,14 +346,31 @@
                 <div class="aql-marquee__col aql-marquee__col--4" aria-hidden="true">
                   <div class="aql-marquee__track aql-marquee__track--reverse">
                     {% for block in section.blocks %}
-                      {% assign __aql_mod = forloop.index0 | modulo: 4 %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 5 %}
                       {% if __aql_mod == 3 %}
                         {% render 'landingpage-hero-marquee-tile', block: block %}
                       {% endif %}
                     {% endfor %}
                     {% for block in section.blocks %}
-                      {% assign __aql_mod = forloop.index0 | modulo: 4 %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 5 %}
                       {% if __aql_mod == 3 %}
+                        {% render 'landingpage-hero-marquee-tile', block: block, is_clone: true %}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+
+                <div class="aql-marquee__col aql-marquee__col--5" aria-hidden="true">
+                  <div class="aql-marquee__track">
+                    {% for block in section.blocks %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 5 %}
+                      {% if __aql_mod == 4 %}
+                        {% render 'landingpage-hero-marquee-tile', block: block %}
+                      {% endif %}
+                    {% endfor %}
+                    {% for block in section.blocks %}
+                      {% assign __aql_mod = forloop.index0 | modulo: 5 %}
+                      {% if __aql_mod == 4 %}
                         {% render 'landingpage-hero-marquee-tile', block: block, is_clone: true %}
                       {% endif %}
                     {% endfor %}
@@ -395,7 +412,7 @@
     --aql-marquee-h: {{ section.settings.marquee_height_desktop }}px;
     --aql-marquee-h-m: {{ section.settings.marquee_height_mobile }}px;
     --aql-marquee-speed: {{ section.settings.marquee_speed_seconds }}s;
-    --aql-marquee-edge-cut: 7.5%; /* ~30% of first/last column (4 cols -> 0.30 * 25% = 7.5%) */
+    --aql-marquee-edge-cut: 6%; /* ~30% of first/last column (5 cols -> 0.30 * 20% = 6%) */
   }
 
   #LandingHero-{{ section.id }} {
@@ -650,7 +667,7 @@
 
   #LandingHero-{{ section.id }} .aql-marquee__cols {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 14px;
     height: var(--aql-marquee-h);
     width: calc(100% + (var(--aql-marquee-edge-cut) * 2));
@@ -676,7 +693,8 @@
 
   {% if section.settings.marquee_direction == 'down' %}
     #LandingHero-{{ section.id }} .aql-marquee__col--1 .aql-marquee__track,
-    #LandingHero-{{ section.id }} .aql-marquee__col--3 .aql-marquee__track { animation-name: aql-marquee-down; }
+    #LandingHero-{{ section.id }} .aql-marquee__col--3 .aql-marquee__track,
+    #LandingHero-{{ section.id }} .aql-marquee__col--5 .aql-marquee__track { animation-name: aql-marquee-down; }
     #LandingHero-{{ section.id }} .aql-marquee__col--2 .aql-marquee__track,
     #LandingHero-{{ section.id }} .aql-marquee__col--4 .aql-marquee__track { animation-name: aql-marquee-up; }
   {% endif %}
@@ -820,7 +838,7 @@
     }
 
     #LandingHero-{{ section.id }} .aql-marquee__cols {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       height: var(--aql-marquee-h-m);
       width: 100%;
       transform: none;
