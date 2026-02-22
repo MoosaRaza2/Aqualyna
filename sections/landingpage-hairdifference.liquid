@@ -34,51 +34,53 @@
     <div class="page-width">
       <div class="lhd-grid">
         <div class="lhd-media" aria-hidden="true">
-          {%- if section.settings.image_desktop != blank -%}
-            <picture>
-              {%- if section.settings.image_mobile != blank -%}
-                <source media="(max-width: 768px)" srcset="{{ section.settings.image_mobile | image_url: width: 1600 }}">
-              {%- endif -%}
-              <img
-                class="lhd-img"
-                src="{{ section.settings.image_desktop | image_url: width: 2400 }}"
-                alt=""
-                loading="lazy"
-                width="2400"
-                height="1600"
-              >
-            </picture>
-          {%- else -%}
-            <div class="lhd-placeholder">
-              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-            </div>
-          {%- endif -%}
-
-          <div class="lhd-callout" aria-hidden="true">
-            <div class="lhd-bubble">
-              <span class="lhd-bubble__dot lhd-bubble__dot--1"></span>
-              <span class="lhd-bubble__dot lhd-bubble__dot--2"></span>
-              <span class="lhd-bubble__dot lhd-bubble__dot--3"></span>
-
-              <div class="lhd-bubble__icon">
-                {%- if section.settings.bubble_icon != blank -%}
-                  <img
-                    src="{{ section.settings.bubble_icon | image_url: width: 120 }}"
-                    alt=""
-                    loading="lazy"
-                    width="60"
-                    height="60"
-                  >
-                {%- else -%}
-                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-                    <path d="M26 12c10 10 4 17-2 23-7 7-7 13 2 20" fill="none" stroke="#74D0E6" stroke-width="4" stroke-linecap="round"/>
-                    <path d="M40 14c7 8 4 14-2 20-8 8-10 14-1 22" fill="none" stroke="#74D0E6" stroke-width="4" stroke-linecap="round" opacity=".9"/>
-                  </svg>
+          <div class="lhd-media__inner">
+            {%- if section.settings.image_desktop != blank -%}
+              <picture>
+                {%- if section.settings.image_mobile != blank -%}
+                  <source media="(max-width: 768px)" srcset="{{ section.settings.image_mobile | image_url: width: 1600 }}">
                 {%- endif -%}
+                <img
+                  class="lhd-img"
+                  src="{{ section.settings.image_desktop | image_url: width: 2400 }}"
+                  alt=""
+                  loading="lazy"
+                  width="2400"
+                  height="1600"
+                >
+              </picture>
+            {%- else -%}
+              <div class="lhd-placeholder">
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
               </div>
-            </div>
+            {%- endif -%}
 
-            <div class="lhd-callout__text">Cuticle-aligned<br>human hair</div>
+            <div class="lhd-callout" aria-hidden="true">
+              <div class="lhd-bubble">
+                <span class="lhd-bubble__dot lhd-bubble__dot--1"></span>
+                {% comment %} <span class="lhd-bubble__dot lhd-bubble__dot--2"></span>
+                <span class="lhd-bubble__dot lhd-bubble__dot--3"></span> {% endcomment %}
+
+                <div class="lhd-bubble__icon">
+                  {%- if section.settings.bubble_icon != blank -%}
+                    <img
+                      src="{{ section.settings.bubble_icon | image_url: width: 120 }}"
+                      alt=""
+                      loading="lazy"
+                      width="60"
+                      height="60"
+                    >
+                  {%- else -%}
+                    <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                      <path d="M26 12c10 10 4 17-2 23-7 7-7 13 2 20" fill="none" stroke="#74D0E6" stroke-width="4" stroke-linecap="round"/>
+                      <path d="M40 14c7 8 4 14-2 20-8 8-10 14-1 22" fill="none" stroke="#74D0E6" stroke-width="4" stroke-linecap="round" opacity=".9"/>
+                    </svg>
+                  {%- endif -%}
+                </div>
+              </div>
+
+              <div class="lhd-callout__text">Cuticle-aligned<br>human hair</div>
+            </div>
           </div>
         </div>
 
@@ -135,40 +137,80 @@
     --lhd-text: #111111;
     --lhd-accent: #74D0E6;
     --lhd-icon-muted: #E6ECEE;
+    --lhd-overlap: 95px; /* like landing-elevated */
+    --lhd-overlap-m: 34px;
+    --lhd-overlap-top: 280px; /* stronger upward overlap so hanger sticks out */
+    --lhd-overlap-top-m: 22px;
+    overflow: visible;
   }
 
   #LandingHairDifference-{{ section.id }} .lhd-surface {
+    background: transparent;
+    padding: 48px 0 calc(40px + var(--lhd-overlap));
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+  }
+
+  /* background layer that stops before the overlap area (same pattern as landing-elevated) */
+  #LandingHairDifference-{{ section.id }} .lhd-surface::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: var(--lhd-overlap);
     background: var(--lhd-bg);
-    padding: 46px 0;
+    z-index: 0;
+  }
+
+  #LandingHairDifference-{{ section.id }} .lhd-surface .page-width {
+    position: relative;
+    z-index: 1;
   }
 
   #LandingHairDifference-{{ section.id }} .lhd-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    display: flex;
     align-items: center;
-    gap: 36px;
-    max-width: 1260px;
+    justify-content: center;
+    gap: 64px;
+    max-width: 1280px;
     margin: 0 auto;
+    overflow: visible;
   }
 
   #LandingHairDifference-{{ section.id }} .lhd-media {
+    flex: 0 1 760px;
     position: relative;
-    min-height: 420px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    margin-top: calc(var(--lhd-overlap-top) * -1);
+    z-index: 3;
+  }
+
+  #LandingHairDifference-{{ section.id }} .lhd-media__inner {
+    width: 100%;
+    position: relative;
+    transform: translateY(var(--lhd-overlap));
+  }
+
+  #LandingHairDifference-{{ section.id }} .lhd-media__inner picture {
+    width: 100%;
+    display: block;
   }
 
   #LandingHairDifference-{{ section.id }} .lhd-img {
     display: block;
     width: 100%;
-    height: auto;
-    object-fit: contain;
+    height: 520px;
+    object-fit: contain; /* don't crop hanger */
+    object-position: left top;
   }
 
   #LandingHairDifference-{{ section.id }} .lhd-placeholder {
     width: 100%;
-    height: 420px;
+    height: 520px;
     background: rgba(0, 0, 0, 0.04);
     display: grid;
     place-items: center;
@@ -177,8 +219,8 @@
   }
 
   #LandingHairDifference-{{ section.id }} .lhd-content {
+    flex: 0 1 420px;
     text-align: center;
-    justify-self: end;
     width: min(420px, 100%);
   }
 
@@ -191,6 +233,13 @@
     letter-spacing: 0px;
     text-transform: uppercase;
     color: var(--lhd-text);
+    text-align: right;
+  }
+
+  @media (max-width: 768px) {
+    #LandingHairDifference-{{ section.id }} .lhd-heading {
+      text-align: center;
+    }
   }
 
   #LandingHairDifference-{{ section.id }} .lhd-heading__accent {
@@ -201,28 +250,32 @@
   #LandingHairDifference-{{ section.id }} .lhd-icons {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 14px;
   }
-
+ @media (max-width: 768px) {
+  #LandingHairDifference-{{ section.id }} .lhd-icons {
+    justify-content: center;
+  }
+ }
   #LandingHairDifference-{{ section.id }} .lhd-icon {
-    width: 44px;
-    height: 44px;
+    width: 51px;
+    height: 51px;
     border-radius: 999px;
     display: grid;
     place-items: center;
-    background: var(--lhd-icon-muted);
     color: #111111;
+    background: #DCF8F9;
   }
 
   #LandingHairDifference-{{ section.id }} .lhd-icon.is-active {
-    background: #111111;
+    /* background: #111111; */
     color: var(--lhd-accent);
+
+    outline: 6px solid black;
   }
 
   #LandingHairDifference-{{ section.id }} .lhd-icon img {
-    width: 22px;
-    height: 22px;
     object-fit: contain;
     display: block;
     filter: none;
@@ -236,9 +289,9 @@
 
   #LandingHairDifference-{{ section.id }} .lhd-callout {
     position: absolute;
-    left: 58%;
-    top: 54%;
-    transform: translate(-50%, -50%);
+    left: 51%;
+    top: 53%;
+    transform: translate(-58%, -79%);
     display: flex;
     align-items: center;
     gap: 14px;
@@ -255,12 +308,13 @@
     display: grid;
     place-items: center;
     box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+    border: 1px solid #75D1E0;
   }
 
   #LandingHairDifference-{{ section.id }} .lhd-bubble__icon img,
   #LandingHairDifference-{{ section.id }} .lhd-bubble__icon svg {
-    width: 46px;
-    height: 46px;
+    width: 60px;
+    height: 90px;
     display: block;
   }
 
@@ -290,24 +344,49 @@
   /* Mobile: matches your second screenshot (title/icons first, image second) */
   @media (max-width: 768px) {
     #LandingHairDifference-{{ section.id }} .lhd-surface {
-      padding: 34px 0 42px;
+      padding: 34px 0 calc(18px + var(--lhd-overlap-m));
+    }
+
+    #LandingHairDifference-{{ section.id }} .lhd-surface .page-width {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    #LandingHairDifference-{{ section.id }} .lhd-surface::before {
+      bottom: var(--lhd-overlap-m);
     }
 
     #LandingHairDifference-{{ section.id }} .lhd-grid {
-      grid-template-columns: 1fr;
+      flex-direction: column;
       gap: 18px;
     }
 
     #LandingHairDifference-{{ section.id }} .lhd-content {
       order: 1;
+      flex: 0 1 100%;
       justify-self: center;
       width: 100%;
     }
 
     #LandingHairDifference-{{ section.id }} .lhd-media {
       order: 2;
-      min-height: 520px;
       justify-content: center;
+      margin-top: calc(var(--lhd-overlap-top-m) * -1);
+      flex: 0 0 auto;
+      width: 100%;
+    }
+
+    #LandingHairDifference-{{ section.id }} .lhd-img {
+      height: 500px;
+      width: 300px;
+      object-fit: contain;
+      object-position: center center;
+    }
+
+    #LandingHairDifference-{{ section.id }} .lhd-media__inner {
+      transform: translateY(var(--lhd-overlap-m));
+      width: min(520px, 100%);
+      margin: 0 auto;
     }
 
     #LandingHairDifference-{{ section.id }} .lhd-heading {
@@ -316,19 +395,14 @@
       margin-bottom: 16px;
     }
 
-    #LandingHairDifference-{{ section.id }} .lhd-icon {
-      width: 42px;
-      height: 42px;
-    }
-
     #LandingHairDifference-{{ section.id }} .lhd-callout {
       left: auto;
-      top: auto;
-      right: 10px;
-      bottom: 88px;
+      bottom: auto;
+      right: 14px;
+      top: 40%;
       transform: none;
       gap: 12px;
-      align-items: flex-end;
+      align-items: center;
     }
 
     #LandingHairDifference-{{ section.id }} .lhd-bubble {
@@ -337,9 +411,10 @@
     }
 
     #LandingHairDifference-{{ section.id }} .lhd-callout__text {
-      font-size: 16px;
+      font-size: 14px;
       white-space: normal;
-      width: 160px;
+      width: 120px;
+      margin-top: 70px;
     }
   }
 </style>
