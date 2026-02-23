@@ -27,6 +27,24 @@
     { "type": "image_picker", "id": "bubble_icon_1", "label": "Bubble image for icon 1" },
     { "type": "image_picker", "id": "bubble_icon_2", "label": "Bubble image for icon 2" },
     { "type": "image_picker", "id": "bubble_icon_3", "label": "Bubble image for icon 3" },
+    {
+      "type": "range",
+      "id": "bubble_img_width",
+      "label": "Bubble image width (px)",
+      "min": 20,
+      "max": 120,
+      "step": 1,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "bubble_img_height",
+      "label": "Bubble image height (px)",
+      "min": 20,
+      "max": 120,
+      "step": 1,
+      "default": 90
+    },
     { "type": "textarea", "id": "callout_text_1", "label": "Callout text for icon 1", "default": "Cuticle-aligned\nhuman hair" },
     { "type": "textarea", "id": "callout_text_2", "label": "Callout text for icon 2", "default": "Minimal\nshedding" },
     { "type": "textarea", "id": "callout_text_3", "label": "Callout text for icon 3", "default": "Natural\nshine" }
@@ -179,6 +197,8 @@
     --lhd-accent: #74D0E6;
     --lhd-icon-muted: #E6ECEE;
     --lhd-bubble-size: 86px;
+    --lhd-bubble-img-w: {{ section.settings.bubble_img_width | default: 60 }}px;
+    --lhd-bubble-img-h: {{ section.settings.bubble_img_height | default: 90 }}px;
     --lhd-overlap: 95px; /* like landing-elevated */
     --lhd-overlap-m: 34px;
     --lhd-overlap-top: 280px; /* stronger upward overlap so hanger sticks out */
@@ -366,11 +386,11 @@
     border: 1px solid #75D1E0;
   }
 
-  #LandingHairDifference-{{ section.id }} .lhd-bubble__icon img,
-  #LandingHairDifference-{{ section.id }} .lhd-bubble__icon svg {
-    width: 60px;
-    height: 90px;
+  #LandingHairDifference-{{ section.id }} .lhd-bubble__icon img {
+    width: var(--lhd-bubble-img-w);
+    height: var(--lhd-bubble-img-h);
     display: block;
+    object-fit: contain;
   }
 
   #LandingHairDifference-{{ section.id }} .lhd-bubble__dot {
