@@ -200,7 +200,7 @@
         "padding_bottom_mobile": 0,
         "bg_image": "shopify://shop_images/Main_Banner_Image_1.png",
         "bg_image_mobile": "shopify://shop_images/Mobile_Banner.png",
-        "hero_height_desktop": 1680,
+        "hero_height_desktop": 1440,
         "hero_height_mobile": 1000,
         "content_max_width": 980,
         "content_vertical_position": "middle",
