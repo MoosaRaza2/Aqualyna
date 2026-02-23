@@ -596,7 +596,8 @@
         "offer_image": "shopify://shop_images/MAT8862_1.png",
         "hero_image": "shopify://shop_images/AQUA_Noc_42120-Edit-Edit_1_2_4.png",
         "hero_image_mobile": "shopify://shop_images/AQUA_Noc_42120-Edit-Edit_1_2_3.png",
-        "hero_video_mp4": "",
+        "hero_video_mp4": "https://cdn.shopify.com/videos/c/o/v/606d27722759427da7378d31c11a87ee.mp4",
+        "hero_video_mp4_mobile": "https://cdn.shopify.com/videos/c/o/v/5c25dfc3acd848dc8994f4088eaad6da.mp4",
         "welcome_button_link": "https://www.aqualyna.com/",
         "pill_1_link": "https://www.aqualyna.com/",
         "pill_2_link": "https://www.aqualyna.com/",
@@ -604,6 +605,8 @@
         "offer_image_max_mobile": 220,
         "hero_height_desktop": 1050,
         "hero_height_mobile": 840,
+        "hero_media_max_width_desktop": 2400,
+        "hero_media_max_width_mobile": 1200,
         "pill_scale": 90
       }
     }
