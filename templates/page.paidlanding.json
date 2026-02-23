@@ -594,8 +594,6 @@
       "name": "Landing - Elevated",
       "settings": {
         "offer_image": "shopify://shop_images/MAT8862_1.png",
-        "hero_image": "shopify://shop_images/AQUA_Noc_42120-Edit-Edit_1_2_4.png",
-        "hero_image_mobile": "shopify://shop_images/AQUA_Noc_42120-Edit-Edit_1_2_3.png",
         "hero_video_mp4": "https://cdn.shopify.com/videos/c/o/v/606d27722759427da7378d31c11a87ee.mp4",
         "hero_video_mp4_mobile": "https://cdn.shopify.com/videos/c/o/v/5c25dfc3acd848dc8994f4088eaad6da.mp4",
         "welcome_button_link": "https://www.aqualyna.com/",
