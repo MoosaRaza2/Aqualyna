@@ -17,6 +17,7 @@
     { "type": "url", "id": "welcome_button_link", "label": "Welcome offer button link" },
     { "type": "url", "id": "pill_1_link", "label": "Pill 1 link (Shop extensions)" },
     { "type": "url", "id": "pill_2_link", "label": "Pill 2 link (Find your match)" },
+    { "type": "url", "id": "pill_2_link_mobile", "label": "Pill 2 link (mobile, optional)" },
 
     { "type": "header", "content": "Sizes" },
     {
@@ -163,10 +164,6 @@
         <div class="le-hero__pills le-desktop-only" aria-label="Hero links">
           <a class="le-pill le-pill--primary" href="{{ section.settings.pill_1_link }}">SHOP EXTENSIONS</a>
           <a class="le-pill le-pill--secondary" href="{{ section.settings.pill_2_link }}">FIND YOUR MATCH</a>
-        </div>
-        <div class="le-hero__pillsText le-mobile-only" aria-label="Hero links (text only)">
-          <div>SHOP EXTENSIONS</div>
-          <div>FIND YOUR MATCH</div>
         </div>
       </div>
     </div>
@@ -447,20 +444,6 @@
     color: var(--le-accent);
     font-weight: 700;
     margin: 0 10px;
-  }
-
-  #LandingElevated-{{ section.id }} .le-hero__pillsText {
-    text-transform: uppercase;
-    font-family: 'Gotham-Regular';
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 0px;
-    color: #FFFFFF;
-    opacity: 0.9;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    align-items: center;
   }
 
   /* -------- Mobile (stacked exactly like your screenshot) -------- */
