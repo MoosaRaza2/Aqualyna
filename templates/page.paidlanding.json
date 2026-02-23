@@ -261,9 +261,9 @@
         "icon_3": "shopify://shop_images/3_10.png",
         "active_icon": "1",
         "bubble_icon": "shopify://shop_images/3_9.png",
-        "bubble_icon_1": "shopify://shop_images/3_10.png",
-        "bubble_icon_2": "shopify://shop_images/1_3_1.png",
-        "bubble_icon_3": "shopify://shop_images/3_9.png",
+        "bubble_icon_1": "shopify://shop_images/3_9.png",
+        "bubble_icon_2": "shopify://shop_images/3_9_2.png",
+        "bubble_icon_3": "shopify://shop_images/3_9_1.png",
         "callout_text_1": "Cuticle-aligned\nhuman hair",
         "callout_text_2": "Minimal\nshedding",
         "callout_text_3": "Natural\nshine"
