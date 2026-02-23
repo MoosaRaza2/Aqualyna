@@ -121,8 +121,7 @@
           </h2>
           <div class="le-offer__subtext">Enjoy <strong style="font-family: 'Gotham-Bold';">$20</strong> off your first Aqualyna purchase</div>
 
-          <a class="le-btn le-desktop-only" href="{{ section.settings.welcome_button_link }}">UNLOCK YOUR WELCOME OFFER</a>
-          <div class="le-plainText le-mobile-only">UNLOCK YOUR WELCOME OFFER</div>
+          <a class="le-btn" href="{{ section.settings.welcome_button_link }}">UNLOCK YOUR WELCOME OFFER</a>
         </div>
       </div>
     </div>
@@ -336,16 +335,6 @@
 
   #LandingElevated-{{ section.id }} .le-btn:hover { opacity: 0.92; }
 
-  #LandingElevated-{{ section.id }} .le-plainText {
-    font-family: 'Gotham-Regular';
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 0px;
-    text-transform: uppercase;
-    color: var(--le-text);
-    opacity: 0.95;
-  }
-
   /* -------- Hero -------- */
   #LandingElevated-{{ section.id }} .le-hero {
     position: relative;
@@ -469,7 +458,6 @@
     #LandingElevated-{{ section.id }} .le-desktop-only { display: none; }
     #LandingElevated-{{ section.id }} .le-mobile-only { display: block; }
 
-    #LandingElevated-{{ section.id }} .le-btn,
     #LandingElevated-{{ section.id }} .le-pill,
     #LandingElevated-{{ section.id }} .le-hero__pills {
       display: none !important;
@@ -549,7 +537,7 @@
     }
 
     #LandingElevated-{{ section.id }} .le-hero__content {
-      top: 70%;
+      top: 94%;
       gap: 12px;
     }
 
