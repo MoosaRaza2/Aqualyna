@@ -654,7 +654,7 @@
   }
   /* -------- Why heading -------- */
   #LandingHero-{{ section.id }} .aql-hero__whyHeading {
-    margin: 0 0 12px;
+    margin: 46px 0 12px;
     font-family: 'Gotham-Regular';
     font-weight: 400;
     font-size: 40px;
@@ -817,13 +817,13 @@
     {% when 'bottom' %}
       #LandingHero-{{ section.id }} .aql-hero__content { bottom: 80px; }
     {% else %}
-      #LandingHero-{{ section.id }} .aql-hero__content { top: 50%; transform: translate(-50%, -50%); }
+      #LandingHero-{{ section.id }} .aql-hero__content { top: 50%; transform: translate(-50%, -65%); }
   {% endcase %}
 
   /* -------- Mobile -------- */
   @media (max-width: 768px) {
 
-  #LandingHero-{{ section.id }} .aql-hero__content { top: 50%; transform: translate(-50%, -75%); }
+  #LandingHero-{{ section.id }} .aql-hero__content { top: 50%; transform: translate(-50%, -95%); }
     #LandingHero-{{ section.id }} {
       padding-top: var(--aql-pad-top-m);
       --aql-marquee-cols-h-m: 700px;
@@ -853,7 +853,7 @@
       position: absolute;
       left: 50%;
       bottom: 0;
-      transform: translate(-50%, 45%);
+      transform: translate(-50%, 40%);
       pointer-events: auto;
     }
 
