@@ -7,7 +7,6 @@
     { "type": "image_picker", "id": "image_mobile", "label": "Main image (mobile)" },
 
     { "type": "header", "content": "Icons" },
-    { "type": "image_picker", "id": "bubble_icon", "label": "Bubble icon (overlay)" },
     { "type": "image_picker", "id": "icon_1", "label": "Top icon 1" },
     { "type": "image_picker", "id": "icon_2", "label": "Top icon 2" },
     { "type": "image_picker", "id": "icon_3", "label": "Top icon 3" },
@@ -21,7 +20,16 @@
         { "value": "3", "label": "Icon 3" }
       ],
       "default": "1"
-    }
+    },
+
+    { "type": "header", "content": "Callout (updates when icon selected)" },
+    { "type": "image_picker", "id": "bubble_icon", "label": "Default bubble image (fallback)" },
+    { "type": "image_picker", "id": "bubble_icon_1", "label": "Bubble image for icon 1" },
+    { "type": "image_picker", "id": "bubble_icon_2", "label": "Bubble image for icon 2" },
+    { "type": "image_picker", "id": "bubble_icon_3", "label": "Bubble image for icon 3" },
+    { "type": "textarea", "id": "callout_text_1", "label": "Callout text for icon 1", "default": "Cuticle-aligned\nhuman hair" },
+    { "type": "textarea", "id": "callout_text_2", "label": "Callout text for icon 2", "default": "Minimal\nshedding" },
+    { "type": "textarea", "id": "callout_text_3", "label": "Callout text for icon 3", "default": "Natural\nshine" }
   ],
   "presets": [
     { "name": "Landing - Hair Difference" }
@@ -56,21 +64,42 @@
             {%- endif -%}
 
             <div class="lhd-callout" aria-hidden="true">
+              {%- assign active = section.settings.active_icon | default: '1' -%}
+              {%- assign active_bubble = blank -%}
+              {%- assign active_text = blank -%}
+
+              {%- if active == '1' -%}
+                {%- assign active_bubble = section.settings.bubble_icon_1 | default: section.settings.bubble_icon -%}
+                {%- assign active_text = section.settings.callout_text_1 -%}
+              {%- elsif active == '2' -%}
+                {%- assign active_bubble = section.settings.bubble_icon_2 | default: section.settings.bubble_icon -%}
+                {%- assign active_text = section.settings.callout_text_2 -%}
+              {%- else -%}
+                {%- assign active_bubble = section.settings.bubble_icon_3 | default: section.settings.bubble_icon -%}
+                {%- assign active_text = section.settings.callout_text_3 -%}
+              {%- endif -%}
+
               <div class="lhd-bubble">
                 <span class="lhd-bubble__dot lhd-bubble__dot--1"></span>
                 {% comment %} <span class="lhd-bubble__dot lhd-bubble__dot--2"></span>
                 <span class="lhd-bubble__dot lhd-bubble__dot--3"></span> {% endcomment %}
 
                 <div class="lhd-bubble__icon">
-                  {%- if section.settings.bubble_icon != blank -%}
+                  {%- if active_bubble != blank -%}
                     <img
-                      src="{{ section.settings.bubble_icon | image_url: width: 120 }}"
+                      class="lhd-bubble__img"
+                      src="{{ active_bubble | image_url: width: 160 }}"
                       alt=""
                       loading="lazy"
                       width="60"
                       height="60"
                     >
+                    <svg class="lhd-bubble__fallback" viewBox="0 0 64 64" aria-hidden="true" focusable="false" hidden>
+                      <path d="M26 12c10 10 4 17-2 23-7 7-7 13 2 20" fill="none" stroke="#74D0E6" stroke-width="4" stroke-linecap="round"/>
+                      <path d="M40 14c7 8 4 14-2 20-8 8-10 14-1 22" fill="none" stroke="#74D0E6" stroke-width="4" stroke-linecap="round" opacity=".9"/>
+                    </svg>
                   {%- else -%}
+                    <img class="lhd-bubble__img" alt="" loading="lazy" width="60" height="60" hidden>
                     <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
                       <path d="M26 12c10 10 4 17-2 23-7 7-7 13 2 20" fill="none" stroke="#74D0E6" stroke-width="4" stroke-linecap="round"/>
                       <path d="M40 14c7 8 4 14-2 20-8 8-10 14-1 22" fill="none" stroke="#74D0E6" stroke-width="4" stroke-linecap="round" opacity=".9"/>
@@ -79,7 +108,7 @@
                 </div>
               </div>
 
-              <div class="lhd-callout__text">Cuticle-aligned<br>human hair</div>
+              <div class="lhd-callout__text">{{ active_text | newline_to_br }}</div>
             </div>
           </div>
         </div>
@@ -91,9 +120,18 @@
           </h2>
 
           <div class="lhd-icons" aria-label="Key differences">
-            {%- assign active = section.settings.active_icon | default: '1' -%}
+            {%- assign bubble_1 = section.settings.bubble_icon_1 | default: section.settings.bubble_icon -%}
+            {%- assign bubble_2 = section.settings.bubble_icon_2 | default: section.settings.bubble_icon -%}
+            {%- assign bubble_3 = section.settings.bubble_icon_3 | default: section.settings.bubble_icon -%}
 
-            <div class="lhd-icon {% if active == '1' %}is-active{% endif %}" aria-hidden="true">
+            <button
+              type="button"
+              class="lhd-icon {% if active == '1' %}is-active{% endif %}"
+              aria-pressed="{% if active == '1' %}true{% else %}false{% endif %}"
+              data-lhd-option="1"
+              data-bubble-icon-url="{% if bubble_1 != blank %}{{ bubble_1 | image_url: width: 160 }}{% endif %}"
+              data-callout-html="{{ section.settings.callout_text_1 | newline_to_br | escape }}"
+            >
               {%- if section.settings.icon_1 != blank -%}
                 <img src="{{ section.settings.icon_1 | image_url: width: 120 }}" alt="" loading="lazy" width="56" height="56">
               {%- else -%}
@@ -101,9 +139,16 @@
                   <path d="M26 12c10 10 4 17-2 23-7 7-7 13 2 20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                 </svg>
               {%- endif -%}
-            </div>
+            </button>
 
-            <div class="lhd-icon {% if active == '2' %}is-active{% endif %}" aria-hidden="true">
+            <button
+              type="button"
+              class="lhd-icon {% if active == '2' %}is-active{% endif %}"
+              aria-pressed="{% if active == '2' %}true{% else %}false{% endif %}"
+              data-lhd-option="2"
+              data-bubble-icon-url="{% if bubble_2 != blank %}{{ bubble_2 | image_url: width: 160 }}{% endif %}"
+              data-callout-html="{{ section.settings.callout_text_2 | newline_to_br | escape }}"
+            >
               {%- if section.settings.icon_2 != blank -%}
                 <img src="{{ section.settings.icon_2 | image_url: width: 120 }}" alt="" loading="lazy" width="56" height="56">
               {%- else -%}
@@ -112,9 +157,16 @@
                   <path d="M40 38c0 6-5 10-10 10h-4c-6 0-10-4-10-10s4-10 10-10h4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                 </svg>
               {%- endif -%}
-            </div>
+            </button>
 
-            <div class="lhd-icon {% if active == '3' %}is-active{% endif %}" aria-hidden="true">
+            <button
+              type="button"
+              class="lhd-icon {% if active == '3' %}is-active{% endif %}"
+              aria-pressed="{% if active == '3' %}true{% else %}false{% endif %}"
+              data-lhd-option="3"
+              data-bubble-icon-url="{% if bubble_3 != blank %}{{ bubble_3 | image_url: width: 160 }}{% endif %}"
+              data-callout-html="{{ section.settings.callout_text_3 | newline_to_br | escape }}"
+            >
               {%- if section.settings.icon_3 != blank -%}
                 <img src="{{ section.settings.icon_3 | image_url: width: 120 }}" alt="" loading="lazy" width="56" height="56">
               {%- else -%}
@@ -123,7 +175,7 @@
                   <path d="M18 40c6-2 10 2 14 8-2-6 2-10 8-14-6 2-10-2-14-8 2 6-2 10-8 14Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" opacity=".9"/>
                 </svg>
               {%- endif -%}
-            </div>
+            </button>
           </div>
         </div>
       </div>
@@ -266,6 +318,10 @@
     place-items: center;
     color: #111111;
     background: #DCF8F9;
+    border: 0;
+    padding: 0;
+    appearance: none;
+    cursor: pointer;
   }
 
   #LandingHairDifference-{{ section.id }} .lhd-icon.is-active {
@@ -273,6 +329,11 @@
     color: var(--lhd-accent);
 
     outline: 6px solid black;
+  }
+
+  #LandingHairDifference-{{ section.id }} .lhd-icon:focus-visible {
+    outline: 3px solid rgba(0, 0, 0, 0.6);
+    outline-offset: 3px;
   }
 
   #LandingHairDifference-{{ section.id }} .lhd-icon img {
@@ -418,4 +479,57 @@
     }
   }
 </style>
+
+<script>
+  (() => {
+    const root = document.getElementById('LandingHairDifference-{{ section.id }}');
+    if (!root) return;
+
+    const icons = Array.from(root.querySelectorAll('.lhd-icon[data-lhd-option]'));
+    const calloutText = root.querySelector('.lhd-callout__text');
+    const bubbleImg = root.querySelector('.lhd-bubble__img');
+    const bubbleFallback = root.querySelector('.lhd-bubble__fallback') || root.querySelector('.lhd-bubble__icon svg');
+
+    if (!icons.length || !calloutText || !bubbleImg || !bubbleFallback) return;
+
+    const setBubble = (url) => {
+      const hasUrl = typeof url === 'string' && url.trim().length > 0;
+      if (hasUrl) {
+        bubbleImg.src = url;
+        bubbleImg.hidden = false;
+        bubbleFallback.hidden = true;
+      } else {
+        bubbleImg.removeAttribute('src');
+        bubbleImg.hidden = true;
+        bubbleFallback.hidden = false;
+      }
+    };
+
+    const activate = (btn) => {
+      icons.forEach((el) => {
+        el.classList.remove('is-active');
+        el.setAttribute('aria-pressed', 'false');
+      });
+
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-pressed', 'true');
+
+      setBubble(btn.dataset.bubbleIconUrl);
+      if (btn.dataset.calloutHtml) calloutText.innerHTML = btn.dataset.calloutHtml;
+    };
+
+    icons.forEach((btn) => {
+      btn.addEventListener('click', () => activate(btn));
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          activate(btn);
+        }
+      });
+    });
+
+    const preActive = icons.find((el) => el.classList.contains('is-active')) || icons[0];
+    if (preActive) activate(preActive);
+  })();
+</script>
 
