@@ -85,26 +85,15 @@
                 <span class="lhd-bubble__dot lhd-bubble__dot--3"></span> {% endcomment %}
 
                 <div class="lhd-bubble__icon">
-                  {%- if active_bubble != blank -%}
-                    <img
-                      class="lhd-bubble__img"
-                      src="{{ active_bubble | image_url: width: 160 }}"
-                      alt=""
-                      loading="lazy"
-                      width="60"
-                      height="60"
-                    >
-                    <svg class="lhd-bubble__fallback" viewBox="0 0 64 64" aria-hidden="true" focusable="false" hidden>
-                      <path d="M26 12c10 10 4 17-2 23-7 7-7 13 2 20" fill="none" stroke="#74D0E6" stroke-width="4" stroke-linecap="round"/>
-                      <path d="M40 14c7 8 4 14-2 20-8 8-10 14-1 22" fill="none" stroke="#74D0E6" stroke-width="4" stroke-linecap="round" opacity=".9"/>
-                    </svg>
-                  {%- else -%}
-                    <img class="lhd-bubble__img" alt="" loading="lazy" width="60" height="60" hidden>
-                    <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-                      <path d="M26 12c10 10 4 17-2 23-7 7-7 13 2 20" fill="none" stroke="#74D0E6" stroke-width="4" stroke-linecap="round"/>
-                      <path d="M40 14c7 8 4 14-2 20-8 8-10 14-1 22" fill="none" stroke="#74D0E6" stroke-width="4" stroke-linecap="round" opacity=".9"/>
-                    </svg>
-                  {%- endif -%}
+                  <img
+                    class="lhd-bubble__img"
+                    {% if active_bubble != blank %}src="{{ active_bubble | image_url: width: 160 }}"{% endif %}
+                    alt=""
+                    loading="lazy"
+                    width="60"
+                    height="60"
+                    {% if active_bubble == blank %}hidden{% endif %}
+                  >
                 </div>
               </div>
 
@@ -189,6 +178,7 @@
     --lhd-text: #111111;
     --lhd-accent: #74D0E6;
     --lhd-icon-muted: #E6ECEE;
+    --lhd-bubble-size: 86px;
     --lhd-overlap: 95px; /* like landing-elevated */
     --lhd-overlap-m: 34px;
     --lhd-overlap-top: 280px; /* stronger upward overlap so hanger sticks out */
@@ -352,7 +342,11 @@
     position: absolute;
     left: 51%;
     top: 53%;
-    transform: translate(-58%, -79%);
+    /* Use bubble-based translate so text length doesn't move the bubble */
+    transform: translate(
+      calc(var(--lhd-bubble-size) * -0.58),
+      calc(var(--lhd-bubble-size) * -0.79)
+    );
     display: flex;
     align-items: center;
     gap: 14px;
@@ -361,8 +355,8 @@
   }
 
   #LandingHairDifference-{{ section.id }} .lhd-bubble {
-    width: 86px;
-    height: 86px;
+    width: var(--lhd-bubble-size);
+    height: var(--lhd-bubble-size);
     border-radius: 999px;
     background: #111111;
     position: relative;
@@ -404,6 +398,10 @@
 
   /* Mobile: matches your second screenshot (title/icons first, image second) */
   @media (max-width: 768px) {
+    #LandingHairDifference-{{ section.id }} {
+      --lhd-bubble-size: 92px;
+    }
+
     #LandingHairDifference-{{ section.id }} .lhd-surface {
       padding: 34px 0 calc(18px + var(--lhd-overlap-m));
     }
@@ -466,10 +464,7 @@
       align-items: center;
     }
 
-    #LandingHairDifference-{{ section.id }} .lhd-bubble {
-      width: 92px;
-      height: 92px;
-    }
+    #LandingHairDifference-{{ section.id }} .lhd-bubble { }
 
     #LandingHairDifference-{{ section.id }} .lhd-callout__text {
       font-size: 14px;
@@ -488,20 +483,17 @@
     const icons = Array.from(root.querySelectorAll('.lhd-icon[data-lhd-option]'));
     const calloutText = root.querySelector('.lhd-callout__text');
     const bubbleImg = root.querySelector('.lhd-bubble__img');
-    const bubbleFallback = root.querySelector('.lhd-bubble__fallback') || root.querySelector('.lhd-bubble__icon svg');
 
-    if (!icons.length || !calloutText || !bubbleImg || !bubbleFallback) return;
+    if (!icons.length || !calloutText || !bubbleImg) return;
 
     const setBubble = (url) => {
       const hasUrl = typeof url === 'string' && url.trim().length > 0;
       if (hasUrl) {
         bubbleImg.src = url;
         bubbleImg.hidden = false;
-        bubbleFallback.hidden = true;
       } else {
         bubbleImg.removeAttribute('src');
         bubbleImg.hidden = true;
-        bubbleFallback.hidden = false;
       }
     };
 
