@@ -12,12 +12,17 @@
       "label": "Hero video URL (MP4, optional)",
       "info": "If set, video is used instead of the hero image."
     },
+    {
+      "type": "url",
+      "id": "hero_video_mp4_mobile",
+      "label": "Hero video URL (MP4, mobile optional)",
+      "info": "If set, this video is used on mobile instead of the desktop video."
+    },
 
     { "type": "header", "content": "Links" },
     { "type": "url", "id": "welcome_button_link", "label": "Welcome offer button link" },
     { "type": "url", "id": "pill_1_link", "label": "Pill 1 link (Shop extensions)" },
     { "type": "url", "id": "pill_2_link", "label": "Pill 2 link (Find your match)" },
-    { "type": "url", "id": "pill_2_link_mobile", "label": "Pill 2 link (mobile, optional)" },
 
     { "type": "header", "content": "Sizes" },
     {
@@ -126,9 +131,18 @@
   <!-- Hero -->
   <div class="le-hero" role="region" aria-label="Ready to experience Aqualyna">
     <div class="le-hero__media" aria-hidden="true">
-      {%- if section.settings.hero_video_mp4 != blank -%}
-        <video class="le-hero__video" autoplay muted loop playsinline preload="metadata">
-          <source src="{{ section.settings.hero_video_mp4 }}" type="video/mp4">
+      {%- assign le_video_desktop = section.settings.hero_video_mp4 -%}
+      {%- assign le_video_mobile = section.settings.hero_video_mp4_mobile -%}
+
+      {%- if le_video_desktop != blank or le_video_mobile != blank -%}
+        {%- assign le_video_desktop_effective = le_video_desktop | default: le_video_mobile -%}
+        {%- assign le_video_mobile_effective = le_video_mobile | default: le_video_desktop -%}
+
+        <video class="le-hero__video le-hero__video--desktop" autoplay muted loop playsinline preload="metadata">
+          <source src="{{ le_video_desktop_effective }}" type="video/mp4">
+        </video>
+        <video class="le-hero__video le-hero__video--mobile" autoplay muted loop playsinline preload="metadata">
+          <source src="{{ le_video_mobile_effective }}" type="video/mp4">
         </video>
       {%- else -%}
         {% if section.settings.hero_image != blank %}
@@ -366,6 +380,10 @@
     z-index: 1;
   }
 
+  #LandingElevated-{{ section.id }} .le-hero__video--mobile {
+    display: none;
+  }
+
   #LandingElevated-{{ section.id }} .le-hero__img {
     z-index: 0;
   }
@@ -450,6 +468,20 @@
   @media (max-width: 768px) {
     #LandingElevated-{{ section.id }} .le-desktop-only { display: none; }
     #LandingElevated-{{ section.id }} .le-mobile-only { display: block; }
+
+    #LandingElevated-{{ section.id }} .le-btn,
+    #LandingElevated-{{ section.id }} .le-pill,
+    #LandingElevated-{{ section.id }} .le-hero__pills {
+      display: none !important;
+    }
+
+    #LandingElevated-{{ section.id }} .le-hero__video--desktop {
+      display: none;
+    }
+
+    #LandingElevated-{{ section.id }} .le-hero__video--mobile {
+      display: block;
+    }
 
     #LandingElevated-{{ section.id }} .le-offer {
       background: #FFFFFF;
