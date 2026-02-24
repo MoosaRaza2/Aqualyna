@@ -877,6 +877,15 @@
       height: 32px;
       font-size: 0.58rem;
     }
+
+    /* Mobile: force each badge/weight pair onto its own line */
+    .pe-lw-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 10px;
+      row-gap: 0px;
+      align-items: center;
+    }
   }
 
   @media (max-width: 768px) {
