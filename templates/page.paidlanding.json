@@ -240,12 +240,39 @@
     },
     "perfect_extensions": {
       "type": "perfect-extensions",
+      "blocks": {
+        "system_item_TTnrw8": {
+          "type": "system_item",
+          "settings": {
+            "name": "Ultra Narrow Clip In"
+          }
+        },
+        "system_item_D8hRgP": {
+          "type": "system_item",
+          "settings": {
+            "name": "Ultra Narrow Clip In"
+          }
+        },
+        "system_item_Y6ayfP": {
+          "type": "system_item",
+          "settings": {
+            "name": "Ultra Narrow Clip In"
+          }
+        }
+      },
+      "block_order": [
+        "system_item_TTnrw8",
+        "system_item_D8hRgP",
+        "system_item_Y6ayfP"
+      ],
       "settings": {
         "heading_line1": "YOUR PERFECT",
         "heading_line2": "EXTENSIONS,",
         "heading_accent": "EXPLAINED",
         "systems_title": "SYSTEMS",
-        "systems_image": "shopify://shop_images/Group_36_1.png",
+        "systems_image": "shopify://shop_images/Rectangle_29.png",
+        "systems_image_desktop": "shopify://shop_images/Rectangle_29.png",
+        "systems_image_mobile": "shopify://shop_images/Rectangle_26.png",
         "lw_title": "LENGTH & WEIGHT",
         "lw_image": "shopify://shop_images/Group_37.png"
       }
@@ -264,6 +291,8 @@
         "bubble_icon_1": "shopify://shop_images/3_9.png",
         "bubble_icon_2": "shopify://shop_images/3_9_2.png",
         "bubble_icon_3": "shopify://shop_images/3_9_1.png",
+        "bubble_img_width": 60,
+        "bubble_img_height": 90,
         "callout_text_1": "Cuticle-aligned\nhuman hair",
         "callout_text_2": "Minimal\nshedding",
         "callout_text_3": "Natural\nshine"
