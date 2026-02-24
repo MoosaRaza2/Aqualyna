@@ -482,7 +482,7 @@
           "type": "shade",
           "settings": {
             "shade_image": "shopify://shop_images/Product_Image_8.png",
-            "shade_label": "Rooted",
+            "shade_label": "natural",
             "shade_link": ""
           }
         },
@@ -490,7 +490,7 @@
           "type": "shade",
           "settings": {
             "shade_image": "shopify://shop_images/Product_Image_9.png",
-            "shade_label": "Rooted",
+            "shade_label": "duo tone",
             "shade_link": ""
           }
         },
@@ -498,7 +498,7 @@
           "type": "shade",
           "settings": {
             "shade_image": "shopify://shop_images/Product_Image_10.png",
-            "shade_label": "Rooted",
+            "shade_label": "balayage",
             "shade_link": ""
           }
         },
@@ -506,7 +506,7 @@
           "type": "shade",
           "settings": {
             "shade_image": "shopify://shop_images/Product_Image_11.png",
-            "shade_label": "Rooted",
+            "shade_label": "ROOTED",
             "shade_link": ""
           }
         },
@@ -514,7 +514,7 @@
           "type": "shade",
           "settings": {
             "shade_image": "shopify://shop_images/Product_Image_12.png",
-            "shade_label": "Rooted",
+            "shade_label": "root tap",
             "shade_link": ""
           }
         }
