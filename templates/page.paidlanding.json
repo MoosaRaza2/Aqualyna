@@ -244,19 +244,22 @@
         "system_item_TTnrw8": {
           "type": "system_item",
           "settings": {
+            "icon": "shopify://shop_images/Rectangle_34_23.png",
             "name": "Ultra Narrow Clip In"
           }
         },
         "system_item_D8hRgP": {
           "type": "system_item",
           "settings": {
-            "name": "Ultra Narrow Clip In"
+            "icon": "shopify://shop_images/Rectangle_35_4.png",
+            "name": "Aura"
           }
         },
         "system_item_Y6ayfP": {
           "type": "system_item",
           "settings": {
-            "name": "Ultra Narrow Clip In"
+            "icon": "shopify://shop_images/Rectangle_34_22.png",
+            "name": "PonyTail"
           }
         }
       },
