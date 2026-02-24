@@ -136,15 +136,26 @@
         </button>
 
         <div class="pe-panel__content">
-          {%- if section.settings.lw_image != blank -%}
-            <img
-              src="{{ section.settings.lw_image | image_url: width: 900 }}"
-              alt="{{ section.settings.lw_image.alt | escape }}"
-              class="pe-panel__bg-image"
-              loading="lazy"
-              width="900"
-              height="600"
-            >
+          {%- assign lw_desktop_image = section.settings.lw_image_desktop -%}
+          {%- if lw_desktop_image == blank -%}{%- assign lw_desktop_image = section.settings.lw_image -%}{%- endif -%}
+          {%- if lw_desktop_image == blank -%}{%- assign lw_desktop_image = section.settings.lw_image_mobile -%}{%- endif -%}
+          {%- assign lw_mobile_image = section.settings.lw_image_mobile -%}
+          {%- if lw_mobile_image == blank -%}{%- assign lw_mobile_image = lw_desktop_image -%}{%- endif -%}
+
+          {%- if lw_desktop_image != blank -%}
+            <picture class="pe-panel__picture">
+              {%- if lw_mobile_image != blank -%}
+                <source media="(max-width: 768px)" srcset="{{ lw_mobile_image | image_url: width: 900 }}">
+              {%- endif -%}
+              <img
+                src="{{ lw_desktop_image | image_url: width: 900 }}"
+                alt="{{ lw_desktop_image.alt | escape }}"
+                class="pe-panel__bg-image"
+                loading="lazy"
+                width="900"
+                height="600"
+              >
+            </picture>
           {%- else -%}
             <div class="pe-panel__bg-placeholder pe-panel__bg-placeholder--hair"></div>
           {%- endif -%}
@@ -681,7 +692,7 @@
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #fff;
+    color: #000;
     margin: 0 0 25px 0;
   }
 
@@ -698,7 +709,7 @@
   }
 
   .pe-lw-group__name {
-    color: #FFF;
+    color: #000;
     font-family: 'Gotham-Regular';
     font-size: 13px;
     font-style: normal;
@@ -716,7 +727,7 @@
   .pe-lw-row {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: nowrap;
   }
 
@@ -724,20 +735,20 @@
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: #40696F;
+    background: rgba(149, 240, 255, 0.50);   
     display: flex;
     align-items: center;
     justify-content: center;
     font-size:11px;
     font-weight: 700;
-    color: #fff;
+    color: #40696F;
     flex-shrink: 0;
     letter-spacing: 0px;
     font-family: 'Gotham-Regular';
   }
 
   .pe-lw-weight {
-    color: #FFF;
+    color: #40696F;
     font-family: 'Gotham-Regular';
     font-size: 11px;
     font-style: normal;
@@ -1014,7 +1025,17 @@
     {
       "type": "image_picker",
       "id": "lw_image",
-      "label": "Length & Weight Background Image"
+      "label": "Length & Weight Background Image (legacy)"
+    },
+    {
+      "type": "image_picker",
+      "id": "lw_image_desktop",
+      "label": "Length & Weight Image (desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "lw_image_mobile",
+      "label": "Length & Weight Image (mobile)"
     }
   ],
   "blocks": [
