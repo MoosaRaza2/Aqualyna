@@ -35,37 +35,73 @@
         </button>
 
         <div class="pe-panel__content">
-          {%- if section.settings.systems_image != blank -%}
-            <img
-              src="{{ section.settings.systems_image | image_url: width: 900 }}"
-              alt="{{ section.settings.systems_image.alt | escape }}"
-              class="pe-panel__bg-image"
-              loading="lazy"
-              width="900"
-              height="600"
-            >
-          {%- else -%}
-            <div class="pe-panel__bg-placeholder pe-panel__bg-placeholder--dark"></div>
-          {%- endif -%}
+          {%- assign systems_desktop_image = section.settings.systems_image_desktop -%}
+          {%- if systems_desktop_image == blank -%}{%- assign systems_desktop_image = section.settings.systems_image -%}{%- endif -%}
+          {%- assign systems_mobile_image = section.settings.systems_image_mobile -%}
+          {%- if systems_mobile_image == blank -%}{%- assign systems_mobile_image = systems_desktop_image -%}{%- endif -%}
 
-          <div class="pe-panel__overlay"></div>
+          <div class="pe-panel__card">
+            <div class="pe-panel__body pe-panel__body--card">
+              <h3 class="pe-panel__title pe-panel__title--card">{{ section.settings.systems_title | default: 'SYSTEMS' }}</h3>
 
-          <div class="pe-panel__body">
-            <h3 class="pe-panel__title">{{ section.settings.systems_title | default: 'SYSTEMS' }}</h3>
-            <ul class="pe-systems-list">
-              {%- for block in section.blocks -%}
-                {%- if block.type == 'system_item' -%}
-                  <li class="pe-systems-list__item" {{ block.shopify_attributes }}>
-                    {{ block.settings.name }}
+              <ul class="pe-icon-list" role="list">
+                {%- assign rendered_any = false -%}
+                {%- for block in section.blocks -%}
+                  {%- if block.type == 'system_item' -%}
+                    {%- assign rendered_any = true -%}
+                    <li class="pe-icon-list__item" {{ block.shopify_attributes }}>
+                      <span class="pe-icon-list__icon" aria-hidden="true">
+                        {%- if block.settings.icon != blank -%}
+                          <img
+                            src="{{ block.settings.icon | image_url: width: 160 }}"
+                            alt="{{ block.settings.icon.alt | escape }}"
+                            loading="lazy"
+                            width="80"
+                            height="80"
+                          >
+                        {%- endif -%}
+                      </span>
+                      <span class="pe-icon-list__text">{{ block.settings.name }}</span>
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+
+                {%- unless rendered_any -%}
+                  <li class="pe-icon-list__item">
+                    <span class="pe-icon-list__icon" aria-hidden="true"></span>
+                    <span class="pe-icon-list__text">Ultra Narrow Clip In</span>
                   </li>
-                {%- endif -%}
-              {%- endfor -%}
-              {%- if section.blocks.size == 0 -%}
-                <li class="pe-systems-list__item">Ultra Narrow Clip In</li>
-                <li class="pe-systems-list__item">Aura</li>
-                <li class="pe-systems-list__item">Ponytail</li>
+                  <li class="pe-icon-list__item">
+                    <span class="pe-icon-list__icon" aria-hidden="true"></span>
+                    <span class="pe-icon-list__text">Aura</span>
+                  </li>
+                  <li class="pe-icon-list__item">
+                    <span class="pe-icon-list__icon" aria-hidden="true"></span>
+                    <span class="pe-icon-list__text">Ponytail</span>
+                  </li>
+                {%- endunless -%}
+              </ul>
+            </div>
+
+            <div class="pe-panel__hero">
+              {%- if systems_desktop_image != blank -%}
+                <picture class="pe-panel__picture">
+                  {%- if systems_mobile_image != blank -%}
+                    <source media="(max-width: 768px)" srcset="{{ systems_mobile_image | image_url: width: 900 }}">
+                  {%- endif -%}
+                  <img
+                    src="{{ systems_desktop_image | image_url: width: 1200 }}"
+                    alt="{{ systems_desktop_image.alt | escape }}"
+                    class="pe-panel__hero-image"
+                    loading="lazy"
+                    width="1200"
+                    height="900"
+                  >
+                </picture>
+              {%- else -%}
+                <div class="pe-panel__bg-placeholder pe-panel__bg-placeholder--dark"></div>
               {%- endif -%}
-            </ul>
+            </div>
           </div>
         </div>
 
@@ -90,112 +126,159 @@
         </button>
 
         <div class="pe-panel__content">
-          {%- if section.settings.lw_image != blank -%}
-            <img
-              src="{{ section.settings.lw_image | image_url: width: 900 }}"
-              alt="{{ section.settings.lw_image.alt | escape }}"
-              class="pe-panel__bg-image"
-              loading="lazy"
-              width="900"
-              height="600"
-            >
+          {%- assign lw_desktop_image = section.settings.lw_image_desktop -%}
+          {%- if lw_desktop_image == blank -%}{%- assign lw_desktop_image = section.settings.lw_image -%}{%- endif -%}
+          {%- assign lw_mobile_image = section.settings.lw_image_mobile -%}
+          {%- if lw_mobile_image == blank -%}{%- assign lw_mobile_image = lw_desktop_image -%}{%- endif -%}
+
+          {%- if section.settings.lw_content_type == 'table' -%}
+            {%- if lw_desktop_image != blank -%}
+              <img
+                src="{{ lw_desktop_image | image_url: width: 900 }}"
+                alt="{{ lw_desktop_image.alt | escape }}"
+                class="pe-panel__bg-image"
+                loading="lazy"
+                width="900"
+                height="600"
+              >
+            {%- else -%}
+              <div class="pe-panel__bg-placeholder pe-panel__bg-placeholder--hair"></div>
+            {%- endif -%}
+
+            <div class="pe-panel__overlay pe-panel__overlay--dark"></div>
+
+            <div class="pe-panel__body pe-panel__body--lw">
+              <h3 class="pe-panel__title pe-panel__title--lw">{{ section.settings.lw_title | default: 'LENGTH & WEIGHT' }}</h3>
+
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'lw_group' -%}
+                  <div class="pe-lw-group" {{ block.shopify_attributes }}>
+                    <h4 class="pe-lw-group__name">{{ block.settings.group_name }}</h4>
+                    <div class="pe-lw-rows">
+                      {%- if block.settings.row1_size != blank -%}
+                        <div class="pe-lw-row">
+                          <div class="pe-lw-badge">{{ block.settings.row1_size }}</div>
+                          <span class="pe-lw-weight">{{ block.settings.row1_weight }}</span>
+                          {%- if block.settings.row1b_size != blank -%}
+                            <div class="pe-lw-badge">{{ block.settings.row1b_size }}</div>
+                            <span class="pe-lw-weight">{{ block.settings.row1b_weight }}</span>
+                          {%- endif -%}
+                        </div>
+                      {%- endif -%}
+                      {%- if block.settings.row2_size != blank -%}
+                        <div class="pe-lw-row">
+                          <div class="pe-lw-badge">{{ block.settings.row2_size }}</div>
+                          <span class="pe-lw-weight">{{ block.settings.row2_weight }}</span>
+                          {%- if block.settings.row2b_size != blank -%}
+                            <div class="pe-lw-badge">{{ block.settings.row2b_size }}</div>
+                            <span class="pe-lw-weight">{{ block.settings.row2b_weight }}</span>
+                          {%- endif -%}
+                        </div>
+                      {%- endif -%}
+                      {%- if block.settings.row3_size != blank -%}
+                        <div class="pe-lw-row">
+                          <div class="pe-lw-badge">{{ block.settings.row3_size }}</div>
+                          <span class="pe-lw-weight">{{ block.settings.row3_weight }}</span>
+                          {%- if block.settings.row3b_size != blank -%}
+                            <div class="pe-lw-badge">{{ block.settings.row3b_size }}</div>
+                            <span class="pe-lw-weight">{{ block.settings.row3b_weight }}</span>
+                          {%- endif -%}
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
           {%- else -%}
-            <div class="pe-panel__bg-placeholder pe-panel__bg-placeholder--hair"></div>
+            <div class="pe-panel__card">
+              <div class="pe-panel__body pe-panel__body--card">
+                <h3 class="pe-panel__title pe-panel__title--card">{{ section.settings.lw_title | default: 'LENGTH & WEIGHT' }}</h3>
+
+                <ul class="pe-icon-list" role="list">
+                  {%- assign rendered_any = false -%}
+                  {%- for block in section.blocks -%}
+                    {%- if block.type == 'lw_item' -%}
+                      {%- assign rendered_any = true -%}
+                      <li class="pe-icon-list__item" {{ block.shopify_attributes }}>
+                        <span class="pe-icon-list__icon" aria-hidden="true">
+                          {%- if block.settings.icon != blank -%}
+                            <img
+                              src="{{ block.settings.icon | image_url: width: 160 }}"
+                              alt="{{ block.settings.icon.alt | escape }}"
+                              loading="lazy"
+                              width="80"
+                              height="80"
+                            >
+                          {%- endif -%}
+                        </span>
+                        <span class="pe-icon-list__text">{{ block.settings.name }}</span>
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+
+                  {%- unless rendered_any -%}
+                    {%- comment -%} Fallback: reuse Systems items if present {%- endcomment -%}
+                    {%- assign rendered_systems = false -%}
+                    {%- for block in section.blocks -%}
+                      {%- if block.type == 'system_item' -%}
+                        {%- assign rendered_systems = true -%}
+                        <li class="pe-icon-list__item">
+                          <span class="pe-icon-list__icon" aria-hidden="true">
+                            {%- if block.settings.icon != blank -%}
+                              <img
+                                src="{{ block.settings.icon | image_url: width: 160 }}"
+                                alt="{{ block.settings.icon.alt | escape }}"
+                                loading="lazy"
+                                width="80"
+                                height="80"
+                              >
+                            {%- endif -%}
+                          </span>
+                          <span class="pe-icon-list__text">{{ block.settings.name }}</span>
+                        </li>
+                      {%- endif -%}
+                    {%- endfor -%}
+
+                    {%- unless rendered_systems -%}
+                      <li class="pe-icon-list__item">
+                        <span class="pe-icon-list__icon" aria-hidden="true"></span>
+                        <span class="pe-icon-list__text">Ultra Narrow Clip In</span>
+                      </li>
+                      <li class="pe-icon-list__item">
+                        <span class="pe-icon-list__icon" aria-hidden="true"></span>
+                        <span class="pe-icon-list__text">Aura</span>
+                      </li>
+                      <li class="pe-icon-list__item">
+                        <span class="pe-icon-list__icon" aria-hidden="true"></span>
+                        <span class="pe-icon-list__text">Ponytail</span>
+                      </li>
+                    {%- endunless -%}
+                  {%- endunless -%}
+                </ul>
+              </div>
+
+              <div class="pe-panel__hero">
+                {%- if lw_desktop_image != blank -%}
+                  <picture class="pe-panel__picture">
+                    {%- if lw_mobile_image != blank -%}
+                      <source media="(max-width: 768px)" srcset="{{ lw_mobile_image | image_url: width: 900 }}">
+                    {%- endif -%}
+                    <img
+                      src="{{ lw_desktop_image | image_url: width: 1200 }}"
+                      alt="{{ lw_desktop_image.alt | escape }}"
+                      class="pe-panel__hero-image"
+                      loading="lazy"
+                      width="1200"
+                      height="900"
+                    >
+                  </picture>
+                {%- else -%}
+                  <div class="pe-panel__bg-placeholder pe-panel__bg-placeholder--hair"></div>
+                {%- endif -%}
+              </div>
+            </div>
           {%- endif -%}
-
-          <div class="pe-panel__overlay pe-panel__overlay--dark"></div>
-
-          <div class="pe-panel__body pe-panel__body--lw">
-            <h3 class="pe-panel__title pe-panel__title--lw">{{ section.settings.lw_title | default: 'LENGTH & WEIGHT' }}</h3>
-
-            {%- for block in section.blocks -%}
-              {%- if block.type == 'lw_group' -%}
-                <div class="pe-lw-group" {{ block.shopify_attributes }}>
-                  <h4 class="pe-lw-group__name">{{ block.settings.group_name }}</h4>
-                  <div class="pe-lw-rows">
-                    {%- if block.settings.row1_size != blank -%}
-                      <div class="pe-lw-row">
-                        <div class="pe-lw-badge">{{ block.settings.row1_size }}</div>
-                        <span class="pe-lw-weight">{{ block.settings.row1_weight }}</span>
-                        {%- if block.settings.row1b_size != blank -%}
-                          <div class="pe-lw-badge">{{ block.settings.row1b_size }}</div>
-                          <span class="pe-lw-weight">{{ block.settings.row1b_weight }}</span>
-                        {%- endif -%}
-                      </div>
-                    {%- endif -%}
-                    {%- if block.settings.row2_size != blank -%}
-                      <div class="pe-lw-row">
-                        <div class="pe-lw-badge">{{ block.settings.row2_size }}</div>
-                        <span class="pe-lw-weight">{{ block.settings.row2_weight }}</span>
-                        {%- if block.settings.row2b_size != blank -%}
-                          <div class="pe-lw-badge">{{ block.settings.row2b_size }}</div>
-                          <span class="pe-lw-weight">{{ block.settings.row2b_weight }}</span>
-                        {%- endif -%}
-                      </div>
-                    {%- endif -%}
-                    {%- if block.settings.row3_size != blank -%}
-                      <div class="pe-lw-row">
-                        <div class="pe-lw-badge">{{ block.settings.row3_size }}</div>
-                        <span class="pe-lw-weight">{{ block.settings.row3_weight }}</span>
-                        {%- if block.settings.row3b_size != blank -%}
-                          <div class="pe-lw-badge">{{ block.settings.row3b_size }}</div>
-                          <span class="pe-lw-weight">{{ block.settings.row3b_weight }}</span>
-                        {%- endif -%}
-                      </div>
-                    {%- endif -%}
-                  </div>
-                </div>
-              {%- endif -%}
-            {%- endfor -%}
-
-            {%- comment -%} Fallback static data if no blocks {%- endcomment -%}
-            {%- assign has_lw_blocks = false -%}
-            {%- for block in section.blocks -%}
-              {%- if block.type == 'lw_group' -%}{%- assign has_lw_blocks = true -%}{%- endif -%}
-            {%- endfor -%}
-            {%- unless has_lw_blocks -%}
-              <div class="pe-lw-group">
-                <h4 class="pe-lw-group__name">Ultra Narrow Clip In (7 pieces)</h4>
-                <div class="pe-lw-rows">
-                  <div class="pe-lw-row">
-                    <div class="pe-lw-badge">18"</div><span class="pe-lw-weight">140 grams</span>
-                    <div class="pe-lw-badge">24"</div><span class="pe-lw-weight">240 grams</span>
-                  </div>
-                  <div class="pe-lw-row">
-                    <div class="pe-lw-badge">20"</div><span class="pe-lw-weight">180 grams</span>
-                    <div class="pe-lw-badge">26"</div><span class="pe-lw-weight">320 grams</span>
-                  </div>
-                  <div class="pe-lw-row">
-                    <div class="pe-lw-badge">22"</div><span class="pe-lw-weight">220 grams</span>
-                  </div>
-                </div>
-              </div>
-              <div class="pe-lw-group">
-                <h4 class="pe-lw-group__name">Aura (1 piece)</h4>
-                <div class="pe-lw-rows">
-                  <div class="pe-lw-row">
-                    <div class="pe-lw-badge">16"</div><span class="pe-lw-weight">140 grams</span>
-                    <div class="pe-lw-badge">24"</div><span class="pe-lw-weight">180 grams</span>
-                  </div>
-                  <div class="pe-lw-row">
-                    <div class="pe-lw-badge">20"</div><span class="pe-lw-weight">160 grams</span>
-                  </div>
-                </div>
-              </div>
-              <div class="pe-lw-group">
-                <h4 class="pe-lw-group__name">Ponytail (1 piece)</h4>
-                <div class="pe-lw-rows">
-                  <div class="pe-lw-row">
-                    <div class="pe-lw-badge">16"</div><span class="pe-lw-weight">100 grams</span>
-                    <div class="pe-lw-badge">24"</div><span class="pe-lw-weight">140 grams</span>
-                  </div>
-                  <div class="pe-lw-row">
-                    <div class="pe-lw-badge">20"</div><span class="pe-lw-weight">120 grams</span>
-                  </div>
-                </div>
-              </div>
-            {%- endunless -%}
-          </div>
         </div>
 
         <div class="pe-panel__tab-label">
@@ -455,10 +538,40 @@
     z-index: 0;
   }
 
-  /* --- Panel Body (text layer) --- */
-  .pe-panel__body {
+  /* --- Card layout (matches provided design) --- */
+  .pe-panel__card {
     position: absolute;
     inset: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 52%);
+    background: radial-gradient(140% 120% at 0% 0%, #ffffff 0%, #F4FBFC 55%, #EAF7F9 100%);
+    border: 1px solid rgba(64, 105, 111, 0.18);
+    border-radius: var(--pe-radius);
+    overflow: hidden;
+  }
+
+  .pe-panel__hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pe-panel__picture,
+  .pe-panel__picture img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .pe-panel__hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+  }
+
+  /* --- Panel Body (text layer) --- */
+  .pe-panel__body {
+    position: relative;
     z-index: 2;
     padding: 32px 30px;
     display: flex;
@@ -470,6 +583,19 @@
 
   .pe-panel.is-active .pe-panel__body {
     opacity: 1;
+  }
+
+  .pe-panel__body--card {
+    padding: 36px 34px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 22px;
+  }
+
+  /* Keep legacy table body overlaying the bg image */
+  .pe-panel__body--lw {
+    position: absolute;
+    inset: 0;
   }
 
   /* ---- Systems Panel ---- */
@@ -502,6 +628,63 @@
     font-style: normal;
     font-weight: 325;
     line-height: 24px; /* 150% */
+  }
+
+  /* --- Icon list (card layout) --- */
+  .pe-panel__title--card {
+    color: #111;
+    font-family: 'Gotham-Medium';
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .pe-icon-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .pe-icon-list__item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .pe-icon-list__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid #75D1E0;
+    background: #fff;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+
+  .pe-icon-list__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .pe-icon-list__text {
+    color: #40696F;
+    font-family: 'Gotham-Regular';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 1.3;
   }
 
   /* ---- Length & Weight Panel ---- */
@@ -668,6 +851,33 @@
       padding-top: 40px;
     }
 
+    .pe-panel__card {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 46%);
+    }
+
+    .pe-panel__body--card {
+      padding: 36px 26px 26px 26px;
+      gap: 26px;
+    }
+
+    .pe-panel__title--card {
+      font-size: 18px;
+    }
+
+    .pe-icon-list {
+      gap: 30px;
+    }
+
+    .pe-icon-list__icon {
+      width: 74px;
+      height: 74px;
+    }
+
+    .pe-icon-list__text {
+      font-size: 34px;
+      line-height: 1.15;
+    }
+
     .pe-lw-badge {
       width: 32px;
       height: 32px;
@@ -791,7 +1001,17 @@
     {
       "type": "image_picker",
       "id": "systems_image",
-      "label": "Systems Background Image"
+      "label": "Systems Background Image (legacy)"
+    },
+    {
+      "type": "image_picker",
+      "id": "systems_image_desktop",
+      "label": "Systems Image (desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "systems_image_mobile",
+      "label": "Systems Image (mobile)"
     },
     {
       "type": "header",
@@ -806,7 +1026,27 @@
     {
       "type": "image_picker",
       "id": "lw_image",
-      "label": "Length & Weight Background Image"
+      "label": "Length & Weight Background Image (legacy)"
+    },
+    {
+      "type": "image_picker",
+      "id": "lw_image_desktop",
+      "label": "Length & Weight Image (desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "lw_image_mobile",
+      "label": "Length & Weight Image (mobile)"
+    },
+    {
+      "type": "select",
+      "id": "lw_content_type",
+      "label": "Length & Weight content",
+      "default": "icon_list",
+      "options": [
+        { "value": "icon_list", "label": "Icon list (matches design)" },
+        { "value": "table", "label": "Length/weight table (legacy)" }
+      ]
     }
   ],
   "blocks": [
@@ -815,9 +1055,31 @@
       "name": "System Item",
       "settings": [
         {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
           "type": "text",
           "id": "name",
           "label": "System Name",
+          "default": "Ultra Narrow Clip In"
+        }
+      ]
+    },
+    {
+      "type": "lw_item",
+      "name": "LW Icon Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Text",
           "default": "Ultra Narrow Clip In"
         }
       ]
