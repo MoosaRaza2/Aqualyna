@@ -168,6 +168,12 @@ setTimeout(ldinsp, 0);
       render 'icons', icon: 'defs'
     -%}
 
+   {% if template == 'page.paidlanding' or template.suffix == 'paidlanding' %}
+  <style>
+    .layout--header-group{display:none}
+  </style>
+{% endif %}
+
    {% if template == 'page.color-match' %}
   <style>
     .custom-content--wrapper {

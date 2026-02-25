@@ -114,6 +114,12 @@
     { "type": "text", "id": "promo_subheading", "label": "Promo subheading", "default": "YOUR FIRST ORDER" },
     { "type": "color", "id": "promo_text_color", "label": "Promo text color", "default": "#FFFFFF" },
     { "type": "color", "id": "promo_bg", "label": "Promo background", "default": "rgba(0,0,0,0.75)" },
+    { "type": "header", "content": "Welcome offer CTA (discount)" },
+    { "type": "checkbox", "id": "welcome_cta_enable", "label": "Show welcome offer CTA", "default": true },
+    { "type": "richtext", "id": "welcome_cta_copy", "label": "Copy", "default": "<p>Enjoy <strong>$20</strong> off your first Aqualyna purchase</p>" },
+    { "type": "text", "id": "welcome_cta_button_label", "label": "Button label", "default": "UNLOCK YOUR WELCOME OFFER" },
+    { "type": "text", "id": "welcome_cta_discount_code", "label": "Discount code", "default": "HairDreams" },
+    { "type": "text", "id": "welcome_cta_redirect_path", "label": "Redirect path after applying discount", "default": "/" },
     { "type": "header", "content": "Why Aqualyna + vertical marquee" },
     { "type": "text", "id": "why_heading", "label": "Section heading", "default": "WHY AQUALYNA" },
     { "type": "color", "id": "why_heading_color", "label": "Heading color", "default": "#FFFFFF" },
@@ -256,6 +262,23 @@
               </a>
             {% endif %}
           </div>
+
+          {% if section.settings.welcome_cta_enable %}
+            {% assign __aql_discount_code = section.settings.welcome_cta_discount_code | default: 'HairDreams' | strip %}
+            {% assign __aql_redirect_path = section.settings.welcome_cta_redirect_path | default: '/' | strip %}
+            <div class="aql-hero__welcomeCta" role="note" aria-label="Welcome offer">
+              <div class="aql-hero__welcomeCtaCopy">
+                {{ section.settings.welcome_cta_copy | default: '<p>Enjoy <strong>$20</strong> off your first Aqualyna purchase</p>' }}
+              </div>
+              <a
+                class="aql-hero__welcomeCtaBtn"
+                href="https://aqualyna.com/discount/{{ __aql_discount_code | url_encode }}?redirect={{ __aql_redirect_path | url_encode }}"
+                target="_self"
+              >
+                {{ section.settings.welcome_cta_button_label | default: 'UNLOCK YOUR WELCOME OFFER' }}
+              </a>
+            </div>
+          {% endif %}
 
           {% if section.settings.promo_enable %}
             <div class="aql-hero__promo {% if section.settings.promo_image != blank %}has-media{% endif %}" role="note" aria-label="Welcome offer">
@@ -483,6 +506,7 @@
   }
 
   #LandingHero-{{ section.id }} .aql-hero__buttons,
+  #LandingHero-{{ section.id }} .aql-hero__welcomeCta,
   #LandingHero-{{ section.id }} .aql-hero__promo,
   #LandingHero-{{ section.id }} .aql-marquee {
     pointer-events: auto;
@@ -533,6 +557,78 @@
     justify-content: center;
     gap: 14px;
     margin-bottom: 16px;
+  }
+
+  /* -------- Welcome offer CTA -------- */
+  #LandingHero-{{ section.id }} .aql-hero__welcomeCta {
+    margin: 10px 0 20px;
+    width: min(840px, 100%);
+    /* background: #F3F5F6; */
+    border-radius: 999px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06); */
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__welcomeCtaCopy {
+    font-family: 'Gotham-Regular';
+    font-weight: 325;
+    font-size: 25px;
+    line-height: 1.2;
+    color: white;
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__welcomeCtaCopy p {
+    margin: 0;
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__welcomeCtaCopy strong {
+    font-weight: 700;
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__welcomeCtaBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Gotham-Regular';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.4px;
+    background: var(--aql-primary-bg);
+    color: var(--aql-primary-text);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+  }
+
+  #LandingHero-{{ section.id }} .aql-hero__welcomeCtaBtn:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    #LandingHero-{{ section.id }} .aql-hero__welcomeCta {
+      width: min(720px, 100%);
+      padding: 12px 14px;
+      gap: 12px;
+    }
+
+    #LandingHero-{{ section.id }} .aql-hero__welcomeCtaCopy {
+      font-size: 18px;
+    }
+
+    #LandingHero-{{ section.id }} .aql-hero__welcomeCtaBtn {
+      font-size: 12px;
+      padding: 12px 18px;
+    }
   }
 
   #LandingHero-{{ section.id }} .aql-btn {
