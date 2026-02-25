@@ -1,0 +1,481 @@
+{% schema %}
+    {
+      "name": "Shade Selector",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "<p>FINDING YOUR <strong>PERFECT SHADE</strong> IS FREE</p>"
+        },
+        {
+          "type": "textarea",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Discover your perfect match with two samples for $12, and we'll credit $12 towards your next extension order."
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "ORDER COLOR SAMPLES"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "shade",
+          "name": "Shade Item",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "shade_image",
+              "label": "Shade Image"
+            },
+            {
+              "type": "image_picker",
+              "id": "shade_image_mobile",
+              "label": "Shade Image (Mobile)"
+            },
+            {
+              "type": "text",
+              "id": "shade_label",
+              "label": "Shade Label"
+            },
+            {
+              "type": "url",
+              "id": "shade_link",
+              "label": "Custom URL (Product / Collection / Page)"
+            }
+          ]
+        }
+      ],
+      "max_blocks": 12,
+      "presets": [
+        {
+          "name": "Shade Selector",
+          "blocks": [
+            { "type": "shade" },
+            { "type": "shade" },
+            { "type": "shade" },
+            { "type": "shade" }
+          ]
+        }
+      ]
+    }
+    {% endschema %}
+    
+    <section id="ShadeSelector-{{ section.id }}" class="shade-selector" data-shade-selector>
+      <div class="page-width" >
+    
+        <div class="shade-header">
+          <div class="shade-title rte" role="heading" aria-level="2">
+            {{ section.settings.heading }}
+          </div>
+          <p class="shade-subtitle">{{ section.settings.subheading }}</p>
+        </div>
+    
+        <div class="shade-grid">
+          {% for block in section.blocks %}
+            {% if block.settings.shade_link != blank %}
+              <a
+                class="shade-item"
+                href="{{ block.settings.shade_link }}"
+                data-shade-item
+                data-shade-label="{{ block.settings.shade_label | escape }}"
+                {{ block.shopify_attributes }}
+              >
+            {% else %}
+              <button
+                class="shade-item"
+                type="button"
+                data-shade-item
+                data-shade-label="{{ block.settings.shade_label | escape }}"
+                {{ block.shopify_attributes }}
+              >
+            {% endif %}
+
+              {% if block.settings.shade_image != blank %}
+                <picture class="shade-picture">
+                  {% if block.settings.shade_image_mobile != blank %}
+                    <source
+                      media="(max-width: 768px)"
+                      srcset="{{ block.settings.shade_image_mobile | image_url: width: 600 }}"
+                    >
+                  {% endif %}
+                  <img
+                    src="{{ block.settings.shade_image | image_url: width: 900 }}"
+                    alt="{{ block.settings.shade_label | escape }}"
+                    loading="lazy"
+                  >
+                </picture>
+              {% endif %}
+
+              {% if block.settings.shade_label != blank %}
+                <span class="shade-label">{{ block.settings.shade_label }}</span>
+              {% endif %}
+
+            {% if block.settings.shade_link != blank %}
+              </a>
+            {% else %}
+              </button>
+            {% endif %}
+          {% endfor %}
+        </div>
+    
+        {% if section.settings.button_link != blank %}
+          <div class="shade-button">
+            <a href="{{ section.settings.button_link }}" class="shade-btn">
+              {{ section.settings.button_text }}
+            </a>
+          </div>
+        {% endif %}
+    
+      </div>
+    </section>
+    
+    <style>
+      .page-width{
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+        .shade-title p strong {
+            color: #63c3c7;
+        }
+    .shade-selector {
+      padding: 32px 0 60px;
+      background: #fff;
+      text-align: center;
+    }
+    
+
+    .shade-title {
+        text-align: center;
+        font-family: 'Gotham-Light', sans-serif;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 25px; /* 62.5% */
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        
+    }
+    @media (max-width: 768px) {
+        .shade-title {
+            font-size: 32px;
+            line-height: 42px;
+            width: 80%;
+        margin: 0 auto;
+        }
+    }
+
+    .shade-title p {
+      margin: 0;
+    }
+
+    .shade-title-line {
+      display: block;
+      font-size: 34px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      line-height: 1.05;
+    }
+
+    .shade-title-line.shade-accent {
+      color: #63c3c7;
+      font-size: 46px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      margin: 6px 0;
+    }
+
+    .shade-subtitle {
+        width: 900px;
+        margin: 0 auto;
+        color: #000;
+        text-align: center;
+        font-family: 'Gotham-Light';
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 29px; /* 145% */
+        text-transform: uppercase;
+        margin-bottom: 80px;
+    }
+    
+    /* Grid Layout */
+    .shade-grid {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 233px;
+      justify-content: center;
+      gap: 14px;
+      align-items: start;
+      padding: 0 30px;
+    }
+    
+    /* Item */
+    .shade-item {
+      position: relative;
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, outline 0.2s ease;
+      display: block;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      text-decoration: none;
+      cursor: pointer;
+      outline: 0;
+      -webkit-tap-highlight-color: transparent;
+      width: 233px;
+      height: 233px;
+    }
+
+    .shade-item:focus-visible {
+      outline: 3px solid rgba(99, 195, 199, 0.9);
+      outline-offset: 4px;
+      border-radius: 16px;
+    }
+
+    .shade-picture,
+    .shade-item img {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+    }
+
+    .shade-picture {
+      aspect-ratio: 1 / 1;
+      background: #f2f2f2;
+    }
+
+    .shade-item img {
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .shade-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .shade-item.is-selected {
+      transform: translateY(-40px);
+      box-shadow: 0 10px 22px rgba(17, 17, 17, 0.14);
+      border: 3px solid #75D1E0;
+      outline-offset: 2px;
+      z-index: 1;
+      border-radius:25px;
+    }
+
+    @media (max-width: 768px) {
+      .shade-item.is-selected {
+        border-radius:16px;
+      }
+    }
+    
+    /* Label */
+    .shade-label {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+    }
+
+    .shade-item.is-selected .shade-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Button */
+    .shade-button {
+      margin-top: 22px;
+    }
+    
+    .shade-btn {
+      display: inline-flex;
+      padding: 16px 32px;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      border-radius: 50px;
+      background-color: #75D1E0 !important;
+      font-family: 'Gotham-Regular';
+      font-size: 16px;
+      color: #000;
+      font-weight: 400;
+      letter-spacing: 0px;
+      text-transform: uppercase;
+      transition: opacity 0.3s ease;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      margin-top: 40px;
+    }
+    
+    
+    /* Tablet */
+    @media (max-width: 990px) {
+      .shade-grid {
+        grid-auto-columns: 112px;
+      }
+    }
+    
+    /* Mobile Scroll */
+    @media (max-width: 768px) {
+    
+      .shade-selector {
+        padding: 42px 0 48px;
+      }
+    
+      .shade-title-line {
+        font-size: 30px;
+        letter-spacing: 0.05em;
+      }
+
+      .shade-title-line.shade-accent {
+        font-size: 44px;
+        letter-spacing: 0.03em;
+      }
+    
+      .shade-subtitle {
+        font-size: 13px;
+        margin-bottom: 22px;
+        width: 100%;
+        margin-top: 30px;
+        line-height: 1.5;
+        width: 80%;
+        font-family: 'Gotham-Regular';
+      }
+    
+      .shade-grid {
+        display: flex;
+        flex-direction: column;
+        gap:8px;
+      }
+    
+      .shade-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .shade-item {
+        scroll-snap-align: unset;
+        width: 100%;
+        height: 100%;
+      }
+
+      .shade-item.is-selected {
+        transform: none;
+      }
+
+      .shade-picture {
+        aspect-ratio: 4.5 / 1;
+        border-radius: 14px;
+      }
+
+      .shade-label {
+        left: 36%;
+        top: 35%;
+        bottom: auto;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0px;
+        text-transform: uppercase;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        font-family: 'Gotham-Regular';
+        letter-spacing: 2px;
+      }
+
+      .shade-item:hover .shade-label {
+        opacity: 0;
+      }
+
+      .shade-item.is-selected .shade-label {
+        opacity: 1;
+      }
+
+      .shade-button {
+        margin-top: 20px;
+        padding: 0 30px;
+      }
+
+      .shade-btn {
+        width: 100%;
+        max-width: 520px;
+        padding: 18px 26px;
+        border-radius: 999px;
+        margin-top: 30px;
+      }
+    }
+    </style>
+
+    <script>
+      (function () {
+        function bindShadeSelector(sectionEl) {
+          if (!sectionEl) return;
+          if (sectionEl.__shadeSelectorBound) return;
+          sectionEl.__shadeSelectorBound = true;
+
+          var items = sectionEl.querySelectorAll('[data-shade-item]');
+          if (!items || !items.length) return;
+
+          function setSelected(el) {
+            if (!el) return;
+            items.forEach(function (node) {
+              node.classList.remove('is-selected');
+              node.removeAttribute('aria-selected');
+            });
+            el.classList.add('is-selected');
+            el.setAttribute('aria-selected', 'true');
+          }
+
+          items.forEach(function (item) {
+            item.addEventListener('click', function () {
+              setSelected(item);
+            });
+            item.addEventListener('keydown', function (e) {
+              var isLink = item && item.tagName === 'A';
+
+              if (e.key === ' ') {
+                e.preventDefault();
+                setSelected(item);
+                return;
+              }
+
+              if (e.key === 'Enter') {
+                if (isLink) return;
+                e.preventDefault();
+                setSelected(item);
+              }
+            });
+          });
+
+          setSelected(sectionEl.querySelector('[data-shade-item].is-selected') || items[0]);
+        }
+
+        function init() {
+          bindShadeSelector(document.getElementById('ShadeSelector-{{ section.id }}'));
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('shopify:section:load', function (event) {
+          if (event && event.target) bindShadeSelector(event.target.querySelector('[data-shade-selector]'));
+        });
+      })();
+    </script>
+    

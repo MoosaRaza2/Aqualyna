@@ -1,0 +1,671 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "landingpage_hero_FGqDKJ": {
+      "type": "landingpage-hero",
+      "blocks": {
+        "tile_WwJ4nc": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Rectangle_37_33.png",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_EtR9JQ": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "text",
+            "title": "DESIGNED FOR",
+            "subtitle": "NATURAL MOVEMENT",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_iLPp86": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Rectangle_4_5.png",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_QVVVw3": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Group_21_1.png",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_NCQ9kX": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Rectangle_4_1.png",
+            "title": "DESIGNED",
+            "subtitle": "FOR NATURAL MOVEMENT",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_wMyqPL": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Group_30.png",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_68Q7ey": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Group_30.png",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_DfHCgi": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Group_26_2.png",
+            "title": "LUXURY QUALITY",
+            "subtitle": "YOU CAN FEEL",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_jeFrgQ": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Rectangle_4_7.png",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_7GJjGx": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Group_21_1.png",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_LJWBEd": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Group_28_1.png",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_8PKm6J": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Group_33.png",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_xA4FfW": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "text",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_GWV48G": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "text",
+            "title": "LUXURY QUALITY",
+            "subtitle": "YOU CAN FEEL",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        },
+        "tile_TtiUhG": {
+          "type": "tile",
+          "settings": {
+            "tile_kind": "image",
+            "image": "shopify://shop_images/Rectangle_4_6.png",
+            "title": "CONSISTENT THICKNESS,",
+            "subtitle": "ROOT TO TIP",
+            "text_bg": "#74d0e6",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "tile_WwJ4nc",
+        "tile_EtR9JQ",
+        "tile_iLPp86",
+        "tile_QVVVw3",
+        "tile_NCQ9kX",
+        "tile_wMyqPL",
+        "tile_68Q7ey",
+        "tile_DfHCgi",
+        "tile_jeFrgQ",
+        "tile_7GJjGx",
+        "tile_LJWBEd",
+        "tile_8PKm6J",
+        "tile_xA4FfW",
+        "tile_GWV48G",
+        "tile_TtiUhG"
+      ],
+      "name": "Landing - Hero (Aqualyna)",
+      "settings": {
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "bg_image": "shopify://shop_images/Main_Banner_Image_1.png",
+        "bg_image_mobile": "shopify://shop_images/Mobile_Banner.png",
+        "hero_height_desktop": 1280,
+        "hero_height_mobile": 1100,
+        "content_max_width": 980,
+        "content_vertical_position": "middle",
+        "enable_overlay": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 25,
+        "heading": "LUXURY HAIR EXTENSIONS.",
+        "heading_color": "#74d0e6",
+        "subheading": "DESIGNED TO BLEND, BUILT TO LAST",
+        "subheading_color": "#ffffff",
+        "body": "Ethically sourced, cruelty-free extensions made from premium human hair.",
+        "body_color": "#ffffffcc",
+        "primary_button_label": "SHOP AQUALYNA",
+        "primary_button_link": "https://www.aqualyna.com/",
+        "secondary_button_label": "FIND YOUR MATCH",
+        "secondary_button_link": "https://www.aqualyna.com/",
+        "primary_button_bg": "#74d0e6",
+        "primary_button_text": "#0b0b0b",
+        "secondary_button_bg": "rgba(0,0,0,0)",
+        "secondary_button_text": "#74d0e6",
+        "secondary_button_border": "#74d0e6",
+        "promo_enable": true,
+        "promo_image": "shopify://shop_images/IMG_0442-Edit_1.png",
+        "promo_heading": "ENJOY 20% OFF",
+        "promo_subheading": "YOUR FIRST ORDER",
+        "promo_text_color": "#ffffff",
+        "promo_bg": "#000000bf",
+        "welcome_cta_enable": true,
+        "welcome_cta_copy": "<p>Enjoy <strong>$20</strong> off your first Aqualyna purchase</p>",
+        "welcome_cta_button_label": "UNLOCK YOUR WELCOME OFFER",
+        "welcome_cta_discount_code": "HairDreams",
+        "welcome_cta_redirect_path": "/",
+        "why_heading": "WHY AQUALYNA?",
+        "why_heading_color": "#ffffff",
+        "marquee_surface_bg": "#f3f5f6",
+        "marquee_height_desktop": 520,
+        "marquee_height_mobile": 520,
+        "marquee_speed_seconds": 18,
+        "marquee_direction": "up",
+        "marquee_pause_on_hover": true
+      }
+    },
+    "perfect_extensions": {
+      "type": "perfect-extensions",
+      "blocks": {
+        "system_item_TTnrw8": {
+          "type": "system_item",
+          "settings": {
+            "icon": "shopify://shop_images/Rectangle_34_23.png",
+            "name": "Ultra Narrow Clip In"
+          }
+        },
+        "system_item_D8hRgP": {
+          "type": "system_item",
+          "settings": {
+            "icon": "shopify://shop_images/Rectangle_35_4.png",
+            "name": "Aura"
+          }
+        },
+        "system_item_Y6ayfP": {
+          "type": "system_item",
+          "settings": {
+            "icon": "shopify://shop_images/Rectangle_34_22.png",
+            "name": "PonyTail"
+          }
+        }
+      },
+      "block_order": [
+        "system_item_TTnrw8",
+        "system_item_D8hRgP",
+        "system_item_Y6ayfP"
+      ],
+      "settings": {
+        "heading_line1": "YOUR PERFECT",
+        "heading_line2": "EXTENSIONS,",
+        "heading_accent": "EXPLAINED",
+        "systems_title": "SYSTEMS",
+        "systems_image": "shopify://shop_images/Rectangle_29.png",
+        "systems_image_desktop": "shopify://shop_images/Rectangle_29.png",
+        "systems_image_mobile": "shopify://shop_images/Rectangle_26.png",
+        "lw_title": "LENGTH & WEIGHT",
+        "lw_image": "shopify://shop_images/Rectangle_29_1.png"
+      }
+    },
+    "landingpage_hairdifference_ppAnnP": {
+      "type": "landingpage-hairdifference",
+      "name": "Landing - Hair Difference",
+      "settings": {
+        "image_desktop": "shopify://shop_images/AQL_1B_Clip_in_curled0330-Edit_3_2.png",
+        "image_mobile": "shopify://shop_images/AQL_1B_Clip_in_curled0330-Edit_3_1_2.png",
+        "icon_1": "shopify://shop_images/2_26.png",
+        "icon_2": "shopify://shop_images/1_3_1.png",
+        "icon_3": "shopify://shop_images/3_10.png",
+        "active_icon": "1",
+        "bubble_icon": "shopify://shop_images/3_9.png",
+        "bubble_icon_1": "shopify://shop_images/3_9.png",
+        "bubble_icon_2": "shopify://shop_images/3_9_2.png",
+        "bubble_icon_3": "shopify://shop_images/3_9_1.png",
+        "bubble_img_width": 60,
+        "bubble_img_height": 90,
+        "callout_text_1": "Cuticle-aligned\nhuman hair",
+        "callout_text_2": "Minimal\nshedding",
+        "callout_text_3": "Natural\nshine"
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "show-title": true,
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true
+      }
+    },
+    "slideshow_JGyBRx": {
+      "type": "slideshow",
+      "blocks": {
+        "video_JdENQ9": {
+          "type": "video",
+          "settings": {
+            "light-text": true,
+            "play-button-style": "solid",
+            "darken-video": true,
+            "video-upload": "shopify://files/videos/Homepage Hero Banner 1.mp4",
+            "video-url": "",
+            "heading": "Developed & Perfected",
+            "sub-heading": "In The Salon",
+            "button-text": "",
+            "button-url": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_JdENQ9"
+      ],
+      "disabled": true,
+      "settings": {
+        "text-color": "auto",
+        "background-color": "none",
+        "spacing-above": false,
+        "spacing-below": false,
+        "spacing-around-blocks": false,
+        "image-aspect-ratio": 54,
+        "darken-image": true,
+        "blocks_per_slide": 1,
+        "box-around-text": false,
+        "auto-rotate": false,
+        "rotate-frequency": 7,
+        "transition_type": "slide",
+        "mobile-image-aspect-ratio": 112,
+        "blocks_per_slide_mobile": "1",
+        "mobile-overlay": true
+      }
+    },
+    "image_with_text_RGzNYE": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "text-color": "auto",
+        "background-color": "none",
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "image-aspect-ratio": 56,
+        "mobile-image-aspect-ratio": 134,
+        "darken-image": false,
+        "parallax-enabled": true,
+        "text-position": "left",
+        "text-width": "large",
+        "overlap": false,
+        "box-around-text": false,
+        "mobile-overlay": true,
+        "image": "shopify://shop_images/0020_1B-4DUO-24-ESAR4_1_9e554795-b628-4d67-9c25-2c43789956c0.jpg",
+        "mobile-image": "shopify://shop_images/Collection_product_images_1_2f6b7b73-b03b-4089-9e8c-234b6e38ac1e.png",
+        "overline": "",
+        "title": "For more than a decade,",
+        "description": "<p>our team has dedicated itself to refining and innovating top-tier hair extension systems tailored for at-home usage. Originating and honed within the salon environment, AquaLyna offers a user-friendly application method for stunning hair enhancement in the comfort of your own space.</p><p>Continuously at the forefront of the industry, we relentlessly strive to redefine the possibilities of hair extensions for our valued clientele.</p><p></p>",
+        "link-url": "",
+        "link-text": ""
+      }
+    },
+    "featured_text_A6QN8m": {
+      "type": "featured-text",
+      "disabled": true,
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "overline": "AquaLyna",
+        "heading": "Code of Ethics",
+        "description": "<p>We exclusively source healthy, untreated hair from adult donors who willingly contribute their hair. Our commitment is to never use hair from children or involuntary donors. Moreover, we only accept hair from physically and mentally healthy individuals. We take pride in fairly compensating each donor for their generous contribution.</p><p>At our organization, we deeply value the contributions of our donors and make sure to fairly compensate each one. Throughout the sourcing and processing of human hair, we prioritize providing fair compensation to all parties involved, ensuring they work in humane conditions with the highest standards of health and safety.</p><p>Our commitment to ethical practices extends to our workforce, as we strictly prohibit the employment of child laborers or involuntary workers. Every employee is treated with the utmost dignity and respect, and we maintain a discrimination-free environment in hiring and throughout their employment journey.</p>",
+        "link-url": "/",
+        "link-text": ""
+      }
+    },
+    "image_with_text_wYqQFQ": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "text-color": "auto",
+        "background-color": "light",
+        "container-width": 6,
+        "spacing-above": false,
+        "spacing-below": false,
+        "image-aspect-ratio": 34,
+        "mobile-image-aspect-ratio": 54,
+        "darken-image": false,
+        "parallax-enabled": true,
+        "text-position": "center",
+        "text-width": "large",
+        "overlap": false,
+        "box-around-text": false,
+        "mobile-overlay": true,
+        "image": "shopify://shop_images/MAT5165_1.jpg",
+        "overline": "The Best D.I.Y. Hair Extensions. 100% Remy Hair",
+        "title": "AquaLyna Hair Extensions",
+        "description": "",
+        "link-url": "https://www.aqualyna.com/collections/shop-hair",
+        "link-text": ""
+      }
+    },
+    "featured_blog_x49bGL": {
+      "type": "featured-blog",
+      "disabled": true,
+      "settings": {
+        "aspect-ratio": "landscape",
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "tag-select": "pinned",
+        "show-date": true,
+        "show-excerpt": true,
+        "blog": "news",
+        "blog-heading": "Blog posts",
+        "heading-alignment": "center",
+        "view-more-text": "View more"
+      }
+    },
+    "17243569257a74f693": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_gJnfbP": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_gJnfbP"
+      ],
+      "disabled": true,
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true
+      }
+    },
+    "landingpage_frame_zdnbPL": {
+      "type": "landingpage-frame",
+      "blocks": {
+        "shade_z4yypV": {
+          "type": "shade",
+          "settings": {
+            "shade_image": "shopify://shop_images/Product_Image_8.png",
+            "shade_label": "natural",
+            "shade_link": ""
+          }
+        },
+        "shade_cQJbWR": {
+          "type": "shade",
+          "settings": {
+            "shade_image": "shopify://shop_images/Product_Image_9.png",
+            "shade_label": "duo tone",
+            "shade_link": ""
+          }
+        },
+        "shade_Bkmata": {
+          "type": "shade",
+          "settings": {
+            "shade_image": "shopify://shop_images/Product_Image_10.png",
+            "shade_label": "balayage",
+            "shade_link": ""
+          }
+        },
+        "shade_rhPFj3": {
+          "type": "shade",
+          "settings": {
+            "shade_image": "shopify://shop_images/Product_Image_11.png",
+            "shade_label": "ROOTED",
+            "shade_link": ""
+          }
+        },
+        "shade_c6AWck": {
+          "type": "shade",
+          "settings": {
+            "shade_image": "shopify://shop_images/Product_Image_12.png",
+            "shade_label": "root tap",
+            "shade_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "shade_z4yypV",
+        "shade_cQJbWR",
+        "shade_Bkmata",
+        "shade_rhPFj3",
+        "shade_c6AWck"
+      ],
+      "name": "Shade Selector",
+      "settings": {
+        "heading": "<p>FINDING YOUR <strong>PERFECT SHADE</strong> IS FREE</p>",
+        "subheading": "Discover your perfect match with two samples for $12, and we'll credit $12 towards your next extension order.",
+        "button_text": "ORDER COLOR SAMPLES",
+        "button_link": "shopify://collections/aqualyna-samples"
+      }
+    },
+    "designed_section_Kaw9jj": {
+      "type": "designed-section",
+      "blocks": {
+        "feature_xWAyJT": {
+          "type": "feature",
+          "settings": {
+            "label": "WEAR",
+            "icon_desktop": "shopify://shop_images/3_8_2.png",
+            "icon_mobile": "shopify://shop_images/3_8_3.png",
+            "icon_width_desktop": 86,
+            "icon_width_mobile": 92
+          }
+        },
+        "feature_dRnEB9": {
+          "type": "feature",
+          "settings": {
+            "label": "CARE",
+            "icon_desktop": "shopify://shop_images/2_24_2.png",
+            "icon_mobile": "shopify://shop_images/2_24_4.png",
+            "icon_width_desktop": 86,
+            "icon_width_mobile": 92
+          }
+        },
+        "feature_g4fL4b": {
+          "type": "feature",
+          "settings": {
+            "label": "LONGEVITY",
+            "icon_desktop": "shopify://shop_images/1_1_2.png",
+            "icon_mobile": "shopify://shop_images/1_1_3.png",
+            "icon_width_desktop": 86,
+            "icon_width_mobile": 92
+          }
+        }
+      },
+      "block_order": [
+        "feature_xWAyJT",
+        "feature_dRnEB9",
+        "feature_g4fL4b"
+      ],
+      "name": "Designed section",
+      "settings": {
+        "heading_base": "DESIGNED TO",
+        "heading_accent": "LAST",
+        "heading_color": "#111111",
+        "accent_color": "#74d0e6",
+        "label_color": "#111111",
+        "card_bg": "#eef3f4",
+        "card_radius": 25,
+        "enable_shadow": true,
+        "max_width": 1200,
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "landingpage_loved_zADVUW": {
+      "type": "landingpage-loved",
+      "name": "Loved by stylists and clients",
+      "settings": {
+        "heading_accent": "LOVED",
+        "heading_rest": "BY STYLISTS & CLIENTS",
+        "image_1": "shopify://shop_images/Rectangle_32_1.png",
+        "image_1_mobile": "shopify://shop_images/Rectangle_35_3.png",
+        "image_2": "shopify://shop_images/Rectangle_33.png",
+        "image_2_mobile": "shopify://shop_images/Rectangle_36_4.png",
+        "image_3": "shopify://shop_images/Rectangle_31.png",
+        "image_3_mobile": "shopify://shop_images/Rectangle_34_21.png",
+        "max_width_desktop": 1280,
+        "min_height_desktop": 0,
+        "gap_desktop": 36,
+        "card_radius_desktop": 10,
+        "card_padding_desktop": 20,
+        "image_height_desktop": 320,
+        "max_width_mobile": 520,
+        "min_height_mobile": 0,
+        "gap_mobile": 18,
+        "card_radius_mobile": 18,
+        "card_padding_mobile": 14,
+        "image_height_mobile": 220,
+        "padding_top_desktop": 72,
+        "padding_bottom_desktop": 100,
+        "padding_top_mobile": 80,
+        "padding_bottom_mobile": 128,
+        "accent_color": "#74d0e6",
+        "heading_color": "#111111",
+        "heading_border_color": "#bfeaf3",
+        "heading_border_width": 0,
+        "card_bg": "#ffffff",
+        "section_bg": "#ffffff",
+        "image_fit": "contain"
+      }
+    },
+    "landing_elevated_Ad8Y7t": {
+      "type": "landing-elevated",
+      "name": "Landing - Elevated",
+      "settings": {
+        "offer_image": "shopify://shop_images/MAT8862_1.png",
+        "hero_video_mp4": "https://cdn.shopify.com/videos/c/o/v/6ea08fdb63fd48d59b22a823b3e1134e.mp4",
+        "hero_video_mp4_mobile": "https://cdn.shopify.com/videos/c/o/v/6ea08fdb63fd48d59b22a823b3e1134e.mp4",
+        "welcome_button_link": "https://www.aqualyna.com/",
+        "pill_1_link": "https://www.aqualyna.com/",
+        "pill_2_link": "https://www.aqualyna.com/",
+        "offer_image_max_desktop": 380,
+        "offer_image_max_mobile": 220,
+        "hero_height_desktop": 1050,
+        "hero_height_mobile": 840,
+        "hero_media_max_width_desktop": 2400,
+        "hero_media_max_width_mobile": 1200,
+        "pill_scale": 90
+      }
+    }
+  },
+  "order": [
+    "landingpage_hero_FGqDKJ",
+    "perfect_extensions",
+    "landingpage_hairdifference_ppAnnP",
+    "main",
+    "slideshow_JGyBRx",
+    "image_with_text_RGzNYE",
+    "featured_text_A6QN8m",
+    "image_with_text_wYqQFQ",
+    "featured_blog_x49bGL",
+    "17243569257a74f693",
+    "landingpage_frame_zdnbPL",
+    "designed_section_Kaw9jj",
+    "landingpage_loved_zADVUW",
+    "landing_elevated_Ad8Y7t"
+  ]
+}

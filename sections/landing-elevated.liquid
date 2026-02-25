@@ -1,0 +1,571 @@
+{% schema %}
+{
+  "name": "Landing - Elevated",
+  "settings": [
+    { "type": "header", "content": "Images" },
+    { "type": "image_picker", "id": "offer_image", "label": "Offer box image" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image (desktop)" },
+    { "type": "image_picker", "id": "hero_image_mobile", "label": "Hero image (mobile, optional)" },
+    {
+      "type": "url",
+      "id": "hero_video_mp4",
+      "label": "Hero video URL (MP4, optional)",
+      "info": "If set, video is used instead of the hero image."
+    },
+    {
+      "type": "url",
+      "id": "hero_video_mp4_mobile",
+      "label": "Hero video URL (MP4, mobile optional)",
+      "info": "If set, this video is used on mobile instead of the desktop video."
+    },
+
+    { "type": "header", "content": "Links" },
+    { "type": "url", "id": "welcome_button_link", "label": "Welcome offer button link" },
+    { "type": "url", "id": "pill_1_link", "label": "Pill 1 link (Shop extensions)" },
+    { "type": "url", "id": "pill_2_link", "label": "Pill 2 link (Find your match)" },
+
+    { "type": "header", "content": "Sizes" },
+    {
+      "type": "range",
+      "id": "offer_image_max_desktop",
+      "label": "Offer image max width (desktop, px)",
+      "min": 200,
+      "max": 1550,
+      "step": 15,
+      "default": 380
+    },
+    {
+      "type": "range",
+      "id": "offer_image_max_mobile",
+      "label": "Offer image width (mobile, px)",
+      "min": 140,
+      "max": 320,
+      "step": 10,
+      "default": 220
+    },
+    {
+      "type": "range",
+      "id": "hero_height_desktop",
+      "label": "Hero height (desktop, px)",
+      "min": 420,
+      "max": 1100,
+      "step": 10,
+      "default": 720
+    },
+    {
+      "type": "range",
+      "id": "hero_height_mobile",
+      "label": "Hero height (mobile, px)",
+      "min": 520,
+      "max": 1400,
+      "step": 10,
+      "default": 820
+    },
+    {
+      "type": "range",
+      "id": "hero_media_max_width_desktop",
+      "label": "Hero media max width (desktop, px)",
+      "min": 400,
+      "max": 2400,
+      "step": 20,
+      "default": 2400
+    },
+    {
+      "type": "range",
+      "id": "hero_media_max_width_mobile",
+      "label": "Hero media max width (mobile, px)",
+      "min": 240,
+      "max": 1200,
+      "step": 20,
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "pill_scale",
+      "label": "Pill button size (%)",
+      "min": 70,
+      "max": 120,
+      "step": 2,
+      "default": 90
+    }
+  ],
+  "presets": [
+    { "name": "Landing - Elevated" }
+  ]
+}
+{% endschema %}
+
+<section id="LandingElevated-{{ section.id }}" class="landing-elevated">
+  <!-- Offer -->
+  <div class="le-offer">
+    <div class="page-width">
+      <div class="le-offer__inner">
+        <div class="le-offer__media" aria-hidden="true">  
+          {% if section.settings.offer_image != blank %}
+            <img
+              src="{{ section.settings.offer_image | image_url: width: 2500 }}"
+              alt=""
+              loading="lazy"
+            >
+          {% else %}
+            <div class="le-placeholder">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="le-offer__content">
+          <h2 class="le-offer__heading">
+            <span class="le-offer__headingBefore">YOUR FIRST ORDER,</span>
+            <span class="le-offer__headingAccent">ELEVATED</span>
+          </h2>
+          <div class="le-offer__subtext">Enjoy <strong style="font-family: 'Gotham-Bold';">$20</strong> off your first Aqualyna purchase</div>
+
+          <a class="le-btn" href="{{ section.settings.welcome_button_link }}">UNLOCK YOUR WELCOME OFFER</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="le-hero" role="region" aria-label="Ready to experience Aqualyna">
+    <div class="le-hero__media" aria-hidden="true">
+      {%- assign le_video_desktop = section.settings.hero_video_mp4 -%}
+      {%- assign le_video_mobile = section.settings.hero_video_mp4_mobile -%}
+
+      {%- if le_video_desktop != blank or le_video_mobile != blank -%}
+        {%- assign le_video_desktop_effective = le_video_desktop | default: le_video_mobile -%}
+        {%- assign le_video_mobile_effective = le_video_mobile | default: le_video_desktop -%}
+
+        <video class="le-hero__video le-hero__video--desktop" autoplay muted loop playsinline preload="metadata">
+          <source src="{{ le_video_desktop_effective }}" type="video/mp4">
+        </video>
+        <video class="le-hero__video le-hero__video--mobile" autoplay muted loop playsinline preload="metadata">
+          <source src="{{ le_video_mobile_effective }}" type="video/mp4">
+        </video>
+      {%- else -%}
+        {% if section.settings.hero_image != blank %}
+          <picture>
+            {% if section.settings.hero_image_mobile != blank %}
+              <source media="(max-width: 768px)" srcset="{{ section.settings.hero_image_mobile | image_url: width: 1600 }}">
+            {% endif %}
+            <img
+              class="le-hero__img"
+              src="{{ section.settings.hero_image | image_url: width: 2400 }}"
+              alt=""
+              loading="lazy"
+              width="2400"
+              height="1400"
+            >
+          </picture>
+        {% else %}
+          <div class="le-placeholder le-placeholder--hero">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {% endif %}
+      {%- endif -%}
+    </div>
+
+    <div class="le-hero__overlay">
+      <div class="le-hero__content">
+        <h2 class="le-hero__heading">
+          <span class="le-hero__headingBefore">READY TO</span>
+          <span class="le-hero__headingAccent">EXPERIENCE</span>
+          <span class="le-hero__headingAfter">AQUALYNA?</span>
+        </h2>
+
+        <div class="le-hero__pills le-desktop-only" aria-label="Hero links">
+          <a class="le-pill le-pill--primary" href="{{ section.settings.pill_1_link }}">SHOP EXTENSIONS</a>
+          <a class="le-pill le-pill--secondary" href="{{ section.settings.pill_2_link }}">FIND YOUR MATCH</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<style>
+  /* -------- Shared tokens (matches your screenshot palette) -------- */
+  #LandingElevated-{{ section.id }} {
+    --le-accent: #74D0E6;
+    --le-text: #111111;
+    --le-offer-bg: #F3F5F6;
+    --le-pill-text: #0B0B0B;
+    --le-pill2-bg: rgba(255, 255, 255, 0.65);
+    --le-hero-heading: #FFFFFF;
+    --le-overlap: 95px; /* how much the offer image overlaps into the hero (desktop) */
+    --le-overlap-m: 34px; /* overlap amount (mobile) */
+    --le-overlap-top: 190px; /* how much the offer image overlaps upward (desktop) */
+    --le-overlap-top-m: 22px; /* upward overlap (mobile) */
+    --le-offer-img-max: {{ section.settings.offer_image_max_desktop }}px;
+    --le-offer-img-max-m: {{ section.settings.offer_image_max_mobile }}px;
+    --le-hero-h: {{ section.settings.hero_height_desktop }}px;
+    --le-hero-h-m: {{ section.settings.hero_height_mobile }}px;
+    --le-hero-media-max: {{ section.settings.hero_media_max_width_desktop }}px;
+    --le-hero-media-max-m: {{ section.settings.hero_media_max_width_mobile }}px;
+    --le-pill-scale: {{ section.settings.pill_scale | divided_by: 100.0 }};
+    overflow: visible;
+  }
+
+  #LandingElevated-{{ section.id }} .le-desktop-only { display: block; }
+  #LandingElevated-{{ section.id }} .le-mobile-only { display: none; }
+
+  /* -------- Offer -------- */
+  #LandingElevated-{{ section.id }} .le-offer {
+    background: transparent;
+    position: relative;
+    z-index: 2;
+    overflow: visible;
+  }
+
+  @media (min-width: 1024px) {
+    #LandingElevated-{{ section.id }} .le-offer {
+      padding: 48px 0 calc(40px + var(--le-overlap)); 
+    }
+  }
+
+  /* background layer that stops before the overlap area */
+  #LandingElevated-{{ section.id }} .le-offer::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: var(--le-overlap);
+    background: var(--le-offer-bg);
+    z-index: 0;
+  }
+
+  #LandingElevated-{{ section.id }} .le-offer .page-width {
+    position: relative;
+    z-index: 1;
+  }
+
+  #LandingElevated-{{ section.id }} .le-offer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+    max-width: 1280px;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
+  #LandingElevated-{{ section.id }} .le-offer__media {
+    /* flex: 0 0 380px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 3; /* keep image above hero */
+    margin-top: calc(var(--le-overlap-top) * -1);
+  }
+
+  #LandingElevated-{{ section.id }} .le-offer__media img {
+    display: block;
+    width: 100%;
+    height: 460px;
+    max-width: 100%;
+    object-fit: cover;
+    transform: translateY(var(--le-overlap));
+  }
+  @media (max-width: 768px) {
+    #LandingElevated-{{ section.id }} .le-offer__media img {
+      height: 100%;
+    }
+  }
+
+  #LandingElevated-{{ section.id }} .le-offer__content {
+    flex: 0 1 700px;
+    text-align: right;
+    padding: 0 10px;
+
+  }
+
+  @media (max-width: 768px) {
+    #LandingElevated-{{ section.id }} .le-offer__content {
+      flex: 0 1 100%;
+      text-align: center;
+      margin-top: 50px;
+    }
+  }
+
+  #LandingElevated-{{ section.id }} .le-offer__heading {
+    margin: 0 0 10px;
+    font-family: 'Gotham-Regular';
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    line-height: 1.1;
+    color: var(--le-text);
+  }
+
+  #LandingElevated-{{ section.id }} .le-offer__headingAccent {
+    color: var(--le-accent);
+    font-weight: 700;
+    margin-left: 10px;
+  }
+
+  #LandingElevated-{{ section.id }} .le-offer__subtext {
+    margin: 0 0 16px;
+    font-family: 'Gotham-Regular';
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color: var(--le-text);
+    opacity: 0.9;
+  }
+
+  #LandingElevated-{{ section.id }} .le-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: var(--le-accent);
+    color: var(--le-pill-text);
+    text-decoration: none;
+    font-family: 'Gotham-Regular';
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+  }
+
+  #LandingElevated-{{ section.id }} .le-btn:hover { opacity: 0.92; }
+
+  /* -------- Hero -------- */
+  #LandingElevated-{{ section.id }} .le-hero {
+    position: relative;
+    width: 100%;
+    height: var(--le-hero-h);
+    overflow: hidden;
+    background: #000;
+    z-index: 1;
+    margin-top: calc(var(--le-overlap) * -1); /* pull hero up under offer image */
+  }
+
+  #LandingElevated-{{ section.id }} .le-hero__media {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: var(--le-hero-media-max);
+  }
+
+  #LandingElevated-{{ section.id }} .le-hero__img,
+  #LandingElevated-{{ section.id }} .le-hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #LandingElevated-{{ section.id }} .le-hero__video {
+    z-index: 1;
+  }
+
+  #LandingElevated-{{ section.id }} .le-hero__video--mobile {
+    display: none;
+  }
+
+  #LandingElevated-{{ section.id }} .le-hero__img {
+    z-index: 0;
+  }
+
+  #LandingElevated-{{ section.id }} .le-hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none; /* allow media interactions if any; re-enable on buttons */
+  }
+
+  #LandingElevated-{{ section.id }} .le-hero__content {
+    position: absolute;
+    left: 50%;
+    top: 56%;
+    transform: translate(-50%, -50%);
+    width: min(980px, calc(100% - 32px));
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  #LandingElevated-{{ section.id }} .le-hero__pills {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    pointer-events: auto;
+  }
+
+  #LandingElevated-{{ section.id }} .le-pill {
+    color: #000;
+    font-family: 'Gotham-Regular';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 325;
+    line-height: normal;
+    text-transform: uppercase;
+    display: inline-flex;
+    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    border-radius: 50px;
+    background: #75D1E0;
+  }
+
+
+  #LandingElevated-{{ section.id }} .le-pill--primary {
+    background: var(--le-accent);
+    color: var(--le-pill-text);
+  }
+
+  #LandingElevated-{{ section.id }} .le-pill--secondary {
+    background: transparent;
+    color: #75D1E0;
+    border: 1px solid #75D1E0;
+    /* backdrop-filter: blur(6px); */
+  }
+
+  #LandingElevated-{{ section.id }} .le-hero__heading {
+    color: #FFF;
+    text-align: center;
+    font-family: 'Gotham-Regular';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 58px; /* 145% */
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  #LandingElevated-{{ section.id }} .le-hero__headingAccent {
+    color: var(--le-accent);
+    font-weight: 700;
+    margin: 0 10px;
+  }
+
+  /* -------- Mobile (stacked exactly like your screenshot) -------- */
+  @media (max-width: 768px) {
+    #LandingElevated-{{ section.id }} .le-desktop-only { display: none; }
+    #LandingElevated-{{ section.id }} .le-mobile-only { display: block; }
+
+    #LandingElevated-{{ section.id }} .le-pill,
+    #LandingElevated-{{ section.id }} .le-hero__pills {
+      display: none !important;
+    }
+
+    #LandingElevated-{{ section.id }} .le-hero__video--desktop {
+      display: none;
+    }
+
+    #LandingElevated-{{ section.id }} .le-hero__video--mobile {
+      display: block;
+    }
+
+    #LandingElevated-{{ section.id }} .le-offer {
+      background: #FFFFFF;
+      /* padding: 22px 0 calc(14px + var(--le-overlap-m)); */
+    }
+
+    #LandingElevated-{{ section.id }} .le-offer::before {
+      bottom: var(--le-overlap-m);
+      background: #FFFFFF;
+    }
+
+    #LandingElevated-{{ section.id }} .le-offer__inner {
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(64, 105, 111, 0.10);
+      /* box-shadow: 0 4px 39.5px 0 rgba(0, 0, 0, 0.25); */
+    }
+
+    #LandingElevated-{{ section.id }} .le-offer__media {
+      flex: 0 0 auto;
+      margin-top: calc(var(--le-overlap-top-m) * -1);
+    }
+
+    #LandingElevated-{{ section.id }} .le-offer__media img {
+      width: 100%;
+      max-width: none;
+      transform: translateY(var(--le-overlap-m)); /* overlap into hero (mobile) */
+      margin-top: -64px;
+    }
+
+    #LandingElevated-{{ section.id }} .le-offer__heading {
+      font-size: 24px;
+      margin-bottom: 20px;
+      width: 90%;
+      margin: 0 auto;
+      padding-bottom: 20px;
+    }
+
+    #LandingElevated-{{ section.id }} .le-offer__subtext {
+      font-size: 15px;
+      margin-bottom: 14px;
+      width: 60%;
+      margin: 0 auto;
+      padding-bottom: 20px;
+      line-height: 1.3;
+  
+    }
+
+    #LandingElevated-{{ section.id }} .le-btn {
+      font-size: 14px;
+      padding: 12px 18px;
+      width: 100%;
+      font-family: 'Gotham-Regular';
+      margin-bottom: 35px;
+
+    }
+
+    #LandingElevated-{{ section.id }} .le-hero {
+      height: var(--le-hero-h-m);
+      margin-top: calc(var(--le-overlap-m) * -1);
+    }
+
+    #LandingElevated-{{ section.id }} .le-hero__media {
+      max-width: var(--le-hero-media-max-m);
+    }
+
+    #LandingElevated-{{ section.id }} .le-hero__content {
+      top: 94%;
+      gap: 12px;
+    }
+
+    #LandingElevated-{{ section.id }} .le-hero__pills {
+      gap: 10px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      
+    }
+
+    #LandingElevated-{{ section.id }} .le-pill {
+      font-size: 15px;
+        padding: 20px;
+        font-weight: 600;
+        width: 100%;
+    }
+
+    #LandingElevated-{{ section.id }} .le-hero__heading {
+      font-size: 25px;
+      line-height: 26px;
+    }
+
+    #LandingElevated-{{ section.id }} .le-hero__headingAccent {
+      font-weight: 800;
+      margin: 0 8px;
+    }
+  }
+</style>
+
+

@@ -95,6 +95,8 @@ setTimeout(ldinsp, 0);
 
     {{ content_for_header }}
 
+    {% render 'font-gotham' %}
+
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -165,6 +167,12 @@ setTimeout(ldinsp, 0);
       render 'feedback-bar'
       render 'icons', icon: 'defs'
     -%}
+
+   {% if template == 'page.paidlanding' or template.suffix == 'paidlanding' %}
+  <style>
+    .layout--header-group{display:none}
+  </style>
+{% endif %}
 
    {% if template == 'page.color-match' %}
   <style>

@@ -1,0 +1,30 @@
+{% liquid
+  assign kind = block.settings.tile_kind | default: 'image'
+%}
+
+{% if is_clone %}
+  <div class="aql-tile">
+{% else %}
+  <div class="aql-tile" {{ block.shopify_attributes }}>
+{% endif %}
+  {% if kind == 'text' %}
+    <div class="aql-tile__text" style="--aql-tile-bg: {{ block.settings.text_bg }}; --aql-tile-color: {{ block.settings.text_color }};">
+      <div class="aql-tile__title">{{ block.settings.title }}</div>
+      <div class="aql-tile__subtitle">{{ block.settings.subtitle }}</div>
+    </div>
+  {% else %}
+    <div class="aql-tile__image" aria-hidden="true">
+      {% if block.settings.image != blank %}
+        <img
+          src="{{ block.settings.image | image_url: width: 900 }}"
+          alt=""
+          loading="lazy"
+          width="900"
+          height="900"
+        >
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
