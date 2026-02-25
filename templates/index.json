@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
     "slideshow": {
       "type": "slideshow",
@@ -564,7 +564,6 @@
     },
     "featured_products_WnRpbE": {
       "type": "featured-products",
-      "disabled": true,
       "settings": {
         "background-color": "none",
         "light-text": false,
@@ -624,7 +623,6 @@
         "hotspot_A4Ye9D",
         "hotspot_Wkyznz"
       ],
-      "disabled": true,
       "settings": {
         "background-color": "none",
         "light-text": false,
@@ -640,7 +638,6 @@
     },
     "featured_text_eMipkL": {
       "type": "featured-text",
-      "disabled": true,
       "settings": {
         "background-color": "dark",
         "light-text": true,
@@ -656,7 +653,6 @@
     },
     "image_with_text_fmdfNT": {
       "type": "image-with-text",
-      "disabled": true,
       "settings": {
         "text-color": "auto",
         "background-color": "dark",
@@ -683,7 +679,6 @@
     },
     "1727822946feb69824": {
       "type": "apps",
-      "disabled": true,
       "settings": {
         "background-color": "light",
         "light-text": false,
@@ -694,7 +689,6 @@
     },
     "164016757166a86406": {
       "type": "image-with-text",
-      "disabled": true,
       "settings": {
         "text-color": "light",
         "background-color": "none",
@@ -720,7 +714,6 @@
     },
     "17323106170d21dc9e": {
       "type": "apps",
-      "disabled": true,
       "settings": {
         "background-color": "none",
         "light-text": false,
@@ -754,7 +747,6 @@
       "block_order": [
         "instafeed_app_block_JeKLaN"
       ],
-      "disabled": true,
       "settings": {
         "background-color": "none",
         "light-text": false,
