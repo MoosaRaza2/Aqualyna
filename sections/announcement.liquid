@@ -6,9 +6,9 @@
   assign text = section.settings.text
 
   assign enabled = true
-  if section.settings.home-page-only and template != 'index'
-    assign enabled = false
-  endif
+  if section.settings.home-page-only and template != 'index' and request.params.view != 'paidlanding'
+  assign enabled = false
+endif
 
   capture link_settings
     echo settings.color--alternative
