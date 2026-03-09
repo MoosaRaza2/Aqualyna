@@ -214,9 +214,9 @@
         "body": "Ethically sourced, cruelty-free extensions made from premium human hair.",
         "body_color": "#ffffffcc",
         "primary_button_label": "SHOP AQUALYNA",
-        "primary_button_link": "https://www.aqualyna.com/",
+        "primary_button_link": "#scrollcontainer",
         "secondary_button_label": "FIND YOUR MATCH",
-        "secondary_button_link": "https://www.aqualyna.com/",
+        "secondary_button_link": "https://www.aqualyna.com/pages/consultation",
         "primary_button_bg": "#74d0e6",
         "primary_button_text": "#0b0b0b",
         "secondary_button_bg": "rgba(0,0,0,0)",
@@ -250,21 +250,24 @@
           "type": "system_item",
           "settings": {
             "icon": "shopify://shop_images/Rectangle_34_23.png",
-            "name": "Ultra Narrow Clip In"
+            "name": "Ultra Narrow Clip In",
+            "url": "https://www.aqualyna.com/collections/ultra-narrow-clip-in-hair-extensions"
           }
         },
         "system_item_D8hRgP": {
           "type": "system_item",
           "settings": {
             "icon": "shopify://shop_images/Rectangle_35_4.png",
-            "name": "Aura"
+            "name": "Aura",
+            "url": "https://www.aqualyna.com/collections/aura-hair-extension"
           }
         },
         "system_item_Y6ayfP": {
           "type": "system_item",
           "settings": {
             "icon": "shopify://shop_images/Rectangle_34_22.png",
-            "name": "PonyTail"
+            "name": "PonyTail",
+            "url": "https://www.aqualyna.com/collections/ponytails"
           }
         }
       },

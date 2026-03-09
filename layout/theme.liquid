@@ -170,7 +170,31 @@ setTimeout(ldinsp, 0);
 
    {% if template == 'page.paidlanding' or template.suffix == 'paidlanding' %}
   <style>
-    .layout--header-group{display:none}
+    .header--root { display: none }
+
+    html, body {
+      overflow: auto !important;
+      overflow-y: auto !important;
+      position: static !important;
+      height: auto !important;
+    }
+
+    div[role="dialog"][class*="kl-private-reset-css"],
+    div[aria-label*="POPUP"][class*="kl-private-reset-css"],
+    div[class*="kl-private-reset-css"][style*="position: fixed"][style*="z-index"] {
+      display: none !important;
+      visibility: hidden !important;
+      width: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      pointer-events: none !important;
+      position: absolute !important;
+      left: -9999px !important;
+    }
+
+    form.klaviyo-form[data-testid*="klaviyo-form"] {
+      display: none !important;
+    }
   </style>
 {% endif %}
 
