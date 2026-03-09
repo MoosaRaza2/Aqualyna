@@ -5,6 +5,10 @@
   assign link = section.settings.link
   assign text = section.settings.text
 
+  if request.url contains 'view=paidlanding'
+    assign text = "Exclusive offer for our paid landing visitors"
+  endif
+
   assign enabled = true
   if section.settings.home-page-only and template != 'index'
   assign enabled = false
