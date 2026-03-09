@@ -23,7 +23,6 @@
     },
     "header": {
       "type": "header",
-      "disabled": true,
       "settings": {
         "background-color": "none",
         "light-text": false,
