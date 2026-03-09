@@ -171,7 +171,45 @@ setTimeout(ldinsp, 0);
    {% if template == 'page.paidlanding' or template.suffix == 'paidlanding' %}
   <style>
     .header--root{display:none}
-  </style> 
+    div[role="dialog"][class*="kl-private-reset-css"] {
+      display: none !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+  </style>
+  <script>
+    (function(){
+      function removeKlaviyoPopup(node) {
+        if (node.nodeType !== 1) return;
+        if (
+          node.getAttribute('role') === 'dialog' &&
+          node.className &&
+          node.className.indexOf('kl-private-reset-css') !== -1
+        ) {
+          node.remove();
+          return;
+        }
+        var popups = node.querySelectorAll('div[role="dialog"][class*="kl-private-reset-css"]');
+        for (var k = 0; k < popups.length; k++) {
+          popups[k].remove();
+        }
+      }
+
+      var observer = new MutationObserver(function(mutations) {
+        for (var i = 0; i < mutations.length; i++) {
+          var added = mutations[i].addedNodes;
+          for (var j = 0; j < added.length; j++) {
+            removeKlaviyoPopup(added[j]);
+          }
+        }
+      });
+
+      observer.observe(document.body || document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+    })();
+  </script>
 {% endif %}
 
    {% if template == 'page.color-match' %}
