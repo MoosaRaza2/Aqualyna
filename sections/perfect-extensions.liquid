@@ -71,6 +71,9 @@
                   {%- if block.type == 'system_item' -%}
                     {%- assign rendered_any = true -%}
                     <li class="pe-icon-list__item" {{ block.shopify_attributes }}>
+                      {%- if block.settings.url != blank -%}
+                        <a href="{{ block.settings.url }}" class="pe-icon-list__link">
+                      {%- endif -%}
                       <span class="pe-icon-list__icon" aria-hidden="true">
                         {%- if block.settings.icon != blank -%}
                           <img
@@ -91,6 +94,9 @@
                         {%- endif -%}
                       </span>
                       <span class="pe-icon-list__text">{{ block.settings.name }}</span>
+                      {%- if block.settings.url != blank -%}
+                        </a>
+                      {%- endif -%}
                     </li>
                   {%- endif -%}
                 {%- endfor -%}
@@ -687,14 +693,26 @@
     align-items: center;
     gap: 16px;
   }
+
+  .pe-icon-list__link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+  }
 @media screen and (max-width: 768px) {
   .pe-icon-list__item {
     display: flex;
         flex-direction: column;
-        /* justify-content: flex-start; */
         align-items: flex-start;
         gap: 16px;
+  }
 
+  .pe-icon-list__link {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
   .pe-icon-list__icon {
@@ -1118,6 +1136,11 @@
           "id": "name",
           "label": "System Name",
           "default": "Ultra Narrow Clip In"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
         }
       ]
     },

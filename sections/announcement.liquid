@@ -36,12 +36,17 @@
           {{- icon | image_url: width: 50, height: 50 | image_tag: alt: icon.alt -}}
         </div>
       {%- endif -%}
-
-      {%- if text != blank -%}
-        <div class="announcement--text" data-item="accent-text">
-          {{- text | escape -}}
+      {% if template == 'page.paidlanding' or template.suffix == 'paidlanding' %}
+        <div class="announcement--text" data-item="accent-text" style="font-size: 14px; font-family: 'Gotham-Regular', letter-spacing: 0px;">
+          ENJOY <strong>$20</strong> OFF YOUR FIRST AQUALYNA PURCHASE
         </div>
-      {%- endif -%}
+        {% else %}
+          {%- if text != blank -%}
+            <div class="announcement--text" data-item="accent-text">
+              {{- text | escape -}}
+            </div>
+          {%- endif -%}
+    {% endif %}
     </div>
 
     {%- if link != blank -%}
