@@ -7,8 +7,8 @@
 
   assign enabled = true
   if section.settings.home-page-only and template != 'index'
-  assign enabled = false
-endif
+    assign enabled = false
+  endif
 
   capture link_settings
     echo settings.color--alternative
@@ -39,15 +39,10 @@ endif
 
       {%- if text != blank -%}
         <div class="announcement--text" data-item="accent-text">
-      
-          {% if template == 'page.paidlanding' or template.suffix == 'paidlanding' %}
-            Exclusive offer for our paid landing visitors
-          {% else %}
-            {{ text | escape }}
-          {% endif %}
-      
+          {{- text | escape -}}
         </div>
       {%- endif -%}
+    </div>
 
     {%- if link != blank -%}
       </a>
