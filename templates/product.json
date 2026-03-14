@@ -63,7 +63,7 @@
         "liquid_jJLMhi": {
           "type": "liquid",
           "settings": {
-            "custom-liquid": "<p>Orders placed by 3:00 PM Eastern Time, Monday through Friday, will ship the same business day. Orders received after 3:00 PM ET or during office closures will ship the next business day.</p>"
+            "custom-liquid": "<p>Orders before 3 PM ET (Mon–Fri) ship same day; later orders ship next business day.</p>"
           }
         },
         "buy-buttons": {
