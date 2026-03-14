@@ -60,16 +60,16 @@
             "size-chart-content": ""
           }
         },
-        "liquid_jJLMhi": {
-          "type": "liquid",
-          "settings": {
-            "custom-liquid": "<p class=\"shipping-info\">\n  Orders before 3 PM ET (Mon–Fri) ship same day, later orders ship next business day.\n</p>\n<style>\n.shipping-info {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 14px;\n font-style: italic;\n}\n\n</style>"
-          }
-        },
         "buy-buttons": {
           "type": "buy-buttons",
           "settings": {
             "smart-payment-enabled": true
+          }
+        },
+        "liquid_jJLMhi": {
+          "type": "liquid",
+          "settings": {
+            "custom-liquid": "<p class=\"shipping-info\">\n  Orders before 3 PM ET (Mon–Fri) ship same day, later orders ship next business day.\n</p>\n<style>\n.shipping-info {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 14px;\n font-style: italic;\n}\n\n</style>"
           }
         },
         "description": {
@@ -119,8 +119,8 @@
         "price",
         "afterpay_on_site_messaging_payments_messaging_9Jmp6D",
         "options",
-        "liquid_jJLMhi",
         "buy-buttons",
+        "liquid_jJLMhi",
         "description",
         "pickup",
         "social-sharing",
