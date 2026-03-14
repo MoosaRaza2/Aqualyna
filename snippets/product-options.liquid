@@ -66,11 +66,12 @@
         <div class="product-options--option" data-index="{{ forloop.index0 }}">
           {%- liquid
             assign option_name = option.name | strip | downcase
+            assign option_name_display = option_name | remove: 'length' | remove: 'weight' | remove: 'and' | strip
 
             if swatches_enabled and option_name == color_t
               render 'radios', option: option, id: unique_id, is_swatches: true
             elsif variant_style == 'dropdowns'
-              render 'disclosure', display_label: true, label_name: option_name, option_names: option.values, current_value: option.selected_value, id: unique_id, type: 'option-picker'
+              render 'disclosure', display_label: true, label_name: option_name_display, option_names: option.values, current_value: option.selected_value, id: unique_id, type: 'option-picker'
             else
               render 'radios', option: option, id: unique_id
             endif

@@ -89,7 +89,7 @@
             data-item="button"
             for="{{ radios_name }}-{{ value | downcase | remove: ' ' }}"
           >
-            <div>{{ value | escape }}</div>
+            <div>{{ value | remove: 'Length' | remove: 'length' | remove: 'LENGTH' | remove: 'Weight' | remove: 'weight' | remove: 'WEIGHT' | strip | escape }}</div>
           </label>
         {%- endif -%}
 

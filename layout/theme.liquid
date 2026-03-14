@@ -178,10 +178,15 @@ setTimeout(ldinsp, 0);
       position: static !important;
       height: auto !important;
     }
+  </style>
+{% endif %}
 
+{% if template == 'page.paidlanding' or template.suffix == 'paidlanding' or template contains 'product' %}
+  <style>
+    div[role="dialog"][aria-label="POPUP Form"],
     div[role="dialog"][class*="kl-private-reset-css"],
     div[aria-label*="POPUP"][class*="kl-private-reset-css"],
-    div[class*="kl-private-reset-css"][style*="position: fixed"][style*="z-index"] {
+    div[class*="kl-private-reset-css"][style*="position: fixed"][style*="z-index: 90000"] {
       display: none !important;
       visibility: hidden !important;
       width: 0 !important;
@@ -196,6 +201,63 @@ setTimeout(ldinsp, 0);
       display: none !important;
     }
   </style>
+  <script>
+    (function() {
+      'use strict';
+
+      function restoreScroll() {
+        document.documentElement.style.setProperty('overflow', 'auto', 'important');
+        document.documentElement.style.setProperty('overflow-y', 'auto', 'important');
+        document.documentElement.style.setProperty('position', 'static', 'important');
+        document.documentElement.style.setProperty('height', 'auto', 'important');
+        document.body.style.setProperty('overflow', 'auto', 'important');
+        document.body.style.setProperty('overflow-y', 'auto', 'important');
+        document.body.style.setProperty('position', 'static', 'important');
+        document.body.style.setProperty('height', 'auto', 'important');
+      }
+
+      function hideKlaviyoPopup() {
+        var popups = document.querySelectorAll(
+          'div[role="dialog"][aria-label="POPUP Form"], ' +
+          'div[role="dialog"][class*="kl-private-reset-css"], ' +
+          'div[class*="kl-private-reset-css"][style*="position: fixed"][style*="z-index"]'
+        );
+        if (popups.length > 0) {
+          popups.forEach(function(el) { el.remove(); });
+          restoreScroll();
+        }
+      }
+
+      function observeAndHide() {
+        if (typeof MutationObserver === 'undefined') return;
+        var observer = new MutationObserver(function(mutations) {
+          for (var i = 0; i < mutations.length; i++) {
+            for (var j = 0; j < mutations[i].addedNodes.length; j++) {
+              var node = mutations[i].addedNodes[j];
+              if (node.nodeType === 1 && (
+                (node.getAttribute && node.getAttribute('role') === 'dialog') ||
+                (node.querySelector && node.querySelector('[role="dialog"][aria-label="POPUP Form"]'))
+              )) {
+                hideKlaviyoPopup();
+              }
+            }
+          }
+        });
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+        setTimeout(function() { observer.disconnect(); }, 60000);
+      }
+
+      hideKlaviyoPopup();
+      observeAndHide();
+
+      [500, 1000, 2000, 3000, 5000, 8000].forEach(function(delay) {
+        setTimeout(hideKlaviyoPopup, delay);
+      });
+
+      document.addEventListener('DOMContentLoaded', hideKlaviyoPopup);
+      window.addEventListener('load', hideKlaviyoPopup);
+    })();
+  </script>
 {% endif %}
 
    {% if template == 'page.color-match' %}

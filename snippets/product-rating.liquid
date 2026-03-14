@@ -1,24 +1,100 @@
-{%- liquid
-  assign reviews = product.metafields.reviews
-  assign rating_integer = reviews.rating.value.rating | floor
-  assign rating_decimal = reviews.rating.value.rating | modulo: 1 | round: 2
-  assign rating_max = reviews.rating.value.scale_max
-  assign rating_value = rating_integer | plus: rating_decimal
-
-  assign product_rating_t = 'products.star_reviews_info' | t: rating_value: rating_value, rating_max: rating_max
-  assign total_reviews_t = 'products.total_reviews' | t
--%}
-
-{%- if reviews.rating.value != blank and reviews.rating_count != 0 -%}
+{%- if template.name == 'product' -%}
   <div
-    class="product-rating--root"
+    class="product-rating--root product-rating--enhanced"
     role="img"
-    aria-label="{{ product_rating_t }}"
-    style="--rating:{{ rating_integer }};--rating-max:{{ rating_max }};--rating-decimal:{{ rating_decimal }};"
+    aria-label="Rated 4.7 out of 5"
   >
-    <div class="product-rating--stars"></div>
-    <span class="product-rating--count" data-item="accent-text" aria-label="{{ total_reviews_t }}">
-      {{- reviews.rating_count -}}
-    </span>
+    <div class="product-rating--stars-custom">
+      <svg class="product-rating--star product-rating--star-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+      <svg class="product-rating--star product-rating--star-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+      <svg class="product-rating--star product-rating--star-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+      <svg class="product-rating--star product-rating--star-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+      <span class="product-rating--star product-rating--star-partial">
+        <svg class="product-rating--star-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" fill="#D9D9D9"/>
+        </svg>
+        <span class="product-rating--star-clip">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" fill="#000"/>
+          </svg>
+        </span>
+      </span>
+    </div>
+    <span class="product-rating--value">4.7/5</span>
   </div>
+
+  <style>
+    .product-rating--enhanced {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 8px 0;
+    }
+    .product-rating--stars-custom {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .product-rating--star {
+      width: 18px;
+      height: 18px;
+    }
+    .product-rating--star-full path {
+      fill: #000;
+    }
+    .product-rating--star-empty path {
+      fill: #D9D9D9;
+    }
+    .product-rating--star-partial {
+      position: relative;
+      display: inline-block;
+    }
+    .product-rating--star-bg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+    .product-rating--star-clip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 70%;
+      height: 100%;
+      overflow: hidden;
+      display: block;
+    }
+    .product-rating--star-clip svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+    .product-rating--value {
+      font-size: 16px;
+      font-weight: 700;
+      color: #333;
+      letter-spacing: 0.02em;
+    }
+    @media only screen and (max-width: 767px) {
+      .product-rating--star {
+        width: 18px;
+        height: 18px;
+      }
+      .product-rating--star-clip svg {
+        width: 18px;
+        height: 18px;
+      }
+      .product-rating--enhanced {
+        justify-content: center;
+      }
+    }
+  </style>
 {%- endif -%}

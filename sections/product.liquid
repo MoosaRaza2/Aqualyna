@@ -88,6 +88,13 @@
       -%}
     </div>
 
+    <div class="product-page--mobile-info" data-mq="small">
+      <h1 class="product-page--heading" data-item="section-heading">
+        {{- product.title -}}
+      </h1>
+      {%- render 'product-rating' -%}
+    </div>
+
     <div class="product-page--mobile-container" data-mq="small">
       {%- if mobile_media_layout == 'thumbnails' -%}
         {%-
@@ -258,6 +265,69 @@
                   {{- product.description -}}
                 </div>
               {%- endunless -%}
+
+            {%- when 'accordion' -%}
+              <div class="product-accordion">
+                <div class="product-accordion--item">
+                  <button
+                    class="product-accordion--toggle"
+                    aria-expanded="true"
+                    data-accordion-trigger
+                  >
+                    <span class="product-accordion--heading" data-item="accent-text">
+                      {{ block.settings.description_heading | default: 'Description' }}
+                    </span>
+                    <span class="product-accordion--icon">
+                      {%- render 'icons', icon: 'chevron-up' -%}
+                      {%- render 'icons', icon: 'chevron-down' -%}
+                    </span>
+                  </button>
+                  {%- unless product.description == blank -%}
+                    <div class="product-accordion--content" data-item="rte-content" style="display:block;">
+                      {{ product.description }}
+                    </div>
+                  {%- endunless -%}
+                </div>
+
+                {%- unless block.settings.shipping_content == blank -%}
+                  <div class="product-accordion--item">
+                    <button
+                      class="product-accordion--toggle"
+                      aria-expanded="false"
+                      data-accordion-trigger
+                    >
+                      <span class="product-accordion--heading" data-item="accent-text">
+                        {{ block.settings.shipping_heading | default: 'Shipping' }}
+                      </span>
+                      <span class="product-accordion--icon">
+                        {%- render 'icons', icon: 'chevron-up' -%}
+                        {%- render 'icons', icon: 'chevron-down' -%}
+                      </span>
+                    </button>
+                    <div class="product-accordion--content" data-item="rte-content" style="display:none;">
+                      {{ block.settings.shipping_content }}
+                    </div>
+                  </div>
+                {%- endunless -%}
+              </div>
+
+              <script>
+                (function() {
+                  document.querySelectorAll('[data-accordion-trigger]').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                      var expanded = this.getAttribute('aria-expanded') === 'true';
+                      var content = this.parentElement.querySelector('.product-accordion--content');
+                      if (expanded) {
+                        this.setAttribute('aria-expanded', 'false');
+                        content.style.display = 'none';
+                      } else {
+                        this.setAttribute('aria-expanded', 'true');
+                        content.style.display = 'block';
+                      }
+                    });
+                  });
+                })();
+              </script>
 
             {%- when 'rating' -%}
               {%- render 'product-rating' -%}
@@ -667,6 +737,31 @@
           "id": "default-open",
           "label": "Open by default",
           "default": false
+        }
+      ]
+    },
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "description_heading",
+          "label": "Description heading",
+          "default": "Description"
+        },
+        {
+          "type": "text",
+          "id": "shipping_heading",
+          "label": "Shipping heading",
+          "default": "Shipping"
+        },
+        {
+          "type": "richtext",
+          "id": "shipping_content",
+          "label": "Shipping content",
+          "default": "<p>Free shipping on all orders over $50.</p>"
         }
       ]
     },
