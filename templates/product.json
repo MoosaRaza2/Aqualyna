@@ -68,12 +68,22 @@
         },
         "liquid_jJLMhi": {
           "type": "liquid",
+          "disabled": true,
           "settings": {
             "custom-liquid": "<p class=\"shipping-info\">\n  Orders before 3 PM ET (Mon–Fri) ship same day, later orders ship next business day.\n</p>\n<style>\n.shipping-info {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 14px;\n font-style: italic;\n}\n\n</style>"
           }
         },
+        "accordion_ggXFF9": {
+          "type": "accordion",
+          "settings": {
+            "description_heading": "Description",
+            "shipping_heading": "Shipping",
+            "shipping_content": "<p>Orders before 3 PM ET (Mon–Fri) ship same day, later orders ship next business day.</p>"
+          }
+        },
         "description": {
           "type": "description",
+          "disabled": true,
           "settings": {}
         },
         "pickup": {
@@ -121,6 +131,7 @@
         "options",
         "buy-buttons",
         "liquid_jJLMhi",
+        "accordion_ggXFF9",
         "description",
         "pickup",
         "social-sharing",
