@@ -63,7 +63,7 @@
         "liquid_jJLMhi": {
           "type": "liquid",
           "settings": {
-            "custom-liquid": "<p>Orders before 3 PM ET (Mon–Fri) ship same day; later orders ship next business day.</p>"
+            "custom-liquid": "<p class=\"shipping-info\">\n  Orders before 3 PM ET (Mon–Fri) ship same day,later orders ship next business day.\n</p>\n<style>\n.shipping-info {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 14px;\n}\n\n.info-icon i {\n  font-style: italic;\n  font-weight: 500;\n}</style>"
           }
         },
         "buy-buttons": {
