@@ -24,6 +24,28 @@
           "type": "price",
           "settings": {}
         },
+        "options": {
+          "type": "options",
+          "settings": {
+            "variant-style": "buttons",
+            "swatches-enabled": true,
+            "size-chart-enabled": false,
+            "size-chart-option": "size",
+            "size-chart-content": ""
+          }
+        },
+        "liquid_jJLMhi": {
+          "type": "liquid",
+          "settings": {
+            "custom-liquid": "<p>Orders placed by 3:00 PM Eastern Time, Monday through Friday, will ship the same business day. Orders received after 3:00 PM ET or during office closures will ship the next business day.</p>"
+          }
+        },
+        "buy-buttons": {
+          "type": "buy-buttons",
+          "settings": {
+            "smart-payment-enabled": true
+          }
+        },
         "afterpay_on_site_messaging_payments_messaging_9Jmp6D": {
           "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
           "settings": {
@@ -48,28 +70,6 @@
             "show_upper_limit": true,
             "show_if_outside_limits": true,
             "product": "{{product}}"
-          }
-        },
-        "options": {
-          "type": "options",
-          "settings": {
-            "variant-style": "buttons",
-            "swatches-enabled": true,
-            "size-chart-enabled": false,
-            "size-chart-option": "size",
-            "size-chart-content": ""
-          }
-        },
-        "liquid_jJLMhi": {
-          "type": "liquid",
-          "settings": {
-            "custom-liquid": "<p>Orders placed by 3:00 PM Eastern Time, Monday through Friday, will ship the same business day. Orders received after 3:00 PM ET or during office closures will ship the next business day.</p>"
-          }
-        },
-        "buy-buttons": {
-          "type": "buy-buttons",
-          "settings": {
-            "smart-payment-enabled": true
           }
         },
         "description": {
@@ -117,10 +117,10 @@
         "heading",
         "f04c3780-5468-4ab8-8908-a41072d82d5f",
         "price",
-        "afterpay_on_site_messaging_payments_messaging_9Jmp6D",
         "options",
         "liquid_jJLMhi",
         "buy-buttons",
+        "afterpay_on_site_messaging_payments_messaging_9Jmp6D",
         "description",
         "pickup",
         "social-sharing",
