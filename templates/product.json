@@ -161,6 +161,7 @@
     },
     "1727817959c301f218": {
       "type": "apps",
+      "disabled": true,
       "settings": {
         "background-color": "none",
         "light-text": false,
