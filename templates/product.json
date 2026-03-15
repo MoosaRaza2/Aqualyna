@@ -169,6 +169,55 @@
         "spacing-below": true
       }
     },
+    "reviews_marquee_ypR8RA": {
+      "type": "reviews-marquee",
+      "blocks": {
+        "review_mRn6pC": {
+          "type": "review",
+          "settings": {
+            "review_text": "Love Aqua hair extensions and the colors they have are amazing!",
+            "customer_name": "AMBER BEAL"
+          }
+        },
+        "review_EhmPk3": {
+          "type": "review",
+          "settings": {
+            "review_text": "Best hair extensions I have ever used. The quality is unmatched!",
+            "customer_name": "JESSICA MILLER"
+          }
+        },
+        "review_njRCXt": {
+          "type": "review",
+          "settings": {
+            "review_text": "So soft and natural looking. I get compliments every single day!",
+            "customer_name": "SARAH JOHNSON"
+          }
+        },
+        "review_iiYWBK": {
+          "type": "review",
+          "settings": {
+            "review_text": "The color match was perfect and the installation was so easy!",
+            "customer_name": "EMILY DAVIS"
+          }
+        }
+      },
+      "block_order": [
+        "review_mRn6pC",
+        "review_EhmPk3",
+        "review_njRCXt",
+        "review_iiYWBK"
+      ],
+      "name": "Reviews marquee",
+      "settings": {
+        "heading": "What our customers say",
+        "background-color": "none",
+        "spacing-above": true,
+        "spacing-below": true,
+        "animation-direction": "left",
+        "animation-speed": 4,
+        "pause-on-hover": true
+      }
+    },
     "scrolling_content_VQTpge": {
       "type": "scrolling-content",
       "blocks": {
@@ -241,6 +290,7 @@
         "image_L9BtUd",
         "text_8Px8hx"
       ],
+      "disabled": true,
       "settings": {
         "top-border": false,
         "background-color": "none",
@@ -389,6 +439,7 @@
   "order": [
     "main",
     "1727817959c301f218",
+    "reviews_marquee_ypR8RA",
     "scrolling_content_VQTpge",
     "collapsible_rows_47YaNj",
     "related-products",
