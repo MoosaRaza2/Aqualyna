@@ -50,12 +50,28 @@
         {% if swatch_product.handle == product.handle %}
           {% assign is_active = true %}
         {% endif %}
-        <a href="{{ swatch_product.url }}" title="{{ swatch_product.title }}">
+        {% assign title_parts = swatch_product.title | split: ' - ' %}
+        {% assign tooltip_text = '' %}
+        {% if title_parts.size > 1 %}
+          {% for part in title_parts %}
+            {% unless forloop.first %}
+              {% if tooltip_text != '' %}
+                {% assign tooltip_text = tooltip_text | append: ' - ' | append: part %}
+              {% else %}
+                {% assign tooltip_text = part %}
+              {% endif %}
+            {% endunless %}
+          {% endfor %}
+        {% endif %}
+        <a href="{{ swatch_product.url }}" class="color-swatch--wrapper">
           <div
             class="color-swatch{% if is_active %} active{% endif %}"
             style="background-image: url({{ swatch_product.featured_image | img_url: '100x100' }});"
             data-product-title="{{ swatch_product.title }}"
           ></div>
+          {% if tooltip_text != '' %}
+            <span class="color-swatch--tooltip">{{ tooltip_text }}</span>
+          {% endif %}
         </a>
       {% endfor %}
     </div>
