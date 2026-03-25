@@ -45,34 +45,100 @@
     <!-- Color Variant Picker -->
     <div class="color-variants">
       {% assign current_collection = collections[current_collection_handle] %}
-      {% for swatch_product in current_collection.products %}
-        {% assign is_active = false %}
-        {% if swatch_product.handle == product.handle %}
-          {% assign is_active = true %}
-        {% endif %}
-        {% assign title_parts = swatch_product.title | split: ' - ' %}
-        {% assign tooltip_text = '' %}
-        {% if title_parts.size > 1 %}
-          {% for part in title_parts %}
-            {% unless forloop.first %}
-              {% if tooltip_text != '' %}
-                {% assign tooltip_text = tooltip_text | append: ' - ' | append: part %}
-              {% else %}
-                {% assign tooltip_text = part %}
+      {%- liquid
+        assign swatch_order_raw = '1 Black Sample Clip In Hair Extension|||1N Natural Black Sample Clip In Hair Extension|||1B Soft Black Sample Clip In Hair Extension|||1B/4 Duo Tone Sample Clip In Hair Extension|||1B/4 Balayage Sample Clip In Hair Extension|||Pacific Balayage Sample Clip In Hair Extension|||2 Dark Brown Sample Clip In Hair Extension|||4/12 Duo Tone Sample Clip In Hair Extension|||4/12 Balayage Sample Clip In Hair Extension|||4 Medium Brown Sample Clip In Hair Extension|||6 Light Brown Sample Clip In Hair Extension|||33 Dark Copper Red Sample Clip In Hair Extension|||8/24 Duo Tone Sample Clip In Hair Extension|||8/24 Balayage Sample Clip In Hair Extension|||18/22 Duo Tone Sample Clip In Hair Extension|||8AB/60A Rooted Sample Clip In Hair Extension|||Arctic Rooted Sample Clip In Hair Extension|||Arabian Root Tap Sample Clip In Hair Extension - Warm Brown Golden Blonde|||Como Root Tap Sample Clip In Hair Extension - Dark Brown Beige Blonde|||Erie Root Tap Sample Clip In Hair Extension - Light Brown Beige Blonde|||Echo Root Tap Sample Clip In Hair Extension - Medium Brown Beige Blonde|||Tahoe Root Tap Sample Clip In Hair Extension - Beige Blonde|||Victoria Root Tap Sample Clip In Hair Extension - Medium Brown Golden Brown|||Atlantic Duo Tone Sample Clip In Hair Extension|||16 Blonde Sample Clip In Hair Extension|||24 Light Golden Blonde Sample Clip In Hair Extension|||60 Most Platinum Blonde Sample Clip In Hair Extension|||60A Most Platinum Ash Blonde Sample Clip In Hair Extension|||62 Icy Blonde Sample Clip In Hair Extension'
+        assign swatch_order = swatch_order_raw | split: '|||'
+        assign rendered_handles = '|'
+      -%}
+      {%- comment -%} Pass 1: list order; match full product title (case-insensitive). Unlisted → pass 2 (end). {%- endcomment -%}
+      {% for ordered_title in swatch_order %}
+        {% assign ordered_title_norm = ordered_title | strip | downcase %}
+        {% for swatch_product in current_collection.products %}
+          {% assign handle_marker = '|' | append: swatch_product.handle | append: '|' %}
+          {% unless rendered_handles contains handle_marker %}
+            {% assign title_parts = swatch_product.title | split: ' - ' %}
+            {% assign tooltip_text = '' %}
+            {% if title_parts.size > 1 %}
+              {% for part in title_parts %}
+                {% unless forloop.first %}
+                  {% if tooltip_text != '' %}
+                    {% assign tooltip_text = tooltip_text | append: ' - ' | append: part %}
+                  {% else %}
+                    {% assign tooltip_text = part %}
+                  {% endif %}
+                {% endunless %}
+              {% endfor %}
+            {% endif %}
+            {% assign full_title_norm = swatch_product.title | strip | downcase %}
+            {% if full_title_norm == ordered_title_norm %}
+              {% assign swatch_display_title = swatch_product.title %}
+              {% assign is_active = false %}
+              {% if swatch_product.handle == product.handle %}
+                {% assign is_active = true %}
               {% endif %}
-            {% endunless %}
-          {% endfor %}
-        {% endif %}
-        <a href="{{ swatch_product.url }}" class="color-swatch--wrapper">
-          <div
-            class="color-swatch{% if is_active %} active{% endif %}"
-            style="background-image: url({{ swatch_product.featured_image | img_url: '100x100' }});"
-            data-product-title="{{ swatch_product.title }}"
-          ></div>
-          {% if tooltip_text != '' %}
-            <span class="color-swatch--tooltip">{{ tooltip_text }}</span>
+              <a
+                href="{{ swatch_product.url }}"
+                class="color-swatch--wrapper"
+                data-swatch-title="{{ swatch_display_title | escape }}"
+                data-swatch-key="{{ swatch_display_title | handleize }}"
+              >
+                <div
+                  class="color-swatch{% if is_active %} active{% endif %}"
+                  style="background-image: url({{ swatch_product.featured_image | img_url: '100x100' }});"
+                  data-product-title="{{ swatch_product.title | escape }}"
+                  data-swatch-title="{{ swatch_display_title | escape }}"
+                  data-swatch-key="{{ swatch_display_title | handleize }}"
+                ></div>
+                {% if tooltip_text != '' %}
+                  <span class="color-swatch--tooltip">{{ tooltip_text }}</span>
+                {% endif %}
+              </a>
+              {% assign rendered_handles = rendered_handles | append: swatch_product.handle | append: '|' %}
+              {% break %}
+            {% endif %}
+          {% endunless %}
+        {% endfor %}
+      {% endfor %}
+      {%- comment -%} Pass 2: remaining swatches in collection order {%- endcomment -%}
+      {% for swatch_product in current_collection.products %}
+        {% assign handle_marker = '|' | append: swatch_product.handle | append: '|' %}
+        {% unless rendered_handles contains handle_marker %}
+          {% assign is_active = false %}
+          {% if swatch_product.handle == product.handle %}
+            {% assign is_active = true %}
           {% endif %}
-        </a>
+          {% assign title_parts = swatch_product.title | split: ' - ' %}
+          {% assign tooltip_text = '' %}
+          {% if title_parts.size > 1 %}
+            {% for part in title_parts %}
+              {% unless forloop.first %}
+                {% if tooltip_text != '' %}
+                  {% assign tooltip_text = tooltip_text | append: ' - ' | append: part %}
+                {% else %}
+                  {% assign tooltip_text = part %}
+                {% endif %}
+              {% endunless %}
+            {% endfor %}
+          {% endif %}
+          {% assign swatch_display_title = swatch_product.title %}
+          <a
+            href="{{ swatch_product.url }}"
+            class="color-swatch--wrapper"
+            data-swatch-title="{{ swatch_display_title | escape }}"
+            data-swatch-key="{{ swatch_display_title | handleize }}"
+          >
+            <div
+              class="color-swatch{% if is_active %} active{% endif %}"
+              style="background-image: url({{ swatch_product.featured_image | img_url: '100x100' }});"
+              data-product-title="{{ swatch_product.title | escape }}"
+              data-swatch-title="{{ swatch_display_title | escape }}"
+              data-swatch-key="{{ swatch_display_title | handleize }}"
+            ></div>
+            {% if tooltip_text != '' %}
+              <span class="color-swatch--tooltip">{{ tooltip_text }}</span>
+            {% endif %}
+          </a>
+        {% endunless %}
       {% endfor %}
     </div>
   {% endif %}
