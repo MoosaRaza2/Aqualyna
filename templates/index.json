@@ -428,66 +428,6 @@
         "link-text": ""
       }
     },
-    "text_columns_JB4XV8": {
-      "type": "text-columns",
-      "blocks": {
-        "image_yzVMFA": {
-          "type": "image",
-          "settings": {
-            "show-image": true,
-            "image": "shopify://shop_images/Get_the_Look_Revamp_1130_x_1696_px.png",
-            "title": "Shade #4 Medium Brown",
-            "description": "<p><a href=\"https://www.aqualyna.com/collections/clip-in-hair-extensions/products/4-medium-brown-ultra-narrow-clip-in-hair-extension\" title=\"https://www.aqualyna.com/collections/clip-in-hair-extensions/products/4-medium-brown-ultra-narrow-clip-in-hair-extension\">Ultra Narrow Clip In Hair Extensions</a></p>",
-            "link-url": "https://www.aqualyna.com/collections/clip-in-hair-extensions/products/4-medium-brown-ultra-narrow-clip-in-hair-extension",
-            "link-text": "Shop Here"
-          }
-        },
-        "image_f8CRaP": {
-          "type": "image",
-          "settings": {
-            "show-image": true,
-            "image": "shopify://shop_images/Copy_of_Get_the_Look_Revamp_1130_x_1696_px_1_d29f8f00-6eee-4521-a1b3-0485a8a387cc.png",
-            "title": "Shade #4/12 Balayage",
-            "description": "<p><a href=\"https://www.aqualyna.com/products/4-12-balayage-ultra-narrow-clip-in-hair-extension?_pos=1&_sid=53ad3c83f&_ss=r\" title=\"https://www.aqualyna.com/products/4-12-balayage-ultra-narrow-clip-in-hair-extension?_pos=1&_sid=53ad3c83f&_ss=r\">Ultra Narrow Clip In Hair Extensions</a></p>",
-            "link-url": "https://www.aqualyna.com/products/4-12-balayage-ultra-narrow-clip-in-hair-extension?_pos=1&_sid=53ad3c83f&_ss=r",
-            "link-text": "Shop Here"
-          }
-        },
-        "image_WyjHVe": {
-          "type": "image",
-          "settings": {
-            "show-image": true,
-            "image": "shopify://shop_images/Copy_of_Get_the_Look_Revamp_1130_x_1696_px_6c7f9e81-65b1-4b88-a721-a2cc6c844c5a.png",
-            "title": "Shade #1B/4 Duo Tone",
-            "description": "<p><a href=\"https://www.aqualyna.com/collections/clip-in-hair-extensions/products/1b-4-duo-tone-ultra-narrow-clip-in-hair-extensions\" title=\"https://www.aqualyna.com/collections/clip-in-hair-extensions/products/1b-4-duo-tone-ultra-narrow-clip-in-hair-extensions\">Ultra Narrow Clip In Hair Extensions</a></p>",
-            "link-url": "https://www.aqualyna.com/collections/clip-in-hair-extensions/products/1b-4-duo-tone-ultra-narrow-clip-in-hair-extensions",
-            "link-text": "Shop Here"
-          }
-        }
-      },
-      "block_order": [
-        "image_yzVMFA",
-        "image_f8CRaP",
-        "image_WyjHVe"
-      ],
-      "settings": {
-        "background-color": "none",
-        "light-text": false,
-        "block-spacing": true,
-        "container-width": 4,
-        "spacing-above": false,
-        "spacing-below": true,
-        "width": 3,
-        "aspect-ratio": "portrait",
-        "image-width": 0,
-        "mobile-width": "2",
-        "text-alignment": "center",
-        "heading": "Get The Look",
-        "subtitle": "Shop the Shades",
-        "link-url": "https://www.aqualyna.com/collections/ultra-narrow-clip-in-hair-extensions",
-        "link-text": ""
-      }
-    },
     "featured_text_3L3Lag": {
       "type": "featured-text",
       "disabled": true,
@@ -560,28 +500,6 @@
         "collection": "aqualyna-samples",
         "max-products": 12,
         "heading": "Grab 2 Samples for $12 with FREE Shipping—Plus, Get $12 Off Your Next Order!"
-      }
-    },
-    "featured_products_WnRpbE": {
-      "type": "featured-products",
-      "settings": {
-        "background-color": "none",
-        "light-text": false,
-        "spacing-above": false,
-        "spacing-below": true,
-        "display-type": "slideshow",
-        "products-per-row--desktop": "4",
-        "products-per-row--mobile": "2",
-        "product-list": [
-          "arctic-rooted-sample-clip-in-hair-extension",
-          "18-22-balayage-balayage-sample-clip-in-hair-extension",
-          "1b-4-balayage-sample-clip-in-hair-extension",
-          "33-sample-clip-in-hair-extension"
-        ],
-        "heading": "Grab 2 Samples for $12 with FREE Shipping—Plus, Get $12 Off Your Next Order!",
-        "heading-alignment": "center",
-        "link-url": "shopify://collections/aqualyna-samples",
-        "link-text": "Shop Hair Samples"
       }
     },
     "c990c808-20ee-417a-8211-74ae6de26bb0": {
@@ -766,12 +684,10 @@
     "2c7b2c75-a053-465f-9304-0c8a440bc6b4",
     "1732303680b02766ab",
     "a2243e73-eaf5-4985-8402-eb9b4ed43f1e",
-    "text_columns_JB4XV8",
     "featured_text_3L3Lag",
     "16401814158380a11c",
     "featured_text_fnfp9q",
     "featured_collection_JXcyNc",
-    "featured_products_WnRpbE",
     "c990c808-20ee-417a-8211-74ae6de26bb0",
     "featured_text_eMipkL",
     "image_with_text_fmdfNT",
