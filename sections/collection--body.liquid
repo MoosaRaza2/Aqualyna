@@ -4,6 +4,7 @@
   assign filter_feedback_t = 'collections.filter_feedback' | t
   assign skip_link_t = 'general.a11y.skip_pagination' | t
 
+  assign use_new_product_item = section.settings.use-new-product-item
   assign products_per_row_desktop = section.settings.products-per-row--desktop
   assign products_per_row_mobile = section.settings.products-per-row--mobile
   assign promo_grid_duplicates = 0
@@ -230,7 +231,11 @@
                     echo pending_products_to_render | append: '|'
                   endunless
 
-                  render 'product--item', product_item: product, section_id: section.id, per_row: products_per_row_desktop, mobile_per_row: products_per_row_mobile
+                  if use_new_product_item
+                    render 'product--item-new', product_item: product, section_id: section.id, per_row: products_per_row_desktop, mobile_per_row: products_per_row_mobile
+                  else
+                    render 'product--item', product_item: product, section_id: section.id, per_row: products_per_row_desktop, mobile_per_row: products_per_row_mobile
+                  endif
                 endcapture
 
                 continue
@@ -251,7 +256,11 @@
               assign pending_products_to_render = blank
             endunless
 
-            render 'product--item', product_item: product, section_id: section.id, per_row: products_per_row_desktop, mobile_per_row: products_per_row_mobile
+            if use_new_product_item
+              render 'product--item-new', product_item: product, section_id: section.id, per_row: products_per_row_desktop, mobile_per_row: products_per_row_mobile
+            else
+              render 'product--item', product_item: product, section_id: section.id, per_row: products_per_row_desktop, mobile_per_row: products_per_row_mobile
+            endif
 
             assign current_block_num = current_block_num | plus: 1
             assign indexes_accessed_arr = indexes_accessed | split: ","
@@ -313,6 +322,13 @@
 {
   "name": "Collection grid",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "use-new-product-item",
+      "label": "Use new product card style",
+      "default": false,
+      "info": "Enable to use the alternate product card snippet (product--item-new)"
+    },
     {
       "label": "Products per row (desktop)",
       "id": "products-per-row--desktop",
