@@ -218,6 +218,39 @@
         "number-of-rows": 4
       }
     },
+    "image_comparison_CiLCi6": {
+      "type": "image-comparison",
+      "blocks": {
+        "before_zxf6zB": {
+          "type": "before",
+          "settings": {}
+        },
+        "after_NMjYVb": {
+          "type": "after",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "before_zxf6zB",
+        "after_NMjYVb"
+      ],
+      "name": "Image comparison",
+      "settings": {
+        "image-aspect-ratio": 56,
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "overline": "Overline text",
+        "heading": "Image comparison",
+        "link-url": "",
+        "link-text": "Optional link",
+        "cursor-direction": "horizontal",
+        "cursor-position": 50,
+        "mobile-image-aspect-ratio": 134
+      }
+    },
     "text_columns_ng3zmA": {
       "type": "text-columns",
       "blocks": {
@@ -339,39 +372,6 @@
         "spacing-above": true,
         "spacing-below": true
       }
-    },
-    "image_comparison_CiLCi6": {
-      "type": "image-comparison",
-      "blocks": {
-        "before_zxf6zB": {
-          "type": "before",
-          "settings": {}
-        },
-        "after_NMjYVb": {
-          "type": "after",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "before_zxf6zB",
-        "after_NMjYVb"
-      ],
-      "name": "Image comparison",
-      "settings": {
-        "image-aspect-ratio": 56,
-        "background-color": "none",
-        "light-text": false,
-        "container-width": 4,
-        "spacing-above": true,
-        "spacing-below": true,
-        "overline": "Overline text",
-        "heading": "Image comparison",
-        "link-url": "",
-        "link-text": "Optional link",
-        "cursor-direction": "horizontal",
-        "cursor-position": 50,
-        "mobile-image-aspect-ratio": 134
-      }
     }
   },
   "order": [
@@ -382,10 +382,10 @@
     "header-promo",
     "navigation",
     "main",
+    "image_comparison_CiLCi6",
     "text_columns_ng3zmA",
     "featured_blog_aBbdcA",
     "172782239694d50296",
-    "172435672603b7fe62",
-    "image_comparison_CiLCi6"
+    "172435672603b7fe62"
   ]
 }
