@@ -225,11 +225,17 @@
       "blocks": {
         "before_BLdgKN": {
           "type": "before",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/Aura_-_Before.png",
+            "mobile-image": "shopify://shop_images/Aura_-_After.png"
+          }
         },
         "after_iLUadm": {
           "type": "after",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/Aura_-_Before.png",
+            "mobile-image": "shopify://shop_images/Aura_-_Before.png"
+          }
         }
       },
       "block_order": [
