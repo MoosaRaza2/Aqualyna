@@ -220,8 +220,42 @@
         "number-of-rows": 4
       }
     },
+    "image_comparison_6NqiHP": {
+      "type": "image-comparison",
+      "blocks": {
+        "before_BLdgKN": {
+          "type": "before",
+          "settings": {}
+        },
+        "after_iLUadm": {
+          "type": "after",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "before_BLdgKN",
+        "after_iLUadm"
+      ],
+      "name": "Image comparison",
+      "settings": {
+        "image-aspect-ratio": 56,
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "overline": "AQUALYNA AURA",
+        "heading": "Before & After",
+        "link-url": "",
+        "link-text": "Optional link",
+        "cursor-direction": "horizontal",
+        "cursor-position": 50,
+        "mobile-image-aspect-ratio": 134
+      }
+    },
     "before_and_after_jEEhmx": {
       "type": "before-and-after",
+      "disabled": true,
       "name": "Before & After Slider",
       "settings": {
         "before_image": "shopify://shop_images/Aura_-_Before.png",
@@ -359,6 +393,7 @@
     "header-promo",
     "navigation",
     "main",
+    "image_comparison_6NqiHP",
     "before_and_after_jEEhmx",
     "text_columns_ng3zmA",
     "featured_blog_aBbdcA",
