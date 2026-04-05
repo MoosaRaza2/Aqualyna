@@ -220,6 +220,39 @@
         "number-of-rows": 4
       }
     },
+    "image_comparison_yxkALU": {
+      "type": "image-comparison",
+      "blocks": {
+        "before_C3yfjR": {
+          "type": "before",
+          "settings": {}
+        },
+        "after_LH4qYT": {
+          "type": "after",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "before_C3yfjR",
+        "after_LH4qYT"
+      ],
+      "name": "Image comparison",
+      "settings": {
+        "image-aspect-ratio": 56,
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "overline": "AQUALYNA ULTRA NARROW CLIP INS",
+        "heading": "BEFORE & AFTER",
+        "link-url": "",
+        "link-text": "",
+        "cursor-direction": "horizontal",
+        "cursor-position": 50,
+        "mobile-image-aspect-ratio": 134
+      }
+    },
     "text_columns_ng3zmA": {
       "type": "text-columns",
       "blocks": {
@@ -340,39 +373,6 @@
         "container-width": 4,
         "spacing-above": true,
         "spacing-below": true
-      }
-    },
-    "image_comparison_yxkALU": {
-      "type": "image-comparison",
-      "blocks": {
-        "before_C3yfjR": {
-          "type": "before",
-          "settings": {}
-        },
-        "after_LH4qYT": {
-          "type": "after",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "before_C3yfjR",
-        "after_LH4qYT"
-      ],
-      "name": "Image comparison",
-      "settings": {
-        "image-aspect-ratio": 56,
-        "background-color": "none",
-        "light-text": false,
-        "container-width": 4,
-        "spacing-above": true,
-        "spacing-below": true,
-        "overline": "Overline text",
-        "heading": "Image comparison",
-        "link-url": "",
-        "link-text": "Optional link",
-        "cursor-direction": "horizontal",
-        "cursor-position": 50,
-        "mobile-image-aspect-ratio": 134
       }
     }
   },
