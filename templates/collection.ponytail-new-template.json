@@ -225,11 +225,17 @@
       "blocks": {
         "before_zxf6zB": {
           "type": "before",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/Ponytail_-_Before.png",
+            "mobile-image": "shopify://shop_images/Ponytail_-_Before.png"
+          }
         },
         "after_NMjYVb": {
           "type": "after",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/Ponytail_-_After.png",
+            "mobile-image": "shopify://shop_images/Ponytail_-_After.png"
+          }
         }
       },
       "block_order": [
