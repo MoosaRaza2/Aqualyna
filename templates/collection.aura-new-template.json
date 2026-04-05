@@ -227,14 +227,14 @@
           "type": "before",
           "settings": {
             "image": "shopify://shop_images/Aura_-_Before.png",
-            "mobile-image": "shopify://shop_images/Aura_-_After.png"
+            "mobile-image": "shopify://shop_images/Aura_-_Before.png"
           }
         },
         "after_iLUadm": {
           "type": "after",
           "settings": {
-            "image": "shopify://shop_images/Aura_-_Before.png",
-            "mobile-image": "shopify://shop_images/Aura_-_Before.png"
+            "image": "shopify://shop_images/Aura_-_After.png",
+            "mobile-image": "shopify://shop_images/Aura_-_After.png"
           }
         }
       },
