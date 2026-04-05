@@ -87,28 +87,34 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 50%;
     height: 100%;
     padding: 40px 40px 40px 100px;
-    text-align: center;
+    text-align: left;
     box-sizing: border-box;
   }
 
   .new-hero-collection__heading {
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 32px;
+    font-weight: 325;
+    font-size: 64px;
     line-height: 1.25;
     margin: 0 0 20px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0;
+    line-height: 55px;
+    font-family: 'Gotham-Light';
+    color:white;
+  }
+  .new-hero-collection__heading strong {
+    font-weight: 700;
   }
 
   .new-hero-collection__subheading {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.6;
     margin: 0;
-    opacity: 0.85;
+    /* opacity: 0.85; */
+    font-family: 'Gotham-Light';
   }
 
   .new-hero-collection__button {
@@ -157,18 +163,23 @@
       left: 0;
       width: 100%;
       height: auto;
-      padding: 24px;
-      text-align: center;
-      align-items: center;
+      padding: 24px 25px 15px 30px;
+      text-align: left;
+      align-items: flex-start;
     }
 
     .new-hero-collection__heading {
-      font-size: 24px;
+      font-size: 45px;
+      line-height: 40px;
+      /* margin: 0 0 10px; */
     }
 
     .new-hero-collection__subheading {
       font-size: 14px;
     }
+    .new-hero-collection__subheading p br:first-of-type {
+  display: none;
+}
   }
 </style>
 
