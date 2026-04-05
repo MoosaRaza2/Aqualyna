@@ -214,7 +214,7 @@
         "promotion_Gz9VE6"
       ],
       "settings": {
-        "use-new-product-item": false,
+        "use-new-product-item": true,
         "products-per-row--desktop": 4,
         "products-per-row--mobile": "2",
         "number-of-rows": 4
