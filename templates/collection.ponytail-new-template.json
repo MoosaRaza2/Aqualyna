@@ -27,8 +27,8 @@
         "right-overlay-opacity": 80,
         "overlay-width": 30,
         "text-color": "#000000",
-        "desktop-height": 500,
-        "mobile-height": 350
+        "desktop-height": 550,
+        "mobile-height": 500
       }
     },
     "collection-header": {
