@@ -79,44 +79,20 @@
     display: none;
   }
 
-  .new-hero-collection__overlay-left,
-  .new-hero-collection__overlay-right {
+  .new-hero-collection__content {
     position: absolute;
     top: 0;
-    bottom: 0;
-    width: var(--overlay-width);
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .new-hero-collection__overlay-left {
-    left: 0;
-    background: linear-gradient(
-      to right,
-      {{ left_color | color_modify: 'alpha', left_opacity }},
-      transparent
-    );
-  }
-
-  .new-hero-collection__overlay-right {
     right: 0;
-    background: linear-gradient(
-      to left,
-      {{ right_color | color_modify: 'alpha', right_opacity }},
-      transparent
-    );
-  }
-
-  .new-hero-collection__content {
-    position: relative;
     z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: {% if text_alignment == 'left' %}flex-start{% elsif text_alignment == 'right' %}flex-end{% else %}center{% endif %};
-    min-height: var(--hero-desktop-height);
-    padding: 60px 80px;
-    text-align: {{ text_alignment }};
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    padding: 40px 40px 40px 100px;
+    text-align: center;
+    box-sizing: border-box;
   }
 
   .new-hero-collection__heading {
@@ -157,11 +133,12 @@
 
   @media only screen and (max-width: 767px) {
     .new-hero-collection {
-      min-height: auto;
+      min-height: var(--hero-mobile-height);
     }
 
     .new-hero-collection__image-wrapper {
-      position: relative;
+      position: absolute;
+      inset: 0;
       min-height: var(--hero-mobile-height);
     }
 
@@ -173,14 +150,14 @@
       display: block;
     }
 
-    .new-hero-collection__overlay-left,
-    .new-hero-collection__overlay-right {
-      display: none;
-    }
-
     .new-hero-collection__content {
-      min-height: auto;
-      padding: 40px 24px;
+      position: absolute;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      padding: 24px;
       text-align: center;
       align-items: center;
     }
@@ -255,16 +232,13 @@
     {%- endif -%}
   </div>
 
-  <div class="new-hero-collection__overlay-left"></div>
-  <div class="new-hero-collection__overlay-right"></div>
-
   <div class="new-hero-collection__content">
     {%- if heading != blank -%}
-      <h2 class="new-hero-collection__heading">{{ heading }}</h2>
+      <div class="new-hero-collection__heading">{{ heading }}</div>
     {%- endif -%}
 
     {%- if subheading != blank -%}
-      <p class="new-hero-collection__subheading">{{ subheading }}</p>
+      <div class="new-hero-collection__subheading">{{ subheading }}</div>
     {%- endif -%}
 
     {%- if button_text != blank and button_url != blank -%}
@@ -311,14 +285,14 @@
     {
       "id": "heading",
       "label": "Heading",
-      "type": "text",
-      "default": "Instant Gorgeous Celeb-Worthy Hair With Ultra Narrow Clip In Hair Extensions"
+      "type": "richtext",
+      "default": "<p>Instant Gorgeous Celeb-Worthy Hair With Ultra Narrow Clip In Hair Extensions</p>"
     },
     {
       "id": "subheading",
       "label": "Subheading",
-      "type": "text",
-      "default": "Lengths Available: 18in, 20in, 22in, 24in, 26in"
+      "type": "richtext",
+      "default": "<p>Lengths Available: 18in, 20in, 22in, 24in, 26in</p>"
     },
     {
       "id": "text-alignment",
