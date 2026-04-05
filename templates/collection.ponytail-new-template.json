@@ -253,7 +253,7 @@
         "overline": "Overline text",
         "heading": "Image comparison",
         "link-url": "",
-        "link-text": "Optional link",
+        "link-text": "",
         "cursor-direction": "horizontal",
         "cursor-position": 50,
         "mobile-image-aspect-ratio": 134
