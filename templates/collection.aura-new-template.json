@@ -13,7 +13,7 @@
       "type": "new-hero-collection",
       "name": "New hero collection",
       "settings": {
-        "desktop-image": "shopify://shop_images/Desktop_4.png",
+        "desktop-image": "shopify://shop_images/Desktop_5.png",
         "mobile-image": "shopify://shop_images/IMG_3064-Edit-Edit_2_1.png",
         "image-fit": "cover",
         "heading": "Instant Gorgeous Celeb-Worthy Hair With Ultra Narrow Clip In Hair Extensions",
@@ -27,7 +27,7 @@
         "right-overlay-opacity": 80,
         "overlay-width": 30,
         "text-color": "#000000",
-        "desktop-height": 800,
+        "desktop-height": 520,
         "mobile-height": 350
       }
     },
