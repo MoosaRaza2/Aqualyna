@@ -28,7 +28,7 @@
         "overlay-width": 30,
         "text-color": "#000000",
         "desktop-height": 600,
-        "mobile-height": 350
+        "mobile-height": 500
       }
     },
     "collection-header": {
