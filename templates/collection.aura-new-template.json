@@ -345,7 +345,10 @@
     "before_and_after_jEEhmx": {
       "type": "before-and-after",
       "name": "Before & After Slider",
-      "settings": {}
+      "settings": {
+        "before_image": "shopify://shop_images/Aura_-_Before.png",
+        "after_image": "shopify://shop_images/Aura_-_After.png"
+      }
     }
   },
   "order": [
