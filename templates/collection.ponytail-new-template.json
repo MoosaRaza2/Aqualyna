@@ -13,9 +13,11 @@
       "type": "new-hero-collection",
       "name": "New hero collection",
       "settings": {
+        "desktop-image": "shopify://shop_images/Desktop_6.png",
+        "mobile-image": "shopify://shop_images/Mobile_1.png",
         "image-fit": "cover",
-        "heading": "<p>Instant Gorgeous Celeb-Worthy Hair With Ultra Narrow Clip In Hair Extensions</p>",
-        "subheading": "<p>Lengths Available: 18in, 20in, 22in, 24in, 26in</p>",
+        "heading": "<p>A<br/>REFINED<br/>PONYTAIL</p>",
+        "subheading": "<p>FOR INSTANT IMPACT<br/><br/>Lengths Available: 18in, 20in, 22in, 24in, 26in</p>",
         "text-alignment": "center",
         "button-text": "",
         "button-url": "",
