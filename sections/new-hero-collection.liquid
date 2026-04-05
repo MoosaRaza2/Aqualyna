@@ -1,24 +1,30 @@
 {%- liquid
   assign heading = section.settings.heading
   assign subheading = section.settings.subheading
-  assign bg_color = section.settings.background-color
   assign text_color = section.settings.text-color
   assign text_alignment = section.settings.text-alignment
   assign desktop_image = section.settings.desktop-image
   assign mobile_image = section.settings.mobile-image
-  assign image_position = section.settings.image-position
   assign desktop_height = section.settings.desktop-height
   assign mobile_height = section.settings.mobile-height
+  assign image_fit = section.settings.image-fit
   assign button_text = section.settings.button-text
   assign button_url = section.settings.button-url
+  assign left_color = section.settings.left-overlay-color
+  assign left_opacity_pct = section.settings.left-overlay-opacity
+  assign left_opacity = left_opacity_pct | divided_by: 100.0
+  assign right_color = section.settings.right-overlay-color
+  assign right_opacity_pct = section.settings.right-overlay-opacity
+  assign right_opacity = right_opacity_pct | divided_by: 100.0
+  assign overlay_width = section.settings.overlay-width
 -%}
 
 <style>
   .new-hero-collection--{{ section.id }} {
-    --hero-bg: {{ bg_color }};
     --hero-text: {{ text_color }};
     --hero-desktop-height: {{ desktop_height }}px;
     --hero-mobile-height: {{ mobile_height }}px;
+    --overlay-width: {{ overlay_width }}%;
   }
 
   .new-hero-collection[data-section-id] {
@@ -35,52 +41,80 @@
   }
 
   .new-hero-collection {
-    display: flex;
-    align-items: stretch;
+    position: relative;
     width: 100%;
     min-height: var(--hero-desktop-height);
-    background-color: var(--hero-bg);
     color: var(--hero-text);
     overflow: hidden;
   }
 
-  .new-hero-collection[data-image-position="right"] {
-    flex-direction: row;
-  }
-
-  .new-hero-collection[data-image-position="left"] {
-    flex-direction: row-reverse;
-  }
-
   .new-hero-collection__image-wrapper {
-    flex: 1 1 50%;
-    position: relative;
-    overflow: hidden;
-    min-height: var(--hero-desktop-height);
+    position: absolute;
+    inset: 0;
+    z-index: 0;
   }
 
   .new-hero-collection__image-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
   }
 
-  .new-hero-collection__image-wrapper .new-hero-collection__image--desktop {
+  .new-hero-collection__image-wrapper img.fit-cover {
+    object-fit: cover;
+  }
+
+  .new-hero-collection__image-wrapper img.fit-contain {
+    object-fit: contain;
+    background-color: #000;
+  }
+
+  .new-hero-collection__image--desktop {
     display: block;
   }
 
-  .new-hero-collection__image-wrapper .new-hero-collection__image--mobile {
+  .new-hero-collection__image--mobile {
     display: none;
   }
 
+  .new-hero-collection__overlay-left,
+  .new-hero-collection__overlay-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: var(--overlay-width);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .new-hero-collection__overlay-left {
+    left: 0;
+    background: linear-gradient(
+      to right,
+      {{ left_color | color_modify: 'alpha', left_opacity }},
+      transparent
+    );
+  }
+
+  .new-hero-collection__overlay-right {
+    right: 0;
+    background: linear-gradient(
+      to left,
+      {{ right_color | color_modify: 'alpha', right_opacity }},
+      transparent
+    );
+  }
+
   .new-hero-collection__content {
-    flex: 1 1 50%;
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: {% if text_alignment == 'left' %}flex-start{% elsif text_alignment == 'right' %}flex-end{% else %}center{% endif %};
+    min-height: var(--hero-desktop-height);
     padding: 60px 80px;
     text-align: {{ text_alignment }};
   }
@@ -106,7 +140,7 @@
     margin-top: 30px;
     padding: 14px 36px;
     background-color: var(--hero-text);
-    color: var(--hero-bg);
+    color: #fff;
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
@@ -123,29 +157,32 @@
 
   @media only screen and (max-width: 767px) {
     .new-hero-collection {
-      flex-direction: column !important;
       min-height: auto;
     }
 
     .new-hero-collection__image-wrapper {
-      flex: none;
-      width: 100%;
+      position: relative;
       min-height: var(--hero-mobile-height);
     }
 
-    .new-hero-collection__image-wrapper .new-hero-collection__image--desktop {
+    .new-hero-collection__image--desktop {
       display: none;
     }
 
-    .new-hero-collection__image-wrapper .new-hero-collection__image--mobile {
+    .new-hero-collection__image--mobile {
       display: block;
     }
 
+    .new-hero-collection__overlay-left,
+    .new-hero-collection__overlay-right {
+      display: none;
+    }
+
     .new-hero-collection__content {
-      flex: none;
-      width: 100%;
+      min-height: auto;
       padding: 40px 24px;
       text-align: center;
+      align-items: center;
     }
 
     .new-hero-collection__heading {
@@ -161,12 +198,11 @@
 <div
   class="new-hero-collection new-hero-collection--{{ section.id }}"
   data-section-id="{{ section.id }}"
-  data-image-position="{{ image_position }}"
 >
   <div class="new-hero-collection__image-wrapper">
     {%- if desktop_image -%}
       <img
-        class="new-hero-collection__image--desktop"
+        class="new-hero-collection__image--desktop fit-{{ image_fit }}"
         src="{{ desktop_image | image_url: width: 1600 }}"
         srcset="
           {{ desktop_image | image_url: width: 800 }} 800w,
@@ -174,19 +210,19 @@
           {{ desktop_image | image_url: width: 1600 }} 1600w,
           {{ desktop_image | image_url: width: 2000 }} 2000w
         "
-        sizes="50vw"
+        sizes="100vw"
         alt="{{ desktop_image.alt | default: heading | escape }}"
         loading="eager"
         width="{{ desktop_image.width }}"
         height="{{ desktop_image.height }}"
       >
     {%- else -%}
-      <div class="new-hero-collection__image--desktop" style="width:100%;height:100%;background:#ddd;"></div>
+      <div class="new-hero-collection__image--desktop" style="width:100%;height:100%;background:#ddd;position:absolute;inset:0;"></div>
     {%- endif -%}
 
     {%- if mobile_image -%}
       <img
-        class="new-hero-collection__image--mobile"
+        class="new-hero-collection__image--mobile fit-cover"
         src="{{ mobile_image | image_url: width: 800 }}"
         srcset="
           {{ mobile_image | image_url: width: 400 }} 400w,
@@ -201,7 +237,7 @@
       >
     {%- elsif desktop_image -%}
       <img
-        class="new-hero-collection__image--mobile"
+        class="new-hero-collection__image--mobile fit-cover"
         src="{{ desktop_image | image_url: width: 800 }}"
         srcset="
           {{ desktop_image | image_url: width: 400 }} 400w,
@@ -218,6 +254,9 @@
       <div class="new-hero-collection__image--mobile" style="width:100%;height:100%;background:#ddd;"></div>
     {%- endif -%}
   </div>
+
+  <div class="new-hero-collection__overlay-left"></div>
+  <div class="new-hero-collection__overlay-right"></div>
 
   <div class="new-hero-collection__content">
     {%- if heading != blank -%}
@@ -256,15 +295,14 @@
       "info": "If not set, desktop image will be used on mobile"
     },
     {
-      "id": "image-position",
-      "label": "Image position",
+      "id": "image-fit",
+      "label": "Desktop image fit",
       "type": "select",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "right", "label": "Right" }
+        { "value": "cover", "label": "Cover (fills area, may crop)" },
+        { "value": "contain", "label": "Contain (shows full image)" }
       ],
-      "default": "left",
-      "info": "On mobile the image always stacks on top"
+      "default": "cover"
     },
     {
       "type": "header",
@@ -309,13 +347,60 @@
     },
     {
       "type": "header",
-      "content": "Colors and sizing"
+      "content": "Left color overlay"
     },
     {
-      "id": "background-color",
-      "label": "Background color",
+      "id": "left-overlay-color",
+      "label": "Left overlay color",
       "type": "color",
       "default": "#87CEEB"
+    },
+    {
+      "id": "left-overlay-opacity",
+      "label": "Left overlay opacity",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 80,
+      "unit": "%",
+      "info": "0 = fully transparent, 100 = fully opaque"
+    },
+    {
+      "type": "header",
+      "content": "Right color overlay"
+    },
+    {
+      "id": "right-overlay-color",
+      "label": "Right overlay color",
+      "type": "color",
+      "default": "#87CEEB"
+    },
+    {
+      "id": "right-overlay-opacity",
+      "label": "Right overlay opacity",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 80,
+      "unit": "%",
+      "info": "0 = fully transparent, 100 = fully opaque"
+    },
+    {
+      "type": "header",
+      "content": "Overlay & sizing"
+    },
+    {
+      "id": "overlay-width",
+      "label": "Overlay width",
+      "type": "range",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "default": 30,
+      "unit": "%",
+      "info": "How far each color overlay extends from the edge"
     },
     {
       "id": "text-color",
