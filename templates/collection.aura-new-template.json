@@ -227,7 +227,7 @@
           "type": "before",
           "settings": {
             "image": "shopify://shop_images/Aura_-_Before_2.png",
-            "mobile-image": "shopify://shop_images/Aura_-_Before.png"
+            "mobile-image": "shopify://shop_images/Aura_-_Before_2.png"
           }
         },
         "after_iLUadm": {
