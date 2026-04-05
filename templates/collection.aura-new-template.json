@@ -220,6 +220,14 @@
         "number-of-rows": 4
       }
     },
+    "before_and_after_jEEhmx": {
+      "type": "before-and-after",
+      "name": "Before & After Slider",
+      "settings": {
+        "before_image": "shopify://shop_images/Aura_-_Before.png",
+        "after_image": "shopify://shop_images/Aura_-_After.png"
+      }
+    },
     "text_columns_ng3zmA": {
       "type": "text-columns",
       "blocks": {
@@ -341,14 +349,6 @@
         "spacing-above": true,
         "spacing-below": true
       }
-    },
-    "before_and_after_jEEhmx": {
-      "type": "before-and-after",
-      "name": "Before & After Slider",
-      "settings": {
-        "before_image": "shopify://shop_images/Aura_-_Before.png",
-        "after_image": "shopify://shop_images/Aura_-_After.png"
-      }
     }
   },
   "order": [
@@ -359,10 +359,10 @@
     "header-promo",
     "navigation",
     "main",
+    "before_and_after_jEEhmx",
     "text_columns_ng3zmA",
     "featured_blog_aBbdcA",
     "172782239694d50296",
-    "172435672603b7fe62",
-    "before_and_after_jEEhmx"
+    "172435672603b7fe62"
   ]
 }
