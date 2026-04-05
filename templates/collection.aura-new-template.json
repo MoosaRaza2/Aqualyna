@@ -341,6 +341,11 @@
         "spacing-above": true,
         "spacing-below": true
       }
+    },
+    "before_and_after_jEEhmx": {
+      "type": "before-and-after",
+      "name": "Before & After Slider",
+      "settings": {}
     }
   },
   "order": [
@@ -354,6 +359,7 @@
     "text_columns_ng3zmA",
     "featured_blog_aBbdcA",
     "172782239694d50296",
-    "172435672603b7fe62"
+    "172435672603b7fe62",
+    "before_and_after_jEEhmx"
   ]
 }
