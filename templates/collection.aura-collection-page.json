@@ -7,26 +7,8 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
-    "new_hero_collection_XRLdjp": {
-      "type": "new-hero-collection",
-      "name": "New hero collection",
-      "settings": {
-        "desktop-image": "shopify://shop_images/Frame_2.png",
-        "mobile-image": "shopify://shop_images/Frame_2.png",
-        "image-position": "right",
-        "heading": "Instant Gorgeous Celeb-Worthy Hair With Ultra Narrow Clip In Hair Extensions",
-        "subheading": "Lengths Available: 18in, 20in, 22in, 24in, 26in",
-        "text-alignment": "center",
-        "button-text": "",
-        "button-url": "",
-        "background-color": "#87CEEB",
-        "text-color": "#000000",
-        "desktop-height": 500,
-        "mobile-height": 350
-      }
-    },
     "collection-header": {
       "type": "collection--header",
       "disabled": true,
@@ -107,7 +89,6 @@
         "image_NjCANE",
         "video_z8ztQi"
       ],
-      "disabled": true,
       "settings": {
         "text-color": "auto",
         "background-color": "none",
@@ -144,7 +125,6 @@
     },
     "header-promo": {
       "type": "image-with-text",
-      "disabled": true,
       "settings": {
         "text-color": "auto",
         "background-color": "light",
@@ -189,7 +169,6 @@
       "blocks": {
         "promotion_Gz9VE6": {
           "type": "promotion",
-          "disabled": true,
           "settings": {
             "row-number": 2,
             "column-number": 1,
@@ -211,7 +190,6 @@
         "promotion_Gz9VE6"
       ],
       "settings": {
-        "use-new-product-item": true,
         "products-per-row--desktop": 4,
         "products-per-row--mobile": "2",
         "number-of-rows": 4
@@ -314,14 +292,7 @@
           "settings": {
             "title": "",
             "title_color": "",
-            "title_size_v2": 0,
             "alignment": "center",
-            "instafeed_margin_top": 0,
-            "instafeed_margin_bottom": 0,
-            "instafeed_margin_sides": 0,
-            "show_instagram_link": false,
-            "link_alignment": "left",
-            "link_color": "#000000",
             "background_color": "",
             "feed_id": "",
             "html_area": ""
@@ -341,7 +312,6 @@
     }
   },
   "order": [
-    "new_hero_collection_XRLdjp",
     "collection-header",
     "slideshow_HCE6pd",
     "featured_text_Firxzi",
