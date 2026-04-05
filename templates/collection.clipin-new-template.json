@@ -225,11 +225,17 @@
       "blocks": {
         "before_C3yfjR": {
           "type": "before",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/Clip-Ins_-_Before.png",
+            "mobile-image": "shopify://shop_images/Clip-Ins_-_Before.png"
+          }
         },
         "after_LH4qYT": {
           "type": "after",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/Clip-Ins_-_aFTER.png",
+            "mobile-image": "shopify://shop_images/Clip-Ins_-_aFTER.png"
+          }
         }
       },
       "block_order": [
