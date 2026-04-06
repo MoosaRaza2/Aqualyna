@@ -21,9 +21,9 @@
         "text-alignment": "center",
         "button-text": "",
         "button-url": "",
-        "left-overlay-color": "#87CEEB",
+        "left-overlay-color": "#87ceeb",
         "left-overlay-opacity": 80,
-        "right-overlay-color": "#87CEEB",
+        "right-overlay-color": "#87ceeb",
         "right-overlay-opacity": 80,
         "overlay-width": 30,
         "text-color": "#000000",
@@ -227,14 +227,14 @@
           "type": "before",
           "settings": {
             "image": "shopify://shop_images/Clip-Ins_-_Before.png",
-            "mobile-image": "shopify://shop_images/Clip-Ins_-_Before.png"
+            "mobile-image": "shopify://shop_images/Clip_Ins_-_Before.png"
           }
         },
         "after_LH4qYT": {
           "type": "after",
           "settings": {
             "image": "shopify://shop_images/Clip-Ins_-_aFTER.png",
-            "mobile-image": "shopify://shop_images/Clip-Ins_-_aFTER.png"
+            "mobile-image": "shopify://shop_images/Clip_Ins_-_After.png"
           }
         }
       },
