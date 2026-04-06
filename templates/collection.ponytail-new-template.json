@@ -21,9 +21,9 @@
         "text-alignment": "center",
         "button-text": "",
         "button-url": "",
-        "left-overlay-color": "#87CEEB",
+        "left-overlay-color": "#87ceeb",
         "left-overlay-opacity": 80,
-        "right-overlay-color": "#87CEEB",
+        "right-overlay-color": "#87ceeb",
         "right-overlay-opacity": 80,
         "overlay-width": 30,
         "text-color": "#000000",
@@ -227,14 +227,14 @@
           "type": "before",
           "settings": {
             "image": "shopify://shop_images/Ponytail_-_Before.png",
-            "mobile-image": "shopify://shop_images/Ponytail_-_Before.png"
+            "mobile-image": "shopify://shop_images/Ponytail_-_Before_dd4adccd-431b-439f-adf5-abf9c9bccdb3.png"
           }
         },
         "after_NMjYVb": {
           "type": "after",
           "settings": {
             "image": "shopify://shop_images/Ponytail_-_After.png",
-            "mobile-image": "shopify://shop_images/Ponytail_-_After.png"
+            "mobile-image": "shopify://shop_images/Ponytail_-_After_29211a93-2fce-4a16-bb33-44fdc6dc05ca.png"
           }
         }
       },
