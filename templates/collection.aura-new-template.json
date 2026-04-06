@@ -227,14 +227,14 @@
           "type": "before",
           "settings": {
             "image": "shopify://shop_images/Aura_-_Before_2.png",
-            "mobile-image": "shopify://shop_images/Pro-Capture_One_0027-Edit_1_2.png"
+            "mobile-image": "shopify://shop_images/Aura_-_Before_cf0bcefe-5568-4bea-8951-2c68248a938b.png"
           }
         },
         "after_iLUadm": {
           "type": "after",
           "settings": {
             "image": "shopify://shop_images/Aura_-_After.png",
-            "mobile-image": "shopify://shop_images/Pro-Capture_One_0296-Edit_3_1_1.png"
+            "mobile-image": "shopify://shop_images/Aura_-_After_1c2a19e0-bf2d-4fe7-b7ab-a606394a42e0.png"
           }
         }
       },
