@@ -7,8 +7,30 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
+    "new_hero_collection_NLJkdK": {
+      "type": "new-hero-collection",
+      "name": "New hero collection",
+      "settings": {
+        "desktop-image": "shopify://shop_images/Desktop_6.png",
+        "mobile-image": "shopify://shop_images/Mobile_1.png",
+        "image-fit": "cover",
+        "heading": "<p>A<br/>REFINED<br/>PONYTAIL</p>",
+        "subheading": "<p>FOR INSTANT IMPACT<br/>Lengths: 16in, 20in, 24in</p>",
+        "text-alignment": "center",
+        "button-text": "",
+        "button-url": "",
+        "left-overlay-color": "#87ceeb",
+        "left-overlay-opacity": 80,
+        "right-overlay-color": "#87ceeb",
+        "right-overlay-opacity": 80,
+        "overlay-width": 30,
+        "text-color": "#000000",
+        "desktop-height": 600,
+        "mobile-height": 500
+      }
+    },
     "collection-header": {
       "type": "collection--header",
       "disabled": true,
@@ -89,6 +111,7 @@
         "image_NjCANE",
         "video_z8ztQi"
       ],
+      "disabled": true,
       "settings": {
         "text-color": "auto",
         "background-color": "none",
@@ -125,6 +148,7 @@
     },
     "header-promo": {
       "type": "image-with-text",
+      "disabled": true,
       "settings": {
         "text-color": "auto",
         "background-color": "light",
@@ -190,9 +214,49 @@
         "promotion_Gz9VE6"
       ],
       "settings": {
+        "use-new-product-item": true,
         "products-per-row--desktop": 4,
         "products-per-row--mobile": "2",
         "number-of-rows": 4
+      }
+    },
+    "image_comparison_CiLCi6": {
+      "type": "image-comparison",
+      "blocks": {
+        "before_zxf6zB": {
+          "type": "before",
+          "settings": {
+            "image": "shopify://shop_images/Ponytail_-_Before.png",
+            "mobile-image": "shopify://shop_images/Ponytail_-_Before_dd4adccd-431b-439f-adf5-abf9c9bccdb3.png"
+          }
+        },
+        "after_NMjYVb": {
+          "type": "after",
+          "settings": {
+            "image": "shopify://shop_images/Ponytail_-_After.png",
+            "mobile-image": "shopify://shop_images/Ponytail_-_After_29211a93-2fce-4a16-bb33-44fdc6dc05ca.png"
+          }
+        }
+      },
+      "block_order": [
+        "before_zxf6zB",
+        "after_NMjYVb"
+      ],
+      "name": "Image comparison",
+      "settings": {
+        "image-aspect-ratio": 56,
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "overline": "AQUALYNA PONYTAIL",
+        "heading": "BEFORE & AFTER",
+        "link-url": "",
+        "link-text": "",
+        "cursor-direction": "horizontal",
+        "cursor-position": 50,
+        "mobile-image-aspect-ratio": 134
       }
     },
     "text_columns_ng3zmA": {
@@ -292,7 +356,14 @@
           "settings": {
             "title": "",
             "title_color": "",
+            "title_size_v2": 0,
             "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
             "background_color": "",
             "feed_id": "",
             "html_area": ""
@@ -312,12 +383,14 @@
     }
   },
   "order": [
+    "new_hero_collection_NLJkdK",
     "collection-header",
     "slideshow_HCE6pd",
     "featured_text_Firxzi",
     "header-promo",
     "navigation",
     "main",
+    "image_comparison_CiLCi6",
     "text_columns_ng3zmA",
     "featured_blog_aBbdcA",
     "172782239694d50296",

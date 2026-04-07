@@ -7,8 +7,30 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
+    "new_hero_collection_kEcgtH": {
+      "type": "new-hero-collection",
+      "name": "New hero collection",
+      "settings": {
+        "desktop-image": "shopify://shop_images/Desktop_7.png",
+        "mobile-image": "shopify://shop_images/Mobile_2.png",
+        "image-fit": "cover",
+        "heading": "<p><strong>UNDETECTABLE </strong><br/>VOLUME</p>",
+        "subheading": "<p>WITH AURA'S ULTRA-REFINED DESIGN<br/>Lengths: 16in, 20in, 24in</p>",
+        "text-alignment": "center",
+        "button-text": "",
+        "button-url": "",
+        "left-overlay-color": "#f8f8f8",
+        "left-overlay-opacity": 95,
+        "right-overlay-color": "#87ceeb",
+        "right-overlay-opacity": 80,
+        "overlay-width": 30,
+        "text-color": "#000000",
+        "desktop-height": 600,
+        "mobile-height": 500
+      }
+    },
     "collection-header": {
       "type": "collection--header",
       "disabled": true,
@@ -89,6 +111,7 @@
         "image_NjCANE",
         "video_z8ztQi"
       ],
+      "disabled": true,
       "settings": {
         "text-color": "auto",
         "background-color": "none",
@@ -125,6 +148,7 @@
     },
     "header-promo": {
       "type": "image-with-text",
+      "disabled": true,
       "settings": {
         "text-color": "auto",
         "background-color": "light",
@@ -190,9 +214,58 @@
         "promotion_Gz9VE6"
       ],
       "settings": {
+        "use-new-product-item": true,
         "products-per-row--desktop": 4,
         "products-per-row--mobile": "2",
         "number-of-rows": 4
+      }
+    },
+    "image_comparison_6NqiHP": {
+      "type": "image-comparison",
+      "blocks": {
+        "before_BLdgKN": {
+          "type": "before",
+          "settings": {
+            "image": "shopify://shop_images/Aura_-_Before_2.png",
+            "mobile-image": "shopify://shop_images/Aura_-_Before_cf0bcefe-5568-4bea-8951-2c68248a938b.png"
+          }
+        },
+        "after_iLUadm": {
+          "type": "after",
+          "settings": {
+            "image": "shopify://shop_images/Aura_-_After.png",
+            "mobile-image": "shopify://shop_images/Aura_-_After_1c2a19e0-bf2d-4fe7-b7ab-a606394a42e0.png"
+          }
+        }
+      },
+      "block_order": [
+        "before_BLdgKN",
+        "after_iLUadm"
+      ],
+      "name": "Image comparison",
+      "settings": {
+        "image-aspect-ratio": 56,
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "overline": "AQUALYNA AURA",
+        "heading": "Before & After",
+        "link-url": "",
+        "link-text": "",
+        "cursor-direction": "horizontal",
+        "cursor-position": 50,
+        "mobile-image-aspect-ratio": 134
+      }
+    },
+    "before_and_after_jEEhmx": {
+      "type": "before-and-after",
+      "disabled": true,
+      "name": "Before & After Slider",
+      "settings": {
+        "before_image": "shopify://shop_images/Aura_-_Before.png",
+        "after_image": "shopify://shop_images/Aura_-_After.png"
       }
     },
     "text_columns_ng3zmA": {
@@ -292,7 +365,14 @@
           "settings": {
             "title": "",
             "title_color": "",
+            "title_size_v2": 0,
             "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
             "background_color": "",
             "feed_id": "",
             "html_area": ""
@@ -312,12 +392,15 @@
     }
   },
   "order": [
+    "new_hero_collection_kEcgtH",
     "collection-header",
     "slideshow_HCE6pd",
     "featured_text_Firxzi",
     "header-promo",
     "navigation",
     "main",
+    "image_comparison_6NqiHP",
+    "before_and_after_jEEhmx",
     "text_columns_ng3zmA",
     "featured_blog_aBbdcA",
     "172782239694d50296",

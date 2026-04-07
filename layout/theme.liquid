@@ -198,6 +198,28 @@ setTimeout(ldinsp, 0);
   </style>
 {% endif %}
 
+{% if template.suffix == 'clipin-new-template' or template.suffix == 'ponytail-new-template' or template.suffix == 'aura-collection-page' %}
+  <style>
+    div[role="dialog"][class*="kl-private-reset-css"],
+    div[aria-label*="POPUP"][class*="kl-private-reset-css"],
+    div[class*="kl-private-reset-css"][style*="position: fixed"][style*="z-index"],
+    div[class*="kl-teaser"][class*="kl-private-reset-css"] {
+      display: none !important;
+      visibility: hidden !important;
+      width: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      pointer-events: none !important;
+      position: absolute !important;
+      left: -9999px !important;
+    }
+
+    form.klaviyo-form[data-testid*="klaviyo-form"] {
+      display: none !important;
+    }
+  </style>
+{% endif %}
+
    {% if template == 'page.color-match' %}
   <style>
     .custom-content--wrapper {

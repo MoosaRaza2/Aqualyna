@@ -1,0 +1,298 @@
+<section class="ba-section" id="ba-section-{{ section.id }}">
+  <div class="ba-container">
+
+    <div class="ba-slider-wrapper">
+      <div class="comparison-container" id="comparisonContainer-{{ section.id }}">
+
+        <!-- AFTER image (base) -->
+        <img
+          src="{{ section.settings.after_image | image_url: width: 1200 }}"
+          srcset="{{ section.settings.after_image | image_url: width: 600 }} 600w,
+                  {{ section.settings.after_image | image_url: width: 900 }} 900w,
+                  {{ section.settings.after_image | image_url: width: 1200 }} 1200w"
+          sizes="(max-width: 900px) 100vw, 50vw"
+          alt="{{ section.settings.after_image.alt | default: 'After' }}"
+          loading="lazy"
+          class="comparison-image after-image"
+          id="afterImage-{{ section.id }}">
+
+        <!-- BEFORE image (overlay, clipped) -->
+        <img
+          src="{{ section.settings.before_image | image_url: width: 1200 }}"
+          srcset="{{ section.settings.before_image | image_url: width: 600 }} 600w,
+                  {{ section.settings.before_image | image_url: width: 900 }} 900w,
+                  {{ section.settings.before_image | image_url: width: 1200 }} 1200w"
+          sizes="(max-width: 900px) 100vw, 50vw"
+          alt="{{ section.settings.before_image.alt | default: 'Before' }}"
+          loading="lazy"
+          class="comparison-image before-image"
+          id="beforeImage-{{ section.id }}">
+
+        <!-- Custom divider handle -->
+        <div class="divider-handle" id="dividerHandle-{{ section.id }}">
+          <div class="handle-circle">
+            <img src="{{ 'Group 5.svg' | asset_url }}" alt="">
+          </div>
+        </div>
+
+        <!-- Invisible drag sensor -->
+        <div class="drag-sensor" id="dragSensor-{{ section.id }}"></div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .ba-section {
+    padding: 80px 95px;
+  }
+
+  .ba-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .ba-slider-wrapper {
+    width: 100%;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #FDF9F5;
+    height: 678px;
+  }
+
+  .comparison-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: col-resize;
+    user-select: none;
+    overflow: hidden;
+    --clip: 50%;
+  }
+
+  .comparison-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+    backface-visibility: hidden;
+  }
+
+  .before-image {
+    z-index: 2;
+    clip-path: polygon(0% 0%, var(--clip) 0%, var(--clip) 100%, 0% 100%);
+  }
+
+  .after-image {
+    z-index: 1;
+  }
+
+  .divider-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--clip);
+    width: 1px;
+    background: #40696F;
+    transform: translateX(-50%);
+    z-index: 10;
+    pointer-events: none;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .handle-circle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .handle-circle img {
+    width: 69px;
+    height: 59px;
+    display: block;
+    position: static;
+    object-fit: contain;
+    transform: translateX(-50%);
+  }
+
+  .drag-sensor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 25;
+    cursor: col-resize;
+    touch-action: none;
+  }
+
+  .comparison-container.dragging .before-image {
+    transition: none;
+  }
+
+  @media(max-width: 900px) {
+    .ba-section {
+      padding: 50px 20px;
+    }
+
+    .ba-slider-wrapper {
+      height: 500px;
+    }
+
+    .handle-circle {
+      width: 40px;
+      height: 40px;
+    }
+
+    .handle-circle img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const sectionId = {{ section.id | json }};
+    const container = document.getElementById(`comparisonContainer-${sectionId}`);
+
+    if (!container) return;
+
+    const sensor = document.getElementById(`dragSensor-${sectionId}`);
+    let dragActive = false;
+    let currentPercent = 50;
+
+    function setClipPosition(percent) {
+      percent = Math.min(100, Math.max(0, percent));
+      currentPercent = percent;
+      container.style.setProperty('--clip', percent + '%');
+    }
+
+    function getEventPercent(e) {
+      const rect = container.getBoundingClientRect();
+      if (rect.width === 0) return currentPercent;
+
+      let clientX;
+      if (e.touches) {
+        clientX = e.touches[0].clientX;
+      } else {
+        clientX = e.clientX;
+      }
+
+      let relativeX = (clientX - rect.left) / rect.width;
+      relativeX = Math.min(1, Math.max(0, relativeX));
+      return relativeX * 100;
+    }
+
+    function onDragStart(e) {
+      e.preventDefault();
+      dragActive = true;
+      container.classList.add('dragging');
+      setClipPosition(getEventPercent(e));
+    }
+
+    function onDragMove(e) {
+      if (!dragActive) return;
+      e.preventDefault();
+      setClipPosition(getEventPercent(e));
+    }
+
+    function onDragEnd(e) {
+      if (dragActive) {
+        dragActive = false;
+        container.classList.remove('dragging');
+      }
+      e?.preventDefault();
+    }
+
+    function onKeyDown(e) {
+      if (dragActive || e.target.matches('input, textarea, button')) return;
+
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        let step = e.shiftKey ? 6 : 1.5;
+        if (e.key === 'ArrowLeft') {
+          setClipPosition(currentPercent - step);
+        } else {
+          setClipPosition(currentPercent + step);
+        }
+      }
+    }
+
+    if (sensor) {
+      sensor.addEventListener('mousedown', onDragStart);
+      sensor.addEventListener('touchstart', onDragStart, { passive: false });
+      sensor.addEventListener('click', (e) => {
+        if (!dragActive) setClipPosition(getEventPercent(e));
+      });
+    }
+
+    window.addEventListener('mousemove', onDragMove);
+    window.addEventListener('mouseup', onDragEnd);
+    window.addEventListener('touchmove', onDragMove, { passive: false });
+    window.addEventListener('touchend', onDragEnd);
+    window.addEventListener('touchcancel', onDragEnd);
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('resize', () => setClipPosition(currentPercent));
+
+    setClipPosition(50);
+
+    container.querySelectorAll('img').forEach(img => {
+      if (img.complete) {
+        setClipPosition(currentPercent);
+      } else {
+        img.addEventListener('load', () => setClipPosition(currentPercent));
+      }
+    });
+
+    document.addEventListener('selectstart', (e) => {
+      if (dragActive) e.preventDefault();
+    });
+  })();
+</script>
+
+{% schema %}
+  {
+    "name": "Before & After Slider",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "before_image",
+        "label": "Before Image",
+        "info": "Image for the left/before side"
+      },
+      {
+        "type": "image_picker",
+        "id": "after_image",
+        "label": "After Image",
+        "info": "Image for the right/after side"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Before & After Slider"
+      }
+    ]
+  }
+{% endschema %}
