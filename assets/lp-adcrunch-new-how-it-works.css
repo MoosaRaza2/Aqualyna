@@ -4,7 +4,7 @@
   --text-dark: #1C1C1C;
   --text-muted: #6B6560;
   background-color: var(--bg-color);
-  padding: 60px 0;
+  padding: 30px 0;
   width: 100%;
   overflow: hidden;
 }
@@ -17,7 +17,7 @@
 
 .lp-how-it-works__header {
   margin-bottom: 60px;
-  text-align: left;
+  text-align: center;
 }
 
 .lp-how-it-works__sub-heading {
@@ -36,7 +36,7 @@
   font-weight: 600;
   line-height: 1.2;
   margin: 0;
-  max-width: 600px;
+  max-width: 640px;
 }
 
 .lp-how-it-works__steps {
@@ -90,15 +90,17 @@
   
   .lp-how-it-works__step {
     flex: 1;
+    max-width: 200px;
   }
 }
 
 @media (min-width: 1024px) {
   .lp-how-it-works {
-    padding: 80px 0;
+    padding: 80px 200px;
   }
   
   .lp-how-it-works__header {
     padding-left: 20px; /* Aligns with step 1 in desktop layout if needed */
+    text-align: start;
   }
 }

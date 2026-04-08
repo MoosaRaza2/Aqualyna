@@ -25,9 +25,9 @@
           {% for block in section.blocks %}
             <tr class="lp-how-it-stacks-up__row" {{ block.shopify_attributes }}>
               <td class="lp-how-it-stacks-up__cell lp-how-it-stacks-up__cell--feature">{{ block.settings.feature_name }}</td>
-              <td class="lp-how-it-stacks-up__cell">{{ block.settings.val_1 }}</td>
-              <td class="lp-how-it-stacks-up__cell">{{ block.settings.val_2 }}</td>
-              <td class="lp-how-it-stacks-up__cell">{{ block.settings.val_3 }}</td>
+              <td class="lp-how-it-stacks-up__cell cell-bottom" style="color:black;">{{ block.settings.val_1 }}</td>
+              <td class="lp-how-it-stacks-up__cell cell-bottom" style="color:black;">{{ block.settings.val_2 }}</td>
+              <td class="lp-how-it-stacks-up__cell cell-bottom" style="color:black;">{{ block.settings.val_3 }}</td>
               <td class="lp-how-it-stacks-up__cell lp-how-it-stacks-up__cell--brand">{{ block.settings.val_brand }}</td>
             </tr>
           {% endfor %}
@@ -36,6 +36,19 @@
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('td.lp-how-it-stacks-up__cell').forEach(function (td) {
+      var text = td.textContent;
+      if (text.includes('✓')) {
+        td.style.color = '#2E7D52';
+      } else if (text.includes('✕') || text.includes('✗') || /\bX\b/.test(text)) {
+        td.style.color = '#C94545';
+      }
+    });
+  });
+</script>
 
 {% schema %}
 {

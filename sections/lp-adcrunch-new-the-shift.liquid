@@ -41,6 +41,29 @@
       {% endfor %}
     </div>
   </div>
+  <script >
+    // Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Select the h2 element
+    const h2 = document.querySelector('.lp-the-shift__heading');
+    
+    if (h2) {
+        // Get the current HTML content
+        let html = h2.innerHTML;
+        
+        // Replace the specific text with styled version
+        // Using a regular expression to match "stop the negotiation." (case insensitive)
+        const searchText = /stop the negotiation\./gi;
+        const replacement = '<span style="color: #5BBFC3;;">stop the negotiation.</span>';
+        
+        // Apply the replacement
+        html = html.replace(searchText, replacement);
+        
+        // Update the h2 content
+        h2.innerHTML = html;
+    }
+});
+  </script>
 </section>
 
 {% schema %}

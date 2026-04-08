@@ -36,7 +36,7 @@
   font-weight: 600;
   line-height: 1.2;
   margin: 0;
-  max-width: 620px;
+  /* max-width: 620px; */
 }
 
 .lp-truth-grid {
@@ -55,11 +55,13 @@
 .lp-truth-col--standard {
   background-color: var(--color-beige);
   color: var(--color-dark);
+ border-radius: 20px;
 }
 
 .lp-truth-col--aqualyna {
   background-color: var(--color-teal);
   color: var(--color-white);
+ border-radius: 20px;
 }
 
 .lp-truth-col-header {
@@ -108,12 +110,32 @@
   font-weight: 400;
   line-height: 1.5;
 }
+.lp-truth-grid {
+  gap: 20px;
+}
 
 @media (min-width: 768px) {
+  
+
   .lp-truth-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 0px;
   }
-  
+  .lp-truth-col--standard {
+    background-color: var(--color-beige);
+    color: var(--color-dark);
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .lp-truth-col--aqualyna{  
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
   .lp-truth-col {
     min-height: 375px;
   }

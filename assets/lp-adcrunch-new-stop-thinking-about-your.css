@@ -26,7 +26,7 @@
 
 .lp-final-cta__title {
   color: var(--title-color);
-  font-size: clamp(32px, 5vw, 38px);
+  font-size: clamp(24px, 5vw, 38px);
   font-weight: 600;
   line-height: 1.2;
   margin: 0 0 24px 0;
@@ -34,10 +34,10 @@
 
 .lp-final-cta__text {
   color: var(--text-color);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.6;
-  margin: 0 0 40px 0;
+  margin: 0 0 24px 0;
   max-width: 470px;
 }
 
@@ -76,10 +76,12 @@
   
   .lp-final-cta__title {
     margin-bottom: 14px;
+    fon
   }
   
   .lp-final-cta__text {
-    margin-bottom: 31px;
+    margin-bottom: 24px;
+    font-size: 16px;
   }
   
   .lp-final-cta__button {

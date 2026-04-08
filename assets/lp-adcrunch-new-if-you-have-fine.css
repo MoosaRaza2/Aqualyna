@@ -4,7 +4,7 @@
   --lp-grey: #6B6560;
   --lp-bg: #F9F9F9;
   background-color: var(--lp-bg);
-  padding: 60px 24px;
+  padding: 30px 24px;
   font-family: sans-serif;
 }
 
@@ -14,13 +14,13 @@
 }
 
 .lp-header {
-  margin-bottom: 40px;
+  margin-bottom: 16px;
   text-align: left;
 }
 
 .lp-eyebrow {
   color: var(--lp-teal);
-  font-size: 11px;
+  font-size: 8px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.1px;
@@ -37,7 +37,7 @@
 
 .lp-subtext {
   color: var(--lp-grey);
-  font-size: 16px;
+  font-size: 12px;
   line-height: 1.6;
   max-width: 600px;
 }
@@ -89,7 +89,7 @@
 }
 
 .lp-card-quote {
-  border-left: 2px solid #E5E5E5;
+  border-left: 2px solid #5BBFC3;
   padding-left: 12px;
   margin-top: 8px;
 }
@@ -102,7 +102,19 @@
   font-style: italic;
 }
 
+.lp-heading {
+  font-size: 24px;
+}
 @media (min-width: 768px) {
+  .lp-header {
+    margin-bottom: 24px;
+  }
+  .lp-eyebrow {
+    font-size: 14px;
+  }
+  .lp-subtext {
+    font-size: 16px;
+  }
   .lp-heading {
     font-size: 36px;
   }

@@ -9,17 +9,50 @@
     <div class="lp-ugc-strip__slider" data-slider>
       {% for block in section.blocks %}
         {% if block.type == 'video_card' %}
-          <div class="lp-ugc-strip__card" {{ block.shopify_attributes }}>
+          {%- assign has_shopify_video = false -%}
+          {%- assign has_external_video = false -%}
+          {%- assign video_type = '' -%}
+          {%- assign video_src = '' -%}
+
+          {%- if block.settings.video != blank -%}
+            {%- assign has_shopify_video = true -%}
+            {%- assign video_type = 'shopify' -%}
+            {%- assign video_src = block.settings.video.sources[0].url -%}
+          {%- elsif block.settings.video_url != blank -%}
+            {%- assign has_external_video = true -%}
+            {%- if block.settings.video_url.type == 'youtube' -%}
+              {%- assign video_type = 'youtube' -%}
+              {%- assign video_src = block.settings.video_url.id -%}
+            {%- elsif block.settings.video_url.type == 'vimeo' -%}
+              {%- assign video_type = 'vimeo' -%}
+              {%- assign video_src = block.settings.video_url.id -%}
+            {%- endif -%}
+          {%- endif -%}
+
+          {%- assign has_video = false -%}
+          {%- if has_shopify_video or has_external_video -%}{%- assign has_video = true -%}{%- endif -%}
+
+          <div class="lp-ugc-strip__card{% if has_video %} lp-ugc-strip__card--has-video{% endif %}"
+            {{ block.shopify_attributes }}
+            {% if has_video %}
+              data-video-type="{{ video_type }}"
+              data-video-src="{{ video_src }}"
+            {% endif %}
+          >
             <div class="lp-ugc-strip__card-media">
               {% if block.settings.image != blank %}
                 {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', class: 'lp-ugc-strip__card-img' }}
+              {% elsif has_shopify_video %}
+                {{ block.settings.video | video_tag: autoplay: false, loop: false, muted: true, controls: false, class: 'lp-ugc-strip__card-img' }}
               {% endif %}
               <div class="lp-ugc-strip__card-label" style="background: {{ block.settings.label_bg }};">
                 {{ block.settings.label_text }}
               </div>
-              <button class="lp-ugc-strip__play-btn" aria-label="Play Video">
-                <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 9L1.5 16.7942L1.5 1.20577L15 9Z" fill="black"/></svg>
-              </button>
+              {% if has_video %}
+                <button class="lp-ugc-strip__play-btn" aria-label="Play Video">
+                  <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 9L1.5 16.7942L1.5 1.20577L15 9Z" fill="black"/></svg>
+                </button>
+              {% endif %}
               <div class="lp-ugc-strip__card-gradient"></div>
             </div>
             <div class="lp-ugc-strip__card-content">
@@ -53,14 +86,32 @@
       {% endfor %}
     </div>
   </div>
+
+  <!-- Video Modal -->
+  <div class="lp-ugc-strip__modal" data-video-modal aria-hidden="true">
+    <div class="lp-ugc-strip__modal-overlay" data-modal-close></div>
+    <div class="lp-ugc-strip__modal-inner">
+      <button class="lp-ugc-strip__modal-close" data-modal-close aria-label="Close video">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 5L5 15M5 5L15 15" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="lp-ugc-strip__modal-player" data-modal-player></div>
+    </div>
+  </div>
 </section>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const section = document.querySelector('#lp-section-{{ section.id }}');
+  if (!section) return;
+
   const slider = section.querySelector('[data-slider]');
   const prevBtn = section.querySelector('[data-nav="prev"]');
   const nextBtn = section.querySelector('[data-nav="next"]');
+  const modal = section.querySelector('[data-video-modal]');
+  const modalPlayer = section.querySelector('[data-modal-player]');
+  const closeButtons = section.querySelectorAll('[data-modal-close]');
 
   if (slider && prevBtn && nextBtn) {
     prevBtn.addEventListener('click', () => {
@@ -70,6 +121,63 @@ document.addEventListener('DOMContentLoaded', () => {
       slider.scrollBy({ left: 250, behavior: 'smooth' });
     });
   }
+
+  function openModal(type, src) {
+    if (!modal || !modalPlayer) return;
+    modalPlayer.innerHTML = '';
+
+    if (type === 'youtube') {
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/' + src + '?autoplay=1&rel=0';
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.setAttribute('frameborder', '0');
+      modalPlayer.appendChild(iframe);
+    } else if (type === 'vimeo') {
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://player.vimeo.com/video/' + src + '?autoplay=1';
+      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.setAttribute('frameborder', '0');
+      modalPlayer.appendChild(iframe);
+    } else if (type === 'shopify') {
+      const video = document.createElement('video');
+      video.src = src;
+      video.controls = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.style.width = '100%';
+      video.style.height = '100%';
+      video.style.borderRadius = '10px';
+      modalPlayer.appendChild(video);
+    }
+
+    modal.setAttribute('aria-hidden', 'false');
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!modal || !modalPlayer) return;
+    modal.setAttribute('aria-hidden', 'true');
+    modal.classList.remove('is-open');
+    modalPlayer.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  section.querySelectorAll('.lp-ugc-strip__card--has-video .lp-ugc-strip__play-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('[data-video-type]');
+      if (!card) return;
+      openModal(card.dataset.videoType, card.dataset.videoSrc);
+    });
+  });
+
+  closeButtons.forEach(btn => btn.addEventListener('click', closeModal));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
 });
 </script>
 
@@ -96,9 +204,35 @@ document.addEventListener('DOMContentLoaded', () => {
       "name": "Video Card",
       "settings": [
         {
+          "type": "header",
+          "content": "Video"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Shopify-hosted Video",
+          "info": "Upload a video file directly. Takes priority over external URL."
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "External Video URL",
+          "accept": ["youtube", "vimeo"],
+          "info": "Paste a YouTube or Vimeo URL. Used if no Shopify video is set."
+        },
+        {
+          "type": "header",
+          "content": "Thumbnail"
+        },
+        {
           "type": "image_picker",
           "id": "image",
-          "label": "Video Cover Image"
+          "label": "Video Cover Image",
+          "info": "Optional. If blank and a Shopify video is set, the video poster frame is used."
+        },
+        {
+          "type": "header",
+          "content": "Card Details"
         },
         {
           "type": "text",
