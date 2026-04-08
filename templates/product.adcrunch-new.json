@@ -18,6 +18,45 @@
     },
     "product-new-revamp": {
       "type": "product-new-revamp",
+      "blocks": {
+        "heading_EwwqQF": {
+          "type": "heading",
+          "settings": {}
+        },
+        "price_3hT8NW": {
+          "type": "price",
+          "settings": {}
+        },
+        "overline_Hjdxp8": {
+          "type": "overline",
+          "settings": {
+            "text": "Overline text"
+          }
+        },
+        "options_GkMgzL": {
+          "type": "options",
+          "settings": {
+            "variant-style": "buttons",
+            "swatches-enabled": true,
+            "size-chart-enabled": true,
+            "size-chart-option": "size",
+            "size-chart-content": ""
+          }
+        },
+        "buy_buttons_gbyLxw": {
+          "type": "buy-buttons",
+          "settings": {
+            "smart-payment-enabled": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_EwwqQF",
+        "price_3hT8NW",
+        "overline_Hjdxp8",
+        "options_GkMgzL",
+        "buy_buttons_gbyLxw"
+      ],
       "settings": {
         "container-width": 4,
         "spacing-above": true,
