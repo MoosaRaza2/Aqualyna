@@ -597,7 +597,8 @@
     "lp-adcrunch-new-stop-thinking-about-your": {
       "type": "lp-adcrunch-new-stop-thinking-about-your",
       "settings": {
-        "title": "Stop thinking about your hair.\nStart keeping the secret.",
+        "title": "Stop thinking about your hair.",
+        "title2": "Start keeping the secret.",
         "text": "You've spent hundreds on things that stopped working by noon.\nThis is the first product designed for exactly your hair type. The\nclips disappear. The volume stays. People notice.",
         "button_label": "Get Your Extensions — $249",
         "button_link": "",
