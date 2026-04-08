@@ -1,0 +1,143 @@
+{{ 'lp-adcrunch-new-the-real-difference.css' | asset_url | stylesheet_tag }}
+
+<section class="lp-truth" id="lp-truth-{{ section.id }}">
+  <div class="lp-truth-container">
+    <div class="lp-truth-header">
+      <span class="lp-truth-subtitle">{{ section.settings.subtitle }}</span>
+      <h2 class="lp-truth-heading">{{ section.settings.heading | newline_to_br }}</h2>
+    </div>
+
+    <div class="lp-truth-grid">
+      <div class="lp-truth-col lp-truth-col--standard">
+        <div class="lp-truth-col-header">{{ section.settings.standard_label }}</div>
+        <ul class="lp-truth-list">
+          {% for block in section.blocks %}
+            {% if block.type == 'standard_item' %}
+              <li class="lp-truth-item" {{ block.shopify_attributes }}>
+                <span class="lp-truth-icon lp-truth-icon--negative">✕</span>
+                <div class="lp-truth-text">{{ block.settings.text }}</div>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="lp-truth-col lp-truth-col--aqualyna">
+        <div class="lp-truth-col-header">{{ section.settings.aqualyna_label }}</div>
+        <ul class="lp-truth-list">
+          {% for block in section.blocks %}
+            {% if block.type == 'aqualyna_item' %}
+              <li class="lp-truth-item" {{ block.shopify_attributes }}>
+                <span class="lp-truth-icon lp-truth-icon--positive">✓</span>
+                <div class="lp-truth-text">{{ block.settings.text }}</div>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Truth Comparison",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "The real difference"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Not a modification of thick-hair extensions.\nA different product entirely."
+    },
+    {
+      "type": "text",
+      "id": "standard_label",
+      "label": "Standard Column Label",
+      "default": "Standard clip-ins — designed for thick hair"
+    },
+    {
+      "type": "text",
+      "id": "aqualyna_label",
+      "label": "AquaLyna Column Label",
+      "default": "AquaLyna Ultra Narrow — designed for fine hair"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "standard_item",
+      "name": "Standard Item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "aqualyna_item",
+      "name": "AquaLyna Item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Truth Comparison",
+      "blocks": [
+        {
+          "type": "standard_item",
+          "settings": { "text": "Heavy sets (180g+) strain fine follicles — this is where the damage comes from" }
+        },
+        {
+          "type": "standard_item",
+          "settings": { "text": "Wide, thick wefts show through sparse hair — not enough coverage to hide them" }
+        },
+        {
+          "type": "standard_item",
+          "settings": { "text": "Traditional clips create tension points fine strands can't hold without slipping or pulling" }
+        },
+        {
+          "type": "standard_item",
+          "settings": { "text": "Designed for thick hair, adapted for thin hair — the afterthought always shows" }
+        },
+        {
+          "type": "standard_item",
+          "settings": { "text": "One bad experience, and you believe extensions \"don't work for your hair\"" }
+        },
+        {
+          "type": "aqualyna_item",
+          "settings": { "text": "Ultra-narrow weft lies flat against fine hair — the seam disappears because it was designed to" }
+        },
+        {
+          "type": "aqualyna_item",
+          "settings": { "text": "Lightweight construction — no strain on fine follicles, no damage from tension" }
+        },
+        {
+          "type": "aqualyna_item",
+          "settings": { "text": "100% Remy human hair matches texture and movement — looks like it grew from your head" }
+        },
+        {
+          "type": "aqualyna_item",
+          "settings": { "text": "Clips out every night — your hair rests, zero cumulative damage" }
+        },
+        {
+          "type": "aqualyna_item",
+          "settings": { "text": "Built for fine hair from the start — not an adaptation" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

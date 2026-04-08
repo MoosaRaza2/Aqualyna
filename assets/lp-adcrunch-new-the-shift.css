@@ -1,0 +1,137 @@
+.lp-the-shift {
+  --bg-color: #1C1C1C;
+  --text-primary: #FFFFFF;
+  --text-secondary: #8A9BBF;
+  --card-before-bg: #F9F7F5;
+  --card-before-text: #1C1C1C;
+  --card-before-icon: #6B6560;
+  --card-after-bg: #0D2227;
+  --card-after-text: #FFFFFF;
+  --card-after-icon: #5BBFC3;
+  
+  background-color: var(--bg-color);
+  padding: 60px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.lp-the-shift__container {
+  max-width: 934px;
+  margin: 0 auto;
+}
+
+.lp-the-shift__header {
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.lp-the-shift__tagline {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.lp-the-shift__heading {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin: 0 0 16px 0;
+}
+
+.lp-the-shift__description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 898px;
+}
+
+.lp-the-shift__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.lp-the-shift__card {
+  padding: 30px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lp-the-shift__card--before {
+  background-color: var(--card-before-bg);
+  color: var(--card-before-text);
+}
+
+.lp-the-shift__card--after {
+  background-color: var(--card-after-bg);
+  color: var(--card-after-text);
+}
+
+.lp-the-shift__card-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.lp-the-shift__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lp-the-shift__item {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.lp-the-shift__icon {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.lp-the-shift__card--before .lp-the-shift__icon {
+  color: var(--card-before-icon);
+}
+
+.lp-the-shift__card--after .lp-the-shift__icon {
+  color: var(--card-after-icon);
+}
+
+.lp-the-shift__item-text {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .lp-the-shift {
+    padding: 80px 40px;
+  }
+  
+  .lp-the-shift__heading {
+    font-size: 36px;
+  }
+  
+  .lp-the-shift__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .lp-the-shift {
+    padding: 100px 0;
+  }
+}

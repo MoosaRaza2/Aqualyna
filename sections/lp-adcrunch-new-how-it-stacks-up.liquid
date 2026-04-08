@@ -1,0 +1,182 @@
+{{ 'lp-adcrunch-new-how-it-stacks-up.css' | asset_url | stylesheet_tag }}
+
+<section class="lp-how-it-stacks-up" id="lp-section-{{ section.id }}">
+  <div class="lp-how-it-stacks-up__container">
+    {% if section.settings.overline != blank %}
+      <span class="lp-how-it-stacks-up__overline">{{ section.settings.overline }}</span>
+    {% endif %}
+    
+    {% if section.settings.heading != blank %}
+      <h2 class="lp-how-it-stacks-up__heading">{{ section.settings.heading | newline_to_br }}</h2>
+    {% endif %}
+
+    <div class="lp-how-it-stacks-up__table-wrapper">
+      <table class="lp-how-it-stacks-up__table">
+        <thead>
+          <tr class="lp-how-it-stacks-up__header-row">
+            <th class="lp-how-it-stacks-up__cell lp-how-it-stacks-up__cell--header">{{ section.settings.col_1_label }}</th>
+            <th class="lp-how-it-stacks-up__cell lp-how-it-stacks-up__cell--header">{{ section.settings.col_2_label | newline_to_br }}</th>
+            <th class="lp-how-it-stacks-up__cell lp-how-it-stacks-up__cell--header">{{ section.settings.col_3_label | newline_to_br }}</th>
+            <th class="lp-how-it-stacks-up__cell lp-how-it-stacks-up__cell--header">{{ section.settings.col_4_label | newline_to_br }}</th>
+            <th class="lp-how-it-stacks-up__cell lp-how-it-stacks-up__cell--header lp-how-it-stacks-up__cell--brand-header">{{ section.settings.col_brand_label | newline_to_br }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for block in section.blocks %}
+            <tr class="lp-how-it-stacks-up__row" {{ block.shopify_attributes }}>
+              <td class="lp-how-it-stacks-up__cell lp-how-it-stacks-up__cell--feature">{{ block.settings.feature_name }}</td>
+              <td class="lp-how-it-stacks-up__cell">{{ block.settings.val_1 }}</td>
+              <td class="lp-how-it-stacks-up__cell">{{ block.settings.val_2 }}</td>
+              <td class="lp-how-it-stacks-up__cell">{{ block.settings.val_3 }}</td>
+              <td class="lp-how-it-stacks-up__cell lp-how-it-stacks-up__cell--brand">{{ block.settings.val_brand }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How it Stacks Up",
+  "settings": [
+    {
+      "type": "text",
+      "id": "overline",
+      "label": "Overline",
+      "default": "How it stacks up"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why this is the only fine-hair solution\nthat actually holds up."
+    },
+    {
+      "type": "header",
+      "content": "Column Labels"
+    },
+    {
+      "type": "text",
+      "id": "col_1_label",
+      "label": "Column 1",
+      "default": "Feature"
+    },
+    {
+      "type": "textarea",
+      "id": "col_2_label",
+      "label": "Column 2",
+      "default": "Volumizing\nproducts"
+    },
+    {
+      "type": "textarea",
+      "id": "col_3_label",
+      "label": "Column 3",
+      "default": "Standard clip-\nins"
+    },
+    {
+      "type": "textarea",
+      "id": "col_4_label",
+      "label": "Column 4",
+      "default": "Salon tape-\nins"
+    },
+    {
+      "type": "textarea",
+      "id": "col_brand_label",
+      "label": "Brand Column",
+      "default": "AquaLyna Ultra\nNarrow"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Table Row",
+      "settings": [
+        { "type": "text", "id": "feature_name", "label": "Feature Name" },
+        { "type": "text", "id": "val_1", "label": "Competitor 1 Value" },
+        { "type": "text", "id": "val_2", "label": "Competitor 2 Value" },
+        { "type": "text", "id": "val_3", "label": "Competitor 3 Value" },
+        { "type": "text", "id": "val_brand", "label": "Brand Value" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How it Stacks Up",
+      "blocks": [
+        {
+          "type": "row",
+          "settings": {
+            "feature_name": "Designed for fine hair",
+            "val_1": "✕",
+            "val_2": "✕",
+            "val_3": "✓",
+            "val_brand": "✓ Built for it"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature_name": "Lasts all day",
+            "val_1": "✕ 45 min",
+            "val_2": "✓",
+            "val_3": "✓",
+            "val_brand": "✓ All day"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature_name": "Zero damage risk",
+            "val_1": "✓",
+            "val_2": "✕ if too heavy",
+            "val_3": "✕ removal risk",
+            "val_brand": "✓ Clips out nightly"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature_name": "No appointment needed",
+            "val_1": "✓",
+            "val_2": "✓",
+            "val_3": "✕ Salon required",
+            "val_brand": "✓ DIY in minutes"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature_name": "Clips invisible in fine hair",
+            "val_1": "N/A",
+            "val_2": "✕ Often shows",
+            "val_3": "✓",
+            "val_brand": "✓ Ultra-narrow weft"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature_name": "Color match support",
+            "val_1": "✕",
+            "val_2": "✕",
+            "val_3": "✓ Stylist",
+            "val_brand": "✓ Free consultation"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature_name": "Average cost / year",
+            "val_1": "$150–300",
+            "val_2": "$150–400",
+            "val_3": "$800–1,600",
+            "val_brand": "$249 — one time"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

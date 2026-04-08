@@ -1,0 +1,168 @@
+{{ 'lp-adcrunch-new-real-women-fine-hair.css' | asset_url | stylesheet_tag }}
+<section class="lp-ugc-strip" id="lp-section-{{ section.id }}" data-section-id="{{ section.id }}">
+  <div class="lp-ugc-strip__header">
+    {% if section.settings.eyebrow != blank %}<p class="lp-ugc-strip__eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+    {% if section.settings.heading != blank %}<h2 class="lp-ugc-strip__heading">{{ section.settings.heading | newline_to_br }}</h2>{% endif %}
+  </div>
+
+  <div class="lp-ugc-strip__slider-wrapper">
+    <div class="lp-ugc-strip__slider" data-slider>
+      {% for block in section.blocks %}
+        {% if block.type == 'video_card' %}
+          <div class="lp-ugc-strip__card" {{ block.shopify_attributes }}>
+            <div class="lp-ugc-strip__card-media">
+              {% if block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', class: 'lp-ugc-strip__card-img' }}
+              {% endif %}
+              <div class="lp-ugc-strip__card-label" style="background: {{ block.settings.label_bg }};">
+                {{ block.settings.label_text }}
+              </div>
+              <button class="lp-ugc-strip__play-btn" aria-label="Play Video">
+                <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 9L1.5 16.7942L1.5 1.20577L15 9Z" fill="black"/></svg>
+              </button>
+              <div class="lp-ugc-strip__card-gradient"></div>
+            </div>
+            <div class="lp-ugc-strip__card-content">
+              <p class="lp-ugc-strip__card-quote">{{ block.settings.quote }}</p>
+              <div class="lp-ugc-strip__card-meta">
+                <span class="lp-ugc-strip__card-views">{{ block.settings.views }}</span>
+                <span class="lp-ugc-strip__card-stars">★★★★★</span>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="lp-ugc-strip__nav">
+      <button class="lp-ugc-strip__nav-btn" data-nav="prev" aria-label="Previous">←</button>
+      <button class="lp-ugc-strip__nav-btn" data-nav="next" aria-label="Next">→</button>
+    </div>
+  </div>
+
+  <div class="lp-ugc-strip__ticker-container">
+    <div class="lp-ugc-strip__ticker">
+      {% for block in section.blocks %}
+        {% if block.type == 'testimonial_ticker' %}
+          <div class="lp-ugc-strip__ticker-item">
+            <span class="lp-ugc-strip__ticker-stars">★★★★★</span>
+            <span class="lp-ugc-strip__ticker-quote">{{ block.settings.quote }}</span>
+            <span class="lp-ugc-strip__ticker-author">— {{ block.settings.author }}</span>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const section = document.querySelector('#lp-section-{{ section.id }}');
+  const slider = section.querySelector('[data-slider]');
+  const prevBtn = section.querySelector('[data-nav="prev"]');
+  const nextBtn = section.querySelector('[data-nav="next"]');
+
+  if (slider && prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      slider.scrollBy({ left: -250, behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', () => {
+      slider.scrollBy({ left: 250, behavior: 'smooth' });
+    });
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "UGC Video Strip",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Real women. Fine hair. Real results."
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "People keep asking them their secret.\nThis is it."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_card",
+      "name": "Video Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Video Cover Image"
+        },
+        {
+          "type": "text",
+          "id": "label_text",
+          "label": "Label Tag",
+          "default": "Fine Hair"
+        },
+        {
+          "type": "color",
+          "id": "label_bg",
+          "label": "Label Background",
+          "default": "#5BBFC3"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "\"I've had fine hair my whole life. These are different.\""
+        },
+        {
+          "type": "text",
+          "id": "views",
+          "label": "View Count",
+          "default": "1.2M views"
+        }
+      ]
+    },
+    {
+      "type": "testimonial_ticker",
+      "name": "Testimonial Ticker",
+      "settings": [
+        {
+          "type": "text",
+          "id": "quote",
+          "label": "Review Quote",
+          "default": "\"Nobody knew I was wearing them\""
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name",
+          "default": "Melissa R."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "UGC Video Strip",
+      "blocks": [
+        { "type": "video_card", "settings": { "label_text": "Fine Hair", "quote": "\"I've had fine hair my whole life. These are different.\"", "views": "1.2M views" } },
+        { "type": "video_card", "settings": { "label_text": "Thinning Hair", "quote": "\"Nobody can tell. Not even my husband.\"", "views": "847K views" } },
+        { "type": "video_card", "settings": { "label_text": "Install", "quote": "POV: fine hair → full hair in 4 minutes", "views": "623K views" } },
+        { "type": "video_card", "settings": { "label_text": "Before/After", "quote": "\"My part was so wide. Watch what happened.\"", "views": "512K views" } },
+        { "type": "video_card", "settings": { "label_text": "Post-Menopause", "quote": "\"My hair changed in my 50s. This gave it back.\"", "views": "389K views" } },
+        { "type": "video_card", "settings": { "label_text": "Verified Buyer", "quote": "\"I spent $300 on volumizers. This is the only thing that works.\"", "views": "271K views" } },
+        { "type": "video_card", "settings": { "label_text": "Color Match", "quote": "\"The color match was spot on. Zero guessing.\"", "views": "198K views" } },
+        { "type": "testimonial_ticker", "settings": { "quote": "\"Nobody knew I was wearing them\"", "author": "Melissa R." } },
+        { "type": "testimonial_ticker", "settings": { "quote": "\"People keep asking what I'm doing\"", "author": "Diane K." } },
+        { "type": "testimonial_ticker", "settings": { "quote": "\"4 minutes. That's it.\"", "author": "Patricia L." } },
+        { "type": "testimonial_ticker", "settings": { "quote": "\"My hair looked like this in my 30s\"", "author": "Carol M." } },
+        { "type": "testimonial_ticker", "settings": { "quote": "\"The only thing that actually worked\"", "author": "Jennifer A." } },
+        { "type": "testimonial_ticker", "settings": { "quote": "\"I don't think about my hair anymore\"", "author": "Sarah T." } }
+      ]
+    }
+  ]
+}

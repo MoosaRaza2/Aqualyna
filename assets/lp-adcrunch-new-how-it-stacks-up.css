@@ -1,0 +1,130 @@
+.lp-how-it-stacks-up {
+  --color-teal: #5BBFC3;
+  --color-dark: #1C1C1C;
+  --color-white: #FFFFFF;
+  --color-bg-alt: #F9F7F5;
+  --color-success: #2E7D52;
+  --color-error: #C94545;
+  padding: 60px 0;
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+
+.lp-how-it-stacks-up__container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.lp-how-it-stacks-up__overline {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  color: var(--color-teal);
+  margin-bottom: 13px;
+}
+
+.lp-how-it-stacks-up__heading {
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-bottom: 50px;
+}
+
+@media (min-width: 768px) {
+  .lp-how-it-stacks-up__heading {
+    font-size: 36px;
+  }
+}
+
+.lp-how-it-stacks-up__table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lp-how-it-stacks-up__table {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.lp-how-it-stacks-up__cell {
+  padding: 12px 16px;
+  font-size: 13px;
+  line-height: 1.3;
+  text-align: left;
+  vertical-align: middle;
+  border: none;
+}
+
+.lp-how-it-stacks-up__cell--header {
+  height: 56px;
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0.84px;
+}
+
+.lp-how-it-stacks-up__cell--brand-header {
+  background-color: var(--color-teal);
+  width: 199px;
+}
+
+.lp-how-it-stacks-up__row:nth-child(even) .lp-how-it-stacks-up__cell {
+  background-color: var(--color-bg-alt);
+}
+
+.lp-how-it-stacks-up__cell--feature {
+  font-weight: 600;
+  color: var(--color-dark);
+  width: 180px;
+}
+
+.lp-how-it-stacks-up__cell:not(.lp-how-it-stacks-up__cell--feature) {
+  font-weight: 400;
+  color: var(--color-dark);
+}
+
+.lp-how-it-stacks-up__cell--brand {
+  font-weight: 600 !important;
+  color: var(--color-teal) !important;
+}
+
+/* Success/Error color highlighting based on characters */
+.lp-how-it-stacks-up__cell:contains('✓') {
+  color: var(--color-success);
+}
+
+.lp-how-it-stacks-up__cell:contains('✕') {
+  color: var(--color-error);
+}
+
+/* Column specific widths based on Figma */
+.lp-how-it-stacks-up__table th:nth-child(2), .lp-how-it-stacks-up__table td:nth-child(2) { width: 180px; }
+.lp-how-it-stacks-up__table th:nth-child(3), .lp-how-it-stacks-up__table td:nth-child(3) { width: 157px; }
+.lp-how-it-stacks-up__table th:nth-child(4), .lp-how-it-stacks-up__table td:nth-child(4) { width: 135px; }
+.lp-how-it-stacks-up__table th:nth-child(5), .lp-how-it-stacks-up__table td:nth-child(5) { width: 199px; }
+
+/* Special handling for text starting with icons */
+.lp-how-it-stacks-up__cell {
+  color: var(--color-dark);
+}
+
+/* Manual override for colors since CSS doesn't have :contains */
+.lp-how-it-stacks-up__cell--brand {
+  color: var(--color-teal) !important;
+}
+
+.lp-how-it-stacks-up__row:last-child td:last-child {
+  font-weight: 900 !important;
+}
+
+/* Color Logic Emulation using Liquid/Inline or manual styles if needed */
+/* Here we use simple text colors as the primary design is text-based */

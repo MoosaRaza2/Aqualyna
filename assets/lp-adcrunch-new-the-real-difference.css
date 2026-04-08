@@ -1,0 +1,129 @@
+.lp-truth {
+  --color-teal: #5BBFC3;
+  --color-dark: #1C1C1C;
+  --color-beige: #F2EFEC;
+  --color-red: #C94545;
+  --color-green: #A8FFD4;
+  --color-white: #FFFFFF;
+  background-color: var(--color-white);
+  padding: 60px 0;
+  font-family: inherit;
+}
+
+.lp-truth-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.lp-truth-header {
+  margin-bottom: 40px;
+}
+
+.lp-truth-subtitle {
+  display: block;
+  color: var(--color-teal);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.lp-truth-heading {
+  color: var(--color-dark);
+  font-size: clamp(28px, 5vw, 36px);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  max-width: 620px;
+}
+
+.lp-truth-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.lp-truth-col {
+  padding: 32px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.lp-truth-col--standard {
+  background-color: var(--color-beige);
+  color: var(--color-dark);
+}
+
+.lp-truth-col--aqualyna {
+  background-color: var(--color-teal);
+  color: var(--color-white);
+}
+
+.lp-truth-col-header {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.lp-truth-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lp-truth-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.lp-truth-icon {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+
+.lp-truth-icon--negative {
+  color: var(--color-red);
+}
+
+.lp-truth-icon--positive {
+  color: var(--color-green);
+  font-weight: 400;
+}
+
+.lp-truth-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .lp-truth-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .lp-truth-col {
+    min-height: 375px;
+  }
+  
+  .lp-truth-list {
+    gap: 16px; /* Matching delta_y roughly between icons in Figma */
+  }
+  
+  .lp-truth-item {
+    min-height: 48px; /* Visual spacing allowance */
+    margin-bottom: 8px;
+  }
+}

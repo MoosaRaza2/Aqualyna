@@ -1,0 +1,107 @@
+{{ 'lp-adcrunch-new-what-women-with-fine.css' | asset_url | stylesheet_tag }}
+
+<section class="lp-social-proof" id="lp-social-proof-{{ section.id }}">
+  <div class="lp-social-proof__container">
+    {% if section.settings.title != blank %}
+      <h2 class="lp-social-proof__title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    <div class="lp-social-proof__scroll-wrapper">
+      <div class="lp-social-proof__cards">
+        {% for block in section.blocks %}
+          <div class="lp-social-proof__card" {{ block.shopify_attributes }}>
+            <div class="lp-social-proof__rating">★★★★★</div>
+            <blockquote class="lp-social-proof__text">
+              {{ block.settings.text }}
+            </blockquote>
+            <div class="lp-social-proof__footer">
+              <cite class="lp-social-proof__author">{{ block.settings.author }}</cite>
+              <div class="lp-social-proof__verified">✓ VERIFIED BUYER</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Social Proof Scroll",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "What women with fine hair are actually saying"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Review Text"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Proof Scroll",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"I've been told by three different stylists that extensions aren't for fine hair. These proved every single one of them wrong. Nobody in my office has any idea.\"",
+            "author": "Melissa R."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"People keep asking me what I'm doing to my hair. I just smile. I'm 52 and my hair hasn't looked this good since my 30s.\"",
+            "author": "Diane K."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"I was terrified the clips would show through my thin hair. I have literally gone through my hair with a fine-tooth comb trying to find them. Can't see a thing.\"",
+            "author": "Sarah T."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"My hair thinned after menopause and I was devastated. I was scared these would damage what I had left. They don't. I've worn them for 6 months and my natural hair is fine.\"",
+            "author": "Carol M."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"I spent probably $300 last year on volumizing products. Every single one of them stopped working by noon. These don't. They just... stay.\"",
+            "author": "Jennifer A."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"Takes me four minutes. I've timed it. Four minutes and I look like I have real hair. I cannot explain to you how much of my brain space this has freed up.\"",
+            "author": "Patricia L."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

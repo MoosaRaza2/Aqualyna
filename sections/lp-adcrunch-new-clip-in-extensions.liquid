@@ -1,0 +1,83 @@
+{{ 'lp-adcrunch-new-clip-in-extensions.css' | asset_url | stylesheet_tag }}
+
+<section class="lp-breadcrumb" id="lp-breadcrumb-{{ section.id }}" data-section-id="{{ section.id }}">
+  <nav aria-label="Breadcrumb" class="lp-breadcrumb__nav">
+    <ol class="lp-breadcrumb__list">
+      {%- for block in section.blocks -%}
+        <li class="lp-breadcrumb__item" {{ block.shopify_attributes }}>
+          {%- if block.settings.url != blank -%}
+            <a href="{{ block.settings.url }}" class="lp-breadcrumb__link">{{ block.settings.text }}</a>
+          {%- else -%}
+            <span class="lp-breadcrumb__text">{{ block.settings.text }}</span>
+          {%- endif -%}
+          
+          {%- if forloop.last == false -%}
+            <span class="lp-breadcrumb__separator" aria-hidden="true">{{ section.settings.separator }}</span>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ol>
+  </nav>
+</section>
+
+{% schema %}
+{
+  "name": "Breadcrumb",
+  "settings": [
+    {
+      "type": "text",
+      "id": "separator",
+      "label": "Separator",
+      "default": "/"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "breadcrumb_item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link (Optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Breadcrumb",
+      "settings": {
+        "separator": "/"
+      },
+      "blocks": [
+        {
+          "type": "breadcrumb_item",
+          "settings": {
+            "text": "Home",
+            "url": "/"
+          }
+        },
+        {
+          "type": "breadcrumb_item",
+          "settings": {
+            "text": "Clip-In Extensions",
+            "url": "/collections/clip-in-extensions"
+          }
+        },
+        {
+          "type": "breadcrumb_item",
+          "settings": {
+            "text": "Ultra Narrow Clip In — Black"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,68 @@
+.lp-breadcrumb {
+  --breadcrumb-color: #6B6560;
+  --breadcrumb-font-size: 12px;
+  --breadcrumb-line-height: 1.6;
+  --breadcrumb-padding-x: 24px;
+  --breadcrumb-height: 44px;
+  background-color: transparent;
+  width: 100%;
+}
+
+.lp-breadcrumb__nav {
+  display: flex;
+  align-items: center;
+  height: var(--breadcrumb-height);
+  padding: 0 var(--breadcrumb-padding-x);
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.lp-breadcrumb__nav::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.lp-breadcrumb__list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.lp-breadcrumb__item {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-size: var(--breadcrumb-font-size);
+  line-height: var(--breadcrumb-line-height);
+  color: var(--breadcrumb-color);
+}
+
+.lp-breadcrumb__link {
+  color: var(--breadcrumb-color);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.lp-breadcrumb__link:hover {
+  opacity: 0.7;
+}
+
+.lp-breadcrumb__text {
+  color: var(--breadcrumb-color);
+}
+
+.lp-breadcrumb__separator {
+  padding: 0 8px;
+  user-select: none;
+  color: var(--breadcrumb-color);
+}
+
+/* Desktop Overrides */
+@media (min-width: 1024px) {
+  .lp-breadcrumb__nav {
+    overflow: visible;
+  }
+}

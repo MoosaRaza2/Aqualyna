@@ -1,0 +1,69 @@
+{{ 'lp-adcrunch-new-callout-banner.css' | asset_url | stylesheet_tag }}
+
+<section class="lp-callout-banner lp-callout-banner--{{ section.id }}">
+  <div class="lp-callout-banner__container">
+    <div class="lp-callout-banner__content">
+      {% if section.settings.headline != blank %}
+        <h2 class="lp-callout-banner__headline">
+          {{ section.settings.headline | newline_to_br }}
+        </h2>
+      {% endif %}
+      
+      {% if section.settings.subtext != blank %}
+        <p class="lp-callout-banner__subtext">
+          {{ section.settings.subtext }}
+        </p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Callout Banner",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "headline",
+      "label": "Headline",
+      "default": "\"Extensions aren't for fine hair.\"<br>Those extensions weren't designed for you.<br>These were."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Your stylist wasn't lying. Heavy clip-in sets — 180g+ designed for thick hair — genuinely can damage fine hair. That's a real risk. But it's been applied too broadly, and it's kept you from the solution that actually works for your hair type."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#1C1C1C"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Subtext Color",
+      "default": "#A8C8CA"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Callout Banner",
+      "settings": {
+        "headline": "\"Extensions aren't for fine hair.\"\nThose extensions weren't designed for you.\nThese were.",
+        "subtext": "Your stylist wasn't lying. Heavy clip-in sets — 180g+ designed for thick hair — genuinely can damage fine hair. That's a real risk. But it's been applied too broadly, and it's kept you from the solution that actually works for your hair type.",
+        "bg_color": "#1C1C1C",
+        "headline_color": "#FFFFFF",
+        "subtext_color": "#A8C8CA"
+      }
+    }
+  ]
+}
+{% endschema %}
