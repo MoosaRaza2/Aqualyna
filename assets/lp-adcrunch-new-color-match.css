@@ -19,6 +19,7 @@
 }
 
 .lp-color-match__logo {
+  font-family: "Cormorant Garamond"!important;
   font-size: var(--font-size-logo);
   font-weight: 600;
   color: var(--text-primary);
@@ -39,7 +40,7 @@
 .lp-color-match__link {
   font-size: var(--font-size-small);
   font-weight: 400;
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
