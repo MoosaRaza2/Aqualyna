@@ -34,6 +34,10 @@
         "block_lp-adcrunch-new-clip-in-extensions_2"
       ]
     },
+    "product-new-revamp": {
+      "type": "product-new-revamp",
+      "settings": {}
+    },
     "lp-adcrunch-new-verified-reviews": {
       "type": "lp-adcrunch-new-verified-reviews",
       "settings": {},
@@ -591,6 +595,7 @@
   },
   "order": [
     "lp-adcrunch-new-clip-in-extensions",
+    "product-new-revamp",
     "lp-adcrunch-new-verified-reviews",
     "lp-adcrunch-new-real-women-fine-hair",
     "lp-adcrunch-new-what-women-with-fine",
