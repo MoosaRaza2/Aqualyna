@@ -1,6 +1,13 @@
 
 {% comment %} BSS Label get data main product has metafields seo hidden {% endcomment %}{% assign bss_product_metafields = product %}{% if bss_product_metafields.metafields.seo.hidden %}<script id="main-label-product-metafields-info" type="application/ld+json"> {"id":{{ bss_product_metafields.id | json }},"title": {{ bss_product_metafields.title | json }},"vendor": {{ bss_product_metafields.vendor | json }},"tags": {{ bss_product_metafields.tags | json }},"handle":{{ bss_product_metafields.handle | json }},"available":{{ bss_product_metafields.available | json }},"inventory":{{ bss_product_metafields.first_available_variant.inventory_quantity | json }},"compare_at_price_max":{{ bss_product_metafields.compare_at_price_max | json }},"compare_at_price_min":{{ bss_product_metafields.compare_at_price_min | json }},"price":{{ bss_product_metafields.price | json }},"price_max":{{ bss_product_metafields.price_max | json }},"price_min":{{ bss_product_metafields.price_min | json }},"publish_at":"{{ bss_product_metafields.published_at }}","inventory_management":{{ bss_product_metafields.first_available_variant.inventory_management | json }},"inventory_policy":{{ bss_product_metafields.first_available_variant.inventory_policy | json }},"inventory_quantity": [{% for varian in bss_product_metafields.variants %}{{ varian.inventory_quantity }}{% unless forloop.last %},{% endunless %}{% endfor %}],"variants": [{% for variant in bss_product_metafields.variants %}{  "id":{{ variant.id | json }},"feature_media_id":{{ variant.featured_media.id | json }},"feature_image_id":{{ variant.featured_image.id | json }},"available":{{ variant.available | json }},"image":{{ variant.image | json }},"price":{{ variant.price | json }},"inventory_management":{{ variant.inventory_management | json }},"inventory_policy":{{ variant.inventory_policy | json }},"compare_at_price":{{ variant.compare_at_price | json }},"quantity":{{ variant.inventory_quantity | json }}}{% unless forloop.last %},{% endunless %}{% endfor %}],"collections": [{% for collection in bss_product_metafields.collections %}{{ collection.id }}{% unless forloop.last %},{% endunless %}{% endfor %}],"format_money": {{shop.money_format | json}}}</script>{% endif %}{% comment %} BSS Label end {% endcomment %}
+<style>
 
+  .product-media--root[data-media-type=image] .modal--link {
+    border-radius: 20px;
+  }
+  .color-swatch {
+border-radius:50%;}
+</style>
     {%- liquid
  
     assign breadcrumbs_enabled = section.settings.breadcrumbs-enabled
@@ -271,11 +278,73 @@
                   product_id: product.id
                 -%}
   
-              {%- when 'liquid' -%}
-                {{- block.settings.custom-liquid -}}
-  
-              {%- when '@app' -%}
-                {%- render block -%}
+                {%- when 'liquid' -%}
+                  {{- block.settings.custom-liquid -}}
+                
+                {%- when 'trust-block' -%}
+                  <div class="trust-block-custom" style="background: {{ block.settings.bg_color | default: '#f8f9fa' }}; border-radius: {{ block.settings.border_radius | default: '12px' }};">
+                    <div class="trust-item">
+                      <span class="trust-icon">{{ block.settings.icon_1 | default: '🚚' }}</span>
+                      <div>
+                        <strong>{{ block.settings.title_1 | default: 'Free Shipping' }}</strong><br>
+                        <small>{{ block.settings.subtitle_1 | default: 'On orders over $50' }}</small>
+                      </div>
+                    </div>
+                    <div class="trust-item">
+                      <span class="trust-icon">{{ block.settings.icon_2 | default: '🔄' }}</span>
+                      <div>
+                        <strong>{{ block.settings.title_2 | default: '30-Day Returns' }}</strong><br>
+                        <small>{{ block.settings.subtitle_2 | default: 'Hassle-free guarantee' }}</small>
+                      </div>
+                    </div>
+                    <div class="trust-item">
+                      <span class="trust-icon">{{ block.settings.icon_3 | default: '⭐' }}</span>
+                      <div>
+                        <strong>{{ block.settings.title_3 | default: '4.8/5 Rating' }}</strong><br>
+                        <small>{{ block.settings.subtitle_3 | default: 'From 2,000+ reviews' }}</small>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <style>
+                    .trust-block-custom {
+                      display: flex;
+                      justify-content: space-between;
+                      gap: 1rem;
+                      margin: 0;
+                      padding: 1rem;
+                    }
+                    .trust-block-custom .trust-item {
+                      display: flex;
+                      align-items: center;
+                      gap: 0.75rem;
+                      flex: 1;
+                    }
+                    .trust-block-custom .trust-icon {
+                      font-size: 1.5rem;
+                      line-height: 1;
+                    }
+                    .trust-block-custom strong {
+                      font-size: 0.9rem;
+                      display: block;
+                      margin-bottom: 2px;
+                    }
+                    .trust-block-custom small {
+                      font-size: 0.75rem;
+                      opacity: 0.8;
+                    }
+                    @media (max-width: 640px) {
+                      .trust-block-custom {
+                        flex-direction: column;
+                        gap: 1rem;
+                      }
+                      .trust-block-custom .trust-item {
+                        justify-content: flex-start;
+                      }
+                    }
+                  </style>
+                
+                {%- when '@app' -%}
   
             {%- endcase -%}
           </div>
@@ -716,9 +785,101 @@
           }
         ]
       },
+{
+  "type": "trust-block",
+  "name": "Trust Badges Block",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background & Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "text",
+      "id": "border_radius",
+      "label": "Border Radius",
+      "default": "12px",
+      "info": "Example: 12px, 50%, 0"
+    },
+    {
+      "type": "header",
+      "content": "Item 1"
+    },
+    {
+      "type": "text",
+      "id": "icon_1",
+      "label": "Icon 1 (Emoji)",
+      "default": "🚚"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Title 1",
+      "default": "Free Shipping"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_1",
+      "label": "Subtitle 1",
+      "default": "On orders over $50"
+    },
+    {
+      "type": "header",
+      "content": "Item 2"
+    },
+    {
+      "type": "text",
+      "id": "icon_2",
+      "label": "Icon 2 (Emoji)",
+      "default": "🔄"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Title 2",
+      "default": "30-Day Returns"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_2",
+      "label": "Subtitle 2",
+      "default": "Hassle-free guarantee"
+    },
+    {
+      "type": "header",
+      "content": "Item 3"
+    },
+    {
+      "type": "text",
+      "id": "icon_3",
+      "label": "Icon 3 (Emoji)",
+      "default": "⭐"
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Title 3",
+      "default": "4.8/5 Rating"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_3",
+      "label": "Subtitle 3",
+      "default": "From 2,000+ reviews"
+    }
+  ]
+},
+
       {
         "type": "@app"
       }
+      
     ]
   }
   {% endschema %}

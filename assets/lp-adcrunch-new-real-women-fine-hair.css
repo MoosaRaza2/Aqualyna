@@ -47,6 +47,7 @@
   padding: 10px 20px;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  margin-left: 20px;
 }
 
 .lp-ugc-strip__slider::-webkit-scrollbar {
@@ -309,17 +310,26 @@
   .lp-ugc-strip {
     padding: 60px 0;
   }
+  .lp-ugc-strip__slider-wrapper {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+  }
   .lp-ugc-strip__slider {
     gap: 20px;
-    padding: 20px 40px;
-    justify-content: center;
-    overflow-x: hidden;
+    padding: 20px 60px;
+    overflow-x: auto;
+    justify-content: flex-start;
   }
   .lp-ugc-strip__card {
-    flex: 0 0 185px;
+    flex: 0 0 200px;
+    height: 355px;
   }
   .lp-ugc-strip__ticker {
-    padding: 0 40px;
+    padding: 0 60px;
   }
   .lp-ugc-strip__nav {
     position: absolute;
@@ -328,11 +338,16 @@
     right: 0;
     transform: translateY(-50%);
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 12px;
     pointer-events: none;
-    display: none; /* Only show if overflow */
+    display: flex;
+    margin-top: -10px;
   }
   .lp-ugc-strip__nav-btn {
     pointer-events: auto;
+    width: 42px;
+    height: 42px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
   }
 }

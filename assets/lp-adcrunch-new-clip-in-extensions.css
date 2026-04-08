@@ -6,6 +6,7 @@
   --breadcrumb-height: 44px;
   background-color: transparent;
   width: 100%;
+  padding: 0;
 }
 
 .lp-breadcrumb__nav {

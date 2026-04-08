@@ -1,3 +1,9 @@
+h1,h2,h3,h4,h5,h6 {
+  font-family: "playfair display" !important;
+}
+p {
+  font-family: "Cabin,sans-serif" !important;
+}
 .lp-the-real-questions {
   --color-teal: #5BBFC3;
   --color-dark: #1C1C1C;
@@ -80,12 +86,14 @@
   color: var(--color-desc);
   line-height: 1.6;
   margin-bottom: 8px;
+  font-family: "cabin,sans-serif" !important;
 }
 
 .lp-the-real-questions__card-answer-box {
   background-color: var(--color-box-bg);
   border-radius: 8px;
   padding: 12px;
+  font-family: "cabin,sans-serif" !important;
 }
 
 .lp-the-real-questions__card-answer {

@@ -1,3 +1,5 @@
+
+
 {{ 'lp-adcrunch-new-real-women-fine-hair.css' | asset_url | stylesheet_tag }}
 <section class="lp-ugc-strip" id="lp-section-{{ section.id }}" data-section-id="{{ section.id }}">
   <div class="lp-ugc-strip__header">
@@ -99,6 +101,27 @@
       <div class="lp-ugc-strip__modal-player" data-modal-player></div>
     </div>
   </div>
+  <script >
+    // Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Select the h2 element
+    const h2 = document.querySelector('.lp-ugc-strip__heading');
+    
+    if (h2) {
+        // Get the current HTML content
+        let html = h2.innerHTML;
+
+        const searchText = /This is it\./gi;
+        const replacement = '<span style="color: #5BBFC3; font-style: italic;">This is it.</span>';
+        
+        // Apply the replacement
+        html = html.replace(searchText, replacement);
+        
+        // Update the h2 content
+        h2.innerHTML = html;
+    }
+});
+  </script>
 </section>
 
 <script>
@@ -114,11 +137,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeButtons = section.querySelectorAll('[data-modal-close]');
 
   if (slider && prevBtn && nextBtn) {
+    const scrollAmount = () => window.innerWidth >= 1024 ? 440 : 250;
     prevBtn.addEventListener('click', () => {
-      slider.scrollBy({ left: -250, behavior: 'smooth' });
+      slider.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
     });
     nextBtn.addEventListener('click', () => {
-      slider.scrollBy({ left: 250, behavior: 'smooth' });
+      slider.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
     });
   }
 
