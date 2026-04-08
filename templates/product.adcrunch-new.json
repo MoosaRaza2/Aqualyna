@@ -11,41 +11,13 @@
   "sections": {
     "lp-adcrunch-new-clip-in-extensions": {
       "type": "lp-adcrunch-new-clip-in-extensions",
-      "blocks": {
-        "block_lp-adcrunch-new-clip-in-extensions_0": {
-          "type": "breadcrumb_item",
-          "settings": {
-            "text": "Home",
-            "url": "/"
-          }
-        },
-        "block_lp-adcrunch-new-clip-in-extensions_1": {
-          "type": "breadcrumb_item",
-          "settings": {
-            "text": "Clip-In Extensions",
-            "url": "/collections/clip-in-extensions"
-          }
-        },
-        "block_lp-adcrunch-new-clip-in-extensions_2": {
-          "type": "breadcrumb_item",
-          "settings": {
-            "text": "Ultra Narrow Clip In — Black",
-            "url": ""
-          }
-        }
-      },
-      "block_order": [
-        "block_lp-adcrunch-new-clip-in-extensions_0",
-        "block_lp-adcrunch-new-clip-in-extensions_1",
-        "block_lp-adcrunch-new-clip-in-extensions_2"
-      ],
       "settings": {
+        "home_text": "Home",
         "separator": "/"
       }
     },
     "product-new-revamp": {
       "type": "product-new-revamp",
-      "disabled": true,
       "settings": {
         "container-width": 4,
         "spacing-above": true,
