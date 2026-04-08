@@ -611,7 +611,7 @@
           "type": "link",
           "settings": {
             "link_text": "Returns",
-            "link_url": ""
+            "link_url": "shopify://pages/return-policy"
           }
         },
         "block_lp-adcrunch-new-color-match_1": {
@@ -625,28 +625,28 @@
           "type": "link",
           "settings": {
             "link_text": "FAQ",
-            "link_url": ""
+            "link_url": "shopify://pages/faqs"
           }
         },
         "block_lp-adcrunch-new-color-match_3": {
           "type": "link",
           "settings": {
             "link_text": "Color Match",
-            "link_url": ""
+            "link_url": "shopify://pages/consultation"
           }
         },
         "block_lp-adcrunch-new-color-match_4": {
           "type": "link",
           "settings": {
             "link_text": "Privacy",
-            "link_url": ""
+            "link_url": "shopify://pages/privacy-policy"
           }
         },
         "block_lp-adcrunch-new-color-match_5": {
           "type": "link",
           "settings": {
             "link_text": "Contact",
-            "link_url": ""
+            "link_url": "shopify://pages/contact"
           }
         }
       },
