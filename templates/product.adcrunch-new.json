@@ -22,8 +22,8 @@
         "tag_block_riPaCF": {
           "type": "tag-block",
           "settings": {
-            "tag_color": "#f8f9fa",
-            "border_radius": "12px",
+            "tag_color": "#2882de",
+            "border_radius": "80px",
             "title_1": "✦ Designed for fine & thin hair"
           }
         },
