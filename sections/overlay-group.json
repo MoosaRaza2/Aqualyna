@@ -122,19 +122,10 @@
         "declined-description": "<p>Sorry, the content of this store can't be seen by a younger audience. Come back when you're older.</p>",
         "return-text": "Oops, I entered incorrectly"
       }
-    },
-    "lp_adcrunch_new_clip_in_extensions_PeBx8J": {
-      "type": "lp-adcrunch-new-clip-in-extensions",
-      "name": "Breadcrumb",
-      "settings": {
-        "home_text": "Home",
-        "separator": "/"
-      }
     }
   },
   "order": [
     "popup",
-    "age-verification",
-    "lp_adcrunch_new_clip_in_extensions_PeBx8J"
+    "age-verification"
   ]
 }
