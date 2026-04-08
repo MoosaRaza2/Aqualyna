@@ -19,20 +19,12 @@
     "product-new-revamp": {
       "type": "product-new-revamp",
       "blocks": {
-        "trust_block_gUjpDd": {
-          "type": "trust-block",
+        "tag_block_riPaCF": {
+          "type": "tag-block",
           "settings": {
-            "bg_color": "#f8f9fa",
+            "tag_color": "#f8f9fa",
             "border_radius": "12px",
-            "icon_1": "🚚",
-            "title_1": "Free Shipping",
-            "subtitle_1": "On orders over $50",
-            "icon_2": "🔄",
-            "title_2": "30-Day Returns",
-            "subtitle_2": "Hassle-free guarantee",
-            "icon_3": "⭐",
-            "title_3": "4.8/5 Rating",
-            "subtitle_3": "From 2,000+ reviews"
+            "title_1": "✦ Designed for fine & thin hair"
           }
         },
         "heading_EwwqQF": {
@@ -71,7 +63,7 @@
         }
       },
       "block_order": [
-        "trust_block_gUjpDd",
+        "tag_block_riPaCF",
         "heading_EwwqQF",
         "rating_jeRWbw",
         "price_3hT8NW",
