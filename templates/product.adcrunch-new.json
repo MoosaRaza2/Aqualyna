@@ -113,6 +113,69 @@
     "lp-adcrunch-new-real-women-fine-hair": {
       "type": "lp-adcrunch-new-real-women-fine-hair",
       "blocks": {
+        "video_card_Uqnj4k": {
+          "type": "video_card",
+          "settings": {
+            "label_text": "Fine Hair",
+            "label_bg": "#5bbfc3",
+            "quote": "\"I've had fine hair my whole life. These are different.\"",
+            "views": "1.2M views"
+          }
+        },
+        "video_card_Kccpn9": {
+          "type": "video_card",
+          "settings": {
+            "label_text": "Fine Hair",
+            "label_bg": "#5bbfc3",
+            "quote": "\"I've had fine hair my whole life. These are different.\"",
+            "views": "1.2M views"
+          }
+        },
+        "video_card_bwd38c": {
+          "type": "video_card",
+          "settings": {
+            "label_text": "Fine Hair",
+            "label_bg": "#5bbfc3",
+            "quote": "\"I've had fine hair my whole life. These are different.\"",
+            "views": "1.2M views"
+          }
+        },
+        "video_card_rzPYqb": {
+          "type": "video_card",
+          "settings": {
+            "label_text": "Fine Hair",
+            "label_bg": "#5bbfc3",
+            "quote": "\"I've had fine hair my whole life. These are different.\"",
+            "views": "1.2M views"
+          }
+        },
+        "video_card_DXEm4L": {
+          "type": "video_card",
+          "settings": {
+            "label_text": "Fine Hair",
+            "label_bg": "#5bbfc3",
+            "quote": "\"I've had fine hair my whole life. These are different.\"",
+            "views": "1.2M views"
+          }
+        },
+        "video_card_CCiz9G": {
+          "type": "video_card",
+          "settings": {
+            "label_text": "Fine Hair",
+            "label_bg": "#5bbfc3",
+            "quote": "\"I've had fine hair my whole life. These are different.\"",
+            "views": "1.2M views"
+          }
+        },
+        "video_card_Ddi7ef": {
+          "type": "video_card",
+          "settings": {
+            "label_text": "Fine Hair",
+            "label_bg": "#5bbfc3",
+            "quote": "\"I've had fine hair my whole life. These are different.\"",
+            "views": "1.2M views"
+          }
+        },
         "testimonial_ticker_MFrRJt": {
           "type": "testimonial_ticker",
           "settings": {
@@ -157,6 +220,13 @@
         }
       },
       "block_order": [
+        "video_card_Uqnj4k",
+        "video_card_Kccpn9",
+        "video_card_bwd38c",
+        "video_card_rzPYqb",
+        "video_card_DXEm4L",
+        "video_card_CCiz9G",
+        "video_card_Ddi7ef",
         "testimonial_ticker_MFrRJt",
         "testimonial_ticker_diUrrx",
         "testimonial_ticker_4TytmW",
