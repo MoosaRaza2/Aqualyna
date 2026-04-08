@@ -23,6 +23,10 @@
           "type": "heading",
           "settings": {}
         },
+        "rating_jeRWbw": {
+          "type": "rating",
+          "settings": {}
+        },
         "price_3hT8NW": {
           "type": "price",
           "settings": {}
@@ -52,6 +56,7 @@
       },
       "block_order": [
         "heading_EwwqQF",
+        "rating_jeRWbw",
         "price_3hT8NW",
         "overline_Hjdxp8",
         "options_GkMgzL",
