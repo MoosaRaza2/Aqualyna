@@ -117,6 +117,7 @@
           "type": "video_card",
           "settings": {
             "video_url": "",
+            "image": "shopify://shop_images/Fine_hair_transformation.png",
             "label_text": "Fine Hair",
             "label_bg": "#5bbfc3",
             "quote": "\"I've had fine hair my whole life. These are different.\"",
@@ -126,42 +127,45 @@
         "video_card_Kccpn9": {
           "type": "video_card",
           "settings": {
-            "video": "shopify://files/videos/Hero Banner 1 (1) (1).mp4",
             "video_url": "",
-            "label_text": "Fine Hair",
+            "image": "shopify://shop_images/UGC_review.png",
+            "label_text": "THINNING HAIR",
             "label_bg": "#5bbfc3",
-            "quote": "\"I've had fine hair my whole life. These are different.\"",
-            "views": "1.2M views"
+            "quote": "\"Nobody can tell. Not even\nmy husband.\"",
+            "views": "847K views"
           }
         },
         "video_card_bwd38c": {
           "type": "video_card",
           "settings": {
             "video_url": "",
-            "label_text": "Fine Hair",
+            "image": "shopify://shop_images/Lifestyle_shot.png",
+            "label_text": "INSTALL",
             "label_bg": "#5bbfc3",
-            "quote": "\"I've had fine hair my whole life. These are different.\"",
-            "views": "1.2M views"
+            "quote": "POV: fine hair → full hair in\n4 minutes",
+            "views": "623K views"
           }
         },
         "video_card_rzPYqb": {
           "type": "video_card",
           "settings": {
             "video_url": "",
-            "label_text": "Fine Hair",
+            "image": "shopify://shop_images/Before_and_after.png",
+            "label_text": "Before/After",
             "label_bg": "#5bbfc3",
-            "quote": "\"I've had fine hair my whole life. These are different.\"",
-            "views": "1.2M views"
+            "quote": "\"My part was so wide.\nWatch what happened.\"",
+            "views": "512K views"
           }
         },
         "video_card_DXEm4L": {
           "type": "video_card",
           "settings": {
             "video_url": "",
-            "label_text": "Fine Hair",
+            "image": "shopify://shop_images/Styled_look.png",
+            "label_text": "Post-Menopause",
             "label_bg": "#5bbfc3",
-            "quote": "\"I've had fine hair my whole life. These are different.\"",
-            "views": "1.2M views"
+            "quote": "\"My hair changed in my\n50s. This gave it back.\"",
+            "views": "389K views"
           }
         },
         "video_card_CCiz9G": {
