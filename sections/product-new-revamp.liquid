@@ -6,7 +6,12 @@
     border-radius: 20px;
   }
   .color-swatch {
-border-radius:50%;}
+border-radius:50%;
+}
+
+.product-price--original {
+font-size: 28px;
+}
 </style>
     {%- liquid
  
@@ -282,24 +287,36 @@ border-radius:50%;}
                   {{- block.settings.custom-liquid -}}
                 
                 {%- when 'tag-block' -%}
-                  <div class="tag-block-custom" style="background: {{ block.settings.bg_color | default: '#f8f9fa' }}; border-radius: {{ block.settings.border_radius | default: '12px' }};">
-                        <strong>{{ block.settings.title_1 | default: 'Free Shipping' }}</strong><br>
+                  <div class="tag-block-custom"; border-radius: {{ block.settings.border_radius | default: '12px' }};">
+                        <p class="tag-block-custom-title">{{ block.settings.title_1 | default: 'Free Shipping' }}</p>
                       
                   </div>
                 
                   <style>
                     .tag-block-custom {
                       display: flex;
-                      justify-content: space-between;
-                      gap: 1rem;
-                      margin: 0;
-                      padding: 1rem;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0;
+    padding: 1rem;
+    border-radius: 20px;
+    border: 1px solid #C8ECEE;
+    background: #EAF7F8;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    width: 266px;
                     }
                     
-                    .trust-block-custom strong {
-                      font-size: 0.9rem;
-                      display: block;
-                      margin-bottom: 2px;
+                    .tag-block-custom-title{
+                      color: #3EA8AD;
+font-family: "DM Sans";
+font-size: 11px;
+font-style: normal;
+font-weight: 700;
+line-height: 17.6px; /* 160% */
+letter-spacing: 0.77px;
+text-transform: uppercase;
                     }
                     @media (max-width: 640px) {
                       .trust-block-custom {
@@ -308,7 +325,48 @@ border-radius:50%;}
                       }
                 }
                   </style>
-                
+                {%when 'promo-text-block'%}
+                  <div class="promo-text-wrapper">
+    <h2 class="promo-heading">
+      {{ block.settings.heading_highlight }}
+      <span class="promo-heading-normal">
+        {{ block.settings.heading_normal }}
+      </span>
+    </h2>
+    <p class="promo-description">
+      {{ block.settings.description }}
+    </p>
+  </div>
+  <style>
+    .promo-text-section {
+      padding: 30px 20px;
+      border-radius: 12px;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+  
+    .promo-text-wrapper {
+      text-align: left;
+    }
+  
+    .promo-heading {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+  
+    .promo-heading-normal {
+      font-weight: 400;
+      color: #333;
+    }
+  
+    .promo-description {
+      font-size: 18px;
+      color: #333;
+      line-height: 1.6;
+    }
+  </style>
+  
                 {%- when '@app' -%}
   
             {%- endcase -%}
@@ -779,9 +837,37 @@ border-radius:50%;}
       "default": "Title 1"
     }
   ]
-},
-
-      {
+},{
+  "type": "promo-text-block",
+  "name": "Promo Text Block",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Highlighted Heading",
+      "default": "You've spent too much on things that didn't work..."
+    },
+    {
+      "type": "text",
+      "id": "heading_normal",
+      "label": "Normal Heading Text",
+      "default": " Root sprays. Thickening shampoos."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Volumizing mousse that collapses by 10am. This is the first thing actually designed for your hair."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f5ede4"
+    }
+  ]
+},{
         "type": "@app"
       }
       
