@@ -116,6 +116,7 @@
         "video_card_Uqnj4k": {
           "type": "video_card",
           "settings": {
+            "video_url": "",
             "label_text": "Fine Hair",
             "label_bg": "#5bbfc3",
             "quote": "\"I've had fine hair my whole life. These are different.\"",
@@ -125,7 +126,8 @@
         "video_card_Kccpn9": {
           "type": "video_card",
           "settings": {
-            "image": "shopify://shop_images/Clip_Ins_-_After.png",
+            "video": "shopify://files/videos/Hero Banner 1 (1) (1).mp4",
+            "video_url": "",
             "label_text": "Fine Hair",
             "label_bg": "#5bbfc3",
             "quote": "\"I've had fine hair my whole life. These are different.\"",
@@ -135,6 +137,7 @@
         "video_card_bwd38c": {
           "type": "video_card",
           "settings": {
+            "video_url": "",
             "label_text": "Fine Hair",
             "label_bg": "#5bbfc3",
             "quote": "\"I've had fine hair my whole life. These are different.\"",
@@ -144,6 +147,7 @@
         "video_card_rzPYqb": {
           "type": "video_card",
           "settings": {
+            "video_url": "",
             "label_text": "Fine Hair",
             "label_bg": "#5bbfc3",
             "quote": "\"I've had fine hair my whole life. These are different.\"",
@@ -153,6 +157,7 @@
         "video_card_DXEm4L": {
           "type": "video_card",
           "settings": {
+            "video_url": "",
             "label_text": "Fine Hair",
             "label_bg": "#5bbfc3",
             "quote": "\"I've had fine hair my whole life. These are different.\"",
@@ -162,6 +167,7 @@
         "video_card_CCiz9G": {
           "type": "video_card",
           "settings": {
+            "video_url": "",
             "label_text": "Fine Hair",
             "label_bg": "#5bbfc3",
             "quote": "\"I've had fine hair my whole life. These are different.\"",
@@ -171,6 +177,7 @@
         "video_card_Ddi7ef": {
           "type": "video_card",
           "settings": {
+            "video_url": "",
             "label_text": "Fine Hair",
             "label_bg": "#5bbfc3",
             "quote": "\"I've had fine hair my whole life. These are different.\"",
