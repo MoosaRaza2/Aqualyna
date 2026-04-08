@@ -112,6 +112,58 @@
     },
     "lp-adcrunch-new-real-women-fine-hair": {
       "type": "lp-adcrunch-new-real-women-fine-hair",
+      "blocks": {
+        "testimonial_ticker_MFrRJt": {
+          "type": "testimonial_ticker",
+          "settings": {
+            "quote": "\"Nobody knew I was wearing them\"",
+            "author": "Melissa R."
+          }
+        },
+        "testimonial_ticker_diUrrx": {
+          "type": "testimonial_ticker",
+          "settings": {
+            "quote": "\"The only thing that actually worked\"",
+            "author": "Jennifer A."
+          }
+        },
+        "testimonial_ticker_4TytmW": {
+          "type": "testimonial_ticker",
+          "settings": {
+            "quote": "\"My hair looked like this in my 30s\"",
+            "author": "Carol M."
+          }
+        },
+        "testimonial_ticker_qRahmq": {
+          "type": "testimonial_ticker",
+          "settings": {
+            "quote": "\"4 minutes. That's it.\"",
+            "author": "Patricia L."
+          }
+        },
+        "testimonial_ticker_hayaaf": {
+          "type": "testimonial_ticker",
+          "settings": {
+            "quote": "\"People keep asking what I'm doing\"",
+            "author": "Diane K."
+          }
+        },
+        "testimonial_ticker_rt9VQd": {
+          "type": "testimonial_ticker",
+          "settings": {
+            "quote": "\"Nobody knew I was wearing them\"",
+            "author": "Melissa R."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_ticker_MFrRJt",
+        "testimonial_ticker_diUrrx",
+        "testimonial_ticker_4TytmW",
+        "testimonial_ticker_qRahmq",
+        "testimonial_ticker_hayaaf",
+        "testimonial_ticker_rt9VQd"
+      ],
       "settings": {
         "eyebrow": "Real women. Fine hair. Real results.",
         "heading": "People keep asking them their secret.\nThis is it."
