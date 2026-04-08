@@ -172,20 +172,22 @@
           "type": "video_card",
           "settings": {
             "video_url": "",
-            "label_text": "Fine Hair",
+            "image": "shopify://shop_images/Testimonial.png",
+            "label_text": "Verified Buyer",
             "label_bg": "#5bbfc3",
-            "quote": "\"I've had fine hair my whole life. These are different.\"",
-            "views": "1.2M views"
+            "quote": "\"I spent $300 on\nvolumizers. This is the only\nthing that works.\"",
+            "views": "271K views"
           }
         },
         "video_card_Ddi7ef": {
           "type": "video_card",
           "settings": {
             "video_url": "",
-            "label_text": "Fine Hair",
+            "image": "shopify://shop_images/Lifestyle.png",
+            "label_text": "Color Match",
             "label_bg": "#5bbfc3",
-            "quote": "\"I've had fine hair my whole life. These are different.\"",
-            "views": "1.2M views"
+            "quote": "\"The color match was spot\non. Zero guessing.\"",
+            "views": "198K views"
           }
         },
         "testimonial_ticker_MFrRJt": {
