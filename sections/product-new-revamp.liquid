@@ -333,9 +333,9 @@ text-transform: uppercase;
         {{ block.settings.heading_normal }}
       </span>
     </h2>
-    <p class="promo-description">
+    {% comment %} <p class="promo-description">
       {{ block.settings.description }}
-    </p>
+    </p> {% endcomment %}
   </div>
   <style>
     .promo-text-section {
@@ -347,13 +347,18 @@ text-transform: uppercase;
   
     .promo-text-wrapper {
       text-align: left;
-    }
+      border-radius: 8px;
+    border: 1px solid #F5D9B0;
+    background: #FFF8F0;
+  padding: 12px 16px;  
+  }
   
     .promo-heading {
-      font-size: 24px;
+      font-size: 14px;
       font-weight: 600;
-      margin-bottom: 10px;
+      color: #C4894A;
     }
+
   
     .promo-heading-normal {
       font-weight: 400;
@@ -366,7 +371,19 @@ text-transform: uppercase;
       line-height: 1.6;
     }
   </style>
-  
+  {%when 'custom cta'%}
+    <div style="text-align: {{ block.settings.align }}; margin: 20px auto;">
+      <a href="{{ block.settings.link | default: '#' }}" 
+         style="display: inline-block; 
+                background: {{ block.settings.bg_color }}; 
+                color: {{ block.settings.text_color }}; 
+                padding: 12px 24px; 
+                border-radius: 4px; 
+                text-decoration: none; 
+                font-weight: bold;">
+        {{ block.settings.text | default: 'Shop Now' }}
+      </a>
+    </div>
                 {%- when '@app' -%}
   
             {%- endcase -%}
@@ -684,12 +701,6 @@ text-transform: uppercase;
         ]
       },
       {
-        "type": "description",
-        "name": "Description",
-        "limit": 1,
-        "settings": []
-      },
-      {
         "type": "social-sharing",
         "name": "Social sharing",
         "limit": 1,
@@ -825,6 +836,47 @@ text-transform: uppercase;
     }
   ]
 },{
+  "type": "custom cta",
+  "name": "Custom CTA",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Button Text",
+      "default": "Shop Now",
+      "placeholder": "e.g., Buy Now"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Button Link",
+      "placeholder": "/products/example or https://..."
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    }
+  ]},{
   "type": "promo-text-block",
   "name": "Promo Text Block",
   "limit": 1,
