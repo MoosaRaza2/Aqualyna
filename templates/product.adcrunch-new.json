@@ -108,6 +108,30 @@
             "heading": "Ultra-narrow weft — designed for fine hair",
             "description": "50% thinner base than standard clip-ins. Lies flat. Disappears. Not\ndesigned for thick hair and adapted — built for you from the start."
           }
+        },
+        "featured_item_JfUieX": {
+          "type": "featured-item",
+          "settings": {
+            "icon": "✓",
+            "heading": "Zero damage — clips out every night",
+            "description": "No adhesive, no heat, no sustained tension. Your hair rests while you\nsleep. No salon removal needed."
+          }
+        },
+        "featured_item_FHVUtg": {
+          "type": "featured-item",
+          "settings": {
+            "icon": "✓",
+            "heading": "Invisible — even in fine hair",
+            "description": "Narrow weft + 100% Remy human hair = no seam to find. People see\nyour hair. Not your secret."
+          }
+        },
+        "featured_item_E9TfJR": {
+          "type": "featured-item",
+          "settings": {
+            "icon": "✓",
+            "heading": "In seconds — no tutorial required after day one",
+            "description": "Section. Clip. Release the top layer. Done. Compatible with any\nmorning routine."
+          }
         }
       },
       "block_order": [
@@ -120,7 +144,10 @@
         "buy_buttons_gbyLxw",
         "custom_cta_4nKezd",
         "trust_block_K7VyyC",
-        "featured_item_WYcqD4"
+        "featured_item_WYcqD4",
+        "featured_item_JfUieX",
+        "featured_item_FHVUtg",
+        "featured_item_E9TfJR"
       ],
       "settings": {
         "container-width": 4,
