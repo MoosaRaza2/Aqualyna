@@ -12,6 +12,11 @@ border-radius:50%;
 .product-price--original {
 font-size: 28px;
 }
+.product-page--root{
+  --text-column-width: 35% !important;
+    --media-gap: 30px !important;
+    --thumbnail-width: 135px !important;
+}
 </style>
     {%- liquid
  
@@ -438,21 +443,22 @@ text-transform: uppercase;
 
 .feature-item {
   display: flex;
-  align-items: center; /* vertical alignment */
-  gap: 16px;
+  width: 100%;
+  /* align-items: center; vertical alignment */
+  gap: 8px;
 }
 
 .feature-icon {
-  min-width: 36px;
-  height: 36px;
-  background-color: #7ec8c3; /* adjust color */
+  min-width: 22px;
+  height: 22px;
+  background-color: #5BBFC3;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 12px;
 }
 
 .feature-content {
@@ -462,13 +468,13 @@ text-transform: uppercase;
 
 .feature-heading {
   margin: 0;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
 }
 
 .feature-description {
   margin: 4px 0 0;
-  color: #666;
+  color: #6B6560;
   font-size: 14px;
 }
 </style>
