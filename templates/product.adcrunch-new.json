@@ -23,7 +23,7 @@
           "type": "tag-block",
           "settings": {
             "tag_color": "#2882de",
-            "border_radius": "80px",
+            "border_radius": "10px",
             "title_1": "✦ Designed for fine & thin hair"
           }
         },
@@ -38,12 +38,6 @@
         "price_3hT8NW": {
           "type": "price",
           "settings": {}
-        },
-        "overline_Hjdxp8": {
-          "type": "overline",
-          "settings": {
-            "text": "or 4 payments of $62.25 with Afterpay — free shipping"
-          }
         },
         "promo_text_block_QRiPr9": {
           "type": "promo-text-block",
@@ -76,7 +70,6 @@
         "heading_EwwqQF",
         "rating_jeRWbw",
         "price_3hT8NW",
-        "overline_Hjdxp8",
         "promo_text_block_QRiPr9",
         "options_GkMgzL",
         "buy_buttons_gbyLxw"
