@@ -76,7 +76,7 @@
           "type": "trust-block",
           "settings": {
             "pill_count": 4,
-            "align": "center",
+            "align": "flex-start",
             "icon_1": "🚚",
             "text_1": "Free shipping",
             "link_1": "",
