@@ -412,7 +412,7 @@ text-transform: uppercase;
     </a>
   {% endfor %}
 </div>
-{% comment %} for featured text blocks         {% endcomment %}
+
  {%when 'featured-item'%}
   <div class="feature-list">
   {% for block in section.blocks %}
@@ -997,6 +997,17 @@ text-transform: uppercase;
     },
     {
       "type": "header",
+      "content": "Pill 1"
+    },
+    {
+      "type": "text",
+      "id": "icon_1",
+      "label": "Icon 1",
+      "default": "🏷️",
+      "placeholder": "Emoji or HTML (🎉, ⭐, ❤️)"
+    },
+    {
+      "type": "header",
       "content": "Featured Text Block"
     },
     {
@@ -1010,17 +1021,6 @@ text-transform: uppercase;
       "id": "description",
       "label": "Description",
       "default": "50% thinner base than standard clip-ins. Lies flat. Disappears. Not designed for thick hair and adapted — built for you from the start."
-    },
-    {
-      "type": "header",
-      "content": "Pill 1"
-    },
-    {
-      "type": "text",
-      "id": "icon_1",
-      "label": "Icon 1",
-      "default": "🏷️",
-      "placeholder": "Emoji or HTML (🎉, ⭐, ❤️)"
     },
     {
       "type": "text",
