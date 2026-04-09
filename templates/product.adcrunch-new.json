@@ -59,7 +59,7 @@
           "settings": {
             "variant-style": "buttons",
             "swatches-enabled": true,
-            "size-chart-enabled": true,
+            "size-chart-enabled": false,
             "size-chart-option": "size",
             "size-chart-content": ""
           }
