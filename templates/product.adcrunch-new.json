@@ -65,7 +65,7 @@
         "custom_cta_4nKezd": {
           "type": "custom-cta",
           "settings": {
-            "text": "Free Color Match — Not sure which shade?",
+            "custom-cta-text": "🎨 Free Color Match — Not sure which shade?",
             "custom-cta-link": "#",
             "align": "center",
             "bg_color": "#000000",
