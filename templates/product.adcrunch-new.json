@@ -45,6 +45,15 @@
             "text": "or 4 payments of $62.25 with Afterpay — free shipping"
           }
         },
+        "promo_text_block_QRiPr9": {
+          "type": "promo-text-block",
+          "settings": {
+            "heading_highlight": "You've spent too much on things that didn't work...",
+            "heading_normal": "Root sprays. Thickening shampoos.",
+            "description": "Volumizing mousse that collapses by 10am. This is the first thing actually designed for your hair.",
+            "bg_color": "#f5ede4"
+          }
+        },
         "options_GkMgzL": {
           "type": "options",
           "settings": {
@@ -68,6 +77,7 @@
         "rating_jeRWbw",
         "price_3hT8NW",
         "overline_Hjdxp8",
+        "promo_text_block_QRiPr9",
         "options_GkMgzL",
         "buy_buttons_gbyLxw"
       ],
