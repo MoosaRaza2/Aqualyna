@@ -414,27 +414,21 @@ text-transform: uppercase;
 </div>
 
  {%when 'featured-item'%}
-  <div class="feature-list">
-  {% for block in section.blocks %}
-    <div class="feature-item" {{ block.shopify_attributes }}>
-      
-      <div class="feature-icon">
-        ✓
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-icon">
+          {{ block.settings.icon | default: '✓' }}
+        </div>
+        <div class="feature-content">
+          <h3 class="feature-heading">
+            {{ block.settings.heading }}
+          </h3>
+          <p class="feature-description">
+            {{ block.settings.description }}
+          </p>
+        </div>
       </div>
-
-      <div class="feature-content">
-        <h3 class="feature-heading">
-          {{ block.settings.heading }}
-        </h3>
-        <p class="feature-description">
-          {{ block.settings.description }}
-        </p>
-      </div>
-
     </div>
-  {% endfor %}
-</div>
-
 <style>
 .feature-list {
   display: flex;
@@ -1195,6 +1189,31 @@ text-transform: uppercase;
       "id": "bg_color",
       "label": "Background Color",
       "default": "#f5ede4"
+    }
+  ]
+},
+{
+  "type": "featured-item",
+  "name": "Featured Item",
+  "settings": [
+    {
+      "type": "text",
+      "id": "icon",
+      "label": "Icon",
+      "default": "✓",
+      "info": "Use emoji or HTML"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ultra-narrow weft"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "50% thinner base than standard clip-ins"
     }
   ]
 },{
