@@ -371,17 +371,16 @@ text-transform: uppercase;
       line-height: 1.6;
     }
   </style>
-  {%when 'custom cta'%}
+  {%when 'custom-cta'%}
     <div style="text-align: {{ block.settings.align }}; margin: 20px auto;">
-      <a href="{{ block.settings.link | default: '#' }}" 
+      <a href="{{ block.settings.custom-cta-link | default: '#' }}" 
          style="display: inline-block; 
-                background: {{ block.settings.bg_color }}; 
-                color: {{ block.settings.text_color }}; 
+                background: {{ block.settings.custom-cta-bg-color }}; 
+                color: {{ block.settings.custom-cta-text-color }}; 
                 padding: 12px 24px; 
                 border-radius: 4px; 
-                text-decoration: none; 
-                font-weight: bold;">
-        {{ block.settings.text | default: 'Shop Now' }}
+                text-decoration: none;">
+        {{ block.settings.custom-cta-text | default: 'Shop Now' }}
       </a>
     </div>
                 {%- when '@app' -%}
@@ -836,7 +835,7 @@ text-transform: uppercase;
     }
   ]
 },{
-  "type": "custom cta",
+  "type": "custom-cta",
   "name": "Custom CTA",
   "limit": 1,
   "settings": [
@@ -849,9 +848,8 @@ text-transform: uppercase;
     },
     {
       "type": "url",
-      "id": "link",
-      "label": "Button Link",
-      "placeholder": "/products/example or https://..."
+      "id": "custom-cta-link",
+      "label": "Button Link"
     },
     {
       "type": "select",
