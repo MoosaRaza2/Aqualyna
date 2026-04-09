@@ -78,6 +78,8 @@
             "pill_count": 4,
             "align": "flex-start",
             "icon_1": "🚚",
+            "heading": "Ultra-narrow weft — designed for fine hair",
+            "description": "50% thinner base than standard clip-ins. Lies flat. Disappears. Not designed for thick hair and adapted — built for you from the start.",
             "text_1": "Free shipping",
             "link_1": "",
             "icon_2": "↩️",
@@ -98,6 +100,14 @@
             "bg_color": "#f9f7f5",
             "text_color": "#1c1c1c"
           }
+        },
+        "featured_item_WYcqD4": {
+          "type": "featured-item",
+          "settings": {
+            "icon": "✓",
+            "heading": "Ultra-narrow weft",
+            "description": "50% thinner base than standard clip-ins"
+          }
         }
       },
       "block_order": [
@@ -109,7 +119,8 @@
         "options_GkMgzL",
         "buy_buttons_gbyLxw",
         "custom_cta_4nKezd",
-        "trust_block_K7VyyC"
+        "trust_block_K7VyyC",
+        "featured_item_WYcqD4"
       ],
       "settings": {
         "container-width": 4,
