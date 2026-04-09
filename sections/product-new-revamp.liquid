@@ -372,17 +372,45 @@ text-transform: uppercase;
     }
   </style>
   {%when 'custom-cta'%}
-    <div style="text-align: {{ block.settings.align }}; margin: 20px auto;">
+    <div style="text-align: {{ block.settings.align }}; margin: 0px auto;">
       <a href="{{ block.settings.custom-cta-link | default: '#' }}" 
          style="display: inline-block; 
-                background: {{ block.settings.custom-cta-bg-color }}; 
-                color: {{ block.settings.custom-cta-text-color }}; 
+                background-color: transparent; 
+                border: 1px solid #5BBFC3;
+                color: #3EA8AD; 
                 padding: 12px 24px; 
-                border-radius: 4px; 
-                text-decoration: none;">
+                border-radius: 10px; 
+                text-decoration: none;
+                width: 100%;">
         {{ block.settings.custom-cta-text | default: 'Shop Now' }}
       </a>
     </div>
+    {%when 'trust-block'%}
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: {{ block.settings.align }}; margin: 20px auto;">
+  {% for i in (1..block.settings.pill_count) %}
+    {% assign icon_key = 'icon_' | append: i %}
+    {% assign text_key = 'text_' | append: i %}
+    {% assign link_key = 'link_' | append: i %}
+    
+    <a href="{{ block.settings[link_key] | default: '#' }}" 
+       style="display: inline-flex; 
+              align-items: center; 
+              gap: 8px; 
+              background: {{ block.settings.bg_color }}; 
+              color: {{ block.settings.text_color }}; 
+              padding: 8px 20px; 
+              border-radius: 50px; 
+              text-decoration: none; 
+              font-size: 14px;
+              font-weight: 500;
+              transition: all 0.2s;">
+      
+      <span style="font-size: 18px;">{{ block.settings[icon_key] | default: '🏷️' }}</span>
+      <span>{{ block.settings[text_key] | default: 'Pill ' | append: i }}</span>
+      
+    </a>
+  {% endfor %}
+</div>
                 {%- when '@app' -%}
   
             {%- endcase -%}
@@ -874,7 +902,188 @@ text-transform: uppercase;
       "label": "Text Color",
       "default": "#ffffff"
     }
-  ]},{
+  ]},
+  {
+  "name": "Pills Block",
+  "type": "trust-block",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "range",
+      "id": "pill_count",
+      "label": "Number of Pills",
+      "min": 1,
+      "max": 6,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Alignment",
+      "default": "center",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Pill 1"
+    },
+    {
+      "type": "text",
+      "id": "icon_1",
+      "label": "Icon 1",
+      "default": "🏷️",
+      "placeholder": "Emoji or HTML (🎉, ⭐, ❤️)"
+    },
+    {
+      "type": "text",
+      "id": "text_1",
+      "label": "Text 1",
+      "default": "New Arrivals",
+      "placeholder": "e.g., Sale, New, Bestseller"
+    },
+    {
+      "type": "url",
+      "id": "link_1",
+      "label": "Link 1"
+    },
+    {
+      "type": "header",
+      "content": "Pill 2"
+    },
+    
+    {
+      "type": "text",
+      "id": "icon_2",
+      "label": "Icon 2",
+      "default": "⭐",
+      "placeholder": "Emoji or HTML"
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "label": "Text 2",
+      "default": "Best Sellers",
+      "placeholder": "e.g., Top Rated"
+    },
+    {
+      "type": "url",
+      "id": "link_2",
+      "label": "Link 2"
+    },
+    {
+      "type": "header",
+      "content": "Pill 3"
+    },
+    {
+      "type": "text",
+      "id": "icon_3",
+      "label": "Icon 3",
+      "default": "🔥",
+      "placeholder": "Emoji or HTML"
+    },
+    {
+      "type": "text",
+      "id": "text_3",
+      "label": "Text 3",
+      "default": "Limited Offer",
+      "placeholder": "e.g., Flash Sale"
+    },
+    {
+      "type": "url",
+      "id": "link_3",
+      "label": "Link 3"
+    },
+    {
+      "type": "header",
+      "content": "Pill 4"
+    },
+    {
+      "type": "text",
+      "id": "icon_4",
+      "label": "Icon 4",
+      "default": "🎁",
+      "placeholder": "Emoji or HTML"
+    },
+    {
+      "type": "text",
+      "id": "text_4",
+      "label": "Text 4",
+      "default": "Gift Guide",
+      "placeholder": "e.g., Gift Ideas"
+    },
+    {
+      "type": "url",
+      "id": "link_4",
+      "label": "Link 4"
+    },
+    {
+      "type": "header",
+      "content": "Pill 5"
+    },
+    {
+      "type": "text",
+      "id": "icon_5",
+      "label": "Icon 5",
+      "default": "💎",
+      "placeholder": "Emoji or HTML"
+    },
+    {
+      "type": "text",
+      "id": "text_5",
+      "label": "Text 5",
+      "default": "Premium",
+      "placeholder": "e.g., Exclusive"
+    },
+    {
+      "type": "url",
+      "id": "link_5",
+      "label": "Link 5"
+    },
+    {
+      "type": "header",
+      "content": "Pill 6"
+    },
+    {
+      "type": "text",
+      "id": "icon_6",
+      "label": "Icon 6",
+      "default": "🚚",
+      "placeholder": "Emoji or HTML"
+    },
+    {
+      "type": "text",
+      "id": "text_6",
+      "label": "Text 6",
+      "default": "Free Shipping",
+      "placeholder": "e.g., Fast Delivery"
+    },
+    {
+      "type": "url",
+      "id": "link_6",
+      "label": "Link 6"
+    },
+    {
+      "type": "header",
+      "content": "Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Pill Background",
+      "default": "#f0f0f0"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Pill Text Color",
+      "default": "#000000"
+    }
+  ]},
+  {
   "type": "promo-text-block",
   "name": "Promo Text Block",
   "limit": 1,
