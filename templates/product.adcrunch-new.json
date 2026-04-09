@@ -71,6 +71,33 @@
             "bg_color": "#000000",
             "text_color": "#3ea8ad"
           }
+        },
+        "trust_block_K7VyyC": {
+          "type": "trust-block",
+          "settings": {
+            "pill_count": 4,
+            "align": "center",
+            "icon_1": "🚚",
+            "text_1": "Free shipping",
+            "link_1": "",
+            "icon_2": "↩️",
+            "text_2": "30-day returns",
+            "link_2": "",
+            "icon_3": "🔒",
+            "text_3": "Secure checkout",
+            "link_3": "",
+            "icon_4": "✂️",
+            "text_4": "No damage",
+            "link_4": "",
+            "icon_5": "💎",
+            "text_5": "Premium",
+            "link_5": "",
+            "icon_6": "🚚",
+            "text_6": "Free Shipping",
+            "link_6": "",
+            "bg_color": "#f0f0f0",
+            "text_color": "#000000"
+          }
         }
       },
       "block_order": [
@@ -81,7 +108,8 @@
         "promo_text_block_QRiPr9",
         "options_GkMgzL",
         "buy_buttons_gbyLxw",
-        "custom_cta_4nKezd"
+        "custom_cta_4nKezd",
+        "trust_block_K7VyyC"
       ],
       "settings": {
         "container-width": 4,
