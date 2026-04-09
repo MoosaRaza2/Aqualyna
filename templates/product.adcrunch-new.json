@@ -22,8 +22,6 @@
         "tag_block_riPaCF": {
           "type": "tag-block",
           "settings": {
-            "tag_color": "#2882de",
-            "border_radius": "10px",
             "title_1": "✦ Designed for fine & thin hair"
           }
         },
@@ -43,7 +41,7 @@
           "type": "promo-text-block",
           "settings": {
             "heading_highlight": "You've spent too much on things that didn't work...",
-            "heading_normal": "Root sprays. Thickening shampoos.",
+            "heading_normal": "Rootsprays. Thickening shampoos. Volumizing mousse that collapsesby 10am. This is the first thing actually designed for your hair.",
             "description": "Volumizing mousse that collapses by 10am. This is the first thing actually designed for your hair.",
             "bg_color": "#f5ede4"
           }
