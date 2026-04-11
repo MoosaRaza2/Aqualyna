@@ -299,6 +299,7 @@ font-size: 28px;
                 
                   <style>
                     .tag-block-custom {
+                      margin-top: -30px;
                       display: flex;
     justify-content: space-between;
     gap: 1rem;
@@ -315,7 +316,7 @@ font-size: 28px;
                     
                     .tag-block-custom-title{
                       color: #3EA8AD;
-font-family: "DM Sans";
+/* font-family: "DM Sans"; */
 font-size: 11px;
 font-style: normal;
 font-weight: 700;
@@ -377,11 +378,11 @@ text-transform: uppercase;
     }
   </style>
   {%when 'custom-cta'%}
-    <div style="text-align: {{ block.settings.align }}; margin: 0px auto;">
+    <div style="text-align: {{ block.settings.align }}; margin: 0px auto; margin-top: -20px;">
       <a href="{{ block.settings.custom-cta-link | default: '#' }}" 
          style="display: inline-block; 
                 background-color: transparent; 
-                border: 1px solid #5BBFC3;
+                border: 2px solid #5BBFC3;
                 color: #3EA8AD; 
                 padding: 12px 24px; 
                 border-radius: 10px; 
@@ -392,7 +393,7 @@ text-transform: uppercase;
     </div>
     {%when 'trust-block'%}
       <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: {{ block.settings.align }}; margin: 0px auto; padding-bottom: 20px;
-    border-bottom: 1px solid #E8E4DF;">
+    border-bottom: 1px solid #E8E4DF; margin-top: -20px;">
   {% for i in (1..block.settings.pill_count) %}
     {% assign icon_key = 'icon_' | append: i %}
     {% assign text_key = 'text_' | append: i %}
@@ -439,6 +440,7 @@ text-transform: uppercase;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-top: -15px;
 }
 
 .feature-item {

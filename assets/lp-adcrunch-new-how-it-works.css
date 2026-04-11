@@ -40,9 +40,7 @@
 }
 
 .lp-how-it-works__steps {
-  display: grid;
-  gap: 10px;
-  grid-template-columns: 1fr 2fr;
+  display: flex;
 }
 
 .lp-how-it-works__step {

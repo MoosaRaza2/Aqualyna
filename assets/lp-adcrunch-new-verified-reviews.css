@@ -8,26 +8,31 @@
   overflow: hidden;
 }
 
-.lp-trust-bar__container {
+.lp-trust-bar__track-wrapper {
   width: 100%;
-  max-width: 1920px;
-  margin: 0 auto;
-  padding: 0 20px;
+  overflow: hidden;
 }
 
-.lp-trust-bar__items {
+.lp-trust-bar__track {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 32px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none; /* Firefox */
+  gap: 48px;
+  width: max-content;
+  animation: lp-marquee 20s linear infinite;
+  padding: 12px 0;
 }
 
-.lp-trust-bar__items::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+.lp-trust-bar__track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes lp-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .lp-trust-bar__item {
@@ -35,7 +40,6 @@
   align-items: center;
   gap: 8px;
   white-space: nowrap;
-  scroll-snap-align: center;
   font-family: inherit;
   font-size: 13px;
   line-height: 1.6;
@@ -48,22 +52,4 @@
 
 .lp-trust-bar__text {
   font-weight: 400;
-}
-
-/* Bold for star block */
-.lp-trust-bar__item:first-child .lp-trust-bar__icon {
-  font-weight: 600;
-}
-
-/* Desktop overrides */
-@media (min-width: 1024px) {
-  .lp-trust-bar__items {
-    justify-content: center;
-    gap: clamp(40px, 4vw, 80px);
-    overflow-x: visible;
-  }
-
-  .lp-trust-bar__container {
-    padding: 0 40px;
-  }
 }
