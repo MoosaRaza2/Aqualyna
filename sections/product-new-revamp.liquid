@@ -1,7 +1,13 @@
 
 {% comment %} BSS Label get data main product has metafields seo hidden {% endcomment %}{% assign bss_product_metafields = product %}{% if bss_product_metafields.metafields.seo.hidden %}<script id="main-label-product-metafields-info" type="application/ld+json"> {"id":{{ bss_product_metafields.id | json }},"title": {{ bss_product_metafields.title | json }},"vendor": {{ bss_product_metafields.vendor | json }},"tags": {{ bss_product_metafields.tags | json }},"handle":{{ bss_product_metafields.handle | json }},"available":{{ bss_product_metafields.available | json }},"inventory":{{ bss_product_metafields.first_available_variant.inventory_quantity | json }},"compare_at_price_max":{{ bss_product_metafields.compare_at_price_max | json }},"compare_at_price_min":{{ bss_product_metafields.compare_at_price_min | json }},"price":{{ bss_product_metafields.price | json }},"price_max":{{ bss_product_metafields.price_max | json }},"price_min":{{ bss_product_metafields.price_min | json }},"publish_at":"{{ bss_product_metafields.published_at }}","inventory_management":{{ bss_product_metafields.first_available_variant.inventory_management | json }},"inventory_policy":{{ bss_product_metafields.first_available_variant.inventory_policy | json }},"inventory_quantity": [{% for varian in bss_product_metafields.variants %}{{ varian.inventory_quantity }}{% unless forloop.last %},{% endunless %}{% endfor %}],"variants": [{% for variant in bss_product_metafields.variants %}{  "id":{{ variant.id | json }},"feature_media_id":{{ variant.featured_media.id | json }},"feature_image_id":{{ variant.featured_image.id | json }},"available":{{ variant.available | json }},"image":{{ variant.image | json }},"price":{{ variant.price | json }},"inventory_management":{{ variant.inventory_management | json }},"inventory_policy":{{ variant.inventory_policy | json }},"compare_at_price":{{ variant.compare_at_price | json }},"quantity":{{ variant.inventory_quantity | json }}}{% unless forloop.last %},{% endunless %}{% endfor %}],"collections": [{% for collection in bss_product_metafields.collections %}{{ collection.id }}{% unless forloop.last %},{% endunless %}{% endfor %}],"format_money": {{shop.money_format | json}}}</script>{% endif %}{% comment %} BSS Label end {% endcomment %}
 <style>
-
+.product-buy-buttons--cta:hover{
+  background: #3EA8AD !important;
+  color: #fff !important;
+}
+.product-buy-buttons--cta{
+  margin-top:-20px !important;
+}
   .product-media--root[data-media-type=image] .modal--link {
     border-radius: 20px;
   }
@@ -11,6 +17,7 @@ border-radius:50%;
 
 .product-price--original {
 font-size: 28px;
+font-weight: 700;
 }
 .product-page--root{
   --text-column-width: 35% !important;
@@ -278,6 +285,40 @@ font-size: 28px;
   
               {%- when 'rating' -%}
                 {%- render 'product-rating' -%}
+
+              {%- when 'top-review' -%}
+                <div class="top-review-block">
+                  <span class="top-review-label">TOP REVIEW</span>
+                  <p class="top-review-quote">{{ block.settings.quote }}</p>
+                </div>
+                <style>
+                  .top-review-block {
+                    border-left: 3px solid #5BBFC3;
+                    padding: 8px 14px;
+                    background: #F9F7F5;
+                    border-radius: 0 6px 6px 0;
+                    border-top: 1px solid #E8E4DF;
+                    border-right: 1px solid #E8E4DF;
+                    border-bottom: 1px solid #E8E4DF;
+                    margin-top: -10px;
+                  }
+                  .top-review-label {
+                    display: block;
+                    font-size: 11px;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                    color: #6B6560;
+                    text-transform: uppercase;
+                    margin-bottom: 1px;
+                  }
+                  .top-review-quote {
+                    font-size: 13px;
+                    color: #1c1c1c;
+                    line-height: 1.6;
+                    margin: 0;
+                    font-style: italic;
+                  }
+                </style>
   
               {%- when 'complementary-products' -%}
                 {%-
@@ -298,8 +339,14 @@ font-size: 28px;
                   </div>
                 
                   <style>
+
+                    @media screen and (max-width: 768px) {
+                      .tag-block-custom {
+                  margin: 0 auto;
+                      }
+                    }
                     .tag-block-custom {
-                      margin-top: -30px;
+                      margin-top: -25px !important;
                       display: flex;
     justify-content: space-between;
     gap: 1rem;
@@ -333,12 +380,12 @@ text-transform: uppercase;
                   </style>
                 {%when 'promo-text-block'%}
                   <div class="promo-text-wrapper">
-    <h2 class="promo-heading">
+    <p class="promo-heading">
       {{ block.settings.heading_highlight }}
       <span class="promo-heading-normal">
         {{ block.settings.heading_normal }}
       </span>
-    </h2>
+    </p>
     {% comment %} <p class="promo-description">
       {{ block.settings.description }}
     </p> {% endcomment %}
@@ -1224,10 +1271,22 @@ text-transform: uppercase;
       "default": "50% thinner base than standard clip-ins"
     }
   ]
+  },{
+  "type": "top-review",
+  "name": "Top Review",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Review quote",
+      "default": "\"I've had fine hair my whole life and been told extensions just don't work for me. These proved every stylist wrong. Nobody can tell.\" — Melissa R., verified buyer"
+    }
+  ]
 },{
         "type": "@app"
       }
       
-    ]
+  ]
   }
   {% endschema %}
