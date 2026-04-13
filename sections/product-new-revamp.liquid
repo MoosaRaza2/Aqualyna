@@ -230,7 +230,8 @@ font-weight: 700;
                   render "product-options",
                   id: product_id,
                   product: product,
-                  block_settings: block.settings
+                  block_settings: block.settings,
+                  template_suffix: template.suffix
                 -%}
   
               {%- when 'quantity-selector' -%}

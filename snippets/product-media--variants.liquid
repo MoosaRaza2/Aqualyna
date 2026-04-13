@@ -105,6 +105,9 @@
               render 'icons', icon: 'play-badge'
             endif
           -%}
+          {%- if media.preview_image.alt != blank -%}
+            <span class="product-media--thumb-alt">{{ media.preview_image.alt }}</span>
+          {%- endif -%}
         </div>
       {%- endcapture -%}
     {%- endif -%}
