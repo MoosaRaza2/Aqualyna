@@ -56,7 +56,7 @@
         </div>
 
         <div class="shade-picker__filters" role="group" aria-label="Filter by shade family">
-          {% assign shade_filters = 'All,Black,Brown,Blonde,Balayage,Rooted,Two-Tone' | split: ',' %}
+          {% assign shade_filters = 'All,Black,Brown,Blonde,Balayage,Rooted,Red' | split: ',' %}
           {% for filter in shade_filters %}
             <button
               class="shade-filter-btn{% if filter == 'All' %} active{% endif %}"
