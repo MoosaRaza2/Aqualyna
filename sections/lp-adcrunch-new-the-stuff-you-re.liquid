@@ -1,0 +1,119 @@
+{{ 'lp-adcrunch-new-the-stuff-you-re.css' | asset_url | stylesheet_tag }}
+
+<section class="lp-faq" id="lp-faq-{{ section.id }}">
+  <div class="lp-faq__container">
+    <div class="lp-faq__header">
+      {% if section.settings.label != blank %}
+        <span class="lp-faq__label">{{ section.settings.label }}</span>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2 class="lp-faq__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+    </div>
+
+    <div class="lp-faq__list">
+      {% for block in section.blocks %}
+        <details class="lp-faq__item" {{ block.shopify_attributes }} name="faq-group">
+          <summary class="lp-faq__summary">
+            <span class="lp-faq__question">{{ block.settings.question }}</span>
+            <div class="lp-faq__icon-wrapper">
+              <span class="lp-faq__icon">+</span>
+            </div>
+          </summary>
+          <div class="lp-faq__answer">
+            {{ block.settings.answer }}
+          </div>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section Label",
+      "default": "Questions"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The stuff you're actually wondering about."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "I have very fine hair. Will these actually stay in, or will they slip?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Our clips are designed with a unique non-slip silicone grip that ensures they stay put even in the finest hair types.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "I have very fine hair. Will these actually stay in, or will they slip?",
+            "answer": "<p>Our unique silicone-lined clips are engineered specifically for fine hair, providing a secure grip without pulling or sliding throughout the day.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long do these actually last with regular use?",
+            "answer": "<p>With proper care, our high-quality extensions are designed to last 6-12 months of regular wear.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "I'm worried about making my thinning worse. Am I risking that?",
+            "answer": "<p>Not at all. Our lightweight design distributes weight evenly to prevent tension on your natural hair follicles.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I know which shade to order?",
+            "answer": "<p>We offer a free color matching service! Just send us a photo of your hair in natural light and our experts will help you find the perfect match.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I curl, straighten, and style these like my real hair?",
+            "answer": "<p>Yes! Our extensions are made from 100% Remy human hair, meaning you can heat-style them just like your own hair.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What's the return policy?",
+            "answer": "<p>We offer a 30-day hassle-free return policy as long as the security seal remains intact.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

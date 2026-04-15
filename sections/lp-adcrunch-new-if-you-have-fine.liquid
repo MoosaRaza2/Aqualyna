@@ -1,0 +1,136 @@
+{{ 'lp-adcrunch-new-if-you-have-fine.css' | asset_url | stylesheet_tag }}
+
+<section class="lp-problem-agitation" id="lp-section-{{ section.id }}">
+  <div class="lp-container">
+    <div class="lp-header">
+      {% if section.settings.eyebrow != blank %}
+        <p class="lp-eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2 class="lp-heading">{{ section.settings.heading | newline_to_br }}</h2>
+      {% endif %}
+      {% if section.settings.subtext != blank %}
+        <div class="lp-subtext">{{ section.settings.subtext | newline_to_br }}</div>
+      {% endif %}
+    </div>
+
+    <div class="lp-grid">
+      {% for block in section.blocks %}
+        <div class="lp-card" {{ block.shopify_attributes }}>
+          <div class="lp-card-top-border"></div>
+          <div class="lp-card-content">
+            <div class="lp-card-emoji">{{ block.settings.emoji }}</div>
+            <h3 class="lp-card-title">{{ block.settings.title }}</h3>
+            <div class="lp-card-body">{{ block.settings.body | newline_to_br }}</div>
+            {% if block.settings.quote != blank %}
+              <div class="lp-card-quote">
+                <p>{{ block.settings.quote | newline_to_br }}</p>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Problem Agitation",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "If you have fine or thinning hair, you already know"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You've tried everything.\nEverything stopped working by noon."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Root spray. Volumizing mousse. Dry shampoo. Thickening serum. You've spent hundreds of dollars on the hope that this one will be different. It lifts for 45 minutes. Then gravity wins. Again."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Agitation Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "emoji",
+          "label": "Emoji",
+          "default": "🧴"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Card Title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body Text",
+          "default": "Body text goes here."
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "\"Testimonial quote goes here.\""
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Problem Agitation",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "emoji": "🧴",
+            "title": "The product graveyard under your sink",
+            "body": "Every purchase came with hope. Root spray. Thickening shampoo. Biotin supplements. Minoxidil. None of them made a visible difference that lasted the day. You kept buying because you kept hoping. Your hope per product has dropped — but you haven't stopped looking.",
+            "quote": "\"I've tried root sprays, volumizing mousse, dry shampoo, thickening serums. All of them. Most provide about 45 minutes of lift before gravity wins.\""
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "emoji": "📸",
+            "title": "The photo calculation. Every time.",
+            "body": "You angle your head. You avoid overhead lights. You don't tag yourself in group shots where your part is visible from above. You have a mental blacklist of hairstyles you don't wear — ponytails show how thin it is from behind, updos expose the crown, parted down the middle shows the widening part line.",
+            "quote": "\"I find myself second-guessing my appearance before heading out, wondering if my hair looks too thin or if people will notice.\""
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "emoji": "🕐",
+            "title": "The mental overhead nobody talks about",
+            "body": "Every morning, every photo, every windy day, every overhead light — you're doing a calculation. Is it showing? Does it look okay? Should I fix it? That is exhausting. And invisible. Nobody around you knows you're doing it.",
+            "quote": "\"I always have to think about it. I can't just put my hair up and go.\""
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "emoji": "💔",
+            "title": "The identity shift that snuck up on you",
+            "body": "You didn't choose this. Your hair changed — through perimenopause, stress, medication, or just time — and you lost something you didn't know you were attached to until it was gone. It's not about vanity. It's about looking how you're supposed to look, feeling like the version of yourself you recognize.",
+            "quote": "\"It makes me feel less feminine. Less myself. It makes me feel older than I am.\""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

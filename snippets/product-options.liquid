@@ -43,22 +43,112 @@
 
   {% if current_collection_handle %}
     <!-- Color Variant Picker -->
-    <div class="color-variants">
-      {% assign current_collection = collections[current_collection_handle] %}
-      {% for swatch_product in current_collection.products %}
-        {% assign is_active = false %}
-        {% if swatch_product.handle == product.handle %}
-          {% assign is_active = true %}
-        {% endif %}
-        <a href="{{ swatch_product.url }}" title="{{ swatch_product.title }}">
-          <div
-            class="color-swatch{% if is_active %} active{% endif %}"
-            style="background-image: url({{ swatch_product.featured_image | img_url: '100x100' }});"
-            data-product-title="{{ swatch_product.title }}"
-          ></div>
-        </a>
-      {% endfor %}
-    </div>
+    {% assign is_adcrunch = false %}
+    {% if template_suffix == 'adcrunch-new' %}
+      {% assign is_adcrunch = true %}
+    {% endif %}
+
+    {% if is_adcrunch %}
+      <div class="shade-picker">
+        <div class="shade-picker__header">
+          <span class="shade-picker__label">SELECT YOUR SHADE</span>
+          <a style="font-size:12px;color:#3EA8AD; font-weight:600;" href="/pages/consultation" class="shade-picker__color-match">Not sure? Free color match →</a>
+        </div>
+
+        <div class="shade-picker__filters" role="group" aria-label="Filter by shade family">
+          {% assign shade_filters = 'All,Black,Brown,Blonde,Balayage,Rooted,Red' | split: ',' %}
+          {% for filter in shade_filters %}
+            <button
+              class="shade-filter-btn{% if filter == 'All' %} active{% endif %}"
+              data-filter="{{ filter | downcase | replace: '-', '' | replace: ' ', '' }}"
+              type="button"
+            >{{ filter }}</button>
+          {% endfor %}
+        </div>
+
+        {% assign current_collection = collections[current_collection_handle] %}
+        <div class="shade-picker__swatches" id="shade-swatches-{{ product.id }}">
+          {% for swatch_product in current_collection.products %}
+            {% assign is_active = false %}
+            {% if swatch_product.handle == product.handle %}
+              {% assign is_active = true %}
+            {% endif %}
+            {%- assign shade_value = swatch_product.metafields.custom.shades | downcase | strip -%}
+            <a
+              href="{{ swatch_product.url }}"
+              title="{{ swatch_product.title }}"
+              class="shade-swatch-link{% if is_active %} active{% endif %}"
+              data-product-title="{{ swatch_product.title }}"
+              data-shade="{{ shade_value }}"
+            >
+              <div
+                class="shade-swatch{% if is_active %} active{% endif %}"
+                style="background-image: url({{ swatch_product.featured_image | img_url: '100x100' }});"
+              ></div>
+            </a>
+          {% endfor %}
+        </div>
+
+        <div class="shade-picker__selected">
+          {% assign selected_product = current_collection.products | where: 'handle', product.handle | first %}
+          {% if selected_product %}
+            <span>Selected: <strong>{{ selected_product.title }}</strong></span>
+          {% else %}
+            <span>Selected: <strong>{{ product.title }}</strong></span>
+          {% endif %}
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          var swatchesEl = document.getElementById('shade-swatches-{{ product.id }}');
+          if (!swatchesEl) return;
+          var picker     = swatchesEl.closest('.shade-picker');
+          if (!picker) return;
+
+          var filterBtns = picker.querySelectorAll('.shade-filter-btn');
+          var swatches   = picker.querySelectorAll('.shade-swatch-link');
+
+          filterBtns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              var filter = btn.getAttribute('data-filter');
+
+              filterBtns.forEach(function (b) { b.classList.remove('active'); });
+              btn.classList.add('active');
+
+              swatches.forEach(function (swatch) {
+                if (filter === 'all') {
+                  swatch.style.display = '';
+                } else {
+                  var shadeRaw = (swatch.getAttribute('data-shade') || '').toLowerCase();
+                  var shades   = shadeRaw.split(',').map(function (s) {
+                    return s.trim().replace(/[^a-z0-9]/g, '');
+                  });
+                  swatch.style.display = shades.indexOf(filter) === -1 ? 'none' : '';
+                }
+              });
+            });
+          });
+        })();
+      </script>
+    {% else %}
+      <div class="color-variants">
+        {% assign current_collection = collections[current_collection_handle] %}
+        {% for swatch_product in current_collection.products %}
+          {% assign is_active = false %}
+          {% if swatch_product.handle == product.handle %}
+            {% assign is_active = true %}
+          {% endif %}
+          <a href="{{ swatch_product.url }}" title="{{ swatch_product.title }}">
+            <div
+              class="color-swatch{% if is_active %} active{% endif %}"
+              style="background-image: url({{ swatch_product.featured_image | img_url: '100x100' }});"
+              data-product-title="{{ swatch_product.title }}"
+            ></div>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
   {% endif %}
   {%- unless product.has_only_default_variant -%}
     <div class="product-options--container">

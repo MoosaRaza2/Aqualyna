@@ -1,0 +1,82 @@
+{{ 'lp-adcrunch-new-color-match.css' | asset_url | stylesheet_tag }}
+
+<footer class="lp-color-match" id="lp-section-{{ section.id }}">
+  <div class="lp-color-match__container">
+    <div class="lp-color-match__brand">
+      <a href="/" class="lp-color-match__logo">
+        {{ section.settings.logo_text }}
+      </a>
+    </div>
+
+    <nav class="lp-color-match__nav">
+      <ul class="lp-color-match__linklist">
+        {% for block in section.blocks %}
+          <li class="lp-color-match__item" {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.link_url | default: '#' }}" class="lp-color-match__link">
+              {{ block.settings.link_text }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="lp-color-match__copyright">
+      {{ section.settings.copyright_text }}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Color Match Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "AquaLyna"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "© 2026 AquaLyna"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Footer Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Color Match Footer",
+      "settings": {
+        "logo_text": "AquaLyna",
+        "copyright_text": "© 2026 AquaLyna"
+      },
+      "blocks": [
+        { "type": "link", "settings": { "link_text": "Returns" } },
+        { "type": "link", "settings": { "link_text": "Shipping" } },
+        { "type": "link", "settings": { "link_text": "FAQ" } },
+        { "type": "link", "settings": { "link_text": "Color Match" } },
+        { "type": "link", "settings": { "link_text": "Privacy" } },
+        { "type": "link", "settings": { "link_text": "Contact" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

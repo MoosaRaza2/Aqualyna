@@ -1,0 +1,931 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "lp-adcrunch-new-clip-in-extensions": {
+      "type": "lp-adcrunch-new-clip-in-extensions",
+      "settings": {
+        "home_text": "Home",
+        "separator": "/"
+      }
+    },
+    "product-new-revamp": {
+      "type": "product-new-revamp",
+      "blocks": {
+        "tag_block_riPaCF": {
+          "type": "tag-block",
+          "settings": {
+            "title_1": "✦ Designed for fine & thin hair"
+          }
+        },
+        "heading_EwwqQF": {
+          "type": "heading",
+          "settings": {}
+        },
+        "rating_jeRWbw": {
+          "type": "rating",
+          "settings": {}
+        },
+        "top_review_block": {
+          "type": "top-review",
+          "settings": {
+            "quote": "\"I've had fine hair my whole life and been told extensions just don't work for me. These proved every stylist wrong. Nobody can tell.\" — Melissa R., verified buyer"
+          }
+        },
+        "price_3hT8NW": {
+          "type": "price",
+          "settings": {}
+        },
+        "promo_text_block_QRiPr9": {
+          "type": "promo-text-block",
+          "settings": {
+            "heading_highlight": "You've spent too much on things that didn't work...",
+            "heading_normal": "Rootsprays. Thickening shampoos. Volumizing mousse that collapsesby 10am. This is the first thing actually designed for your hair.",
+            "description": "Volumizing mousse that collapses by 10am. This is the first thing actually designed for your hair.",
+            "bg_color": "#f5ede4"
+          }
+        },
+        "options_GkMgzL": {
+          "type": "options",
+          "settings": {
+            "variant-style": "buttons",
+            "swatches-enabled": true,
+            "size-chart-enabled": false,
+            "size-chart-option": "size",
+            "size-chart-content": ""
+          }
+        },
+        "buy_buttons_gbyLxw": {
+          "type": "buy-buttons",
+          "settings": {
+            "smart-payment-enabled": true
+          }
+        },
+        "custom_cta_4nKezd": {
+          "type": "custom-cta",
+          "settings": {
+            "custom-cta-text": "🎨 Free Color Match — Not sure which shade?",
+            "custom-cta-link": "#",
+            "align": "center",
+            "bg_color": "#000000",
+            "text_color": "#3ea8ad"
+          }
+        },
+        "trust_block_K7VyyC": {
+          "type": "trust-block",
+          "settings": {
+            "pill_count": 4,
+            "align": "flex-start",
+            "icon_1": "🚚",
+            "heading": "Ultra-narrow weft — designed for fine hair",
+            "description": "50% thinner base than standard clip-ins. Lies flat. Disappears. Not designed for thick hair and adapted — built for you from the start.",
+            "text_1": "Free shipping",
+            "link_1": "",
+            "icon_2": "↩️",
+            "text_2": "30-day returns",
+            "link_2": "",
+            "icon_3": "🔒",
+            "text_3": "Secure checkout",
+            "link_3": "",
+            "icon_4": "✂️",
+            "text_4": "No damage",
+            "link_4": "",
+            "icon_5": "💎",
+            "text_5": "Premium",
+            "link_5": "",
+            "icon_6": "🚚",
+            "text_6": "Free Shipping",
+            "link_6": "",
+            "bg_color": "#f9f7f5",
+            "text_color": "#1c1c1c"
+          }
+        },
+        "featured_item_WYcqD4": {
+          "type": "featured-item",
+          "settings": {
+            "icon": "✓",
+            "heading": "Ultra-narrow weft — designed for fine hair",
+            "description": "50% thinner base than standard clip-ins. Lies flat. Disappears. Not\ndesigned for thick hair and adapted — built for you from the start."
+          }
+        },
+        "featured_item_JfUieX": {
+          "type": "featured-item",
+          "settings": {
+            "icon": "✓",
+            "heading": "Zero damage — clips out every night",
+            "description": "No adhesive, no heat, no sustained tension. Your hair rests while you\nsleep. No salon removal needed."
+          }
+        },
+        "featured_item_FHVUtg": {
+          "type": "featured-item",
+          "settings": {
+            "icon": "✓",
+            "heading": "Invisible — even in fine hair",
+            "description": "Narrow weft + 100% Remy human hair = no seam to find. People see\nyour hair. Not your secret."
+          }
+        },
+        "featured_item_E9TfJR": {
+          "type": "featured-item",
+          "settings": {
+            "icon": "✓",
+            "heading": "In seconds — no tutorial required after day one",
+            "description": "Section. Clip. Release the top layer. Done. Compatible with any\nmorning routine."
+          }
+        }
+      },
+      "block_order": [
+        "tag_block_riPaCF",
+        "heading_EwwqQF",
+        "rating_jeRWbw",
+        "top_review_block",
+        "price_3hT8NW",
+        "promo_text_block_QRiPr9",
+        "options_GkMgzL",
+        "buy_buttons_gbyLxw",
+        "custom_cta_4nKezd",
+        "trust_block_K7VyyC",
+        "featured_item_WYcqD4",
+        "featured_item_JfUieX",
+        "featured_item_FHVUtg",
+        "featured_item_E9TfJR"
+      ],
+      "settings": {
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "media-layout": "thumbnails",
+        "text-column-width": 30,
+        "media-gap": 8,
+        "column-spacing": "close",
+        "text-alignment": "left",
+        "thumbnail-width": 80,
+        "heading-enabled": false,
+        "heading-sizes-enabled": true,
+        "heading-size": 40,
+        "breadcrumbs-enabled": false,
+        "modal-enabled": true,
+        "variant-scroll-enabled": true,
+        "image-zoom-enabled": true,
+        "loop-enabled": false,
+        "mobile-media-layout": "slideshow"
+      }
+    },
+    "lp-adcrunch-new-verified-reviews": {
+      "type": "lp-adcrunch-new-verified-reviews",
+      "blocks": {
+        "block_lp-adcrunch-new-verified-reviews_0": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "★★★★★",
+            "text": "142 verified reviews"
+          }
+        },
+        "block_lp-adcrunch-new-verified-reviews_1": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "✓",
+            "text": "100% Remy Human Hair"
+          }
+        },
+        "block_lp-adcrunch-new-verified-reviews_2": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "⚡",
+            "text": "Ships next business day"
+          }
+        },
+        "block_lp-adcrunch-new-verified-reviews_3": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "🔄",
+            "text": "30-day hassle-free returns"
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-adcrunch-new-verified-reviews_0",
+        "block_lp-adcrunch-new-verified-reviews_1",
+        "block_lp-adcrunch-new-verified-reviews_2",
+        "block_lp-adcrunch-new-verified-reviews_3"
+      ],
+      "settings": {
+        "bg_color": "#5bbfc3",
+        "text_color": "#ffffff"
+      }
+    },
+    "lp-adcrunch-new-real-women-fine-hair": {
+      "type": "lp-adcrunch-new-real-women-fine-hair",
+      "blocks": {
+        "video_card_Uqnj4k": {
+          "type": "video_card",
+          "settings": {
+            "video_url": "",
+            "image": "shopify://shop_images/Fine_hair_transformation.png",
+            "label_text": "Fine Hair",
+            "label_bg": "#5bbfc3",
+            "quote": "\"I've had fine hair my whole life. These are different.\"",
+            "views": "1.2M views"
+          }
+        },
+        "video_card_Kccpn9": {
+          "type": "video_card",
+          "settings": {
+            "video_url": "",
+            "image": "shopify://shop_images/UGC_review_5dfa8477-ea9b-42aa-880a-c825cdad650b.png",
+            "label_text": "THINNING HAIR",
+            "label_bg": "#5bbfc3",
+            "quote": "\"Nobody can tell. Not even\nmy husband.\"",
+            "views": "847K views"
+          }
+        },
+        "video_card_bwd38c": {
+          "type": "video_card",
+          "settings": {
+            "video_url": "",
+            "image": "shopify://shop_images/Lifestyle_shot.png",
+            "label_text": "INSTALL",
+            "label_bg": "#5bbfc3",
+            "quote": "POV: fine hair → full hair in\n4 minutes",
+            "views": "623K views"
+          }
+        },
+        "video_card_rzPYqb": {
+          "type": "video_card",
+          "settings": {
+            "video_url": "",
+            "image": "shopify://shop_images/Before_and_after_47527db4-1f01-4853-859b-97e98d8ca985.png",
+            "label_text": "Before/After",
+            "label_bg": "#5bbfc3",
+            "quote": "\"My part was so wide.\nWatch what happened.\"",
+            "views": "512K views"
+          }
+        },
+        "video_card_DXEm4L": {
+          "type": "video_card",
+          "settings": {
+            "video_url": "",
+            "image": "shopify://shop_images/Styled_look.png",
+            "label_text": "Post-Menopause",
+            "label_bg": "#5bbfc3",
+            "quote": "\"My hair changed in my\n50s. This gave it back.\"",
+            "views": "389K views"
+          }
+        },
+        "video_card_CCiz9G": {
+          "type": "video_card",
+          "settings": {
+            "video_url": "",
+            "image": "shopify://shop_images/Testimonial.png",
+            "label_text": "Verified Buyer",
+            "label_bg": "#5bbfc3",
+            "quote": "\"I spent $300 on\nvolumizers. This is the only\nthing that works.\"",
+            "views": "271K views"
+          }
+        },
+        "video_card_Ddi7ef": {
+          "type": "video_card",
+          "settings": {
+            "video_url": "",
+            "image": "shopify://shop_images/Lifestyle.png",
+            "label_text": "Color Match",
+            "label_bg": "#5bbfc3",
+            "quote": "\"The color match was spot\non. Zero guessing.\"",
+            "views": "198K views"
+          }
+        },
+        "testimonial_ticker_MFrRJt": {
+          "type": "testimonial_ticker",
+          "settings": {
+            "quote": "\"Nobody knew I was wearing them\"",
+            "author": "Melissa R."
+          }
+        },
+        "testimonial_ticker_diUrrx": {
+          "type": "testimonial_ticker",
+          "settings": {
+            "quote": "\"The only thing that actually worked\"",
+            "author": "Jennifer A."
+          }
+        },
+        "testimonial_ticker_4TytmW": {
+          "type": "testimonial_ticker",
+          "settings": {
+            "quote": "\"My hair looked like this in my 30s\"",
+            "author": "Carol M."
+          }
+        },
+        "testimonial_ticker_qRahmq": {
+          "type": "testimonial_ticker",
+          "settings": {
+            "quote": "\"4 minutes. That's it.\"",
+            "author": "Patricia L."
+          }
+        },
+        "testimonial_ticker_hayaaf": {
+          "type": "testimonial_ticker",
+          "settings": {
+            "quote": "\"People keep asking what I'm doing\"",
+            "author": "Diane K."
+          }
+        },
+        "testimonial_ticker_rt9VQd": {
+          "type": "testimonial_ticker",
+          "settings": {
+            "quote": "\"Nobody knew I was wearing them\"",
+            "author": "Melissa R."
+          }
+        }
+      },
+      "block_order": [
+        "video_card_Uqnj4k",
+        "video_card_Kccpn9",
+        "video_card_bwd38c",
+        "video_card_rzPYqb",
+        "video_card_DXEm4L",
+        "video_card_CCiz9G",
+        "video_card_Ddi7ef",
+        "testimonial_ticker_MFrRJt",
+        "testimonial_ticker_diUrrx",
+        "testimonial_ticker_4TytmW",
+        "testimonial_ticker_qRahmq",
+        "testimonial_ticker_hayaaf",
+        "testimonial_ticker_rt9VQd"
+      ],
+      "settings": {
+        "eyebrow": "Real women. Fine hair. Real results.",
+        "heading": "People keep asking them their secret.\nThis is it."
+      }
+    },
+    "lp-adcrunch-new-what-women-with-fine": {
+      "type": "lp-adcrunch-new-what-women-with-fine",
+      "blocks": {
+        "block_lp-adcrunch-new-what-women-with-fine_0": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"I've been told by three different stylists that extensions aren't for fine hair. These proved every single one of them wrong. Nobody in my office has any idea.\"",
+            "author": "Melissa R."
+          }
+        },
+        "block_lp-adcrunch-new-what-women-with-fine_1": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"People keep asking me what I'm doing to my hair. I just smile. I'm 52 and my hair hasn't looked this good since my 30s.\"",
+            "author": "Diane K."
+          }
+        },
+        "block_lp-adcrunch-new-what-women-with-fine_2": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"I was terrified the clips would show through my thin hair. I have literally gone through my hair with a fine-tooth comb trying to find them. Can't see a thing.\"",
+            "author": "Sarah T."
+          }
+        },
+        "block_lp-adcrunch-new-what-women-with-fine_3": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"My hair thinned after menopause and I was devastated. I was scared these would damage what I had left. They don't. I've worn them for 6 months and my natural hair is fine.\"",
+            "author": "Carol M."
+          }
+        },
+        "block_lp-adcrunch-new-what-women-with-fine_4": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"I spent probably $300 last year on volumizing products. Every single one of them stopped working by noon. These don't. They just... stay.\"",
+            "author": "Jennifer A."
+          }
+        },
+        "block_lp-adcrunch-new-what-women-with-fine_5": {
+          "type": "testimonial",
+          "settings": {
+            "text": "\"Takes me four minutes. I've timed it. Four minutes and I look like I have real hair. I cannot explain to you how much of my brain space this has freed up.\"",
+            "author": "Patricia L."
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-adcrunch-new-what-women-with-fine_0",
+        "block_lp-adcrunch-new-what-women-with-fine_1",
+        "block_lp-adcrunch-new-what-women-with-fine_2",
+        "block_lp-adcrunch-new-what-women-with-fine_3",
+        "block_lp-adcrunch-new-what-women-with-fine_4",
+        "block_lp-adcrunch-new-what-women-with-fine_5"
+      ],
+      "settings": {
+        "title": "What women with fine hair are actually saying"
+      }
+    },
+    "lp-adcrunch-new-if-you-have-fine": {
+      "type": "lp-adcrunch-new-if-you-have-fine",
+      "blocks": {
+        "block_lp-adcrunch-new-if-you-have-fine_0": {
+          "type": "card",
+          "settings": {
+            "emoji": "🧴",
+            "title": "The product graveyard under your sink",
+            "body": "Every purchase came with hope. Root spray. Thickening shampoo. Biotin supplements. Minoxidil. None of them made a visible difference that lasted the day. You kept buying because you kept hoping. Your hope per product has dropped — but you haven't stopped looking.",
+            "quote": "\"I've tried root sprays, volumizing mousse, dry shampoo, thickening serums. All of them. Most provide about 45 minutes of lift before gravity wins.\""
+          }
+        },
+        "block_lp-adcrunch-new-if-you-have-fine_1": {
+          "type": "card",
+          "settings": {
+            "emoji": "📸",
+            "title": "The photo calculation. Every time.",
+            "body": "You angle your head. You avoid overhead lights. You don't tag yourself in group shots where your part is visible from above. You have a mental blacklist of hairstyles you don't wear — ponytails show how thin it is from behind, updos expose the crown, parted down the middle shows the widening part line.",
+            "quote": "\"I find myself second-guessing my appearance before heading out, wondering if my hair looks too thin or if people will notice.\""
+          }
+        },
+        "block_lp-adcrunch-new-if-you-have-fine_2": {
+          "type": "card",
+          "settings": {
+            "emoji": "🕐",
+            "title": "The mental overhead nobody talks about",
+            "body": "Every morning, every photo, every windy day, every overhead light — you're doing a calculation. Is it showing? Does it look okay? Should I fix it? That is exhausting. And invisible. Nobody around you knows you're doing it.",
+            "quote": "\"I always have to think about it. I can't just put my hair up and go.\""
+          }
+        },
+        "block_lp-adcrunch-new-if-you-have-fine_3": {
+          "type": "card",
+          "settings": {
+            "emoji": "💔",
+            "title": "The identity shift that snuck up on you",
+            "body": "You didn't choose this. Your hair changed — through perimenopause, stress, medication, or just time — and you lost something you didn't know you were attached to until it was gone. It's not about vanity. It's about looking how you're supposed to look, feeling like the version of yourself you recognize.",
+            "quote": "\"It makes me feel less feminine. Less myself. It makes me feel older than I am.\""
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-adcrunch-new-if-you-have-fine_0",
+        "block_lp-adcrunch-new-if-you-have-fine_1",
+        "block_lp-adcrunch-new-if-you-have-fine_2",
+        "block_lp-adcrunch-new-if-you-have-fine_3"
+      ],
+      "settings": {
+        "eyebrow": "If you have fine or thinning hair, you already know",
+        "heading": "You've tried everything.\nEverything stopped working by noon.",
+        "subtext": "Root spray. Volumizing mousse. Dry shampoo. Thickening serum. You've spent hundreds of dollars on the hope that this one will be different. It lifts for 45 minutes. Then gravity wins. Again."
+      }
+    },
+    "lp-adcrunch-new-callout-banner": {
+      "type": "lp-adcrunch-new-callout-banner",
+      "settings": {
+        "headline": "\"Extensions aren't for fine hair.\"\nThose extensions weren't designed for you.\nThese were.",
+        "subtext": "Your stylist wasn't lying. Heavy clip-in sets — 180g+ designed for thick hair — genuinely can damage fine hair. That's a real risk. But it's been applied too broadly, and it's kept you from the solution that actually works for your hair type.",
+        "bg_color": "#1c1c1c",
+        "headline_color": "#ffffff",
+        "subtext_color": "#a8c8ca"
+      }
+    },
+    "lp-adcrunch-new-the-real-difference": {
+      "type": "lp-adcrunch-new-the-real-difference",
+      "blocks": {
+        "block_lp-adcrunch-new-the-real-difference_0": {
+          "type": "standard_item",
+          "settings": {
+            "text": "Heavy sets (180g+) strain fine follicles — this is where the damage comes from"
+          }
+        },
+        "block_lp-adcrunch-new-the-real-difference_1": {
+          "type": "standard_item",
+          "settings": {
+            "text": "Wide, thick wefts show through sparse hair — not enough coverage to hide them"
+          }
+        },
+        "block_lp-adcrunch-new-the-real-difference_2": {
+          "type": "standard_item",
+          "settings": {
+            "text": "Traditional clips create tension points fine strands can't hold without slipping or pulling"
+          }
+        },
+        "block_lp-adcrunch-new-the-real-difference_3": {
+          "type": "standard_item",
+          "settings": {
+            "text": "Designed for thick hair, adapted for thin hair — the afterthought always shows"
+          }
+        },
+        "block_lp-adcrunch-new-the-real-difference_4": {
+          "type": "standard_item",
+          "settings": {
+            "text": "One bad experience, and you believe extensions \"don't work for your hair\""
+          }
+        },
+        "block_lp-adcrunch-new-the-real-difference_5": {
+          "type": "aqualyna_item",
+          "settings": {
+            "text": "Ultra-narrow weft lies flat against fine hair — the seam disappears because it was designed to"
+          }
+        },
+        "block_lp-adcrunch-new-the-real-difference_6": {
+          "type": "aqualyna_item",
+          "settings": {
+            "text": "Lightweight construction — no strain on fine follicles, no damage from tension"
+          }
+        },
+        "block_lp-adcrunch-new-the-real-difference_7": {
+          "type": "aqualyna_item",
+          "settings": {
+            "text": "100% Remy human hair matches texture and movement — looks like it grew from your head"
+          }
+        },
+        "block_lp-adcrunch-new-the-real-difference_8": {
+          "type": "aqualyna_item",
+          "settings": {
+            "text": "Clips out every night — your hair rests, zero cumulative damage"
+          }
+        },
+        "block_lp-adcrunch-new-the-real-difference_9": {
+          "type": "aqualyna_item",
+          "settings": {
+            "text": "Built for fine hair from the start — not an adaptation"
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-adcrunch-new-the-real-difference_0",
+        "block_lp-adcrunch-new-the-real-difference_1",
+        "block_lp-adcrunch-new-the-real-difference_2",
+        "block_lp-adcrunch-new-the-real-difference_3",
+        "block_lp-adcrunch-new-the-real-difference_4",
+        "block_lp-adcrunch-new-the-real-difference_5",
+        "block_lp-adcrunch-new-the-real-difference_6",
+        "block_lp-adcrunch-new-the-real-difference_7",
+        "block_lp-adcrunch-new-the-real-difference_8",
+        "block_lp-adcrunch-new-the-real-difference_9"
+      ],
+      "settings": {
+        "subtitle": "The real difference",
+        "heading": "Not a modification of thick-hair extensions.\nA different product entirely.",
+        "standard_label": "Standard clip-ins — designed for thick hair",
+        "aqualyna_label": "AquaLyna Ultra Narrow — designed for fine hair"
+      }
+    },
+    "lp-adcrunch-new-how-it-works": {
+      "type": "lp-adcrunch-new-how-it-works",
+      "blocks": {
+        "block_lp-adcrunch-new-how-it-works_0": {
+          "type": "step",
+          "settings": {
+            "title": "Section",
+            "text": "Part your hair horizontally at\nthe nape. Clip the top layer\nout of the way. The base\nsection is where the clips sit."
+          }
+        },
+        "block_lp-adcrunch-new-how-it-works_1": {
+          "type": "step",
+          "settings": {
+            "title": "Clip",
+            "text": "Press the ultra-narrow weft\nagainst your roots. Snap the\nclips closed. No pulling, no\nforce — they grip gently."
+          }
+        },
+        "block_lp-adcrunch-new-how-it-works_2": {
+          "type": "step",
+          "settings": {
+            "title": "Release",
+            "text": "Let down the top layer of\nyour natural hair over the\nweft. That's it. The clip is\nhidden. The volume is there."
+          }
+        },
+        "block_lp-adcrunch-new-how-it-works_3": {
+          "type": "step",
+          "settings": {
+            "title": "Go",
+            "text": "Walk out the door. Don't\nthink about it again until\nyou take them out tonight.\nYour hair doesn't need\nmanaging today."
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-adcrunch-new-how-it-works_0",
+        "block_lp-adcrunch-new-how-it-works_1",
+        "block_lp-adcrunch-new-how-it-works_2",
+        "block_lp-adcrunch-new-how-it-works_3"
+      ],
+      "settings": {
+        "sub_heading": "Installation",
+        "heading": "Four steps. Under five minutes.\nNo technique required after day one."
+      }
+    },
+    "lp-adcrunch-new-the-real-questions": {
+      "type": "lp-adcrunch-new-the-real-questions",
+      "blocks": {
+        "block_lp-adcrunch-new-the-real-questions_0": {
+          "type": "question_card",
+          "settings": {
+            "icon": "👁️",
+            "title": "\"The clips will show through my thin hair. I'll be mortified.\"",
+            "description": "This is the fear that has kept more fine-hair women from trying extensions than any other. It's specific, it's vivid, and it's understandable. You already self-manage the visibility of your thinning hair every day. The last thing you need is to draw more attention to it.",
+            "answer": "The ultra-narrow weft was designed specifically to solve this. A thinner base means less coverage needed from above — so even sparse hair can hide it completely. Every reviewer who was terrified of this has said the same thing: \"I've gone through my hair looking for it. Can't find it.\" That's the point."
+          }
+        },
+        "block_lp-adcrunch-new-the-real-questions_1": {
+          "type": "question_card",
+          "settings": {
+            "icon": "⚠️",
+            "title": "\"What if it damages what little hair I have left?\"",
+            "description": "You've read the horror stories. You know about traction alopecia. Heavy, permanent extensions on fine hair are a real risk — that information is accurate. A woman who is already losing hair is not going to risk making it worse for the sake of volume. That's not paranoia. That's math.",
+            "answer": "Here's specifically why AquaLyna is different: lightweight construction means no strain on fine follicles. The clip-out-nightly design means no cumulative tension — your hair rests every single night. No adhesive, no heat, no sustained attachment. Six months of wear without any thinning acceleration is what our verified buyers report, consistently."
+          }
+        },
+        "block_lp-adcrunch-new-the-real-questions_2": {
+          "type": "question_card",
+          "settings": {
+            "icon": "🎨",
+            "title": "\"I'll pick the wrong color online and look worse.\"",
+            "description": "You've bought the wrong shade of something before — foundation, hair dye — and you know exactly how bad wrong looks. The fear isn't just aesthetic. It's waste. You're already a burned buyer. Adding another failed purchase to the pile is the last thing you need.",
+            "answer": "AquaLyna's free color match service removes this entirely. A real person looks at your photos in natural light and tells you exactly which shade is yours before you spend a dollar. This isn't a perk. It's the reason you don't have to guess."
+          }
+        },
+        "block_lp-adcrunch-new-the-real-questions_3": {
+          "type": "question_card",
+          "settings": {
+            "icon": "🤔",
+            "title": "\"Needing extensions feels like admitting I have a hair problem.\"",
+            "description": "You don't identify as someone with a hair problem. You are a competent, capable, together woman. Having to \"fix\" your hair feels like a concession — like you couldn't figure it out on your own. That's a real friction point and most brands completely ignore it.",
+            "answer": "Reframe: you didn't fail. You found the thing that was designed for your hair type, after an entire market kept sending you products that weren't. That's a discovery, not a concession. The woman keeping the secret — smiling when someone asks what she's doing differently — is not the woman with the hair problem. She's the woman who solved it."
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-adcrunch-new-the-real-questions_0",
+        "block_lp-adcrunch-new-the-real-questions_1",
+        "block_lp-adcrunch-new-the-real-questions_2",
+        "block_lp-adcrunch-new-the-real-questions_3"
+      ],
+      "settings": {
+        "subheader": "The real questions",
+        "heading": "You've thought about this.\nHere's the honest answer to each one."
+      }
+    },
+    "lp-adcrunch-new-the-shift": {
+      "type": "lp-adcrunch-new-the-shift",
+      "blocks": {
+        "block_lp-adcrunch-new-the-shift_0": {
+          "type": "card",
+          "settings": {
+            "title": "Before",
+            "items": "Angling your head in every photo before you'll let anyone take it\nA mental blacklist of hairstyles that expose the problem\nDry shampoo, mousse, root spray — gone by 10am\n\"I feel less feminine. Less myself.\"\nManaging a problem, every single day\n\"I can't find anything that works.\" — still buying, still hoping"
+          }
+        },
+        "block_lp-adcrunch-new-the-shift_1": {
+          "type": "card",
+          "settings": {
+            "title": "After",
+            "items": "Actually posing for photos — from any angle\nPutting your hair up without calculating the risk\nVolume that's there at noon, 3pm, 6pm — all day\n\"People keep asking me what I'm doing differently.\"\nKeeping a secret other women want to know\n\"I don't even think about my hair anymore.\" — the highest outcome."
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-adcrunch-new-the-shift_0",
+        "block_lp-adcrunch-new-the-shift_1"
+      ],
+      "settings": {
+        "tagline": "The shift",
+        "heading": "The goal isn't hair.\nThe goal is to stop the negotiation.",
+        "description": "Not \"love my hair.\" Not \"feel like a model.\" Just get ready, look in the mirror, and feel good enough to move on to the rest of the day."
+      }
+    },
+    "lp-adcrunch-new-how-it-stacks-up": {
+      "type": "lp-adcrunch-new-how-it-stacks-up",
+      "blocks": {
+        "block_lp-adcrunch-new-how-it-stacks-up_0": {
+          "type": "row",
+          "settings": {
+            "feature_name": "Designed for fine hair",
+            "val_1": "✕",
+            "val_2": "✕",
+            "val_3": "✓",
+            "val_brand": "✓ Built for it"
+          }
+        },
+        "block_lp-adcrunch-new-how-it-stacks-up_1": {
+          "type": "row",
+          "settings": {
+            "feature_name": "Lasts all day",
+            "val_1": "✕ 45 min",
+            "val_2": "✓",
+            "val_3": "✓",
+            "val_brand": "✓ All day"
+          }
+        },
+        "block_lp-adcrunch-new-how-it-stacks-up_2": {
+          "type": "row",
+          "settings": {
+            "feature_name": "Zero damage risk",
+            "val_1": "✓",
+            "val_2": "✕ if too heavy",
+            "val_3": "✕ removal risk",
+            "val_brand": "✓ Clips out nightly"
+          }
+        },
+        "block_lp-adcrunch-new-how-it-stacks-up_3": {
+          "type": "row",
+          "settings": {
+            "feature_name": "No appointment needed",
+            "val_1": "✓",
+            "val_2": "✓",
+            "val_3": "✕ Salon required",
+            "val_brand": "✓ DIY in minutes"
+          }
+        },
+        "block_lp-adcrunch-new-how-it-stacks-up_4": {
+          "type": "row",
+          "settings": {
+            "feature_name": "Clips invisible in fine hair",
+            "val_1": "N/A",
+            "val_2": "✕ Often shows",
+            "val_3": "✓",
+            "val_brand": "✓ Ultra-narrow weft"
+          }
+        },
+        "block_lp-adcrunch-new-how-it-stacks-up_5": {
+          "type": "row",
+          "settings": {
+            "feature_name": "Color match support",
+            "val_1": "✕",
+            "val_2": "✕",
+            "val_3": "✓ Stylist",
+            "val_brand": "✓ Free consultation"
+          }
+        },
+        "block_lp-adcrunch-new-how-it-stacks-up_6": {
+          "type": "row",
+          "settings": {
+            "feature_name": "Average cost / year",
+            "val_1": "$150–300",
+            "val_2": "$150–400",
+            "val_3": "$800–1,600",
+            "val_brand": "$249 — one time"
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-adcrunch-new-how-it-stacks-up_0",
+        "block_lp-adcrunch-new-how-it-stacks-up_1",
+        "block_lp-adcrunch-new-how-it-stacks-up_2",
+        "block_lp-adcrunch-new-how-it-stacks-up_3",
+        "block_lp-adcrunch-new-how-it-stacks-up_4",
+        "block_lp-adcrunch-new-how-it-stacks-up_5",
+        "block_lp-adcrunch-new-how-it-stacks-up_6"
+      ],
+      "settings": {
+        "overline": "How it stacks up",
+        "heading": "Why this is the only fine-hair solution\nthat actually holds up.",
+        "col_1_label": "Feature",
+        "col_2_label": "Volumizing\nproducts",
+        "col_3_label": "Standard clip-\nins",
+        "col_4_label": "Salon tape-\nins",
+        "col_brand_label": "AquaLyna Ultra\nNarrow"
+      }
+    },
+    "lp-adcrunch-new-the-stuff-you-re": {
+      "type": "lp-adcrunch-new-the-stuff-you-re",
+      "blocks": {
+        "block_lp-adcrunch-new-the-stuff-you-re_0": {
+          "type": "faq_item",
+          "settings": {
+            "question": "I have very fine hair. Will these actually stay in, or will they slip?",
+            "answer": "<p>Our unique silicone-lined clips are engineered specifically for fine hair, providing a secure grip without pulling or sliding throughout the day.</p>"
+          }
+        },
+        "block_lp-adcrunch-new-the-stuff-you-re_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long do these actually last with regular use?",
+            "answer": "<p>With proper care, our high-quality extensions are designed to last 6-12 months of regular wear.</p>"
+          }
+        },
+        "block_lp-adcrunch-new-the-stuff-you-re_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "I'm worried about making my thinning worse. Am I risking that?",
+            "answer": "<p>Not at all. Our lightweight design distributes weight evenly to prevent tension on your natural hair follicles.</p>"
+          }
+        },
+        "block_lp-adcrunch-new-the-stuff-you-re_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I know which shade to order?",
+            "answer": "<p>We offer a free color matching service! Just send us a photo of your hair in natural light and our experts will help you find the perfect match.</p>"
+          }
+        },
+        "block_lp-adcrunch-new-the-stuff-you-re_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I curl, straighten, and style these like my real hair?",
+            "answer": "<p>Yes! Our extensions are made from 100% Remy human hair, meaning you can heat-style them just like your own hair.</p>"
+          }
+        },
+        "block_lp-adcrunch-new-the-stuff-you-re_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What's the return policy?",
+            "answer": "<p>We offer a 30-day hassle-free return policy as long as the security seal remains intact.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-adcrunch-new-the-stuff-you-re_0",
+        "block_lp-adcrunch-new-the-stuff-you-re_1",
+        "block_lp-adcrunch-new-the-stuff-you-re_2",
+        "block_lp-adcrunch-new-the-stuff-you-re_3",
+        "block_lp-adcrunch-new-the-stuff-you-re_4",
+        "block_lp-adcrunch-new-the-stuff-you-re_5"
+      ],
+      "settings": {
+        "label": "Questions",
+        "heading": "The stuff you're actually wondering about."
+      }
+    },
+    "lp-adcrunch-new-stop-thinking-about-your": {
+      "type": "lp-adcrunch-new-stop-thinking-about-your",
+      "settings": {
+        "title": "Stop thinking about your hair.",
+        "title2": "Start keeping the secret.",
+        "text": "You've spent hundreds on things that stopped working by noon.\nThis is the first product designed for exactly your hair type. The\nclips disappear. The volume stays. People notice.",
+        "button_label": "Get Your Extensions — $249",
+        "button_link": "",
+        "footer_text": "Free color match · Free shipping · 30-day returns · Zero damage"
+      }
+    },
+    "lp-adcrunch-new-color-match": {
+      "type": "lp-adcrunch-new-color-match",
+      "blocks": {
+        "block_lp-adcrunch-new-color-match_0": {
+          "type": "link",
+          "settings": {
+            "link_text": "Returns",
+            "link_url": "shopify://pages/return-policy"
+          }
+        },
+        "block_lp-adcrunch-new-color-match_1": {
+          "type": "link",
+          "settings": {
+            "link_text": "Shipping",
+            "link_url": ""
+          }
+        },
+        "block_lp-adcrunch-new-color-match_2": {
+          "type": "link",
+          "settings": {
+            "link_text": "FAQ",
+            "link_url": "shopify://pages/faqs"
+          }
+        },
+        "block_lp-adcrunch-new-color-match_3": {
+          "type": "link",
+          "settings": {
+            "link_text": "Color Match",
+            "link_url": "shopify://pages/consultation"
+          }
+        },
+        "block_lp-adcrunch-new-color-match_4": {
+          "type": "link",
+          "settings": {
+            "link_text": "Privacy",
+            "link_url": "shopify://pages/privacy-policy"
+          }
+        },
+        "block_lp-adcrunch-new-color-match_5": {
+          "type": "link",
+          "settings": {
+            "link_text": "Contact",
+            "link_url": "shopify://pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-adcrunch-new-color-match_0",
+        "block_lp-adcrunch-new-color-match_1",
+        "block_lp-adcrunch-new-color-match_2",
+        "block_lp-adcrunch-new-color-match_3",
+        "block_lp-adcrunch-new-color-match_4",
+        "block_lp-adcrunch-new-color-match_5"
+      ],
+      "settings": {
+        "logo_text": "AquaLyna",
+        "copyright_text": "© 2026 AquaLyna"
+      }
+    }
+  },
+  "order": [
+    "lp-adcrunch-new-clip-in-extensions",
+    "product-new-revamp",
+    "lp-adcrunch-new-verified-reviews",
+    "lp-adcrunch-new-real-women-fine-hair",
+    "lp-adcrunch-new-what-women-with-fine",
+    "lp-adcrunch-new-if-you-have-fine",
+    "lp-adcrunch-new-callout-banner",
+    "lp-adcrunch-new-the-real-difference",
+    "lp-adcrunch-new-how-it-works",
+    "lp-adcrunch-new-the-real-questions",
+    "lp-adcrunch-new-the-shift",
+    "lp-adcrunch-new-how-it-stacks-up",
+    "lp-adcrunch-new-the-stuff-you-re",
+    "lp-adcrunch-new-stop-thinking-about-your",
+    "lp-adcrunch-new-color-match"
+  ]
+}

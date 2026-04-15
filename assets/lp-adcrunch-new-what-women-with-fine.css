@@ -1,0 +1,118 @@
+.lp-social-proof {
+  --bg-color: #F9F7F5;
+  --text-color: #1C1C1C;
+  --muted-text: #6B6560;
+  --rating-color: #F4B400;
+  --verified-color: #2E7D52;
+  --card-bg: #FFFFFF;
+  
+  background-color: var(--bg-color);
+  padding: 33px 0 32px;
+  overflow: hidden;
+}
+
+.lp-social-proof__container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.lp-social-proof__title {
+  color: var(--muted-text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  line-height: 1.6;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 auto 33px;
+  padding: 0 20px;
+  /* max-width: 400px; */
+}
+
+.lp-social-proof__scroll-wrapper {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0 20px 20px;
+  margin-left: 20px;
+}
+
+.lp-social-proof__scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.lp-social-proof__cards {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+}
+
+.lp-social-proof__card {
+  scroll-snap-align: start;
+  background: var(--card-bg);
+  border-radius: 12px;
+  width: 240px;
+  min-height: 258px;
+  padding: 19px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.lp-social-proof__rating {
+  color: var(--rating-color);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 9px;
+}
+
+.lp-social-proof__text {
+  color: var(--text-color);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0 0 auto 0;
+  font-style: italic;
+}
+
+.lp-social-proof__footer {
+  margin-top: 16px;
+}
+
+.lp-social-proof__author {
+  display: block;
+  color: var(--muted-text);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+  font-style: normal;
+}
+
+.lp-social-proof__verified {
+  color: var(--verified-color);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  margin-top: 2px;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1024px) {
+  .lp-social-proof {
+    padding: 33px;
+
+  }
+  
+  .lp-social-proof__scroll-wrapper {
+    padding: 0 24px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .lp-social-proof__cards {
+    width: auto;
+    max-width: 1520px;
+    margin-left: 150px;
+  }
+}

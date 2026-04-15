@@ -1,0 +1,72 @@
+{{ 'lp-adcrunch-new-clip-in-extensions.css' | asset_url | stylesheet_tag }}
+
+<section class="lp-breadcrumb" id="lp-breadcrumb-{{ section.id }}" data-section-id="{{ section.id }}">
+  <nav aria-label="Breadcrumb" class="lp-breadcrumb__nav">
+    <ol class="lp-breadcrumb__list">
+      <li class="lp-breadcrumb__item">
+        <a href="/" class="lp-breadcrumb__link">{{ section.settings.home_text }}</a>
+        <span class="lp-breadcrumb__separator" aria-hidden="true">{{ section.settings.separator }}</span>
+      </li>
+      
+      {%- if template contains 'product' -%}
+        {%- if collection.url -%}
+          <li class="lp-breadcrumb__item">
+            <a href="{{ collection.url }}" class="lp-breadcrumb__link">{{ collection.title }}</a>
+            <span class="lp-breadcrumb__separator" aria-hidden="true">{{ section.settings.separator }}</span>
+          </li>
+        {%- endif -%}
+        <li class="lp-breadcrumb__item">
+          <span class="lp-breadcrumb__text">{{ product.title }}</span>
+        </li>
+        
+      {%- elsif template contains 'collection' -%}
+        <li class="lp-breadcrumb__item">
+          <span class="lp-breadcrumb__text">{{ collection.title }}</span>
+        </li>
+        
+      {%- elsif template contains 'page' -%}
+        <li class="lp-breadcrumb__item">
+          <span class="lp-breadcrumb__text">{{ page.title }}</span>
+        </li>
+        
+      {%- elsif template contains 'blog' -%}
+        <li class="lp-breadcrumb__item">
+          <a href="{{ blog.url }}" class="lp-breadcrumb__link">{{ blog.title }}</a>
+          <span class="lp-breadcrumb__separator" aria-hidden="true">{{ section.settings.separator }}</span>
+        </li>
+        <li class="lp-breadcrumb__item">
+          <span class="lp-breadcrumb__text">{{ article.title | default: 'Blog' }}</span>
+        </li>
+      {%- endif -%}
+    </ol>
+  </nav>
+</section>
+
+{% schema %}
+{
+  "name": "Breadcrumb",
+  "settings": [
+    {
+      "type": "text",
+      "id": "home_text",
+      "label": "Home Text",
+      "default": "Home"
+    },
+    {
+      "type": "text",
+      "id": "separator",
+      "label": "Separator",
+      "default": "/"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Breadcrumb",
+      "settings": {
+        "home_text": "Home",
+        "separator": "/"
+      }
+    }
+  ]
+}
+{% endschema %}

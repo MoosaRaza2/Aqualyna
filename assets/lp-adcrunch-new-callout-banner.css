@@ -1,0 +1,67 @@
+.lp-callout-banner {
+  --lp-bg-color: #1C1C1C;
+  --lp-headline-color: #FFFFFF;
+  --lp-subtext-color: #A8C8CA;
+  background-color: var(--lp-bg-color);
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.lp-callout-banner__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.lp-callout-banner__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  /* max-width: 700px; */
+  margin: 0 auto;
+}
+
+.lp-callout-banner__headline {
+  color: var(--lp-headline-color);
+  /* font-family: inherit; */
+  font-size: clamp(22px, 5vw, 42px);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: 0;
+  width: 90%;
+}
+
+.lp-callout-banner__subtext {
+  color: var(--lp-subtext-color);
+  /* font-family: inherit; */
+  font-size: clamp(14px, 2vw, 16px);
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 490px;
+}
+
+@media (min-width: 768px) {
+  .lp-callout-banner {
+    padding: 80px 40px;
+  }
+  .lp-callout-banner__headline {
+    width: 100%;
+  }
+  .lp-callout-banner__content {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lp-callout-banner {
+    padding: 50px 0;
+  }
+}

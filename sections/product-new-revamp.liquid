@@ -1,0 +1,1293 @@
+
+{% comment %} BSS Label get data main product has metafields seo hidden {% endcomment %}{% assign bss_product_metafields = product %}{% if bss_product_metafields.metafields.seo.hidden %}<script id="main-label-product-metafields-info" type="application/ld+json"> {"id":{{ bss_product_metafields.id | json }},"title": {{ bss_product_metafields.title | json }},"vendor": {{ bss_product_metafields.vendor | json }},"tags": {{ bss_product_metafields.tags | json }},"handle":{{ bss_product_metafields.handle | json }},"available":{{ bss_product_metafields.available | json }},"inventory":{{ bss_product_metafields.first_available_variant.inventory_quantity | json }},"compare_at_price_max":{{ bss_product_metafields.compare_at_price_max | json }},"compare_at_price_min":{{ bss_product_metafields.compare_at_price_min | json }},"price":{{ bss_product_metafields.price | json }},"price_max":{{ bss_product_metafields.price_max | json }},"price_min":{{ bss_product_metafields.price_min | json }},"publish_at":"{{ bss_product_metafields.published_at }}","inventory_management":{{ bss_product_metafields.first_available_variant.inventory_management | json }},"inventory_policy":{{ bss_product_metafields.first_available_variant.inventory_policy | json }},"inventory_quantity": [{% for varian in bss_product_metafields.variants %}{{ varian.inventory_quantity }}{% unless forloop.last %},{% endunless %}{% endfor %}],"variants": [{% for variant in bss_product_metafields.variants %}{  "id":{{ variant.id | json }},"feature_media_id":{{ variant.featured_media.id | json }},"feature_image_id":{{ variant.featured_image.id | json }},"available":{{ variant.available | json }},"image":{{ variant.image | json }},"price":{{ variant.price | json }},"inventory_management":{{ variant.inventory_management | json }},"inventory_policy":{{ variant.inventory_policy | json }},"compare_at_price":{{ variant.compare_at_price | json }},"quantity":{{ variant.inventory_quantity | json }}}{% unless forloop.last %},{% endunless %}{% endfor %}],"collections": [{% for collection in bss_product_metafields.collections %}{{ collection.id }}{% unless forloop.last %},{% endunless %}{% endfor %}],"format_money": {{shop.money_format | json}}}</script>{% endif %}{% comment %} BSS Label end {% endcomment %}
+<style>
+.product-buy-buttons--cta:hover{
+  background: #3EA8AD !important;
+  color: #fff !important;
+}
+.product-buy-buttons--cta{
+  margin-top:-20px !important;
+}
+  .product-media--root[data-media-type=image] .modal--link {
+    border-radius: 20px;
+  }
+  .color-swatch {
+border-radius:50%;
+}
+
+.product-price--original {
+font-size: 28px;
+font-weight: 700;
+}
+.product-page--root{
+  --text-column-width: 35% !important;
+    --media-gap: 30px !important;
+    --thumbnail-width: 135px !important;
+}
+</style>
+    {%- liquid
+ 
+    assign breadcrumbs_enabled = section.settings.breadcrumbs-enabled
+    assign column_spacing = section.settings.column-spacing
+    assign container_width = section.settings.container-width
+    assign current_variant = product.selected_or_first_available_variant
+    assign heading_sizes_enabled = section.settings.heading-sizes-enabled
+    assign heading_size = section.settings.heading-size
+    assign media_gap = section.settings.media-gap
+    assign media_layout = section.settings.media-layout
+    assign mobile_media_layout = section.settings.mobile-media-layout
+    assign product_id = product.id | append: '-' | append: section.id
+    assign quantity_added = false
+    assign spacing_above = section.settings.spacing-above
+    assign spacing_below = section.settings.spacing-below
+    assign text_alignment = section.settings.text-alignment
+    assign text_column_width = section.settings.text-column-width
+    assign thumbnail_width = section.settings.thumbnail-width
+    assign variant_scroll_enabled = section.settings.variant-scroll-enabled
+    assign video_looping_enabled = section.settings.loop-enabled
+    assign zoom_enabled = section.settings.image-zoom-enabled
+  
+    assign heading_enabled = section.settings.heading-enabled
+    if media_layout == 'thumbnails'
+      assign heading_enabled = false
+    endif
+  
+    assign onboarding = true
+    assign modal_enabled = false
+    if product.media.size > 0
+      assign onboarding = false
+      assign modal_enabled = section.settings.modal-enabled
+    endif
+  
+    capture css_vars
+      echo '--text-column-width:' | append: text_column_width | append: '%;'
+      echo '--media-gap:' | append: media_gap | append: 'px;'
+      echo '--thumbnail-width:' | append: thumbnail_width | append: 'px;'
+    endcapture
+  
+    render 'section-assets', name: 'product-page', type: 'style'
+  -%}
+  
+  <div
+    class="product-page--root"
+    data-product-id="{{ product_id }}"
+    data-section-id="{{ section.id }}"
+    data-section-type="product_page"
+    data-container-width="{{ container_width }}"
+    data-spacing-above="{{ spacing_above }}"
+    data-spacing-below="{{ spacing_below }}"
+    data-text-alignment="{{ text_alignment }}"
+    style="{{ css_vars }}"
+  >
+    <div class="product-page--wrapper">
+      {%- if heading_enabled -%}
+        <div class="product-page--header" data-mq="medium-large">
+          <h1
+            class="product-page--title"
+            data-item="featured-heading"
+            {%- if heading_sizes_enabled -%}
+              style="font-size:{{ heading_size | plus: 24 }}px;"
+            {%- endif -%}
+          >
+            {{- product.title -}}
+          </h1>
+        </div>
+      {%- endif -%}
+  
+      <div class="product-page--desktop-container" data-mq="medium-large">
+        {%-
+          render 'product-media--variants',
+          product: product,
+          product_id: product_id,
+          layout: media_layout,
+          media_gap: media_gap,
+          media_size: 'desktop',
+          modal_enabled: modal_enabled,
+          column_spacing: column_spacing,
+          thumbs_enabled: true,
+          thumbnail_width: thumbnail_width,
+          variant_scroll_enabled: variant_scroll_enabled,
+          video_looping_enabled: video_looping_enabled,
+          zoom_enabled: zoom_enabled
+        -%}
+      </div>
+  
+      <div class="product-page--mobile-container" data-mq="small">
+        {%- if mobile_media_layout == 'thumbnails' -%}
+          {%-
+            render 'product-media--variants',
+            product: product,
+            product_id: product_id,
+            media_size: "mobile",
+            layout: 'thumbnails',
+            thumbs_enabled: true,
+            video_looping_enabled: video_looping_enabled
+          -%}
+  
+        {%- elsif mobile_media_layout == 'slideshow' -%}
+          {%- render 'section-assets', name: 'product-media--carousel', type: 'script' -%}
+  
+          <product-media-carousel
+            class="product-page--carousel"
+            data-id="{{ product_id }}"
+            data-mq="small"
+          >
+            {%
+              render 'carousel',
+              view: "product-page",
+              section_id: section.id,
+              onboarding: onboarding,
+              product: product,
+              video_looping_enabled: video_looping_enabled,
+              blocks: product.media,
+              dot_nav_enabled: true,
+              blocks_per_slide: 1,
+              blocks_per_slide_mobile: 1,
+              total_blocks: product.media.size,
+              total_slides: product.media.size,
+              spacing_around_blocks: true,
+              transition_type: "slide"
+            -%}
+          </product-media-carousel>
+        {%- endif -%}
+      </div>
+  
+      {%- form 'product', product, class: 'product-page--form' -%}
+        {%- if breadcrumbs_enabled -%}
+          <div
+            class="product-page--breadcrumbs"
+            data-mq="medium-large"
+            {% unless settings.transitions--disabled %}
+              data-transition-item="{{ section.id }}"
+            {% endunless %}
+          >
+            {%- render 'breadcrumbs' -%}
+          </div>
+        {%- endif -%}
+  
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign fit_together = false
+            if block.type == 'collapsible-row'
+              assign fit_together = true
+            elsif block.type == 'complementary-products' and block.settings.collapsible-row-enabled
+              assign fit_together = true
+            endif
+          -%}
+  
+          <div
+            class="product-page--block"
+            data-product-block
+            data-block-type="{{ block.type }}"
+            data-fit-together="{{ fit_together }}"
+            {{ block.shopify_attributes }}
+          >
+            {%- case block.type -%}
+              {%- when 'overline' -%}
+                <div class="product-page--overline" data-item="overline">
+                  {{- block.settings.text -}}
+                </div>
+  
+              {%- when 'heading' -%}
+                <div
+                  {% unless settings.transitions--disabled %}
+                    data-transition-cropper
+                    data-transition-item="viewport"
+                    data-transition-type="mask"
+                  {% endunless %}
+                >
+                  {%- if heading_enabled -%}
+                    <h2 class="product-page--heading" data-item="section-heading">
+                      {{- product.title -}}
+                    </h2>
+                  {%- else -%}
+                    <h1 class="product-page--heading" data-item="section-heading">
+                      {{- product.title -}}
+                    </h1>
+                  {%- endif -%}
+                </div>
+  
+              {%- when 'vendor' -%}
+                <div class="product-page--vendor" data-item="light-accent-text">
+                  <a href="{{ product.vendor | url_for_vendor }}">
+                    {{- product.vendor -}}
+                  </a>
+                </div>
+  
+              {%- when 'price' -%}
+                {%- render 'product-price', product: product, id: product_id -%}
+  
+              {%- when 'low-stock' -%}
+                {%-
+                  render 'product-low-stock',
+                  id: product_id,
+                  current_variant: current_variant,
+                  threshold: block.settings.threshold
+                -%}
+  
+              {%- when 'options' -%}
+                {%-
+                  render "product-options",
+                  id: product_id,
+                  product: product,
+                  block_settings: block.settings,
+                  template_suffix: template.suffix
+                -%}
+  
+              {%- when 'quantity-selector' -%}
+                {%- liquid
+                  assign quantity_added = true
+                  render 'quantity-selector', id: product_id, type: 'product'
+                -%}
+  
+              {%- when 'buy-buttons' -%}
+                {%-
+                  render 'product-buy-buttons',
+                  id: product_id,
+                  product: product,
+                  smart_payment_enabled: block.settings.smart-payment-enabled
+                -%}
+  
+              {%- when 'unavailable-form' -%}
+                {%- render 'product-unavailable-form', product: product, id: product_id -%}
+  
+              {%- when 'pickup' -%}
+                {%- render 'product-pickup', product: product, id: product_id -%}
+  
+              {%- when 'social-sharing' -%}
+                {%-
+                  render 'social-icons',
+                  align: 'left',
+                  mobile_align: 'left',
+                  type: 'share',
+                  social_settings: block.settings
+                -%}
+  
+              {%- when 'sku' -%}
+                {%- render 'product-sku', product: product, id: product_id -%}
+  
+              {%- when 'collapsible-row' -%}
+                {%- assign unique_id = section.id | append: '--collapsible-row--' | append: forloop.index -%}
+                {%-
+                  render 'collapsible-row',
+                  description: block.settings.description,
+                  heading: block.settings.heading,
+                  default_open: block.settings.default-open,
+                  page_content: block.settings.page-content,
+                  unique_id: unique_id
+                -%}
+  
+              {%- when 'description' -%}
+                {%- unless product.description == blank -%}
+                  <div class="product-page--description" data-item="rte-content">
+                    {{- product.description -}}
+                  </div>
+                {%- endunless -%}
+  
+              {%- when 'rating' -%}
+                {%- render 'product-rating' -%}
+
+              {%- when 'top-review' -%}
+                <div class="top-review-block">
+                  <span class="top-review-label">TOP REVIEW</span>
+                  <p class="top-review-quote">{{ block.settings.quote }}</p>
+                </div>
+                <style>
+                  .top-review-block {
+                    border-left: 3px solid #5BBFC3;
+                    padding: 8px 14px;
+                    background: #F9F7F5;
+                    border-radius: 0 6px 6px 0;
+                    border-top: 1px solid #E8E4DF;
+                    border-right: 1px solid #E8E4DF;
+                    border-bottom: 1px solid #E8E4DF;
+                    margin-top: -10px;
+                  }
+                  .top-review-label {
+                    display: block;
+                    font-size: 11px;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                    color: #6B6560;
+                    text-transform: uppercase;
+                    margin-bottom: 1px;
+                  }
+                  .top-review-quote {
+                    font-size: 13px;
+                    color: #1c1c1c;
+                    line-height: 1.6;
+                    margin: 0;
+                    font-style: italic;
+                  }
+                </style>
+  
+              {%- when 'complementary-products' -%}
+                {%-
+                  render 'complementary-products',
+                  heading: block.settings.title,
+                  max_products: block.settings.max-products,
+                  collapsible_row: block.settings.collapsible-row-enabled,
+                  product_id: product.id
+                -%}
+  
+                {%- when 'liquid' -%}
+                  {{- block.settings.custom-liquid -}}
+                
+                {%- when 'tag-block' -%}
+                  <div class="tag-block-custom"; border-radius: {{ block.settings.border_radius | default: '12px' }};">
+                        <p class="tag-block-custom-title">{{ block.settings.title_1 | default: 'Free Shipping' }}</p>
+                      
+                  </div>
+                
+                  <style>
+
+                    @media screen and (max-width: 768px) {
+                      .tag-block-custom {
+                  margin: 0 auto;
+                      }
+                    }
+                    .tag-block-custom {
+                      margin-top: -25px !important;
+                      display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0;
+    padding: 1rem;
+    border-radius: 20px;
+    border: 1px solid #C8ECEE;
+    background: #EAF7F8;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    width: 266px;
+                    }
+                    
+                    .tag-block-custom-title{
+                      color: #3EA8AD;
+/* font-family: "DM Sans"; */
+font-size: 11px;
+font-style: normal;
+font-weight: 700;
+line-height: 17.6px; /* 160% */
+letter-spacing: 0.77px;
+text-transform: uppercase;
+                    }
+                    @media (max-width: 640px) {
+                      .trust-block-custom {
+                        flex-direction: column;
+                        gap: 1rem;
+                      }
+                }
+                  </style>
+                {%when 'promo-text-block'%}
+                  <div class="promo-text-wrapper">
+    <p class="promo-heading">
+      {{ block.settings.heading_highlight }}
+      <span class="promo-heading-normal">
+        {{ block.settings.heading_normal }}
+      </span>
+    </p>
+    {% comment %} <p class="promo-description">
+      {{ block.settings.description }}
+    </p> {% endcomment %}
+  </div>
+  <style>
+    .promo-text-section {
+      padding: 30px 20px;
+      border-radius: 12px;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+  
+    .promo-text-wrapper {
+      text-align: left;
+      border-radius: 8px;
+    border: 1px solid #F5D9B0;
+    background: #FFF8F0;
+  padding: 12px 16px;  
+  }
+  
+    .promo-heading {
+      font-size: 14px;
+      font-weight: 600;
+      color: #C4894A;
+    }
+
+  
+    .promo-heading-normal {
+      font-weight: 400;
+      color: #333;
+    }
+  
+    .promo-description {
+      font-size: 18px;
+      color: #333;
+      line-height: 1.6;
+    }
+  </style>
+  {%when 'custom-cta'%}
+    <div style="text-align: {{ block.settings.align }}; margin: 0px auto; margin-top: -20px;">
+      <a href="{{ block.settings.custom-cta-link | default: '#' }}" 
+         style="display: inline-block; 
+                background-color: transparent; 
+                border: 2px solid #5BBFC3;
+                color: #3EA8AD; 
+                padding: 12px 24px; 
+                border-radius: 10px; 
+                text-decoration: none;
+                width: 100%;">
+        {{ block.settings.custom-cta-text | default: 'Shop Now' }}
+      </a>
+    </div>
+    {%when 'trust-block'%}
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: {{ block.settings.align }}; margin: 0px auto; padding-bottom: 20px;
+    border-bottom: 1px solid #E8E4DF; margin-top: -20px;">
+  {% for i in (1..block.settings.pill_count) %}
+    {% assign icon_key = 'icon_' | append: i %}
+    {% assign text_key = 'text_' | append: i %}
+    {% assign link_key = 'link_' | append: i %}
+    
+    <a href="{{ block.settings[link_key] | default: '#' }}" 
+       style="display: inline-flex; 
+              align-items: center; 
+              gap: 8px; 
+              background: {{ block.settings.bg_color }}; 
+              color: {{ block.settings.text_color }}; 
+              padding: 8px 8px; 
+              border-radius: 20px; 
+              text-decoration: none; 
+              font-size: 12px;
+              font-weight: 500;
+              transition: all 0.2s;">
+      
+      <span style="font-size: 12px;">{{ block.settings[icon_key] | default: '🏷️' }}</span>
+      <span>{{ block.settings[text_key] | default: 'Pill ' | escape}}</span>
+      
+    </a>
+  {% endfor %}
+</div>
+
+ {%when 'featured-item'%}
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-icon">
+          {{ block.settings.icon | default: '✓' }}
+        </div>
+        <div class="feature-content">
+          <h3 class="feature-heading">
+            {{ block.settings.heading }}
+          </h3>
+          <p class="feature-description">
+            {{ block.settings.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+<style>
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: -15px;
+}
+
+.feature-item {
+  display: flex;
+  width: 100%;
+  /* align-items: center; vertical alignment */
+  gap: 8px;
+}
+
+.feature-icon {
+  min-width: 22px;
+  height: 22px;
+  background-color: #5BBFC3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.feature-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-heading {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.feature-description {
+  margin: 4px 0 0;
+  color: #6B6560;
+  font-size: 14px;
+}
+</style>
+
+{%- when '@app' -%}
+  
+            {%- endcase -%}
+          </div>
+        {%- endfor -%}
+  
+        {%- unless quantity_added -%}
+          <input type="hidden" name="quantity" value="1" min="1" pattern="[0-9]*" tabindex="-1">
+        {%- endunless -%}
+      {%- endform -%}
+    </div>
+  </div>
+  
+  {% schema %}
+  {
+    "name": "Product pages new",
+    "class": "section--product-page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Style and layout"
+      },
+      {
+        "id": "container-width",
+        "label": "Maximum width of container",
+        "type": "range",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "default": 4
+      },
+      {
+        "id": "spacing-above",
+        "label": "Spacing above",
+        "type": "checkbox",
+        "default": true
+      },
+      {
+        "id": "spacing-below",
+        "label": "Spacing below",
+        "type": "checkbox",
+        "default": true
+      },
+      {
+        "type": "radio",
+        "id": "media-layout",
+        "label": "Media layout",
+        "options": [
+          { "label": "Thumbnails", "value": "thumbnails" },
+          { "label": "One column", "value": "one" },
+          { "label": "Two columns", "value": "two" },
+          { "label": "Mixed", "value": "mixed" }
+        ],
+        "default": "thumbnails"
+      },
+      {
+        "type": "range",
+        "id": "text-column-width",
+        "label": "Text column width",
+        "min": 20,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "default": 30
+      },
+      {
+        "type": "range",
+        "id": "media-gap",
+        "label": "Gap between media",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "default": 8
+      },
+      {
+        "type": "select",
+        "id": "column-spacing",
+        "label": "Media spacing",
+        "options": [
+          { "label": "Spaced evenly", "value": "evenly" },
+          { "label": "Close together", "value": "close" }
+        ],
+        "default": "close",
+        "info": "Applies to the two column and mixed layouts only and will only be obvious when product media has different aspect ratios"
+      },
+      {
+        "id": "text-alignment",
+        "label": "Text alignment",
+        "type": "text_alignment",
+        "default": "left"
+      },
+      {
+        "type": "range",
+        "id": "thumbnail-width",
+        "label": "Thumbnail width",
+        "min": 40,
+        "max": 140,
+        "step": 1,
+        "unit": "px",
+        "default": 80,
+        "info": "Only applies to the thumbnails layout"
+      },
+      {
+        "type": "checkbox",
+        "id": "heading-enabled",
+        "label": "Enable title overlay",
+        "default": false,
+        "info": "Not applicable to the thumbnails layout"
+      },
+      {
+        "type": "checkbox",
+        "id": "heading-sizes-enabled",
+        "label": "Enable overlay title size",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "heading-size",
+        "label": "Overlay title size",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 40
+      },
+      {
+        "type": "header",
+        "content": "Features"
+      },
+      {
+        "type": "checkbox",
+        "id": "breadcrumbs-enabled",
+        "label": "Enable breadcrumbs",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "modal-enabled",
+        "label": "Enable modal popup",
+        "default": true,
+        "info": "Triggers when you click the selected media"
+      },
+      {
+        "type": "checkbox",
+        "id": "variant-scroll-enabled",
+        "label": "Enable scroll to variant media",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "image-zoom-enabled",
+        "label": "Enable image zoom",
+        "default": true,
+        "info": "Triggers when you roll your mouse over an image"
+      },
+      {
+        "type": "checkbox",
+        "id": "loop-enabled",
+        "label": "Enable video looping",
+        "default": false
+      },
+      {
+        "type": "paragraph",
+        "content": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)."
+      },
+      {
+        "type": "header",
+        "content": "Mobile"
+      },
+      {
+        "type": "radio",
+        "id": "mobile-media-layout",
+        "label": "Media layout",
+        "options": [
+          { "label": "Slideshow", "value": "slideshow" },
+          { "label": "Thumbnails", "value": "thumbnails" }
+        ],
+        "default": "slideshow"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "overline",
+        "name": "Overline text",
+        "limit": 1,
+        "settings": [
+          {
+            "label": "Overline text",
+            "id": "text",
+            "type": "text",
+            "default": "Overline text"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "name": "Title",
+        "limit": 1,
+        "settings": []
+      },
+      {
+        "type": "vendor",
+        "name": "Vendor",
+        "limit": 1,
+        "settings": []
+      },
+      {
+        "type": "price",
+        "name": "Price",
+        "limit": 1,
+        "settings": []
+      },
+      {
+        "type": "quantity-selector",
+        "name": "Quantity selector",
+        "limit": 1,
+        "settings": []
+      },
+      {
+        "type": "low-stock",
+        "name": "Low stock notice",
+        "limit": 1,
+        "settings": [
+          {
+            "label": "Show low in stock notice when quantity is",
+            "id": "threshold",
+            "type": "range",
+            "min": 0,
+            "max": 10,
+            "step": 1,
+            "default": 5,
+            "info": "Set to 0 to disable this feature. Updated for each variant."
+          }
+        ]
+      },
+      {
+        "type": "options",
+        "name": "Variant picker",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "select",
+            "id": "variant-style",
+            "label": "Product variant style",
+            "options": [
+              { "label": "Dropdowns", "value": "dropdowns" },
+              { "label": "Buttons", "value": "buttons" }
+            ],
+            "default": "buttons"
+          },
+          {
+            "type": "checkbox",
+            "id": "swatches-enabled",
+            "label": "Enable color swatches",
+            "default": true,
+            "info": "Automatically turn color options into swatches. [Learn more](https://support.troopthemes.com/guide/color-swatch-guide)"
+          },
+          {
+            "type": "header",
+            "content": "Size chart"
+          },
+          {
+            "type": "checkbox",
+            "id": "size-chart-enabled",
+            "label": "Enable",
+            "default": true
+          },
+          {
+            "type": "text",
+            "id": "size-chart-option",
+            "label": "Link from option",
+            "default": "size"
+          },
+          {
+            "type": "page",
+            "id": "size-chart-content",
+            "label": "Page content"
+          }
+        ]
+      },
+      {
+        "type": "buy-buttons",
+        "name": "Buy buttons",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "smart-payment-enabled",
+            "label": "Show dynamic checkout button",
+            "info": "Lets customers check out directly using a familiar payment method. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+            "default": true
+          }
+        ]
+      },
+      {
+        "type": "unavailable-form",
+        "name": "Unavailable form",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Displays when a selected variant is not available."
+          }
+        ]
+      },
+      {
+        "type": "pickup",
+        "name": "Pickup availability",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Allow your customers to see availability in retail stores by [setting up local pickup.](https://help.shopify.com/en/manual/sell-in-person/shopify-pos/order-management/local-pickup-for-online-orders)"
+          }
+        ]
+      },
+      {
+        "type": "social-sharing",
+        "name": "Social sharing",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "facebook-enabled",
+            "label": "Enable Facebook sharing",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "x-enabled",
+            "label": "Enable 𝕏 sharing",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "pinterest-enabled",
+            "label": "Enable Pinterest sharing",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "email-enabled",
+            "label": "Enable email sharing",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "url-enabled",
+            "label": "Enable URL sharing",
+            "default": true
+          }
+        ]
+      },
+      {
+        "type": "sku",
+        "name": "SKU",
+        "limit": 1,
+        "settings": []
+      },
+      {
+        "type": "collapsible-row",
+        "name": "Collapsible row",
+        "settings": [
+          {
+            "id": "heading",
+            "label": "Heading",
+            "type": "text",
+            "default": "Collapsible row"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Text",
+            "default": "<p>Use rows to highlight unique features, <br/>sizing information, <br/>or other sales information.</p>",
+            "info": "You can use product metafields to assign content to this row that is unique to an individual product. Learn more about [metafields](https://help.shopify.com/en/manual/metafields/displaying-metafields-on-your-online-store)."
+          },
+          {
+            "type": "page",
+            "id": "page-content",
+            "label": "Tab content from page"
+          },
+          {
+            "type": "checkbox",
+            "id": "default-open",
+            "label": "Open by default",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "rating",
+        "name": "Product rating",
+        "limit": 1
+      },
+      {
+        "type": "complementary-products",
+        "name": "Complementary products",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Pairs well with"
+          },
+          {
+            "id": "max-products",
+            "label": "Maximum products to show",
+            "type": "range",
+            "min": 1,
+            "max": 4,
+            "step": 1,
+            "default": 2,
+            "info": "To select complementary products, add the Search & Discovery app. [Learn more](https://shopify.dev/themes/product-merchandising/recommendations)"
+          },
+          {
+            "type": "checkbox",
+            "id": "collapsible-row-enabled",
+            "label": "Show as collapsible row",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "liquid",
+        "name": "Custom liquid",
+        "settings": [
+          {
+            "type": "liquid",
+            "id": "custom-liquid",
+            "label": "Custom Liquid",
+            "info": "Add app snippets or other Liquid code to create advanced customizations."
+          }
+        ]
+      },
+{
+  "type": "tag-block",
+  "name": "Prodct Tag",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Tag Styling"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Static text",
+      "default": "Title 1"
+    }
+  ]
+},{
+  "type": "custom-cta",
+  "name": "Custom CTA",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom-cta-text",
+      "label": "Button Text",
+      "default": "Shop Now",
+      "placeholder": "e.g., Buy Now"
+    },
+    {
+      "type": "url",
+      "id": "custom-cta-link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    }
+  ]},
+  {
+  "name": "Pills Block",
+  "type": "trust-block",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "range",
+      "id": "pill_count",
+      "label": "Number of Pills",
+      "min": 1,
+      "max": 6,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Alignment",
+      "default": "center",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Pill 1"
+    },
+    {
+      "type": "text",
+      "id": "icon_1",
+      "label": "Icon 1",
+      "default": "🏷️",
+      "placeholder": "Emoji or HTML (🎉, ⭐, ❤️)"
+    },
+    {
+      "type": "header",
+      "content": "Featured Text Block"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ultra-narrow weft — designed for fine hair"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "50% thinner base than standard clip-ins. Lies flat. Disappears. Not designed for thick hair and adapted — built for you from the start."
+    },
+    {
+      "type": "text",
+      "id": "text_1",
+      "label": "Text 1",
+      "default": "New Arrivals",
+      "placeholder": "e.g., Sale, New, Bestseller"
+    },
+    {
+      "type": "url",
+      "id": "link_1",
+      "label": "Link 1"
+    },
+    {
+      "type": "header",
+      "content": "Pill 2"
+    },
+    
+    {
+      "type": "text",
+      "id": "icon_2",
+      "label": "Icon 2",
+      "default": "⭐",
+      "placeholder": "Emoji or HTML"
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "label": "Text 2",
+      "default": "Best Sellers",
+      "placeholder": "e.g., Top Rated"
+    },
+    {
+      "type": "url",
+      "id": "link_2",
+      "label": "Link 2"
+    },
+    {
+      "type": "header",
+      "content": "Pill 3"
+    },
+    {
+      "type": "text",
+      "id": "icon_3",
+      "label": "Icon 3",
+      "default": "🔥",
+      "placeholder": "Emoji or HTML"
+    },
+    {
+      "type": "text",
+      "id": "text_3",
+      "label": "Text 3",
+      "default": "Limited Offer",
+      "placeholder": "e.g., Flash Sale"
+    },
+    {
+      "type": "url",
+      "id": "link_3",
+      "label": "Link 3"
+    },
+    {
+      "type": "header",
+      "content": "Pill 4"
+    },
+    {
+      "type": "text",
+      "id": "icon_4",
+      "label": "Icon 4",
+      "default": "🎁",
+      "placeholder": "Emoji or HTML"
+    },
+    {
+      "type": "text",
+      "id": "text_4",
+      "label": "Text 4",
+      "default": "Gift Guide",
+      "placeholder": "e.g., Gift Ideas"
+    },
+    {
+      "type": "url",
+      "id": "link_4",
+      "label": "Link 4"
+    },
+    {
+      "type": "header",
+      "content": "Pill 5"
+    },
+    {
+      "type": "text",
+      "id": "icon_5",
+      "label": "Icon 5",
+      "default": "💎",
+      "placeholder": "Emoji or HTML"
+    },
+    {
+      "type": "text",
+      "id": "text_5",
+      "label": "Text 5",
+      "default": "Premium",
+      "placeholder": "e.g., Exclusive"
+    },
+    {
+      "type": "url",
+      "id": "link_5",
+      "label": "Link 5"
+    },
+    {
+      "type": "header",
+      "content": "Pill 6"
+    },
+    {
+      "type": "text",
+      "id": "icon_6",
+      "label": "Icon 6",
+      "default": "🚚",
+      "placeholder": "Emoji or HTML"
+    },
+    {
+      "type": "text",
+      "id": "text_6",
+      "label": "Text 6",
+      "default": "Free Shipping",
+      "placeholder": "e.g., Fast Delivery"
+    },
+    {
+      "type": "url",
+      "id": "link_6",
+      "label": "Link 6"
+    },
+    {
+      "type": "header",
+      "content": "Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Pill Background",
+      "default": "#f0f0f0"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Pill Text Color",
+      "default": "#000000"
+    }
+  ]},
+  {
+  "type": "promo-text-block",
+  "name": "Promo Text Block",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Highlighted Heading",
+      "default": "You've spent too much on things that didn't work..."
+    },
+    {
+      "type": "text",
+      "id": "heading_normal",
+      "label": "Normal Heading Text",
+      "default": " Root sprays. Thickening shampoos."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Volumizing mousse that collapses by 10am. This is the first thing actually designed for your hair."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f5ede4"
+    }
+  ]
+},
+{
+  "type": "featured-item",
+  "name": "Featured Item",
+  "settings": [
+    {
+      "type": "text",
+      "id": "icon",
+      "label": "Icon",
+      "default": "✓",
+      "info": "Use emoji or HTML"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ultra-narrow weft"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "50% thinner base than standard clip-ins"
+    }
+  ]
+  },{
+  "type": "top-review",
+  "name": "Top Review",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Review quote",
+      "default": "\"I've had fine hair my whole life and been told extensions just don't work for me. These proved every stylist wrong. Nobody can tell.\" — Melissa R., verified buyer"
+    }
+  ]
+},{
+        "type": "@app"
+      }
+      
+  ]
+  }
+  {% endschema %}

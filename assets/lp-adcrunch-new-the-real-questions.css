@@ -1,0 +1,122 @@
+h1,h2,h3,h4,h5,h6 {
+  font-family: "playfair display" !important;
+}
+
+.lp-the-real-questions {
+  --color-teal: #5BBFC3;
+  --color-dark: #1C1C1C;
+  --color-desc: #6B6560;
+  --color-box-bg: #EAF7F8;
+  --color-box-text: #3EA8AD;
+  --color-white: #FFFFFF;
+  --color-bg: #F9F9F9;
+  
+  padding: 60px 20px;
+  background-color: var(--color-bg);
+  /* font-family: sans-serif; */
+}
+
+.lp-the-real-questions__container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.lp-the-real-questions__header {
+  margin-bottom: 40px;
+}
+
+.lp-the-real-questions__subheader {
+  color: var(--color-teal);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  margin: 0 0 12px 0;
+}
+
+.lp-the-real-questions__heading {
+  color: var(--color-dark);
+  font-size: clamp(28px, 5vw, 36px);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.lp-the-real-questions__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lp-the-real-questions__card {
+  background-color: var(--color-white);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.lp-the-real-questions__card-icon {
+  font-size: 28px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.lp-the-real-questions__card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lp-the-real-questions__card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-dark);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.lp-the-real-questions__card-description {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-desc);
+  line-height: 1.6;
+  margin-bottom: 8px;
+  /* font-family: "cabin,sans-serif" !important; */
+}
+
+.lp-the-real-questions__card-answer-box {
+  background-color: var(--color-box-bg);
+  border-radius: 8px;
+  padding: 12px;
+  /* font-family: "cabin,sans-serif" !important; */
+}
+
+.lp-the-real-questions__card-answer {
+  color: var(--color-box-text);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .lp-the-real-questions {
+    padding: 80px 24px;
+  }
+  
+  .lp-the-real-questions__card {
+    flex-direction: row;
+    padding: 25px;
+    gap: 1px;
+  }
+  
+  .lp-the-real-questions__card-icon {
+    padding-top: 2px;
+  }
+  
+  .lp-the-real-questions__card-content {
+    padding-left: 0;
+  }
+}

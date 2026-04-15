@@ -1,0 +1,219 @@
+.lp-breadcrumb {
+  --breadcrumb-color: #6B6560;
+  --breadcrumb-font-size: 12px;
+  --breadcrumb-line-height: 1.6;
+  --breadcrumb-padding-x: 24px;
+  --breadcrumb-height: 44px;
+  background-color: transparent;
+  width: 100%;
+  padding: 0;
+}
+.product-page--root{
+  margin-top: -50px !important;
+}
+
+.lp-breadcrumb__nav {
+  display: flex;
+  align-items: center;
+  height: var(--breadcrumb-height);
+  padding: 0 var(--breadcrumb-padding-x);
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  border-top: 1px solid #E8E4DF;
+  border-bottom: 1px solid #E8E4DF;
+}
+
+.lp-breadcrumb__nav::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.lp-breadcrumb__list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.lp-breadcrumb__item {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-size: var(--breadcrumb-font-size);
+  line-height: var(--breadcrumb-line-height);
+  color: var(--breadcrumb-color);
+}
+
+.lp-breadcrumb__link {
+  color: var(--breadcrumb-color);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.lp-breadcrumb__link:hover {
+  opacity: 0.7;
+}
+
+.lp-breadcrumb__text {
+  color: var(--breadcrumb-color);
+}
+
+.lp-breadcrumb__separator {
+  padding: 0 8px;
+  user-select: none;
+  color: var(--breadcrumb-color);
+}
+
+/* Length selector borders */
+radios-root.radios--root {
+  display: block;
+  border-top: 1px solid #E8E4DF;
+  border-bottom: 1px solid #E8E4DF;
+  padding: 11px 0;
+  margin: 4px 0;
+}
+
+/* Hide Klaviyo teaser on this template */
+.kl-teaser-U5HhAU {
+  display: none !important;
+}
+
+/* Desktop Overrides */
+@media (min-width: 1024px) {
+  .lp-breadcrumb__nav {
+    overflow: visible;
+  }
+}
+
+/* ── Shade Picker ─────────────────────────────────────────── */
+.shade-picker {
+  margin: 12px 0 8px;
+}
+
+.shade-picker__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.shade-picker__label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #6B6560;
+}
+
+.shade-picker__color-match {
+  font-size: 12px;
+  color: #3ea8ad;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.shade-picker__color-match:hover {
+  text-decoration: underline;
+}
+
+/* Filter pill buttons */
+.shade-picker__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.shade-filter-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1.5px solid #d9d4cf;
+  background: #fff;
+  color: #1c1c1c;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  line-height: 1;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  white-space: nowrap;
+  height: 31px;
+}
+
+.shade-filter-btn:hover {
+  border-color: #3ea8ad;
+  color: #3ea8ad;
+}
+
+.shade-filter-btn.active {
+  background: #3ea8ad;
+  border-color: #3ea8ad;
+  color: #fff;
+}
+
+/* Swatch grid */
+.shade-picker__swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.shade-swatch-link {
+  display: block;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.shade-swatch {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid transparent;
+  transition: border-color 0.15s, transform 0.15s;
+  cursor: pointer;
+}
+
+.shade-swatch:hover {
+  transform: scale(1.08);
+}
+
+.shade-swatch-link.active .shade-swatch,
+.shade-swatch.active {
+  border-color: #3ea8ad;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #3ea8ad;
+}
+
+/* Selected label */
+.shade-picker__selected {
+  font-size: 13px;
+  color: #1c1c1c;
+  padding-top: 6px;
+  /* border-top: 1px solid #E8E4DF; */
+  margin-top: 4px;
+}
+
+.shade-picker__selected strong {
+  font-weight: 600;
+}
+
+.product-media--thumb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-media--thumb-alt {
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.3;
+  margin-top: 4px;
+  color: currentColor;
+  opacity: 0.75;
+  word-break: break-word;
+}

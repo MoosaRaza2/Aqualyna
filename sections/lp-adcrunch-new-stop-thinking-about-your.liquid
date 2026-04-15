@@ -1,0 +1,84 @@
+{{ 'lp-adcrunch-new-stop-thinking-about-your.css' | asset_url | stylesheet_tag }}
+{{style}}
+  <style>
+    .lp-final-cta__title2 {
+      font-size: clamp(24px, 5vw, 38px);
+      font-weight: 400;
+      line-height: 1.6;
+      color: #5BBFC3;
+    }
+  </style>
+<section class="lp-final-cta" id="lp-section-{{ section.id }}">
+  <div class="lp-final-cta__container">
+    {% if section.settings.title != blank %}
+      <h2 class="lp-final-cta__title">{{ section.settings.title }}{% if section.settings.title2 != blank %}<br><span class="lp-final-cta__title2">{{ section.settings.title2 }}</span>{% endif %}</h2>
+    {% endif %}
+
+    {% if section.settings.text != blank %}
+      <div class="lp-final-cta__text">{{ section.settings.text}}</div>
+    {% endif %}
+
+    {% if section.settings.button_label != blank %}
+      <a href="{{ section.settings.button_link }}" class="lp-final-cta__button">
+        {{ section.settings.button_label }}
+      </a>
+    {% endif %}
+
+    {% if section.settings.footer_text != blank %}
+      <p class="lp-final-cta__footer">{{ section.settings.footer_text }}</p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Final CTA",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Stop thinking about your hair.\nStart keeping the secret."
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Heading Line 2"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "You've spent hundreds on things that stopped working by noon.\nThis is the first product designed for exactly your hair type. The\nclips disappear. The volume stays. People notice."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Get Your Extensions — $249"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Footer Text",
+      "default": "Free color match · Free shipping · 30-day returns · Zero damage"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Final CTA",
+      "settings": {
+        "title": "Stop thinking about your hair.\nStart keeping the secret.",
+        "text": "You've spent hundreds on things that stopped working by noon.\nThis is the first product designed for exactly your hair type. The\nclips disappear. The volume stays. People notice.",
+        "button_label": "Get Your Extensions — $249",
+        "footer_text": "Free color match · Free shipping · 30-day returns · Zero damage"
+      }
+    }
+  ]
+}
+{% endschema %}

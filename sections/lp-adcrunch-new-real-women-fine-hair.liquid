@@ -1,0 +1,327 @@
+
+
+{{ 'lp-adcrunch-new-real-women-fine-hair.css' | asset_url | stylesheet_tag }}
+<section class="lp-ugc-strip" id="lp-section-{{ section.id }}" data-section-id="{{ section.id }}">
+  <div class="lp-ugc-strip__header">
+    {% if section.settings.eyebrow != blank %}<p class="lp-ugc-strip__eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+    {% if section.settings.heading != blank %}<h2 class="lp-ugc-strip__heading">{{ section.settings.heading | newline_to_br }}</h2>{% endif %}
+  </div>
+
+  <div class="lp-ugc-strip__slider-wrapper">
+    <div class="lp-ugc-strip__slider" data-slider>
+      {% for block in section.blocks %}
+        {% if block.type == 'video_card' %}
+          {%- assign has_shopify_video = false -%}
+          {%- assign has_external_video = false -%}
+          {%- assign video_type = '' -%}
+          {%- assign video_src = '' -%}
+
+          {%- if block.settings.video != blank -%}
+            {%- assign has_shopify_video = true -%}
+            {%- assign video_type = 'shopify' -%}
+            {%- assign video_src = block.settings.video.sources[0].url -%}
+          {%- elsif block.settings.video_url != blank -%}
+            {%- assign has_external_video = true -%}
+            {%- if block.settings.video_url.type == 'youtube' -%}
+              {%- assign video_type = 'youtube' -%}
+              {%- assign video_src = block.settings.video_url.id -%}
+            {%- elsif block.settings.video_url.type == 'vimeo' -%}
+              {%- assign video_type = 'vimeo' -%}
+              {%- assign video_src = block.settings.video_url.id -%}
+            {%- endif -%}
+          {%- endif -%}
+
+          {%- assign has_video = false -%}
+          {%- if has_shopify_video or has_external_video -%}{%- assign has_video = true -%}{%- endif -%}
+
+          <div class="lp-ugc-strip__card{% if has_video %} lp-ugc-strip__card--has-video{% endif %}"
+            {{ block.shopify_attributes }}
+            {% if has_video %}
+              data-video-type="{{ video_type }}"
+              data-video-src="{{ video_src }}"
+            {% endif %}
+          >
+            <div class="lp-ugc-strip__card-media">
+              {% if block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', class: 'lp-ugc-strip__card-img' }}
+              {% elsif has_shopify_video %}
+                {{ block.settings.video | video_tag: autoplay: false, loop: false, muted: true, controls: false, class: 'lp-ugc-strip__card-img' }}
+              {% endif %}
+              <div class="lp-ugc-strip__card-label" style="background: {{ block.settings.label_bg }};">
+                {{ block.settings.label_text }}
+              </div>
+              {% if has_video %}
+                <button class="lp-ugc-strip__play-btn" aria-label="Play Video">
+                  <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 9L1.5 16.7942L1.5 1.20577L15 9Z" fill="black"/></svg>
+                </button>
+              {% endif %}
+              <div class="lp-ugc-strip__card-gradient"></div>
+            </div>
+            <div class="lp-ugc-strip__card-content">
+              <p class="lp-ugc-strip__card-quote">{{ block.settings.quote }}</p>
+              <div class="lp-ugc-strip__card-meta">
+                <span class="lp-ugc-strip__card-views">{{ block.settings.views }}</span>
+                <span class="lp-ugc-strip__card-stars">★★★★★</span>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="lp-ugc-strip__nav">
+      <button class="lp-ugc-strip__nav-btn" data-nav="prev" aria-label="Previous">←</button>
+      <button class="lp-ugc-strip__nav-btn" data-nav="next" aria-label="Next">→</button>
+    </div>
+  </div>
+
+  <div class="lp-ugc-strip__ticker-container">
+    <div class="lp-ugc-strip__ticker">
+      {% for block in section.blocks %}
+        {% if block.type == 'testimonial_ticker' %}
+          <div class="lp-ugc-strip__ticker-item">
+            <span class="lp-ugc-strip__ticker-stars">★★★★★</span>
+            <span class="lp-ugc-strip__ticker-quote">{{ block.settings.quote }}</span>
+            <span class="lp-ugc-strip__ticker-author">— {{ block.settings.author }}</span>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Video Modal -->
+  <div class="lp-ugc-strip__modal" data-video-modal aria-hidden="true">
+    <div class="lp-ugc-strip__modal-overlay" data-modal-close></div>
+    <div class="lp-ugc-strip__modal-inner">
+      <button class="lp-ugc-strip__modal-close" data-modal-close aria-label="Close video">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 5L5 15M5 5L15 15" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="lp-ugc-strip__modal-player" data-modal-player></div>
+    </div>
+  </div>
+  <script >
+    // Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Select the h2 element
+    const h2 = document.querySelector('.lp-ugc-strip__heading');
+    
+    if (h2) {
+        // Get the current HTML content
+        let html = h2.innerHTML;
+
+        const searchText = /This is it\./gi;
+        const replacement = '<span style="color: #5BBFC3; font-style: italic;">This is it.</span>';
+        
+        // Apply the replacement
+        html = html.replace(searchText, replacement);
+        
+        // Update the h2 content
+        h2.innerHTML = html;
+    }
+});
+  </script>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const section = document.querySelector('#lp-section-{{ section.id }}');
+  if (!section) return;
+
+  const slider = section.querySelector('[data-slider]');
+  const prevBtn = section.querySelector('[data-nav="prev"]');
+  const nextBtn = section.querySelector('[data-nav="next"]');
+  const modal = section.querySelector('[data-video-modal]');
+  const modalPlayer = section.querySelector('[data-modal-player]');
+  const closeButtons = section.querySelectorAll('[data-modal-close]');
+
+  if (slider && prevBtn && nextBtn) {
+    const scrollAmount = () => window.innerWidth >= 1024 ? 440 : 250;
+    prevBtn.addEventListener('click', () => {
+      slider.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', () => {
+      slider.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+    });
+  }
+
+  function openModal(type, src) {
+    if (!modal || !modalPlayer) return;
+    modalPlayer.innerHTML = '';
+
+    if (type === 'youtube') {
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/' + src + '?autoplay=1&rel=0';
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.setAttribute('frameborder', '0');
+      modalPlayer.appendChild(iframe);
+    } else if (type === 'vimeo') {
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://player.vimeo.com/video/' + src + '?autoplay=1';
+      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.setAttribute('frameborder', '0');
+      modalPlayer.appendChild(iframe);
+    } else if (type === 'shopify') {
+      const video = document.createElement('video');
+      video.src = src;
+      video.controls = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.style.width = '100%';
+      video.style.height = '100%';
+      video.style.borderRadius = '10px';
+      modalPlayer.appendChild(video);
+    }
+
+    modal.setAttribute('aria-hidden', 'false');
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!modal || !modalPlayer) return;
+    modal.setAttribute('aria-hidden', 'true');
+    modal.classList.remove('is-open');
+    modalPlayer.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  section.querySelectorAll('.lp-ugc-strip__card--has-video .lp-ugc-strip__play-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('[data-video-type]');
+      if (!card) return;
+      openModal(card.dataset.videoType, card.dataset.videoSrc);
+    });
+  });
+
+  closeButtons.forEach(btn => btn.addEventListener('click', closeModal));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "UGC Video Strip",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Real women. Fine hair. Real results."
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "People keep asking them their secret.\nThis is it."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_card",
+      "name": "Video Card",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Video"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Shopify-hosted Video",
+          "info": "Upload a video file directly. Takes priority over external URL."
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "External Video URL",
+          "accept": ["youtube", "vimeo"],
+          "info": "Paste a YouTube or Vimeo URL. Used if no Shopify video is set."
+        },
+        {
+          "type": "header",
+          "content": "Thumbnail"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Video Cover Image",
+          "info": "Optional. If blank and a Shopify video is set, the video poster frame is used."
+        },
+        {
+          "type": "header",
+          "content": "Card Details"
+        },
+        {
+          "type": "text",
+          "id": "label_text",
+          "label": "Label Tag",
+          "default": "Fine Hair"
+        },
+        {
+          "type": "color",
+          "id": "label_bg",
+          "label": "Label Background",
+          "default": "#5BBFC3"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "\"I've had fine hair my whole life. These are different.\""
+        },
+        {
+          "type": "text",
+          "id": "views",
+          "label": "View Count",
+          "default": "1.2M views"
+        }
+      ]
+    },
+    {
+      "type": "testimonial_ticker",
+      "name": "Testimonial Ticker",
+      "settings": [
+        {
+          "type": "text",
+          "id": "quote",
+          "label": "Review Quote",
+          "default": "\"Nobody knew I was wearing them\""
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name",
+          "default": "Melissa R."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "UGC Video Strip",
+      "blocks": [
+        { "type": "video_card", "settings": { "label_text": "Fine Hair", "quote": "\"I've had fine hair my whole life. These are different.\"", "views": "1.2M views" } },
+        { "type": "video_card", "settings": { "label_text": "Thinning Hair", "quote": "\"Nobody can tell. Not even my husband.\"", "views": "847K views" } },
+        { "type": "video_card", "settings": { "label_text": "Install", "quote": "POV: fine hair → full hair in 4 minutes", "views": "623K views" } },
+        { "type": "video_card", "settings": { "label_text": "Before/After", "quote": "\"My part was so wide. Watch what happened.\"", "views": "512K views" } },
+        { "type": "video_card", "settings": { "label_text": "Post-Menopause", "quote": "\"My hair changed in my 50s. This gave it back.\"", "views": "389K views" } },
+        { "type": "video_card", "settings": { "label_text": "Verified Buyer", "quote": "\"I spent $300 on volumizers. This is the only thing that works.\"", "views": "271K views" } },
+        { "type": "video_card", "settings": { "label_text": "Color Match", "quote": "\"The color match was spot on. Zero guessing.\"", "views": "198K views" } },
+        { "type": "testimonial_ticker", "settings": { "quote": "\"Nobody knew I was wearing them\"", "author": "Melissa R." } },
+        { "type": "testimonial_ticker", "settings": { "quote": "\"People keep asking what I'm doing\"", "author": "Diane K." } },
+        { "type": "testimonial_ticker", "settings": { "quote": "\"4 minutes. That's it.\"", "author": "Patricia L." } },
+        { "type": "testimonial_ticker", "settings": { "quote": "\"My hair looked like this in my 30s\"", "author": "Carol M." } },
+        { "type": "testimonial_ticker", "settings": { "quote": "\"The only thing that actually worked\"", "author": "Jennifer A." } },
+        { "type": "testimonial_ticker", "settings": { "quote": "\"I don't think about my hair anymore\"", "author": "Sarah T." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

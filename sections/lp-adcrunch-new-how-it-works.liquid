@@ -1,0 +1,106 @@
+{{ 'lp-adcrunch-new-how-it-works.css' | asset_url | stylesheet_tag }}
+
+<section class="lp-how-it-works" id="lp-how-it-works-{{ section.id }}">
+  <div class="lp-how-it-works__container">
+    <div class="lp-how-it-works__header">
+      {% if section.settings.sub_heading != blank %}
+        <span class="lp-how-it-works__sub-heading">{{ section.settings.sub_heading }}</span>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2 class="lp-how-it-works__main-heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+    </div>
+
+    <div class="lp-how-it-works__steps">
+      {% for block in section.blocks %}
+        <div class="lp-how-it-works__step" {{ block.shopify_attributes }}>
+          <div class="lp-how-it-works__step-number">
+            {{ forloop.index }}
+          </div>
+          <h3 class="lp-how-it-works__step-title">{{ block.settings.title }}</h3>
+          <div class="lp-how-it-works__step-description">{{ block.settings.text | newline_to_br }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How It Works",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub-heading",
+      "default": "Installation"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Four steps. Under five minutes.\nNo technique required after day one."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title",
+          "default": "Section"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Step Description",
+          "default": "Part your hair horizontally at the nape. Clip the top layer out of the way. The base section is where the clips sit."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works",
+      "settings": {
+        "sub_heading": "Installation",
+        "heading": "Four steps. Under five minutes.\nNo technique required after day one."
+      },
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Section",
+            "text": "Part your hair horizontally at\nthe nape. Clip the top layer\nout of the way. The base\nsection is where the clips\nsit."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Clip",
+            "text": "Press the ultra-narrow weft\nagainst your roots. Snap the\nclips closed. No pulling, no\nforce — they grip gently."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Release",
+            "text": "Let down the top layer of\nyour natural hair over the\nweft. That's it. The clip is\nhidden. The volume is there."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Go",
+            "text": "Walk out the door. Don't\nthink about it again until\nyou take them out tonight.\nYour hair doesn't need\nmanaging today."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

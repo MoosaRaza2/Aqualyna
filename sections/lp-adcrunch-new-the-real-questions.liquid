@@ -1,0 +1,134 @@
+{{ 'lp-adcrunch-new-the-real-questions.css' | asset_url | stylesheet_tag }}
+
+<section class="lp-the-real-questions" id="lp-section-{{ section.id }}">
+  <div class="lp-the-real-questions__container">
+    <header class="lp-the-real-questions__header">
+      {% if section.settings.subheader != blank %}
+        <p class="lp-the-real-questions__subheader">{{ section.settings.subheader }}</p>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2 class="lp-the-real-questions__heading">{{ section.settings.heading | newline_to_br }}</h2>
+      {% endif %}
+    </header>
+
+    <div class="lp-the-real-questions__grid">
+      {% for block in section.blocks %}
+        <div class="lp-the-real-questions__card" {{ block.shopify_attributes }}>
+          <div class="lp-the-real-questions__card-icon">{{ block.settings.icon }}</div>
+          <div class="lp-the-real-questions__card-content">
+            {% if block.settings.title != blank %}
+              <h3 class="lp-the-real-questions__card-title">{{ block.settings.title }}</h3>
+            {% endif %}
+            {% if block.settings.description != blank %}
+              <div class="lp-the-real-questions__card-description">
+                {{ block.settings.description | newline_to_br }}
+              </div>
+            {% endif %}
+            {% if block.settings.answer != blank %}
+              <div class="lp-the-real-questions__card-answer-box">
+                <div class="lp-the-real-questions__card-answer">
+                  {{ block.settings.answer | newline_to_br }}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Objection Busting",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheader",
+      "label": "Subheader",
+      "default": "The real questions"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You've thought about this.\nHere's the honest answer to each one."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question_card",
+      "name": "Question Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Emoji Icon",
+          "default": "👁️"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Objection Text",
+          "default": "\"The clips will show through my thin hair. I'll be mortified.\""
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Explanation",
+          "default": "This is the fear that has kept more fine-hair women from trying extensions than any other. It's specific, it's vivid, and it's understandable. You already self-manage the visibility of your thinning hair every day. The last thing you need is to draw more attention to it."
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer/Reframe",
+          "default": "The ultra-narrow weft was designed specifically to solve this. A thinner base means less coverage needed from above — so even sparse hair can hide it completely. Every reviewer who was terrified of this has said the same thing: \"I've gone through my hair looking for it. Can't find it.\" That's the point."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Objection Busting",
+      "blocks": [
+        {
+          "type": "question_card",
+          "settings": {
+            "icon": "👁️",
+            "title": "\"The clips will show through my thin hair. I'll be mortified.\"",
+            "description": "This is the fear that has kept more fine-hair women from trying extensions than any other. It's specific, it's vivid, and it's understandable. You already self-manage the visibility of your thinning hair every day. The last thing you need is to draw more attention to it.",
+            "answer": "The ultra-narrow weft was designed specifically to solve this. A thinner base means less coverage needed from above — so even sparse hair can hide it completely. Every reviewer who was terrified of this has said the same thing: \"I've gone through my hair looking for it. Can't find it.\" That's the point."
+          }
+        },
+        {
+          "type": "question_card",
+          "settings": {
+            "icon": "⚠️",
+            "title": "\"What if it damages what little hair I have left?\"",
+            "description": "You've read the horror stories. You know about traction alopecia. Heavy, permanent extensions on fine hair are a real risk — that information is accurate. A woman who is already losing hair is not going to risk making it worse for the sake of volume. That's not paranoia. That's math.",
+            "answer": "Here's specifically why AquaLyna is different: lightweight construction means no strain on fine follicles. The clip-out-nightly design means no cumulative tension — your hair rests every single night. No adhesive, no heat, no sustained attachment. Six months of wear without any thinning acceleration is what our verified buyers report, consistently."
+          }
+        },
+        {
+          "type": "question_card",
+          "settings": {
+            "icon": "🎨",
+            "title": "\"I'll pick the wrong color online and look worse.\"",
+            "description": "You've bought the wrong shade of something before — foundation, hair dye — and you know exactly how bad wrong looks. The fear isn't just aesthetic. It's waste. You're already a burned buyer. Adding another failed purchase to the pile is the last thing you need.",
+            "answer": "AquaLyna's free color match service removes this entirely. A real person looks at your photos in natural light and tells you exactly which shade is yours before you spend a dollar. This isn't a perk. It's the reason you don't have to guess."
+          }
+        },
+        {
+          "type": "question_card",
+          "settings": {
+            "icon": "🤔",
+            "title": "\"Needing extensions feels like admitting I have a hair problem.\"",
+            "description": "You don't identify as someone with a hair problem. You are a competent, capable, together woman. Having to \"fix\" your hair feels like a concession — like you couldn't figure it out on your own. That's a real friction point and most brands completely ignore it.",
+            "answer": "Reframe: you didn't fail. You found the thing that was designed for your hair type, after an entire market kept sending you products that weren't. That's a discovery, not a concession. The woman keeping the secret — smiling when someone asks what she's doing differently — is not the woman with the hair problem. She's the woman who solved it."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

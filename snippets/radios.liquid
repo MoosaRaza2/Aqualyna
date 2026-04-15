@@ -38,7 +38,11 @@
         data-item="accent-text"
       {% endif %}
     >
+    {% if template.suffix == 'adcrunch-new' %}
+     <p class="radios--option-label-text">LENGTH</p>
+    {% else %}
       {{ option.name | escape }}
+      {% endif %}
     </label>
 
     {%- liquid
@@ -84,15 +88,50 @@
           ></label>
 
         {%- else -%}
-          <label
-            class="radios--value-button"
-            data-item="button"
-            for="{{ radios_name }}-{{ value | downcase | remove: ' ' }}"
-          >
-            <div>{{ value | escape }}</div>
-          </label>
+        <label
+          class="radios--value-button"
+          data-item="button"
+          for="{{ radios_name }}-{{ value | downcase | remove: ' ' }}"
+        >
+        {% if template.suffix == 'adcrunch-new' %}
+          {%- assign clean_value = value | escape | split: '"' | first | split: ' ' | first -%}
+          <div>{{ clean_value }}</div>
+         
+        {% else %}
+        <div>{{ value | escape }}</div>
+          {% endif %}
+        </label>
         {%- endif -%}
-
+        {% if template.suffix == 'adcrunch-new' %}
+{% style  %} 
+.color-variants{
+  /* border-bottom: 1px solid #E8E4DF; */
+}
+.radios--option-label-text {
+  color: #6B6560;
+font-size: 12px;
+font-weight: 700;
+letter-spacing: 0.84px;
+}
+.radios--value-button>* {
+  display: flex;
+width: 54.63px;
+height: 33px;
+padding: 9px 16.8px 9px 17px;
+justify-content: center;
+align-items: center;
+border-radius: 8px;
+border: 1px solid #E8E4DF;
+background: #FFF;
+}
+.radios--input[data-item=radio]:checked+.radios--value-button>*, .radios--input[data-item=radio]:hover+.radios--value-button>*, [data-is-swatches=true] .filter--input:checked+.radios--value-button>*, [data-is-swatches=true] .filter--input:hover+.radios--value-button>*{
+  border-radius: 8px;
+border: 1px solid #5BBFC3;
+background: #EAF7F8;
+color: #3EA8AD;
+}
+{% endstyle %}
+{% endif %}
       </div>
     {%- endfor -%}
   </div>

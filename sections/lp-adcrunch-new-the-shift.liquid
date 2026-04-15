@@ -1,0 +1,135 @@
+{{ 'lp-adcrunch-new-the-shift.css' | asset_url | stylesheet_tag }}
+
+<section class="lp-the-shift" id="lp-the-shift-{{ section.id }}">
+  <div class="lp-the-shift__container">
+    <header class="lp-the-shift__header">
+      {% if section.settings.tagline != blank %}
+        <span class="lp-the-shift__tagline">{{ section.settings.tagline }}</span>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2 class="lp-the-shift__heading">{{ section.settings.heading | newline_to_br }}</h2>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <p class="lp-the-shift__description">{{ section.settings.description }}</p>
+      {% endif %}
+    </header>
+
+    <div class="lp-the-shift__grid">
+      {% for block in section.blocks %}
+        {% liquid
+          assign items = block.settings.items | newline_to_br | split: '<br />'
+          assign card_class = "lp-the-shift__card"
+          if block.settings.title == 'After'
+            assign card_class = card_class | append: " lp-the-shift__card--after"
+          else
+            assign card_class = card_class | append: " lp-the-shift__card--before"
+          endif
+        %}
+        <div class="{{ card_class }}" {{ block.shopify_attributes }}>
+          <h3 class="lp-the-shift__card-title">{{ block.settings.title }}</h3>
+          <ul class="lp-the-shift__list">
+            {% for item in items %}
+              {% if item != blank %}
+                <li class="lp-the-shift__item">
+                  <span class="lp-the-shift__icon">→</span>
+                  <span class="lp-the-shift__item-text">{{ item | strip }}</span>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <script >
+    // Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Select the h2 element
+    const h2 = document.querySelector('.lp-the-shift__heading');
+    
+    if (h2) {
+        // Get the current HTML content
+        let html = h2.innerHTML;
+        
+        // Replace the specific text with styled version
+        // Using a regular expression to match "stop the negotiation." (case insensitive)
+        const searchText = /stop the negotiation\./gi;
+        const replacement = '<span style="color: #5BBFC3;;">stop the negotiation.</span>';
+        
+        // Apply the replacement
+        html = html.replace(searchText, replacement);
+        
+        // Update the h2 content
+        h2.innerHTML = html;
+    }
+});
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "The Shift",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "The shift"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The goal isn't hair.\nThe goal is to stop the negotiation."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Not \"love my hair.\" Not \"feel like a model.\" Just get ready, look in the mirror, and feel good enough to move on to the rest of the day."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Comparison Card",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Before"
+        },
+        {
+          "type": "textarea",
+          "id": "items",
+          "label": "List Items (One per line)",
+          "default": "Angling your head in every photo before you'll let anyone take it\nA mental blacklist of hairstyles that expose the problem\nDry shampoo, mousse, root spray — gone by 10am"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "The Shift",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Before",
+            "items": "Angling your head in every photo before you'll let anyone take it\nA mental blacklist of hairstyles that expose the problem\nDry shampoo, mousse, root spray — gone by 10am\n\"I feel less feminine. Less myself.\"\nManaging a problem, every single day\n\"I can't find anything that works.\" — still buying, still hoping"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "After",
+            "items": "Actually posing for photos — from any angle\nPutting your hair up without calculating the risk\nVolume that's there at noon, 3pm, 6pm — all day\n\"People keep asking me what I'm doing differently.\"\nKeeping a secret other women want to know\n\"I don't even think about my hair anymore.\" — the highest outcome."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
