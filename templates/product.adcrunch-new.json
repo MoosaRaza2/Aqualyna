@@ -35,6 +35,7 @@
         },
         "top_review_block": {
           "type": "top-review",
+          "disabled": true,
           "settings": {
             "quote": "\"I've had fine hair my whole life and been told extensions just don't work for me. These proved every stylist wrong. Nobody can tell.\" — Melissa R., verified buyer"
           }
@@ -45,6 +46,7 @@
         },
         "promo_text_block_QRiPr9": {
           "type": "promo-text-block",
+          "disabled": true,
           "settings": {
             "heading_highlight": "You've spent too much on things that didn't work...",
             "heading_normal": "Rootsprays. Thickening shampoos. Volumizing mousse that collapsesby 10am. This is the first thing actually designed for your hair.",
