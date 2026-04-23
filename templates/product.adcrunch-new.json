@@ -70,6 +70,7 @@
         },
         "custom_cta_4nKezd": {
           "type": "custom-cta",
+          "disabled": true,
           "settings": {
             "custom-cta-text": "🎨 Free Color Match — Not sure which shade?",
             "custom-cta-link": "#",
