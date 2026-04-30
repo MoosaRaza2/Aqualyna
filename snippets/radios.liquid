@@ -1,8 +1,8 @@
 {% comment %} Usage:
-  - Place inside loop of 'option' objects
-  - If more than one product is included on one page, include a unique 'id'
-  - If swatches are desired, set 'is_swatches' to true
-  - display_swatches_only is used when no functionality is desired
+          - Place inside loop of 'option' objects
+          - If more than one product is included on one page, include a unique 'id'
+          - If swatches are desired, set 'is_swatches' to true
+          - display_swatches_only is used when no functionality is desired
 {% endcomment %}
 
 {%- liquid
@@ -37,11 +37,13 @@
       data-item="accent-text"
       {% endif %}>
       <!-- In product.liquid, collection.liquid, or any template -->
-      {% render 'image-modal', 
- text: "Click to enlarge product image", 
- image_url: product.featured_image | image_url,
- class: "my-custom-link"
-      %}  
+      {% comment %} Show clickable link for product image {% endcomment %}
+      {% render 'image-modal'
+        ,
+ text: "Test Image"
+        ,
+ image_url: "https://cdn.shopify.com/s/files/1/xxxx/xxx.jpg?v=123456"
+      %}
       {% if template.suffix == 'adcrunch-new' %}
         <p class="radios--option-label-text">LENGTH</p>
       {% else %}
