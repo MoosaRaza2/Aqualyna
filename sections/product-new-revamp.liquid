@@ -1,6 +1,21 @@
-
 {% comment %} BSS Label get data main product has metafields seo hidden {% endcomment %}{% assign bss_product_metafields = product %}{% if bss_product_metafields.metafields.seo.hidden %}<script id="main-label-product-metafields-info" type="application/ld+json"> {"id":{{ bss_product_metafields.id | json }},"title": {{ bss_product_metafields.title | json }},"vendor": {{ bss_product_metafields.vendor | json }},"tags": {{ bss_product_metafields.tags | json }},"handle":{{ bss_product_metafields.handle | json }},"available":{{ bss_product_metafields.available | json }},"inventory":{{ bss_product_metafields.first_available_variant.inventory_quantity | json }},"compare_at_price_max":{{ bss_product_metafields.compare_at_price_max | json }},"compare_at_price_min":{{ bss_product_metafields.compare_at_price_min | json }},"price":{{ bss_product_metafields.price | json }},"price_max":{{ bss_product_metafields.price_max | json }},"price_min":{{ bss_product_metafields.price_min | json }},"publish_at":"{{ bss_product_metafields.published_at }}","inventory_management":{{ bss_product_metafields.first_available_variant.inventory_management | json }},"inventory_policy":{{ bss_product_metafields.first_available_variant.inventory_policy | json }},"inventory_quantity": [{% for varian in bss_product_metafields.variants %}{{ varian.inventory_quantity }}{% unless forloop.last %},{% endunless %}{% endfor %}],"variants": [{% for variant in bss_product_metafields.variants %}{  "id":{{ variant.id | json }},"feature_media_id":{{ variant.featured_media.id | json }},"feature_image_id":{{ variant.featured_image.id | json }},"available":{{ variant.available | json }},"image":{{ variant.image | json }},"price":{{ variant.price | json }},"inventory_management":{{ variant.inventory_management | json }},"inventory_policy":{{ variant.inventory_policy | json }},"compare_at_price":{{ variant.compare_at_price | json }},"quantity":{{ variant.inventory_quantity | json }}}{% unless forloop.last %},{% endunless %}{% endfor %}],"collections": [{% for collection in bss_product_metafields.collections %}{{ collection.id }}{% unless forloop.last %},{% endunless %}{% endfor %}],"format_money": {{shop.money_format | json}}}</script>{% endif %}{% comment %} BSS Label end {% endcomment %}
 <style>
+  .tag-block-custom{
+
+  }
+/* Hide original rating block on mobile, show only the new one */
+@media (max-width: 640px) {
+  .product-page--block[data-block-type="rating"] {
+    display: none !important;
+  }
+}
+
+/* Show the new rating block only on mobile (hide on desktop) */
+@media (min-width: 641px) {
+  .mobile-rating {
+    display: none !important;
+  }
+}
 .product-buy-buttons--cta:hover{
   background: #3EA8AD !important;
   color: #fff !important;
@@ -23,6 +38,13 @@ font-weight: 700;
   --text-column-width: 35% !important;
     --media-gap: 30px !important;
     --thumbnail-width: 135px !important;
+}
+/* Hide the mobile carousel on desktop */
+@media (min-width: 641px) {
+  .mobile-carousel-only {
+    display: none !important;
+  }
+  
 }
 </style>
     {%- liquid
@@ -112,46 +134,6 @@ font-weight: 700;
         -%}
       </div>
   
-      <div class="product-page--mobile-container" data-mq="small">
-        {%- if mobile_media_layout == 'thumbnails' -%}
-          {%-
-            render 'product-media--variants',
-            product: product,
-            product_id: product_id,
-            media_size: "mobile",
-            layout: 'thumbnails',
-            thumbs_enabled: true,
-            video_looping_enabled: video_looping_enabled
-          -%}
-  
-        {%- elsif mobile_media_layout == 'slideshow' -%}
-          {%- render 'section-assets', name: 'product-media--carousel', type: 'script' -%}
-  
-          <product-media-carousel
-            class="product-page--carousel"
-            data-id="{{ product_id }}"
-            data-mq="small"
-          >
-            {%
-              render 'carousel',
-              view: "product-page",
-              section_id: section.id,
-              onboarding: onboarding,
-              product: product,
-              video_looping_enabled: video_looping_enabled,
-              blocks: product.media,
-              dot_nav_enabled: true,
-              blocks_per_slide: 1,
-              blocks_per_slide_mobile: 1,
-              total_blocks: product.media.size,
-              total_slides: product.media.size,
-              spacing_around_blocks: true,
-              transition_type: "slide"
-            -%}
-          </product-media-carousel>
-        {%- endif -%}
-      </div>
-  
       {%- form 'product', product, class: 'product-page--form' -%}
         {%- if breadcrumbs_enabled -%}
           <div
@@ -204,6 +186,49 @@ font-weight: 700;
                     <h1 class="product-page--heading" data-item="section-heading">
                       {{- product.title -}}
                     </h1>
+                  {%- endif -%}
+                </div>
+                {% comment %} Mobile rating – shown only on small screens {% endcomment %}
+<div class="mobile-rating">
+  {%- render 'product-rating' -%}
+</div>
+
+                {% comment %} --- MOBILE CAROUSEL INSERTED AFTER TITLE --- {% endcomment %}
+                <div class="mobile-carousel-only">
+                  {%- if mobile_media_layout == 'thumbnails' -%}
+                    {%-
+                      render 'product-media--variants',
+                      product: product,
+                      product_id: product_id,
+                      media_size: "mobile",
+                      layout: 'thumbnails',
+                      thumbs_enabled: true,
+                      video_looping_enabled: video_looping_enabled
+                    -%}
+                  {%- elsif mobile_media_layout == 'slideshow' -%}
+                    {%- render 'section-assets', name: 'product-media--carousel', type: 'script' -%}
+                    <product-media-carousel
+                      class="product-page--carousel"
+                      data-id="{{ product_id }}"
+                      data-mq="small"
+                    >
+                      {%
+                        render 'carousel',
+                        view: "product-page",
+                        section_id: section.id,
+                        onboarding: onboarding,
+                        product: product,
+                        video_looping_enabled: video_looping_enabled,
+                        blocks: product.media,
+                        dot_nav_enabled: true,
+                        blocks_per_slide: 1,
+                        blocks_per_slide_mobile: 1,
+                        total_blocks: product.media.size,
+                        total_slides: product.media.size,
+                        spacing_around_blocks: true,
+                        transition_type: "slide"
+                      -%}
+                    </product-media-carousel>
                   {%- endif -%}
                 </div>
   
@@ -343,15 +368,17 @@ font-weight: 700;
 
                     @media screen and (max-width: 768px) {
                       .tag-block-custom {
-                  margin: 0 auto;
+                        margin-top: -5px !important;
                       }
+                      .tag-block-custom{
+    margin: auto;
+  }
                     }
                     .tag-block-custom {
-                      margin-top: -25px !important;
+                      margin-top: -5px !important;
                       display: flex;
     justify-content: space-between;
     gap: 1rem;
-    margin: 0;
     padding: 1rem;
     border-radius: 20px;
     border: 1px solid #C8ECEE;
