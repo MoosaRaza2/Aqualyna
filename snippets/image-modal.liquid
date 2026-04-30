@@ -1,58 +1,80 @@
-{% comment %} 
-        Usage: {% render 'image-modal', text: "View Image", image_url: "https://cdn.shopify.com/s/files/1/xxxx/xxx.jpg", class: "custom-class" %}
+{% comment %}
+  Image Modal Link Snippet
+  Usage: {% render 'image-modal-link', text: "View Image", image_url: "image.jpg", style_settings: section.settings %}
 {% endcomment %}
+
+{%- assign text_color = style_settings.text_color | default: '#000000' -%}
+{%- assign hover_color = style_settings.hover_color | default: '#0066cc' -%}
+{%- assign text_size = style_settings.text_size | default: 16 -%}
+{% comment %} {%- set custom_class = class | default: '' -%} {% endcomment %}
 
 <a
   href="#"
-  onclick="event.preventDefault(); window.openImageModal('{{ image_url }}', '{{ text }}');"
-  class="{{ class }}"
-  style="{{ style }}">
-  click here
+  onclick="event.preventDefault(); window.openImageModal('{{ image_url }}', '{{ text | escape }}');"
+  class="image-modal-link {{ custom_class }}"
+  style="color: {{ text_color }}; font-size: {{ text_size }}px; text-decoration: underline; cursor: pointer; {% if style_settings %}transition: color 0.2s ease;{% endif %} {{ style }}"
+  onmouseover="this.style.color='{{ hover_color }}'"
+  onmouseout="this.style.color='{{ text_color }}'">
+  {{ text | default: 'Click here to view image' }}
 </a>
+
+<style>
+  .image-modal-link {
+    display: inline-block;
+    transition: color 0.2s ease;
+  }
+</style>
 
 <script>
   if (typeof window.openImageModal !== 'function') {
-  window.openImageModal = function(imageUrl, title) {
-    let modal = document.getElementById('globalImageModal');
-    if (!modal) {
-      modal = document.createElement('div');
-      modal.id = 'globalImageModal';
-      modal.innerHTML = `
-        <div style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 99999;" id="modalOverlay">
-          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 8px; max-width: 90%; max-height: 90vh; overflow: auto; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
-            <button onclick="window.closeImageModal()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; z-index: 10;">✕</button>
-            <img id="modalImage" src="" alt="" style="max-width: 100%; height: auto; display: block;">
+    window.openImageModal = function(imageUrl, title) {
+      let modal = document.getElementById('globalImageModal');
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'globalImageModal';
+        modal.innerHTML = `
+          <div style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 99999;" id="modalOverlay">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 8px; max-width: 90%; max-height: 90vh; overflow: auto; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+              <button onclick="window.closeImageModal()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; z-index: 10; color: #333;">✕</button>
+              <img id="modalImage" src="" alt="" style="max-width: 100%; height: auto; display: block;">
+            </div>
           </div>
-        </div>
-      `;
-      document.body.appendChild(modal);
+        `;
+        document.body.appendChild(modal);
+        
+        // Close on overlay click
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+          if (e.target === this) window.closeImageModal();
+        });
+        
+        // Style close button on hover
+        const closeBtn = document.querySelector('#globalImageModal button');
+        if (closeBtn) {
+          closeBtn.addEventListener('mouseenter', () => closeBtn.style.color = '#000');
+          closeBtn.addEventListener('mouseleave', () => closeBtn.style.color = '#333');
+        }
+      }
       
-      // Close on overlay click
-      document.getElementById('modalOverlay').addEventListener('click', function(e) {
-        if (e.target === this) window.closeImageModal();
-      });
-    }
+      const overlay = document.getElementById('modalOverlay');
+      const modalImg = document.getElementById('modalImage');
+      
+      modalImg.src = imageUrl;
+      modalImg.alt = title || '';
+      overlay.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    };
     
-    const overlay = document.getElementById('modalOverlay');
-    const modalImg = document.getElementById('modalImage');
+    window.closeImageModal = function() {
+      const overlay = document.getElementById('modalOverlay');
+      if (overlay) {
+        overlay.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    };
     
-    modalImg.src = imageUrl;
-    modalImg.alt = title || '';
-    overlay.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-  };
-  
-  window.closeImageModal = function() {
-    const overlay = document.getElementById('modalOverlay');
-    if (overlay) {
-      overlay.style.display = 'none';
-      document.body.style.overflow = '';
-    }
-  };
-  
-  // Close on escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') window.closeImageModal();
-  });
+    // Close on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') window.closeImageModal();
+    });
   }
 </script>
