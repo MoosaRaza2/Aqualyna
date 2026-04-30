@@ -1,100 +1,166 @@
 {% comment %} 
-  Image Modal Link Snippet 
-  Usage: {% render 'image-modal-link', text: "View Image", image: section.settings.image %}
+  Shopify Snippet: Clickable Text → Open Image (No White Space) 
+  WITH FULL SCHEMA SETTINGS 
+  Usage: Add as a "Custom Liquid" section or include in a template
 {% endcomment %}
 
-{%- assign text_color = style_settings.text_color | default: '#000000' -%}
-{%- assign hover_color = style_settings.hover_color | default: '#0066cc' -%}
-{%- assign text_size = style_settings.text_size | default: 16 -%}
+{% style %}
+  /* NO WHITESPACE around image or modal */
+  .image-modal-{{ section.id }} {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: {{ section.settings.modal_overlay_color | default: 'rgba(0, 0, 0, 0.92)' }};
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+  }
+  .image-modal-{{ section.id }}
+  img {
+    max-width: {{ section.settings.max_image_width | default: 90 }}vw;
+    max-height: {{ section.settings.max_image_height | default: 90 }}vh;
+    object-fit: contain;
+    border-radius: {{ section.settings.image_border_radius | default: 8 }}px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  /* clickable text style — no margin/padding/whitespace around */
+  .clickable-image-text-{{ section.id }} {
+    display: inline-block;
+    cursor: pointer;
+    font-size: {{ section.settings.text_size | default: 1.2 }}rem;
+    font-weight: {{ section.settings.text_weight | default: 500 }};
+    color: {{ section.settings.text_color | default: '#2c6e9e' }};
+    {% if section.settings.text_underline %}text-decoration: underline;
+  {% else %}text-decoration: none;
+  {% endif %}
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+}
+.clickable-image-text-{{ section.id }}:hover {
+  opacity: 0.8;
+  {% if section.settings.hover_underline %}text-decoration: underline;
+{% endif %}
+}
+/* add optional icon before text */
+.clickable-image-text-{{ section.id }}::before {
+  content: "{{ section.settings.prefix_icon | default: '📸' }} ";
+  display: inline;
+}
+/* ensure no wrapper adds hidden spacing */
+.text-trigger-wrapper-{{ section.id }} {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+/* optional container alignment */
+.clickable-container-{{ section.id }} {
+  margin: 0;
+  padding: {{ section.settings.container_padding | default: 0 }}px;
+  text-align: {{ section.settings.text_alignment | default: 'left' }};
+}
+{% endstyle %}
 
-{%- comment %}Get the image URL correctly{% endcomment %}
-{%- if image != blank -%}
-  {%- assign modal_image_url = image | image_url -%}
-{%- elsif image_url != blank -%}
-  {%- assign modal_image_url = image_url -%}
-{%- else -%}
-  {%- assign modal_image_url = '' -%}
-{%- endif -%}
+<!-- clickable text trigger — 0 whitespace around it -->
+<div class="clickable-container-{{ section.id }}" style="margin:0; {% if section.settings.container_padding == 0 %}padding:0;{% endif %} line-height:0;">
+  <span class="text-trigger-wrapper-{{ section.id }}">
+    <span class="clickable-image-text-{{ section.id }}" id="openImageViewer-{{ section.id }}">
+      {{ section.settings.clickable_text | default: 'View full image' }}
+    </span>
+  </span>
+</div>
 
-<a
-  href="#"
-  onclick="event.preventDefault(); openModalDirectly('{{ modal_image_url }}', '{{ text | escape }}'); return false;"
-  class="image-modal-link"
-  style="color: {{ text_color }}; font-size: {{ text_size }}px; text-decoration: underline; cursor: pointer; display: inline-block;">
-  {{ text | default: 'Click here to view image' }}
-</a>
+<!-- hidden modal: pure image without any white padding/margins -->
+<div
+  id="imageModal-{{ section.id }}"
+  class="image-modal-{{ section.id }}"
+  style="display: none;">
+  <img
+    id="modalImage-{{ section.id }}"
+    src=""
+    alt="{{ section.settings.image_alt | default: 'Full size preview' }}">
+</div>
 
 <script>
-  // Simple, reliable modal function
-  function openModalDirectly(imageUrl, title) {
-  console.log('Opening modal with URL:', imageUrl);
-  
-  if (!imageUrl || imageUrl === '') {
-    alert('Error: No image URL provided. Please select an image in the section settings.');
-    return;
-  }
-  
-  // Create modal if it doesn't exist
-  let modal = document.getElementById('simpleImageModal');
-  if (!modal) {
-    modal = document.createElement('div');
-    modal.id = 'simpleImageModal';
-    modal.innerHTML = `
-      <div id="simpleModalOverlay" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 999999; cursor: pointer;">
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 8px; max-width: 90%; max-height: 90vh; overflow: auto; cursor: default;">
-          <button id="simpleModalClose" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 28px; cursor: pointer; color: #333; z-index: 10;">&times;</button>
-          <img id="simpleModalImage" src="" alt="" style="max-width: 100%; height: auto; display: block;">
-          <div id="simpleModalError" style="color: red; display: none; text-align: center; padding: 20px;">Failed to load image</div>
-        </div>
-      </div>
-    `;
-    document.body.appendChild(modal);
-    
-    // Close functionality
-    document.getElementById('simpleModalOverlay').addEventListener('click', function(e) {
-      if (e.target === this || e.target.id === 'simpleModalClose') {
-        this.style.display = 'none';
+    (function() {
+      const sectionId = {{ section.id | json }};
+      const modal = document.getElementById('imageModal-' + sectionId);
+      const modalImg = document.getElementById('modalImage-' + sectionId);
+      const trigger = document.getElementById('openImageViewer-' + sectionId);
+      
+      // Get image URL from settings
+      const imageUrl = {{ section.settings.image | img_url: 'master' | json }};
+      const customImageUrl = {{ section.settings.custom_image_url | json }};
+      const useCustomUrl = {{ section.settings.use_custom_url | json }};
+      
+      // Determine which image to use
+      let finalImageUrl = '';
+      if (useCustomUrl && customImageUrl && customImageUrl.trim() !== '') {
+        finalImageUrl = customImageUrl;
+      } else if (imageUrl && imageUrl !== '') {
+        finalImageUrl = imageUrl;
+      } else {
+        finalImageUrl = 'https://cdn.shopify.com/s/files/1/0538/8579/2431/files/placeholder.png'; // fallback
+      }
+      
+      // Open modal
+      function openModal() {
+        if (!finalImageUrl) return;
+        modalImg.src = finalImageUrl;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        
+        // Optional: add animation class
+        modal.style.animation = 'fadeInModal 0.2s ease';
+      }
+      
+      // Close modal
+      function closeModal() {
+        modal.style.display = 'none';
+        modalImg.src = '';
         document.body.style.overflow = '';
       }
-    });
-    
-    // Escape key handler
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        const overlay = document.getElementById('simpleModalOverlay');
-        if (overlay && overlay.style.display === 'block') {
-          overlay.style.display = 'none';
-          document.body.style.overflow = '';
-        }
+      
+      // Event listeners
+      if (trigger) {
+        trigger.addEventListener('click', openModal);
       }
-    });
-  }
-  
-  // Show modal and set image
-  const overlay = document.getElementById('simpleModalOverlay');
-  const modalImg = document.getElementById('simpleModalImage');
-  const errorDiv = document.getElementById('simpleModalError');
-  
-  // Reset
-  modalImg.style.display = 'block';
-  errorDiv.style.display = 'none';
-  modalImg.src = '';
-  
-  // Set new image
-  modalImg.onerror = function() {
-    errorDiv.style.display = 'block';
-    modalImg.style.display = 'none';
-    console.error('Failed to load image:', imageUrl);
-  };
-  
-  modalImg.onload = function() {
-    errorDiv.style.display = 'none';
-    modalImg.style.display = 'block';
-  };
-  
-  modalImg.src = imageUrl;
-  modalImg.alt = title || 'Image';
-  overlay.style.display = 'block';
-  document.body.style.overflow = 'hidden';
-  }
+      
+      if (modal) {
+        modal.addEventListener('click', closeModal);
+      }
+      
+      // ESC key support
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+          closeModal();
+        }
+      });
+      
+      // Add fade-in keyframes if not exists
+      if (!document.querySelector('#modalKeyframes')) {
+        const style = document.createElement('style');
+        style.id = 'modalKeyframes';
+        style.textContent = `
+          @keyframes fadeInModal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+        `;
+        document.head.appendChild(style);
+      }
+    })();
 </script>
