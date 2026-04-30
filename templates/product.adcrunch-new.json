@@ -9,20 +9,6 @@
  */
 {
   "sections": {
-    "modal_test_section_68wxpJ": {
-      "type": "modal-test-section",
-      "name": "Modal Test",
-      "settings": {
-        "heading": "Test Modal",
-        "button_text": "Click to Open Image",
-        "modal_image": "shopify://shop_images/UGC_review_5dfa8477-ea9b-42aa-880a-c825cdad650b.png",
-        "alignment": "center",
-        "text_color": "#000000",
-        "hover_color": "#0066cc",
-        "text_size": 16,
-        "show_debug": true
-      }
-    },
     "lp-adcrunch-new-clip-in-extensions": {
       "type": "lp-adcrunch-new-clip-in-extensions",
       "settings": {
@@ -174,16 +160,9 @@
         "featured_item_E9TfJR"
       ],
       "settings": {
-        "link_text": "Click to view image",
-        "modal_image": "shopify://shop_images/UGC_review_5dfa8477-ea9b-42aa-880a-c825cdad650b.png",
-        "alignment": "center",
-        "text_color": "#000000",
-        "hover_color": "#0066cc",
-        "text_size": 16,
-        "margin_top": 20,
-        "margin_bottom": 20,
-        "padding": 0,
         "container-width": 4,
+        "clickable_text": "View full image",
+        "image": "shopify://shop_images/UGC_review_5dfa8477-ea9b-42aa-880a-c825cdad650b.png",
         "spacing-above": true,
         "spacing-below": true,
         "media-layout": "thumbnails",
@@ -938,7 +917,6 @@
     }
   },
   "order": [
-    "modal_test_section_68wxpJ",
     "lp-adcrunch-new-clip-in-extensions",
     "product-new-revamp",
     "lp-adcrunch-new-verified-reviews",
