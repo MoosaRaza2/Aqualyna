@@ -160,6 +160,15 @@
         "featured_item_E9TfJR"
       ],
       "settings": {
+        "link_text": "Click to view image",
+        "modal_image": "shopify://shop_images/UGC_review_5dfa8477-ea9b-42aa-880a-c825cdad650b.png",
+        "alignment": "center",
+        "text_color": "#000000",
+        "hover_color": "#0066cc",
+        "text_size": 16,
+        "margin_top": 20,
+        "margin_bottom": 20,
+        "padding": 0,
         "container-width": 4,
         "spacing-above": true,
         "spacing-below": true,
