@@ -190,7 +190,7 @@ font-weight: 700;
                 </div>
                 {% comment %} Mobile rating – shown only on small screens {% endcomment %}
 <div class="mobile-rating">
-  {%- render 'product-rating' -%}
+  {%- render 'adcrunch-rattings' -%}
 </div>
 
                 {% comment %} --- MOBILE CAROUSEL INSERTED AFTER TITLE --- {% endcomment %}
@@ -310,7 +310,7 @@ font-weight: 700;
                 {%- endunless -%}
   
               {%- when 'rating' -%}
-                {%- render 'product-rating' -%}
+                {%- render 'adcrunch-rattings' -%}
 
               {%- when 'top-review' -%}
                 <div class="top-review-block">
@@ -365,6 +365,11 @@ font-weight: 700;
                   </div>
                 
                   <style>
+                    @media only screen and (max-width: 767px) {
+                      .product-price--root{
+                        align-items: start;
+                      }
+                }
 
                     @media screen and (max-width: 768px) {
                       .tag-block-custom {
