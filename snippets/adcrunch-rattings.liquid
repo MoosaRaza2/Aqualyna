@@ -1,0 +1,35 @@
+<style>
+  .product-rating--stars {
+    --color--stars: #FFD700 !important;
+  }
+
+  .product-rating--stars::before {
+    content: "★★★★★" !important;
+  }
+
+  .product-rating--root {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+</style>
+
+<div
+  class="product-rating--root"
+  role="img"
+  aria-label="Rated 4.7 out of 5"
+  style="--rating:4.5;--rating-max:5;--rating-decimal:0;">
+  <div class="product-rating--stars"></div>
+  <span class="product-rating--count" data-item="accent-text">
+    4.7/5
+  </span>
+</div>
+
+
+
+
+
+
+
+
+

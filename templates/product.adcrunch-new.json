@@ -161,6 +161,8 @@
       ],
       "settings": {
         "container-width": 4,
+        "clickable_text": "Help me choose my length",
+        "image": "shopify://shop_images/Length_Example_1.png",
         "spacing-above": true,
         "spacing-below": true,
         "media-layout": "thumbnails",
