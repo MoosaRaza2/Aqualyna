@@ -56,10 +56,10 @@
 {% endif %}
 }
 /* add optional icon before text */
-.clickable-image-text-{{ section.id }}::before {
+/* .clickable-image-text-{{ section.id }}::before {
   content: "{{ section.settings.prefix_icon | default: '📸' }} ";
   display: inline;
-}
+} */
 /* ensure no wrapper adds hidden spacing */
 .text-trigger-wrapper-{{ section.id }} {
   margin: 0;
