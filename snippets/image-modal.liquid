@@ -37,19 +37,10 @@
   .clickable-image-text-{{ section.id }} {
     display: inline-block;
     cursor: pointer;
-    font-size: {{ section.settings.text_size | default: 1.2 }}rem;
-    font-weight: {{ section.settings.text_weight | default: 500 }};
-    color: {{ section.settings.text_color | default: '#2c6e9e' }};
-    {% if section.settings.text_underline %}text-decoration: underline;
-  {% else %}text-decoration: none;
-  {% endif %}
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  border: none;
-  line-height: 1;
-  transition: opacity 0.2s ease;
+   font-size: 16px;
+   transition: opacity 0.2s ease;
 }
+
 .clickable-image-text-{{ section.id }}:hover {
   opacity: 0.8;
   {% if section.settings.hover_underline %}text-decoration: underline;
@@ -68,14 +59,14 @@
 }
 /* optional container alignment */
 .clickable-container-{{ section.id }} {
-  margin: 0;
+  margin-bottom: 10px;
   padding: {{ section.settings.container_padding | default: 0 }}px;
   text-align: {{ section.settings.text_alignment | default: 'left' }};
 }
 {% endstyle %}
 
 <!-- clickable text trigger — 0 whitespace around it -->
-<div class="clickable-container-{{ section.id }}" style="margin:0; {% if section.settings.container_padding == 0 %}padding:0;{% endif %} line-height:0;">
+<div class="clickable-container-{{ section.id }}">
   <span class="text-trigger-wrapper-{{ section.id }}">
     <span class="clickable-image-text-{{ section.id }}" id="openImageViewer-{{ section.id }}">
       {{ section.settings.clickable_text | default: 'View full image' }}
