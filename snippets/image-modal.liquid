@@ -37,8 +37,10 @@
   .clickable-image-text-{{ section.id }} {
     display: inline-block;
     cursor: pointer;
-   font-size: 16px;
+   font-size: 12px;
    transition: opacity 0.2s ease;
+   text-decoration: underline;
+   text-transform: none;
 }
 
 .clickable-image-text-{{ section.id }}:hover {
@@ -69,7 +71,7 @@
 <div class="clickable-container-{{ section.id }}">
   <span class="text-trigger-wrapper-{{ section.id }}">
     <span class="clickable-image-text-{{ section.id }}" id="openImageViewer-{{ section.id }}">
-      {{ section.settings.clickable_text | default: 'View full image' }}
+      {{ section.settings.clickable_text }}
     </span>
   </span>
 </div>
