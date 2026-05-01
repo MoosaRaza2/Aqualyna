@@ -41,6 +41,8 @@
 
 .lp-how-it-works__steps {
   display: flex;
+  flex-direction: column;
+    gap: 10px;
 }
 
 .lp-how-it-works__step {
