@@ -310,6 +310,7 @@
         },
         "testimonial_ticker_MFrRJt": {
           "type": "testimonial_ticker",
+          "disabled": true,
           "settings": {
             "quote": "\"Nobody knew I was wearing them\"",
             "author": "Melissa R."
@@ -317,6 +318,7 @@
         },
         "testimonial_ticker_diUrrx": {
           "type": "testimonial_ticker",
+          "disabled": true,
           "settings": {
             "quote": "\"The only thing that actually worked\"",
             "author": "Jennifer A."
@@ -324,6 +326,7 @@
         },
         "testimonial_ticker_4TytmW": {
           "type": "testimonial_ticker",
+          "disabled": true,
           "settings": {
             "quote": "\"My hair looked like this in my 30s\"",
             "author": "Carol M."
@@ -331,6 +334,7 @@
         },
         "testimonial_ticker_qRahmq": {
           "type": "testimonial_ticker",
+          "disabled": true,
           "settings": {
             "quote": "\"4 minutes. That's it.\"",
             "author": "Patricia L."
@@ -338,6 +342,7 @@
         },
         "testimonial_ticker_hayaaf": {
           "type": "testimonial_ticker",
+          "disabled": true,
           "settings": {
             "quote": "\"People keep asking what I'm doing\"",
             "author": "Diane K."
@@ -345,6 +350,7 @@
         },
         "testimonial_ticker_rt9VQd": {
           "type": "testimonial_ticker",
+          "disabled": true,
           "settings": {
             "quote": "\"Nobody knew I was wearing them\"",
             "author": "Melissa R."
@@ -426,7 +432,7 @@
         "block_lp-adcrunch-new-what-women-with-fine_5"
       ],
       "settings": {
-        "title": "What women with fine hair are actually saying"
+        "title": ""
       }
     },
     "lp-adcrunch-new-if-you-have-fine": {
@@ -477,15 +483,15 @@
       ],
       "settings": {
         "eyebrow": "If you have fine or thinning hair, you already know",
-        "heading": "You've tried everything.\nEverything stopped working by noon.",
+        "heading": "You've tried everything.",
         "subtext": "Root spray. Volumizing mousse. Dry shampoo. Thickening serum. You've spent hundreds of dollars on the hope that this one will be different. It lifts for 45 minutes. Then gravity wins. Again."
       }
     },
     "lp-adcrunch-new-callout-banner": {
       "type": "lp-adcrunch-new-callout-banner",
       "settings": {
-        "headline": "\"Extensions aren't for fine hair.\"\nThose extensions weren't designed for you.\nThese were.",
-        "subtext": "Your stylist wasn't lying. Heavy clip-in sets — 180g+ designed for thick hair — genuinely can damage fine hair. That's a real risk. But it's been applied too broadly, and it's kept you from the solution that actually works for your hair type.",
+        "headline": "Have you heard \"extensions aren't for fine hair\" or those extensions weren't designed for you.\n\nThese were.",
+        "subtext": "Your stylist wasn't lying. Heavy clip-in sets — 180g+ designed for thick hair genuinely can damage fine hair. That's a real risk. But it's been applied too broadly, and it's kept you from the solution that actually works for your hair type.",
         "bg_color": "#1c1c1c",
         "headline_color": "#ffffff",
         "subtext_color": "#a8c8ca"
