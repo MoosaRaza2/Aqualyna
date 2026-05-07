@@ -309,6 +309,7 @@
         },
         "testimonial_ticker_MFrRJt": {
           "type": "testimonial_ticker",
+          "disabled": true,
           "settings": {
             "quote": "\"Nobody knew I was wearing them\"",
             "author": "Melissa R."
@@ -316,6 +317,7 @@
         },
         "testimonial_ticker_diUrrx": {
           "type": "testimonial_ticker",
+          "disabled": true,
           "settings": {
             "quote": "\"The only thing that actually worked\"",
             "author": "Jennifer A."
@@ -323,6 +325,7 @@
         },
         "testimonial_ticker_4TytmW": {
           "type": "testimonial_ticker",
+          "disabled": true,
           "settings": {
             "quote": "\"My hair looked like this in my 30s\"",
             "author": "Carol M."
@@ -330,6 +333,7 @@
         },
         "testimonial_ticker_qRahmq": {
           "type": "testimonial_ticker",
+          "disabled": true,
           "settings": {
             "quote": "\"4 minutes. That's it.\"",
             "author": "Patricia L."
@@ -337,6 +341,7 @@
         },
         "testimonial_ticker_hayaaf": {
           "type": "testimonial_ticker",
+          "disabled": true,
           "settings": {
             "quote": "\"People keep asking what I'm doing\"",
             "author": "Diane K."
@@ -344,6 +349,7 @@
         },
         "testimonial_ticker_rt9VQd": {
           "type": "testimonial_ticker",
+          "disabled": true,
           "settings": {
             "quote": "\"Nobody knew I was wearing them\"",
             "author": "Melissa R."
@@ -425,7 +431,50 @@
         "block_lp-adcrunch-new-what-women-with-fine_5"
       ],
       "settings": {
-        "title": "What women with fine hair are actually saying"
+        "title": ""
+      }
+    },
+    "lp-adcrunch-new-how-it-works": {
+      "type": "lp-adcrunch-new-how-it-works",
+      "blocks": {
+        "block_lp-adcrunch-new-how-it-works_0": {
+          "type": "step",
+          "settings": {
+            "title": "Section",
+            "text": "Part your hair horizontally at\nthe nape. Clip the top layer\nout of the way. The base\nsection is where the clips sit."
+          }
+        },
+        "block_lp-adcrunch-new-how-it-works_1": {
+          "type": "step",
+          "settings": {
+            "title": "Clip",
+            "text": "Press the ultra-narrow weft\nagainst your roots. Snap the\nclips closed. No pulling, no\nforce — they grip gently."
+          }
+        },
+        "block_lp-adcrunch-new-how-it-works_2": {
+          "type": "step",
+          "settings": {
+            "title": "Release",
+            "text": "Let down the top layer of\nyour natural hair over the\nweft. That's it. The clip is\nhidden. The volume is there."
+          }
+        },
+        "block_lp-adcrunch-new-how-it-works_3": {
+          "type": "step",
+          "settings": {
+            "title": "Go",
+            "text": "Walk out the door. Don't\nthink about it again until\nyou take them out tonight.\nYour hair doesn't need\nmanaging today."
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-adcrunch-new-how-it-works_0",
+        "block_lp-adcrunch-new-how-it-works_1",
+        "block_lp-adcrunch-new-how-it-works_2",
+        "block_lp-adcrunch-new-how-it-works_3"
+      ],
+      "settings": {
+        "sub_heading": "Installation",
+        "heading": "Four steps. Under five minutes.\nNo technique required after day one."
       }
     },
     "lp-adcrunch-new-if-you-have-fine": {
@@ -476,14 +525,14 @@
       ],
       "settings": {
         "eyebrow": "If you have fine or thinning hair, you already know",
-        "heading": "You've tried everything.\nEverything stopped working by noon.",
+        "heading": "You've tried everything.",
         "subtext": "Root spray. Volumizing mousse. Dry shampoo. Thickening serum. You've spent hundreds of dollars on the hope that this one will be different. It lifts for 45 minutes. Then gravity wins. Again."
       }
     },
     "lp-adcrunch-new-callout-banner": {
       "type": "lp-adcrunch-new-callout-banner",
       "settings": {
-        "headline": "\"Extensions aren't for fine hair.\"\nThose extensions weren't designed for you.\nThese were.",
+        "headline": "Have you heard, extensions aren't for fine hair.\nThose extensions weren't designed for you.\nThese were.",
         "subtext": "Your stylist wasn't lying. Heavy clip-in sets — 180g+ designed for thick hair — genuinely can damage fine hair. That's a real risk. But it's been applied too broadly, and it's kept you from the solution that actually works for your hair type.",
         "bg_color": "#1c1c1c",
         "headline_color": "#ffffff",
@@ -571,49 +620,6 @@
         "heading": "Not a modification of thick-hair extensions.\nA different product entirely.",
         "standard_label": "Standard clip-ins — designed for thick hair",
         "aqualyna_label": "AquaLyna Ultra Narrow — designed for fine hair"
-      }
-    },
-    "lp-adcrunch-new-how-it-works": {
-      "type": "lp-adcrunch-new-how-it-works",
-      "blocks": {
-        "block_lp-adcrunch-new-how-it-works_0": {
-          "type": "step",
-          "settings": {
-            "title": "Section",
-            "text": "Part your hair horizontally at\nthe nape. Clip the top layer\nout of the way. The base\nsection is where the clips sit."
-          }
-        },
-        "block_lp-adcrunch-new-how-it-works_1": {
-          "type": "step",
-          "settings": {
-            "title": "Clip",
-            "text": "Press the ultra-narrow weft\nagainst your roots. Snap the\nclips closed. No pulling, no\nforce — they grip gently."
-          }
-        },
-        "block_lp-adcrunch-new-how-it-works_2": {
-          "type": "step",
-          "settings": {
-            "title": "Release",
-            "text": "Let down the top layer of\nyour natural hair over the\nweft. That's it. The clip is\nhidden. The volume is there."
-          }
-        },
-        "block_lp-adcrunch-new-how-it-works_3": {
-          "type": "step",
-          "settings": {
-            "title": "Go",
-            "text": "Walk out the door. Don't\nthink about it again until\nyou take them out tonight.\nYour hair doesn't need\nmanaging today."
-          }
-        }
-      },
-      "block_order": [
-        "block_lp-adcrunch-new-how-it-works_0",
-        "block_lp-adcrunch-new-how-it-works_1",
-        "block_lp-adcrunch-new-how-it-works_2",
-        "block_lp-adcrunch-new-how-it-works_3"
-      ],
-      "settings": {
-        "sub_heading": "Installation",
-        "heading": "Four steps. Under five minutes.\nNo technique required after day one."
       }
     },
     "lp-adcrunch-new-the-real-questions": {
@@ -924,10 +930,10 @@
     "lp-adcrunch-new-verified-reviews",
     "lp-adcrunch-new-real-women-fine-hair",
     "lp-adcrunch-new-what-women-with-fine",
+    "lp-adcrunch-new-how-it-works",
     "lp-adcrunch-new-if-you-have-fine",
     "lp-adcrunch-new-callout-banner",
     "lp-adcrunch-new-the-real-difference",
-    "lp-adcrunch-new-how-it-works",
     "lp-adcrunch-new-the-real-questions",
     "lp-adcrunch-new-the-shift",
     "lp-adcrunch-new-how-it-stacks-up",
