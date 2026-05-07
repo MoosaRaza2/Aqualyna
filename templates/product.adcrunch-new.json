@@ -84,6 +84,7 @@
         },
         "trust_block_K7VyyC": {
           "type": "trust-block",
+          "disabled": true,
           "settings": {
             "pill_count": 4,
             "align": "flex-start",
