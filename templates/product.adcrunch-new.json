@@ -435,6 +435,49 @@
         "title": ""
       }
     },
+    "lp-adcrunch-new-how-it-works": {
+      "type": "lp-adcrunch-new-how-it-works",
+      "blocks": {
+        "block_lp-adcrunch-new-how-it-works_0": {
+          "type": "step",
+          "settings": {
+            "title": "Section",
+            "text": "Part your hair horizontally at\nthe nape. Clip the top layer\nout of the way. The base\nsection is where the clips sit."
+          }
+        },
+        "block_lp-adcrunch-new-how-it-works_1": {
+          "type": "step",
+          "settings": {
+            "title": "Clip",
+            "text": "Press the ultra-narrow weft\nagainst your roots. Snap the\nclips closed. No pulling, no\nforce — they grip gently."
+          }
+        },
+        "block_lp-adcrunch-new-how-it-works_2": {
+          "type": "step",
+          "settings": {
+            "title": "Release",
+            "text": "Let down the top layer of\nyour natural hair over the\nweft. That's it. The clip is\nhidden. The volume is there."
+          }
+        },
+        "block_lp-adcrunch-new-how-it-works_3": {
+          "type": "step",
+          "settings": {
+            "title": "Go",
+            "text": "Walk out the door. Don't\nthink about it again until\nyou take them out tonight.\nYour hair doesn't need\nmanaging today."
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-adcrunch-new-how-it-works_0",
+        "block_lp-adcrunch-new-how-it-works_1",
+        "block_lp-adcrunch-new-how-it-works_2",
+        "block_lp-adcrunch-new-how-it-works_3"
+      ],
+      "settings": {
+        "sub_heading": "Installation",
+        "heading": "Four steps & under five minutes."
+      }
+    },
     "lp-adcrunch-new-if-you-have-fine": {
       "type": "lp-adcrunch-new-if-you-have-fine",
       "blocks": {
@@ -580,49 +623,6 @@
         "aqualyna_label": "AquaLyna Ultra Narrow — designed for fine hair"
       }
     },
-    "lp-adcrunch-new-how-it-works": {
-      "type": "lp-adcrunch-new-how-it-works",
-      "blocks": {
-        "block_lp-adcrunch-new-how-it-works_0": {
-          "type": "step",
-          "settings": {
-            "title": "Section",
-            "text": "Part your hair horizontally at\nthe nape. Clip the top layer\nout of the way. The base\nsection is where the clips sit."
-          }
-        },
-        "block_lp-adcrunch-new-how-it-works_1": {
-          "type": "step",
-          "settings": {
-            "title": "Clip",
-            "text": "Press the ultra-narrow weft\nagainst your roots. Snap the\nclips closed. No pulling, no\nforce — they grip gently."
-          }
-        },
-        "block_lp-adcrunch-new-how-it-works_2": {
-          "type": "step",
-          "settings": {
-            "title": "Release",
-            "text": "Let down the top layer of\nyour natural hair over the\nweft. That's it. The clip is\nhidden. The volume is there."
-          }
-        },
-        "block_lp-adcrunch-new-how-it-works_3": {
-          "type": "step",
-          "settings": {
-            "title": "Go",
-            "text": "Walk out the door. Don't\nthink about it again until\nyou take them out tonight.\nYour hair doesn't need\nmanaging today."
-          }
-        }
-      },
-      "block_order": [
-        "block_lp-adcrunch-new-how-it-works_0",
-        "block_lp-adcrunch-new-how-it-works_1",
-        "block_lp-adcrunch-new-how-it-works_2",
-        "block_lp-adcrunch-new-how-it-works_3"
-      ],
-      "settings": {
-        "sub_heading": "Installation",
-        "heading": "Four steps. Under five minutes.\nNo technique required after day one."
-      }
-    },
     "lp-adcrunch-new-the-real-questions": {
       "type": "lp-adcrunch-new-the-real-questions",
       "blocks": {
@@ -670,8 +670,8 @@
         "block_lp-adcrunch-new-the-real-questions_3"
       ],
       "settings": {
-        "subheader": "The real questions",
-        "heading": "You've thought about this.\nHere's the honest answer to each one."
+        "subheader": "FAQs",
+        "heading": "You've thought about these.\nHonest answer to each one."
       }
     },
     "lp-adcrunch-new-the-shift": {
@@ -696,6 +696,7 @@
         "block_lp-adcrunch-new-the-shift_0",
         "block_lp-adcrunch-new-the-shift_1"
       ],
+      "disabled": true,
       "settings": {
         "tagline": "The shift",
         "heading": "The goal isn't hair.\nThe goal is to stop the negotiation.",
@@ -931,10 +932,10 @@
     "lp-adcrunch-new-verified-reviews",
     "lp-adcrunch-new-real-women-fine-hair",
     "lp-adcrunch-new-what-women-with-fine",
+    "lp-adcrunch-new-how-it-works",
     "lp-adcrunch-new-if-you-have-fine",
     "lp-adcrunch-new-callout-banner",
     "lp-adcrunch-new-the-real-difference",
-    "lp-adcrunch-new-how-it-works",
     "lp-adcrunch-new-the-real-questions",
     "lp-adcrunch-new-the-shift",
     "lp-adcrunch-new-how-it-stacks-up",
