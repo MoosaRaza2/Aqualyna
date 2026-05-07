@@ -532,7 +532,7 @@
     "lp-adcrunch-new-callout-banner": {
       "type": "lp-adcrunch-new-callout-banner",
       "settings": {
-        "headline": "Have you heard, extensions aren't for fine hair.\nThose extensions weren't designed for you.\nThese were.",
+        "headline": "Have you heard, \"extensions aren't for fine hair\"?\n\"Those extensions weren't designed for you.\"\nThese were.",
         "subtext": "Your stylist wasn't lying. Heavy clip-in sets — 180g+ designed for thick hair — genuinely can damage fine hair. That's a real risk. But it's been applied too broadly, and it's kept you from the solution that actually works for your hair type.",
         "bg_color": "#1c1c1c",
         "headline_color": "#ffffff",
