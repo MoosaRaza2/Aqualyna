@@ -11,6 +11,7 @@
   "sections": {
     "lp-adcrunch-new-clip-in-extensions": {
       "type": "lp-adcrunch-new-clip-in-extensions",
+      "disabled": true,
       "settings": {
         "home_text": "Home",
         "separator": "/"
@@ -165,7 +166,7 @@
         "container-width": 4,
         "clickable_text": "Help me choose my length",
         "image": "shopify://shop_images/Length_Example_1.png",
-        "spacing-above": true,
+        "spacing-above": false,
         "spacing-below": true,
         "media-layout": "thumbnails",
         "text-column-width": 30,
