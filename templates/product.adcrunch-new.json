@@ -669,6 +669,7 @@
         "block_lp-adcrunch-new-the-real-questions_2",
         "block_lp-adcrunch-new-the-real-questions_3"
       ],
+      "disabled": true,
       "settings": {
         "subheader": "FAQs",
         "heading": "You've thought about these.\nHonest answer to each one."
