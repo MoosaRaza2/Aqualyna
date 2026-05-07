@@ -41,10 +41,6 @@
             "quote": "\"I've had fine hair my whole life and been told extensions just don't work for me. These proved every stylist wrong. Nobody can tell.\" — Melissa R., verified buyer"
           }
         },
-        "price_3hT8NW": {
-          "type": "price",
-          "settings": {}
-        },
         "promo_text_block_QRiPr9": {
           "type": "promo-text-block",
           "disabled": true,
@@ -64,6 +60,10 @@
             "size-chart-option": "size",
             "size-chart-content": ""
           }
+        },
+        "price_3hT8NW": {
+          "type": "price",
+          "settings": {}
         },
         "buy_buttons_gbyLxw": {
           "type": "buy-buttons",
@@ -150,9 +150,9 @@
         "heading_EwwqQF",
         "rating_jeRWbw",
         "top_review_block",
-        "price_3hT8NW",
         "promo_text_block_QRiPr9",
         "options_GkMgzL",
+        "price_3hT8NW",
         "buy_buttons_gbyLxw",
         "custom_cta_4nKezd",
         "trust_block_K7VyyC",
