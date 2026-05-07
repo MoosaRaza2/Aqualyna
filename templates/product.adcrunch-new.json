@@ -668,6 +668,7 @@
         "block_lp-adcrunch-new-the-real-questions_2",
         "block_lp-adcrunch-new-the-real-questions_3"
       ],
+      "disabled": true,
       "settings": {
         "subheader": "The real questions",
         "heading": "You've thought about this.\nHere's the honest answer to each one."
@@ -695,6 +696,7 @@
         "block_lp-adcrunch-new-the-shift_0",
         "block_lp-adcrunch-new-the-shift_1"
       ],
+      "disabled": true,
       "settings": {
         "tagline": "The shift",
         "heading": "The goal isn't hair.\nThe goal is to stop the negotiation.",
@@ -918,6 +920,7 @@
         "block_lp-adcrunch-new-color-match_4",
         "block_lp-adcrunch-new-color-match_5"
       ],
+      "disabled": true,
       "settings": {
         "logo_text": "AquaLyna",
         "copyright_text": "© 2026 AquaLyna"
