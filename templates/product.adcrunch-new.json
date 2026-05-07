@@ -21,6 +21,7 @@
       "blocks": {
         "tag_block_riPaCF": {
           "type": "tag-block",
+          "disabled": true,
           "settings": {
             "title_1": "✦ Designed for fine & thin hair"
           }
