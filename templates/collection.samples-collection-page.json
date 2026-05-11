@@ -156,6 +156,7 @@
     },
     "featured_text_8VMww4": {
       "type": "featured-text",
+      "disabled": true,
       "settings": {
         "background-color": "accent-1",
         "light-text": true,
@@ -419,6 +420,7 @@
       ],
       "disabled": true,
       "settings": {
+        "use-new-product-item": false,
         "products-per-row--desktop": 4,
         "products-per-row--mobile": "2",
         "number-of-rows": 12
